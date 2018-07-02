@@ -12,41 +12,17 @@
 		"MediawikiDiscordUtils": "MediawikiDiscordUtils.php"
 	},
 	"Hooks": {
-		"PageContentSaveComplete": [ 
-			"MediawikiDiscordHooks::onPageContentSaveComplete"	
-		],
-		"PageContentInsertComplete": [
-			"MediawikiDiscordHooks::onPageContentInsertComplete"	
-		],
-		"TitleMoveComplete": [
-			"MediawikiDiscordHooks::onTitleMoveComplete"	
-		],
-		"ArticleDeleteComplete": [
-			"MediawikiDiscordHooks::onArticleDeleteComplete"	
-		],
-		"ArticleUndelete": [
-			"MediawikiDiscordHooks::onArticleUndelete"	
-		],
-		"ArticleProtectComplete": [
-			"MediawikiDiscordHooks::onArticleProtectComplete"	
-		],
-		"UploadComplete": [
-			"MediawikiDiscordHooks::onUploadComplete"	
-		],		
-		"FileDeleteComplete": [
-			"MediawikiDiscordHooks::onFileDeleteComplete"
-		],
-		"LocalUserCreated": [
-			"MediawikiDiscordHooks::onLocalUserCreated"
-		],
-		"BlockIpComplete": [
-			"MediawikiDiscordHooks::onBlockIpComplete"
-		],
-		"UnblockUserComplete": [
-			"MediawikiDiscordHooks::onUnblockUserComplete"
-		],
-		"UserRights": [
-			"MediawikiDiscordHooks::onUserRights"
-		]
+		"PageContentSaveComplete": 	 "MediawikiDiscordHooks::onPageContentSaveComplete",
+		"PageContentInsertComplete": "MediawikiDiscordHooks::onPageContentInsertComplete",
+		"TitleMoveComplete": 		 "MediawikiDiscordHooks::onTitleMoveComplete",
+		"ArticleDeleteComplete": 	 "MediawikiDiscordHooks::onArticleDeleteComplete",
+		"ArticleUndelete": 			 "MediawikiDiscordHooks::onArticleUndelete",
+		"ArticleProtectComplete": 	 "MediawikiDiscordHooks::onArticleProtectComplete",
+		"UploadComplete": 			 "MediawikiDiscordHooks::onUploadComplete",
+		"FileDeleteComplete": 		 "MediawikiDiscordHooks::onFileDeleteComplete",
+		"LocalUserCreated": 		 "MediawikiDiscordHooks::onLocalUserCreated",
+		"BlockIpComplete": 			 "MediawikiDiscordHooks::onBlockIpComplete",
+		"UnblockUserComplete": 		 "MediawikiDiscordHooks::onUnblockUserComplete",
+		"UserRights": 				 "MediawikiDiscordHooks::onUserRights"
 	}
 }

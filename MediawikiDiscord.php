@@ -82,8 +82,10 @@ final class MediawikiDiscordHooks
 	static function onUploadComplete($image) 
 	{ 
 	    global $wgUser;
-	
-		$message = "User `" . $wgUser . "` uploaded file `" . $image->getLocalFile()->getTitle() . "`";
+		
+		$isNewRevision = count($image->getLocalFile()->getHistory()) > 0;
+		
+		$message = "User `" . $wgUser . "` uploaded" . ($isNewRevision ? " new version of " : " " ) . "file `" . $image->getLocalFile()->getName() . "`";
 		
 		DiscordNotifications::Send($message);
 	}

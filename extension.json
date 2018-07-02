@@ -40,6 +40,9 @@
 		],
 		"BlockIpComplete": [
 			"MediawikiDiscordHooks::onBlockIpComplete"
+		],
+		"UnblockUserComplete": [
+			"MediawikiDiscordHooks::onUnblockUserComplete"
 		]
 	}
 }

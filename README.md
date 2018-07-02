@@ -18,7 +18,7 @@ This project was developed primarily for the purpose of assisting the SoulFire t
   - :heavy_check_mark: [FileDeleteComplete](https://www.mediawiki.org/wiki/Manual:Hooks/FileDeleteComplete)
   - :heavy_check_mark: [LocalUserCreated](https://www.mediawiki.org/wiki/Manual:Hooks/LocalUserCreated)
   - :heavy_check_mark: [BlockIpComplete](https://www.mediawiki.org/wiki/Manual:Hooks/BlockIpComplete)
-  - :x: [UnblockUserComplete](https://www.mediawiki.org/wiki/Manual:Hooks/UnblockUserComplete)
+  - :heavy_check_mark: [UnblockUserComplete](https://www.mediawiki.org/wiki/Manual:Hooks/UnblockUserComplete)
   - :x: [UserRights](https://www.mediawiki.org/wiki/Manual:Hooks/UserRights)
 - :x: `ArticleProtectComplete` - showing new protection settings of page, eg. in embed variables
 - :x: `UploadComplete` - sending pictures as embeds

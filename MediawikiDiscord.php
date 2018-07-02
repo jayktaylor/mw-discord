@@ -117,8 +117,20 @@ final class MediawikiDiscordHooks
 		{
 			$message .= " with reason: `" .  $block->mReason . "`";
 		}
+			
+		$message .= " (expires: `" . $block->mExpiry  ."`)";
 		
-		$message .= " (expires: `" . $block->mExpiry ."`)";
+		DiscordNotifications::Send($message);
+	}
+	
+	static function onUnblockUserComplete($block, $user)
+	{
+		$message = "User `" . $user . "` unblocked user `" . $block->getTarget() . "`";				
+			
+		if (empty($block->mReason) == false) 
+		{
+			$message .= " with reason: `" .  $block->mReason . "`";
+		}
 		
 		DiscordNotifications::Send($message);
 	}

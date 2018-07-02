@@ -1,11 +1,23 @@
 ﻿<?php
 
-final class MediawikiDiscordHooks
+final class MediawikiDiscordHooks 
 {
-	static function onPageContentSaveComplete ($wikiPage, $user)
+	static function onPageContentSaveComplete ($wikiPage, $user, $content, $summary, $isMinor, $isWatch, $section, $flags, $revision, $status, $baseRevId)
+	{		
+		if ($status->value['new'] == true) //page is just created, there is no need to trigger second notification
+		{
+			return;
+		}
+			
+		$message = "User `" . $user . "` saved changes on page `" . $wikiPage->getTitle()->getFullText() . "`";		
+		
+		DiscordNotifications::Send($message);
+	}
+	
+	static function onPageContentInsertComplete ($wikiPage, $user) 
 	{
-		$message = "User `" . $user . "` saved changes on page `" . $wikiPage->getTitle()->getFullText() . "`";
-
+		$message = "User `" . $user . "` created new page `" . $wikiPage->getTitle()->getFullText() . "`";		
+		
 		DiscordNotifications::Send($message);
 	}
 }

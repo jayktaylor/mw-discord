@@ -7,7 +7,7 @@ This project was developed primarily for the purpose of assisting the SoulFire t
 ## Features / Roadmap 
 
 - :heavy_check_mark: simple notification (`content` key) to Discord channel with Webhook 
-- :heavy_multiplication_x: hooks
+- :heavy_check_mark: hooks
   - :heavy_check_mark: [PageContentSaveComplete](https://www.mediawiki.org/wiki/Manual:Hooks/PageContentSaveComplete)
   - :heavy_check_mark: [PageContentInsertComplete](https://www.mediawiki.org/wiki/Manual:Hooks/PageContentInsertComplete)
   - :heavy_check_mark: [TitleMoveComplete](https://www.mediawiki.org/wiki/Manual:Hooks/TitleMoveComplete)
@@ -19,7 +19,7 @@ This project was developed primarily for the purpose of assisting the SoulFire t
   - :heavy_check_mark: [LocalUserCreated](https://www.mediawiki.org/wiki/Manual:Hooks/LocalUserCreated)
   - :heavy_check_mark: [BlockIpComplete](https://www.mediawiki.org/wiki/Manual:Hooks/BlockIpComplete)
   - :heavy_check_mark: [UnblockUserComplete](https://www.mediawiki.org/wiki/Manual:Hooks/UnblockUserComplete)
-  - :x: [UserRights](https://www.mediawiki.org/wiki/Manual:Hooks/UserRights)
+  - :heavy_check_mark: [UserRights](https://www.mediawiki.org/wiki/Manual:Hooks/UserRights)
 - :x: `ArticleProtectComplete` - showing new protection settings of page, eg. in embed variables
 - :x: `UploadComplete` - sending pictures as embeds
 - :x: i18n

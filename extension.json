@@ -43,6 +43,9 @@
 		],
 		"UnblockUserComplete": [
 			"MediawikiDiscordHooks::onUnblockUserComplete"
+		],
+		"UserRights": [
+			"MediawikiDiscordHooks::onUserRights"
 		]
 	}
 }

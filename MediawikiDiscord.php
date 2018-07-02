@@ -141,6 +141,23 @@ final class MediawikiDiscordHooks
 		
 		DiscordNotifications::Send($message);
 	}
+	
+	static function onUserRights($user, array $addedGroups, array $removedGroups)
+	{
+		$message = "Group memberships of user `" . $user->getName() . "` have been changed.";
+
+		if (count($addedGroups) > 0) 
+		{
+			$message .= " Added: `" . join(', ', $addedGroups) . "`";
+		}		
+		
+		if (count($removedGroups) > 0) 
+		{
+			$message .= " Removed: `" . join(', ', $removedGroups) . "`";
+		}	
+	
+		DiscordNotifications::Send($message);
+	}
 }
 
 final class DiscordNotifications

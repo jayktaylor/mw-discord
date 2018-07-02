@@ -1,33 +1,33 @@
 ﻿<?php
 
-final class MediawikiDiscordHooks 
+final class MediawikiDiscordHooks
 {
 	static function onPageContentSaveComplete ($wikiPage, $user)
-	{		
-		$message = "User `" . $user . "` saved changes on page `" . $wikiPage->getTitle()->getFullText() . "`";		
-		
+	{
+		$message = "User `" . $user . "` saved changes on page `" . $wikiPage->getTitle()->getFullText() . "`";
+
 		DiscordNotifications::Send($message);
 	}
 }
 
 final class DiscordNotifications
 {
-	static function Send ($message)
+	public static function Send ($message)
 	{
 		global $wgDiscordWebhookUrl;
 
 		$content = '{ "content": "' . $message . '" }';
-				
+
 		$data = array
 		(
 			'http' => array
-			(				
+			(
 				'method'  => 'POST',
 				'content' => $content
 			)
 		);
 
-		file_get_contents($wgDiscordWebhookUrl, false, stream_context_create($data));	
+		file_get_contents($wgDiscordWebhookUrl, false, stream_context_create($data));
 	}
 }
 

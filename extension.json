@@ -16,6 +16,9 @@
 		],
 		"PageContentInsertComplete": [
 			"MediawikiDiscordHooks::onPageContentInsertComplete"	
-		]	
+		],
+		"TitleMoveComplete": [
+			"MediawikiDiscordHooks::onTitleMoveComplete"	
+		]
 	}
 }

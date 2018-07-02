@@ -20,6 +20,18 @@ final class MediawikiDiscordHooks
 		
 		DiscordNotifications::Send($message);
 	}
+	
+	static function onTitleMoveComplete ($title, $newTitle, $user, $oldid, $newid, $reason, $revision) 
+	{
+		$message = "User `" . $user . "` moved page `" . $title . "` to `" . $newTitle . "`";		
+		
+		if (empty($reason) == false) 
+		{
+			$message .= " (reason: `" .  $reason . "`)";
+		}
+		
+		DiscordNotifications::Send($message);
+	}
 }
 
 final class DiscordNotifications
@@ -29,17 +41,17 @@ final class DiscordNotifications
 		global $wgDiscordWebhookUrl;
 
 		$content = '{ "content": "' . $message . '" }';
-
+				
 		$data = array
 		(
 			'http' => array
-			(
+			(				
 				'method'  => 'POST',
 				'content' => $content
 			)
 		);
 
-		file_get_contents($wgDiscordWebhookUrl, false, stream_context_create($data));
+		file_get_contents($wgDiscordWebhookUrl, false, stream_context_create($data));	
 	}
 }
 

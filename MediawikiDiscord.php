@@ -44,6 +44,18 @@ final class MediawikiDiscordHooks
 		
 		DiscordNotifications::Send($message);
 	}
+	
+	static function onArticleUndelete($title, $create, $comment)
+	{
+		$message = "Deleted page `" . $title . "` restored";		
+		
+		if (empty($comment) == false) 
+		{
+			$message .= " (comment: `" .  $comment . "`)";
+		}
+		
+		DiscordNotifications::Send($message);
+	}
 }
 
 final class DiscordNotifications

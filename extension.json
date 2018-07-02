@@ -22,6 +22,9 @@
 		],
 		"ArticleDeleteComplete": [
 			"MediawikiDiscordHooks::onArticleDeleteComplete"	
+		],
+		"ArticleUndelete": [
+			"MediawikiDiscordHooks::onArticleUndelete"	
 		]
 	}
 }

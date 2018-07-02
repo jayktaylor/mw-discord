@@ -13,7 +13,7 @@ This project was developed primarily for the purpose of assisting the SoulFire t
   - [x] [TitleMoveComplete](https://www.mediawiki.org/wiki/Manual:Hooks/TitleMoveComplete)
   - [x] [ArticleDeleteComplete](https://www.mediawiki.org/wiki/Manual:Hooks/ArticleDeleteComplete)
   - [ ] [ArticleProtectComplete](https://www.mediawiki.org/wiki/Manual:Hooks/ArticleProtectComplete)
-  - [ ] [ArticleUndelete](https://www.mediawiki.org/wiki/Manual:Hooks/ArticleUndelete)
+  - [x] [ArticleUndelete](https://www.mediawiki.org/wiki/Manual:Hooks/ArticleUndelete)
   - [ ] [UploadComplete](https://www.mediawiki.org/wiki/Manual:Hooks/UploadComplete)
     - [ ] sending pictures as embeds
   - [ ] [FileDeleteComplete](https://www.mediawiki.org/wiki/Manual:Hooks/FileDeleteComplete)

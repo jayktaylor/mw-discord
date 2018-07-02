@@ -20,6 +20,7 @@ This project was developed primarily for the purpose of assisting the SoulFire t
   - :heavy_check_mark: [BlockIpComplete](https://www.mediawiki.org/wiki/Manual:Hooks/BlockIpComplete)
   - :heavy_check_mark: [UnblockUserComplete](https://www.mediawiki.org/wiki/Manual:Hooks/UnblockUserComplete)
   - :heavy_check_mark: [UserRights](https://www.mediawiki.org/wiki/Manual:Hooks/UserRights)
+- :heavy_check_mark: clickable URLs in notifications
 - :x: `ArticleProtectComplete` - showing new protection settings of page, eg. in embed variables
 - :x: `UploadComplete` - sending pictures as embeds
 - :x: i18n

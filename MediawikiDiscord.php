@@ -1,7 +1,30 @@
 ﻿<?php
 
-final class MediawikiDiscordHooks 
+final class MediawikiDiscord
 {
+	static function getUserText ($user) 
+	{
+		return MediawikiDiscordUtils::CreateMarkdownLink ($user, $user->getUserPage()->getFullUrl());
+	}
+	
+	static function getPageText ($wikiPage) 
+	{
+		return MediawikiDiscordUtils::CreateMarkdownLink ($wikiPage->getTitle()->getFullText(), $wikiPage->getSourceURL());
+	}
+	
+	static function getTitleText ($title)
+	{
+		return MediawikiDiscordUtils::CreateMarkdownLink ($title, $title->getFullURL());
+	}
+	
+	static function getFileText ($file)
+	{
+		return MediawikiDiscordUtils::CreateMarkdownLink ($file->getName(), $file->getTitle()->getFullUrl());
+	}
+}
+
+final class MediawikiDiscordHooks 
+{	
 	static function onPageContentSaveComplete ($wikiPage, $user, $content, $summary, $isMinor, $isWatch, $section, $flags, $revision, $status, $baseRevId)
 	{		
 		if ($status->value['new'] == true) //page is just created, there is no need to trigger second notification
@@ -9,7 +32,7 @@ final class MediawikiDiscordHooks
 			return;
 		}
 			
-		$message = "User `" . $user . "` saved changes on page `" . $wikiPage->getTitle()->getFullText() . "`";		
+		$message = "User " . MediawikiDiscord::getUserText($user) . " saved changes on page " . MediawikiDiscord::getPageText($wikiPage) . "";		
 		
 		DiscordNotifications::Send($message);
 	}
@@ -21,14 +44,14 @@ final class MediawikiDiscordHooks
 			return;
 		}
 
-		$message = "User `" . $user . "` created new page `" . $wikiPage->getTitle()->getFullText() . "`";		
+		$message = "User " . MediawikiDiscord::getUserText($user) . " created new page " . MediawikiDiscord::getPageText($wikiPage) . "";		
 		
 		DiscordNotifications::Send($message);
 	}
 	
 	static function onTitleMoveComplete ($title, $newTitle, $user, $oldid, $newid, $reason, $revision) 
 	{
-		$message = "User `" . $user . "` moved page `" . $title . "` to `" . $newTitle . "`";		
+		$message = "User " . MediawikiDiscord::getUserText($user) . " moved page " . MediawikiDiscord::getTitleText($title) . " to " . MediawikiDiscord::getTitleText($newTitle) . "";		
 		
 		if (empty($reason) == false) 
 		{
@@ -45,7 +68,7 @@ final class MediawikiDiscordHooks
 			return;
 		}
 		
-		$message = "User `" . $user . "` deleted page `" . $wikiPage->getTitle()->getFullText() . "`";		
+		$message = "User " . MediawikiDiscord::getUserText($user) . " deleted page " . MediawikiDiscord::getPageText($wikiPage) . "";		
 		
 		if (empty($reason) == false) 
 		{
@@ -57,7 +80,7 @@ final class MediawikiDiscordHooks
 	
 	static function onArticleUndelete($title, $create, $comment)
 	{
-		$message = "Deleted page `" . $title . "` restored";		
+		$message = "Deleted page " . MediawikiDiscord::getTitleText($title) . " restored";		
 		
 		if (empty($comment) == false) 
 		{
@@ -69,7 +92,7 @@ final class MediawikiDiscordHooks
 	
 	static function onArticleProtectComplete ($wikiPage, $user, $protect, $reason, $moveonly) 
 	{
-		$message = "User `" . $user . "` changed protection of page `" . $wikiPage->getTitle()->getFullText() . "`";				
+		$message = "User " . MediawikiDiscord::getUserText($user) . " changed protection of page " . MediawikiDiscord::getPageText($wikiPage) . "";				
 			
 		if (empty($reason) == false) 
 		{
@@ -85,14 +108,14 @@ final class MediawikiDiscordHooks
 		
 		$isNewRevision = count($image->getLocalFile()->getHistory()) > 0;
 		
-		$message = "User `" . $wgUser . "` uploaded" . ($isNewRevision ? " new version of " : " " ) . "file `" . $image->getLocalFile()->getName() . "`";
+		$message = "User " . MediawikiDiscord::getUserText($wgUser) . " uploaded" . ($isNewRevision ? " new version of " : " " ) . "file " . MediawikiDiscord::getFileText ($image->getLocalFile());
 		
 		DiscordNotifications::Send($message);
 	}
 	
 	static function onFileDeleteComplete($file, $oldimage, $article, $user, $reason)
 	{
-		$message = "User `" . $user . "` deleted file `" . $file->getName() . "`";				
+		$message = "User " . MediawikiDiscord::getUserText($user) . " deleted file " . MediawikiDiscord::getFileText ($file);				
 			
 		if (empty($reason) == false) 
 		{
@@ -104,14 +127,14 @@ final class MediawikiDiscordHooks
 	
 	static function onLocalUserCreated($user, $autocreated) 
 	{ 
-		$message = "User `" . $user . "` registered";
+		$message = "User " . MediawikiDiscord::getUserText($user)  . " registered";
 		
 		DiscordNotifications::Send($message);
 	}
 	
 	static function onBlockIpComplete($block, $user)
 	{
-		$message = "User `" . $user . "` blocked user `" . $block->getTarget() . "`";				
+		$message = "User " . MediawikiDiscord::getUserText($user)  . " blocked user " . MediawikiDiscord::getUserText($block->getTarget());				
 			
 		if (empty($block->mReason) == false) 
 		{
@@ -132,7 +155,7 @@ final class MediawikiDiscordHooks
 	
 	static function onUnblockUserComplete($block, $user)
 	{
-		$message = "User `" . $user . "` unblocked user `" . $block->getTarget() . "`";				
+		$message = "User " . MediawikiDiscord::getUserText($user) . " unblocked user `" . MediawikiDiscord::getUserText($block->getTarget()) . "`";				
 			
 		if (empty($block->mReason) == false) 
 		{
@@ -144,7 +167,7 @@ final class MediawikiDiscordHooks
 	
 	static function onUserRights($user, array $addedGroups, array $removedGroups)
 	{
-		$message = "Group memberships of user `" . $user->getName() . "` have been changed.";
+		$message = "Group memberships of user " . MediawikiDiscord::getUserText($user) . " have been changed.";
 
 		if (count($addedGroups) > 0) 
 		{

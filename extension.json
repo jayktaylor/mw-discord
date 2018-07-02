@@ -8,7 +8,8 @@
 		"DiscordWebhookUrl": ""
 	},
 	"AutoloadClasses": {
-		"MediawikiDiscordHooks": "MediawikiDiscord.php"
+		"MediawikiDiscordHooks": "MediawikiDiscord.php",
+		"MediawikiDiscordUtils": "MediawikiDiscordUtils.php"
 	},
 	"Hooks": {
 		"PageContentSaveComplete": [ 

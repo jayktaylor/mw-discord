@@ -188,8 +188,9 @@ final class DiscordNotifications
 	public static function Send ($message)
 	{
 		global $wgDiscordWebhookUrl;
+		global $wgSitename;
 
-		$content = '{ "content": "' . $message . '" }';
+		$content = '{ "content": "' . $message . '", "username": "' . $wgSitename . '" }';
 				
 		$data = array
 		(

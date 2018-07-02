@@ -40,6 +40,11 @@ final class MediawikiDiscordHooks
 	
 	static function onArticleDeleteComplete($wikiPage, $user, $reason)
 	{
+		if ($wikiPage->getTitle()->getNamespace() == NS_FILE) //the page is file, there is no need to trigger second notification of file's page deletion
+		{
+			return;
+		}
+		
 		$message = "User `" . $user . "` deleted page `" . $wikiPage->getTitle()->getFullText() . "`";		
 		
 		if (empty($reason) == false) 
@@ -79,6 +84,18 @@ final class MediawikiDiscordHooks
 	    global $wgUser;
 	
 		$message = "User `" . $wgUser . "` uploaded file `" . $image->getLocalFile()->getTitle() . "`";
+		
+		DiscordNotifications::Send($message);
+	}
+	
+	static function onFileDeleteComplete($file, $oldimage, $article, $user, $reason)
+	{
+		$message = "User `" . $user . "` deleted file `" . $file->getName() . "`";				
+			
+		if (empty($reason) == false) 
+		{
+			$message .= " (reason: `" .  $reason . "`)";
+		}
 		
 		DiscordNotifications::Send($message);
 	}

@@ -17,7 +17,7 @@ This project was developed primarily for the purpose of assisting the SoulFire t
   - [x] [ArticleUndelete](https://www.mediawiki.org/wiki/Manual:Hooks/ArticleUndelete)
   - [x] [UploadComplete](https://www.mediawiki.org/wiki/Manual:Hooks/UploadComplete)
     - [ ] sending pictures as embeds
-  - [ ] [FileDeleteComplete](https://www.mediawiki.org/wiki/Manual:Hooks/FileDeleteComplete)
+  - [x] [FileDeleteComplete](https://www.mediawiki.org/wiki/Manual:Hooks/FileDeleteComplete)
   - [ ] [LocalUserCreated](https://www.mediawiki.org/wiki/Manual:Hooks/LocalUserCreated)
   - [ ] [BlockIpComplete](https://www.mediawiki.org/wiki/Manual:Hooks/BlockIpComplete)
   - [ ] [UnblockUserComplete](https://www.mediawiki.org/wiki/Manual:Hooks/UnblockUserComplete)

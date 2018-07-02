@@ -32,6 +32,18 @@ final class MediawikiDiscordHooks
 		
 		DiscordNotifications::Send($message);
 	}
+	
+	static function onArticleDeleteComplete($wikiPage, $user, $reason)
+	{
+		$message = "User `" . $user . "` deleted page `" . $wikiPage->getTitle()->getFullText() . "`";		
+		
+		if (empty($reason) == false) 
+		{
+			$message .= " (reason: `" .  $reason . "`)";
+		}
+		
+		DiscordNotifications::Send($message);
+	}
 }
 
 final class DiscordNotifications

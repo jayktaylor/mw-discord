@@ -19,6 +19,9 @@
 		],
 		"TitleMoveComplete": [
 			"MediawikiDiscordHooks::onTitleMoveComplete"	
+		],
+		"ArticleDeleteComplete": [
+			"MediawikiDiscordHooks::onArticleDeleteComplete"	
 		]
 	}
 }

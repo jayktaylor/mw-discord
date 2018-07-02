@@ -16,6 +16,11 @@ final class MediawikiDiscordHooks
 	
 	static function onPageContentInsertComplete ($wikiPage, $user) 
 	{
+		if ($wikiPage->getTitle()->getNamespace() == NS_FILE) //the page is file, there is no need to trigger second notification of file's page creation
+		{
+			return;
+		}
+
 		$message = "User `" . $user . "` created new page `" . $wikiPage->getTitle()->getFullText() . "`";		
 		
 		DiscordNotifications::Send($message);
@@ -68,6 +73,15 @@ final class MediawikiDiscordHooks
 		
 		DiscordNotifications::Send($message);
 	}	
+	
+	static function onUploadComplete($image) 
+	{ 
+	    global $wgUser;
+	
+		$message = "User `" . $wgUser . "` uploaded file `" . $image->getLocalFile()->getTitle() . "`";
+		
+		DiscordNotifications::Send($message);
+	}
 }
 
 final class DiscordNotifications

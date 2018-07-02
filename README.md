@@ -15,7 +15,7 @@ This project was developed primarily for the purpose of assisting the SoulFire t
   - [x] [ArticleProtectComplete](https://www.mediawiki.org/wiki/Manual:Hooks/ArticleProtectComplete)
     - [ ] showing new permissions, eg. in embed variables
   - [x] [ArticleUndelete](https://www.mediawiki.org/wiki/Manual:Hooks/ArticleUndelete)
-  - [ ] [UploadComplete](https://www.mediawiki.org/wiki/Manual:Hooks/UploadComplete)
+  - [x] [UploadComplete](https://www.mediawiki.org/wiki/Manual:Hooks/UploadComplete)
     - [ ] sending pictures as embeds
   - [ ] [FileDeleteComplete](https://www.mediawiki.org/wiki/Manual:Hooks/FileDeleteComplete)
   - [ ] [LocalUserCreated](https://www.mediawiki.org/wiki/Manual:Hooks/LocalUserCreated)

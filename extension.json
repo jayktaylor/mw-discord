@@ -28,6 +28,9 @@
 		],
 		"ArticleProtectComplete": [
 			"MediawikiDiscordHooks::onArticleProtectComplete"	
+		],
+		"UploadComplete": [
+			"MediawikiDiscordHooks::onUploadComplete"	
 		]
 	}
 }

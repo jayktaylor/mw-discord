@@ -118,7 +118,14 @@ final class MediawikiDiscordHooks
 			$message .= " with reason: `" .  $block->mReason . "`";
 		}
 			
-		$message .= " (expires: `" . $block->mExpiry  ."`)";
+		if (($expires = strtotime($block->mExpiry))) 
+		{
+			$message .= " (expires: `" . date('Y-m-d H:i:s', $expires) ."`)";
+		} 
+		else 
+		{
+			$message .= " (expires: `" . $block->mExpiry  ."`)";
+		}
 		
 		DiscordNotifications::Send($message);
 	}

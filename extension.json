@@ -37,6 +37,9 @@
 		],
 		"LocalUserCreated": [
 			"MediawikiDiscordHooks::onLocalUserCreated"
+		],
+		"BlockIpComplete": [
+			"MediawikiDiscordHooks::onBlockIpComplete"
 		]
 	}
 }

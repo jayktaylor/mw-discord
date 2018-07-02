@@ -108,6 +108,20 @@ final class MediawikiDiscordHooks
 		
 		DiscordNotifications::Send($message);
 	}
+	
+	static function onBlockIpComplete($block, $user)
+	{
+		$message = "User `" . $user . "` blocked user `" . $block->getTarget() . "`";				
+			
+		if (empty($block->mReason) == false) 
+		{
+			$message .= " with reason: `" .  $block->mReason . "`";
+		}
+		
+		$message .= " (expires: `" . $block->mExpiry ."`)";
+		
+		DiscordNotifications::Send($message);
+	}
 }
 
 final class DiscordNotifications

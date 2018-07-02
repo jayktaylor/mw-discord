@@ -13,12 +13,12 @@ This project was developed primarily for the purpose of assisting the SoulFire t
   - [x] [TitleMoveComplete](https://www.mediawiki.org/wiki/Manual:Hooks/TitleMoveComplete)
   - [x] [ArticleDeleteComplete](https://www.mediawiki.org/wiki/Manual:Hooks/ArticleDeleteComplete)
   - [x] [ArticleProtectComplete](https://www.mediawiki.org/wiki/Manual:Hooks/ArticleProtectComplete)
-    - [ ] showing new permissions, eg. in embed variables
   - [x] [ArticleUndelete](https://www.mediawiki.org/wiki/Manual:Hooks/ArticleUndelete)
   - [x] [UploadComplete](https://www.mediawiki.org/wiki/Manual:Hooks/UploadComplete)
-    - [ ] sending pictures as embeds
   - [x] [FileDeleteComplete](https://www.mediawiki.org/wiki/Manual:Hooks/FileDeleteComplete)
-  - [ ] [LocalUserCreated](https://www.mediawiki.org/wiki/Manual:Hooks/LocalUserCreated)
+  - [x] [LocalUserCreated](https://www.mediawiki.org/wiki/Manual:Hooks/LocalUserCreated)
   - [ ] [BlockIpComplete](https://www.mediawiki.org/wiki/Manual:Hooks/BlockIpComplete)
   - [ ] [UnblockUserComplete](https://www.mediawiki.org/wiki/Manual:Hooks/UnblockUserComplete)
   - [ ] [UserRights](https://www.mediawiki.org/wiki/Manual:Hooks/UserRights)
+- [ ] `ArticleProtectComplete` - showing new protection settings of page, eg. in embed variables
+- [ ] `UploadComplete` - sending pictures as embeds

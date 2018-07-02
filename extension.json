@@ -34,6 +34,9 @@
 		],		
 		"FileDeleteComplete": [
 			"MediawikiDiscordHooks::onFileDeleteComplete"
+		],
+		"LocalUserCreated": [
+			"MediawikiDiscordHooks::onLocalUserCreated"
 		]
 	}
 }

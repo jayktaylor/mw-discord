@@ -101,6 +101,13 @@ final class MediawikiDiscordHooks
 		
 		DiscordNotifications::Send($message);
 	}
+	
+	static function onLocalUserCreated($user, $autocreated) 
+	{ 
+		$message = "User `" . $user . "` registered";
+		
+		DiscordNotifications::Send($message);
+	}
 }
 
 final class DiscordNotifications

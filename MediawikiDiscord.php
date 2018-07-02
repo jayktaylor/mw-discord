@@ -56,6 +56,18 @@ final class MediawikiDiscordHooks
 		
 		DiscordNotifications::Send($message);
 	}
+	
+	static function onArticleProtectComplete ($wikiPage, $user, $protect, $reason, $moveonly) 
+	{
+		$message = "User `" . $user . "` changed protection of page `" . $wikiPage->getTitle()->getFullText() . "`";				
+			
+		if (empty($reason) == false) 
+		{
+			$message .= " (reason: `" .  $reason . "`)";
+		}
+		
+		DiscordNotifications::Send($message);
+	}	
 }
 
 final class DiscordNotifications

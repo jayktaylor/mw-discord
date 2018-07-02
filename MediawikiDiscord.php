@@ -34,6 +34,11 @@ final class MediawikiDiscordHooks
 			
 		$message = "User " . MediawikiDiscord::getUserText($user) . " saved changes on page " . MediawikiDiscord::getPageText($wikiPage) . "";		
 		
+		if (empty($summary) == false)
+		{
+			$message .= " (summary: `" . $summary . "`)";
+		}
+		
 		DiscordNotifications::Send($message);
 	}
 	

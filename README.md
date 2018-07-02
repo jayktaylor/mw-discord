@@ -6,19 +6,19 @@ This project was developed primarily for the purpose of assisting the SoulFire t
 
 ## Features / Roadmap 
 
-- [x] simple notification (`content` key) to Discord channel with Webhook 
-- [ ] hooks
-  - [x] [PageContentSaveComplete](https://www.mediawiki.org/wiki/Manual:Hooks/PageContentSaveComplete)
-  - [x] [PageContentInsertComplete](https://www.mediawiki.org/wiki/Manual:Hooks/PageContentInsertComplete)
-  - [x] [TitleMoveComplete](https://www.mediawiki.org/wiki/Manual:Hooks/TitleMoveComplete)
-  - [x] [ArticleDeleteComplete](https://www.mediawiki.org/wiki/Manual:Hooks/ArticleDeleteComplete)
-  - [x] [ArticleProtectComplete](https://www.mediawiki.org/wiki/Manual:Hooks/ArticleProtectComplete)
-  - [x] [ArticleUndelete](https://www.mediawiki.org/wiki/Manual:Hooks/ArticleUndelete)
-  - [x] [UploadComplete](https://www.mediawiki.org/wiki/Manual:Hooks/UploadComplete)
-  - [x] [FileDeleteComplete](https://www.mediawiki.org/wiki/Manual:Hooks/FileDeleteComplete)
-  - [x] [LocalUserCreated](https://www.mediawiki.org/wiki/Manual:Hooks/LocalUserCreated)
-  - [ ] [BlockIpComplete](https://www.mediawiki.org/wiki/Manual:Hooks/BlockIpComplete)
-  - [ ] [UnblockUserComplete](https://www.mediawiki.org/wiki/Manual:Hooks/UnblockUserComplete)
-  - [ ] [UserRights](https://www.mediawiki.org/wiki/Manual:Hooks/UserRights)
-- [ ] `ArticleProtectComplete` - showing new protection settings of page, eg. in embed variables
-- [ ] `UploadComplete` - sending pictures as embeds
+- :heavy_check_mark: simple notification (`content` key) to Discord channel with Webhook 
+- :heavy_multiplication_x: hooks
+  - :heavy_check_mark: [PageContentSaveComplete](https://www.mediawiki.org/wiki/Manual:Hooks/PageContentSaveComplete)
+  - :heavy_check_mark: [PageContentInsertComplete](https://www.mediawiki.org/wiki/Manual:Hooks/PageContentInsertComplete)
+  - :heavy_check_mark: [TitleMoveComplete](https://www.mediawiki.org/wiki/Manual:Hooks/TitleMoveComplete)
+  - :heavy_check_mark: [ArticleDeleteComplete](https://www.mediawiki.org/wiki/Manual:Hooks/ArticleDeleteComplete)
+  - :heavy_check_mark: [ArticleProtectComplete](https://www.mediawiki.org/wiki/Manual:Hooks/ArticleProtectComplete)
+  - :heavy_check_mark: [ArticleUndelete](https://www.mediawiki.org/wiki/Manual:Hooks/ArticleUndelete)
+  - :heavy_check_mark: [UploadComplete](https://www.mediawiki.org/wiki/Manual:Hooks/UploadComplete)
+  - :heavy_check_mark: [FileDeleteComplete](https://www.mediawiki.org/wiki/Manual:Hooks/FileDeleteComplete)
+  - :heavy_check_mark: [LocalUserCreated](https://www.mediawiki.org/wiki/Manual:Hooks/LocalUserCreated)
+  - :x: [BlockIpComplete](https://www.mediawiki.org/wiki/Manual:Hooks/BlockIpComplete)
+  - :x: [UnblockUserComplete](https://www.mediawiki.org/wiki/Manual:Hooks/UnblockUserComplete)
+  - :x: [UserRights](https://www.mediawiki.org/wiki/Manual:Hooks/UserRights)
+- :x: `ArticleProtectComplete` - showing new protection settings of page, eg. in embed variables
+- :x: `UploadComplete` - sending pictures as embeds

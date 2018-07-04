@@ -39,7 +39,7 @@ final class MediawikiDiscordHooks
 			$message .= " (summary: `" . $summary . "`)";
 		}
 		
-		DiscordNotifications::Send($message);
+	    (new DiscordNotification($message))->Send();		
 	}
 	
 	static function onPageContentInsertComplete ($wikiPage, $user) 
@@ -51,7 +51,7 @@ final class MediawikiDiscordHooks
 
 		$message = "User " . MediawikiDiscord::getUserText($user) . " created new page " . MediawikiDiscord::getPageText($wikiPage) . "";		
 		
-		DiscordNotifications::Send($message);
+	    (new DiscordNotification($message))->Send();	
 	}
 	
 	static function onTitleMoveComplete ($title, $newTitle, $user, $oldid, $newid, $reason, $revision) 
@@ -63,7 +63,7 @@ final class MediawikiDiscordHooks
 			$message .= " (reason: `" .  $reason . "`)";
 		}
 		
-		DiscordNotifications::Send($message);
+	    (new DiscordNotification($message))->Send();	
 	}
 	
 	static function onArticleDeleteComplete($wikiPage, $user, $reason)
@@ -80,7 +80,7 @@ final class MediawikiDiscordHooks
 			$message .= " (reason: `" .  $reason . "`)";
 		}
 		
-		DiscordNotifications::Send($message);
+	    (new DiscordNotification($message))->Send();	
 	}
 	
 	static function onArticleUndelete($title, $create, $comment)
@@ -92,7 +92,7 @@ final class MediawikiDiscordHooks
 			$message .= " (comment: `" .  $comment . "`)";
 		}
 		
-		DiscordNotifications::Send($message);
+	    (new DiscordNotification($message))->Send();	
 	}
 	
 	static function onArticleProtectComplete ($wikiPage, $user, $protect, $reason, $moveonly) 
@@ -104,7 +104,7 @@ final class MediawikiDiscordHooks
 			$message .= " (reason: `" .  $reason . "`)";
 		}
 		
-		DiscordNotifications::Send($message);
+	    (new DiscordNotification($message))->Send();	
 	}	
 	
 	static function onUploadComplete($image) 
@@ -115,7 +115,7 @@ final class MediawikiDiscordHooks
 		
 		$message = "User " . MediawikiDiscord::getUserText($wgUser) . " uploaded" . ($isNewRevision ? " new version of " : " " ) . "file " . MediawikiDiscord::getFileText ($image->getLocalFile());
 		
-		DiscordNotifications::Send($message);
+		(new DiscordNotification($message))->Send();	
 	}
 	
 	static function onFileDeleteComplete($file, $oldimage, $article, $user, $reason)
@@ -127,14 +127,14 @@ final class MediawikiDiscordHooks
 			$message .= " (reason: `" .  $reason . "`)";
 		}
 		
-		DiscordNotifications::Send($message);
+	    (new DiscordNotification($message))->Send();	
 	}
 	
 	static function onLocalUserCreated($user, $autocreated) 
 	{ 
 		$message = "User " . MediawikiDiscord::getUserText($user)  . " registered";
 		
-		DiscordNotifications::Send($message);
+	    (new DiscordNotification($message))->Send();	
 	}
 	
 	static function onBlockIpComplete($block, $user)
@@ -155,7 +155,7 @@ final class MediawikiDiscordHooks
 			$message .= " (expires: `" . $block->mExpiry  ."`)";
 		}
 		
-		DiscordNotifications::Send($message);
+	    (new DiscordNotification($message))->Send();	
 	}
 	
 	static function onUnblockUserComplete($block, $user)
@@ -167,7 +167,7 @@ final class MediawikiDiscordHooks
 			$message .= " with reason: `" .  $block->mReason . "`";
 		}
 		
-		DiscordNotifications::Send($message);
+	    (new DiscordNotification($message))->Send();	
 	}
 	
 	static function onUserRights($user, array $addedGroups, array $removedGroups)
@@ -184,13 +184,25 @@ final class MediawikiDiscordHooks
 			$message .= " Removed: `" . join(', ', $removedGroups) . "`";
 		}	
 	
-		DiscordNotifications::Send($message);
+	    (new DiscordNotification($message))->Send();	
 	}
 }
 
-final class DiscordNotifications
+final class DiscordNotification
 {
-	public static function Send ($message)
+	private $message;
+	
+	public function __construct($message) 
+	{
+        $this->message = $message;
+    }
+	
+	public function SetMessage ($message) 
+	{
+		$this->message = $message;
+	}
+	
+	public function Send ()
 	{
 		global $wgDiscordWebhookUrl;
 		global $wgSitename;
@@ -202,7 +214,7 @@ final class DiscordNotifications
 			$userName = substr($userName, 0, -(strlen($userName) - 32)); //if the wiki's name is too long, just remove last characters
 		}
 		
-		$json->content = $message;	
+		$json->content = $this->message;	
 		$json->username = $userName;
 		
 		$data = array

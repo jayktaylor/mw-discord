@@ -9,7 +9,7 @@ final class MediawikiDiscord
 	
 	static function getPageText ($wikiPage) 
 	{
-		return MediawikiDiscordUtils::CreateMarkdownLink ($wikiPage->getTitle()->getFullText(), $wikiPage->getSourceURL());
+		return MediawikiDiscordUtils::CreateMarkdownLink ($wikiPage->getTitle()->getFullText(), $wikiPage->getTitle()->getFullURL());
 	}
 	
 	static function getTitleText ($title)

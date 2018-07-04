@@ -202,14 +202,15 @@ final class DiscordNotifications
 			$userName = substr($userName, 0, -(strlen($userName) - 32)); //if the wiki's name is too long, just remove last characters
 		}
 		
-		$content = '{ "content": "' . $message . '", "username": "' . $userName . '" }'; 
-				
+		$json->content = $message;	
+		$json->username = $userName;
+		
 		$data = array
 		(
 			'http' => array
 			(				
 				'method'  => 'POST',
-				'content' => $content
+				'content' => json_encode($json)
 			)
 		);
 

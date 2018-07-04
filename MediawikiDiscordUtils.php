@@ -15,6 +15,11 @@ final class MediawikiDiscordUtils
 		
 		return $url;
 	}
+	
+	public static function RemoveMultipleSlashes ($url)
+	{
+		return preg_replace('/([^:])(\/{2,})/', '$1/', $url);
+	}
 }
 
 ?>

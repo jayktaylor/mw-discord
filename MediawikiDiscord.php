@@ -124,7 +124,9 @@ final class MediawikiDiscordHooks
 		||  ($mimeType == "image/gif")
 		||  ($mimeType == "image/webp"))
 		{				
-			$discordNotification->SetEmbedImage($image->getLocalFile()->getFullUrl());
+			$imageUrl = MediawikiDiscordUtils::RemoveMultipleSlashes($image->getLocalFile()->getFullUrl());
+			
+			$discordNotification->SetEmbedImage($imageUrl);
 		}
 			
 		$discordNotification->Send(); 

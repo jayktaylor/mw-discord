@@ -194,8 +194,15 @@ final class DiscordNotifications
 	{
 		global $wgDiscordWebhookUrl;
 		global $wgSitename;
-
-		$content = '{ "content": "' . $message . '", "username": "' . $wgSitename . '" }';
+		
+		$userName = $wgSitename;
+						
+		if (strlen($userName) >= 32) //32 characters is a limit of Discord usernames
+		{
+			$userName = substr($userName, 0, -(strlen($userName) - 32)); //if the wiki's name is too long, just remove last characters
+		}
+		
+		$content = '{ "content": "' . $message . '", "username": "' . $userName . '" }'; 
 				
 		$data = array
 		(

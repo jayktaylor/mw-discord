@@ -115,7 +115,19 @@ final class MediawikiDiscordHooks
 		
 		$message = "User " . MediawikiDiscord::getUserText($wgUser) . " uploaded" . ($isNewRevision ? " new version of " : " " ) . "file " . MediawikiDiscord::getFileText ($image->getLocalFile());
 		
-		(new DiscordNotification($message))->Send();	
+		$discordNotification = new DiscordNotification($message);
+		
+		$mimeType = $image->getLocalFile()->getMimeType();
+		
+		if (($mimeType == "image/jpeg") 
+		||  ($mimeType == "image/png")
+		||  ($mimeType == "image/gif")
+		||  ($mimeType == "image/webp"))
+		{				
+			$discordNotification->SetEmbedImage($image->getLocalFile()->getFullUrl());
+		}
+			
+		$discordNotification->Send(); 
 	}
 	
 	static function onFileDeleteComplete($file, $oldimage, $article, $user, $reason)
@@ -191,6 +203,7 @@ final class MediawikiDiscordHooks
 final class DiscordNotification
 {
 	private $message;
+	private $embedImageUrl;
 	
 	public function __construct($message) 
 	{
@@ -200,6 +213,11 @@ final class DiscordNotification
 	public function SetMessage ($message) 
 	{
 		$this->message = $message;
+	}
+	
+	public function SetEmbedImage ($embedImageUrl)
+	{
+		$this->embedImageUrl = $embedImageUrl;
 	}
 	
 	public function Send ()
@@ -216,6 +234,11 @@ final class DiscordNotification
 		
 		$json->content = $this->message;	
 		$json->username = $userName;
+		
+		if ($this->embedImageUrl != null)
+		{
+			$json->embeds[0]->image->url = $this->embedImageUrl;
+		}
 		
 		$data = array
 		(

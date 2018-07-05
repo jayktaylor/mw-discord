@@ -23,4 +23,4 @@ This project was developed primarily for the purpose of assisting the SoulFire t
 - :heavy_check_mark: clickable URLs in notifications
 - :x: `ArticleProtectComplete` - showing new protection settings of page, eg. in embed variables
 - :heavy_check_mark: `UploadComplete` - sending pictures as embeds
-- :x: i18n
+- :heavy_check_mark: i18n

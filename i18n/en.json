@@ -1,0 +1,18 @@
+{
+	"onPageContentSaveComplete": "User $1 saved changes on page $2",
+	"onPageContentInsertComplete": "User $1 created new page $2",
+	"onTitleMoveComplete": "User $1 moved page $2 to $3",
+	"onArticleDeleteComplete": "User $1 deleted page $2",
+	"onArticleUndelete": "Deleted page $1 restored",
+	"onArticleProtectComplete": "User $1 changed protection of page $2",
+	"onUploadComplete": "User $1 uploaded file $2",
+	"onUploadComplete_NewVersion": "User $1 uploaded new version of file $2",
+	"onFileDeleteComplete": "User $1 deleted file $2",
+	"onLocalUserCreated": "User $1 registered",
+	"onBlockIpComplete": "User $1 blocked user $2",
+	"onUnblockUserComplete": "User $1 unblocked user $2",
+	"onUserRights": "Group memberships of user $1 have been changed.",
+
+	"added": "Added",
+	"removed": "Removed"
+}

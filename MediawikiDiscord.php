@@ -31,12 +31,15 @@ final class MediawikiDiscordHooks
 		{
 			return;
 		}
-			
-		$message = "User " . MediawikiDiscord::getUserText($user) . " saved changes on page " . MediawikiDiscord::getPageText($wikiPage) . "";		
-		
+					
+		$message = wfMessage('onPageContentSaveComplete', MediawikiDiscord::getUserText($user), 
+														  MediawikiDiscord::getPageText($wikiPage))->plain();			
+														  
 		if (empty($summary) == false)
 		{
-			$message .= " (summary: `" . $summary . "`)";
+			$message .= sprintf(" (%s `%s`)", 
+						wfMessage('summary')->plain(), 
+						$summary);
 		}
 		
 	    (new DiscordNotification($message))->Send();		
@@ -49,18 +52,23 @@ final class MediawikiDiscordHooks
 			return;
 		}
 
-		$message = "User " . MediawikiDiscord::getUserText($user) . " created new page " . MediawikiDiscord::getPageText($wikiPage) . "";		
-		
+		$message = wfMessage('onPageContentInsertComplete', MediawikiDiscord::getUserText($user), 
+														    MediawikiDiscord::getPageText($wikiPage))->plain();			
+														  
 	    (new DiscordNotification($message))->Send();	
 	}
 	
 	static function onTitleMoveComplete ($title, $newTitle, $user, $oldid, $newid, $reason, $revision) 
 	{
-		$message = "User " . MediawikiDiscord::getUserText($user) . " moved page " . MediawikiDiscord::getTitleText($title) . " to " . MediawikiDiscord::getTitleText($newTitle) . "";		
-		
+		$message = wfMessage('onTitleMoveComplete', MediawikiDiscord::getUserText($user), 
+												    MediawikiDiscord::getTitleText($title),
+													MediawikiDiscord::getTitleText($newTitle))->plain();			
+															
 		if (empty($reason) == false) 
 		{
-			$message .= " (reason: `" .  $reason . "`)";
+			$message .= sprintf(" (%s `%s`)", 
+						wfMessage('mergehistory-reason')->plain(), 
+						$reason);
 		}
 		
 	    (new DiscordNotification($message))->Send();	
@@ -73,11 +81,14 @@ final class MediawikiDiscordHooks
 			return;
 		}
 		
-		$message = "User " . MediawikiDiscord::getUserText($user) . " deleted page " . MediawikiDiscord::getPageText($wikiPage) . "";		
-		
+		$message = wfMessage('onArticleDeleteComplete', MediawikiDiscord::getUserText($user), 
+														MediawikiDiscord::getPageText($wikiPage))->plain();		
+															
 		if (empty($reason) == false) 
 		{
-			$message .= " (reason: `" .  $reason . "`)";
+			$message .= sprintf(" (%s `%s`)", 
+						wfMessage('mergehistory-reason')->plain(), 
+						$reason);
 		}
 		
 	    (new DiscordNotification($message))->Send();	
@@ -85,11 +96,13 @@ final class MediawikiDiscordHooks
 	
 	static function onArticleUndelete($title, $create, $comment)
 	{
-		$message = "Deleted page " . MediawikiDiscord::getTitleText($title) . " restored";		
-		
+		$message = wfMessage('onArticleUndelete', MediawikiDiscord::getTitleText($title))->plain();		
+														
 		if (empty($comment) == false) 
 		{
-			$message .= " (comment: `" .  $comment . "`)";
+			$message .= sprintf(" (%s `%s`)", 
+						wfMessage('import-comment')->plain(), 
+						$comment);
 		}
 		
 	    (new DiscordNotification($message))->Send();	
@@ -97,11 +110,14 @@ final class MediawikiDiscordHooks
 	
 	static function onArticleProtectComplete ($wikiPage, $user, $protect, $reason, $moveonly) 
 	{
-		$message = "User " . MediawikiDiscord::getUserText($user) . " changed protection of page " . MediawikiDiscord::getPageText($wikiPage) . "";				
-			
+		$message = wfMessage('onArticleProtectComplete', MediawikiDiscord::getUserText($user), 
+														 MediawikiDiscord::getPageText($wikiPage))->plain();		
+															
 		if (empty($reason) == false) 
 		{
-			$message .= " (reason: `" .  $reason . "`)";
+			$message .= sprintf(" (%s `%s`)", 
+						wfMessage('mergehistory-reason')->plain(), 
+						$reason);
 		}
 		
 	    (new DiscordNotification($message))->Send();	
@@ -112,8 +128,17 @@ final class MediawikiDiscordHooks
 	    global $wgUser;
 		
 		$isNewRevision = count($image->getLocalFile()->getHistory()) > 0;
-		
-		$message = "User " . MediawikiDiscord::getUserText($wgUser) . " uploaded" . ($isNewRevision ? " new version of " : " " ) . "file " . MediawikiDiscord::getFileText ($image->getLocalFile());
+						
+		if ($isNewRevision == true) 
+		{
+			$message = wfMessage('onUploadComplete_NewVersion', MediawikiDiscord::getUserText($wgUser),
+													 MediawikiDiscord::getFileText($image->getLocalFile()))->plain();
+		}	
+		else
+		{
+			$message = wfMessage('onUploadComplete', MediawikiDiscord::getUserText($wgUser),
+													 MediawikiDiscord::getFileText($image->getLocalFile()))->plain();
+		}	
 		
 		$discordNotification = new DiscordNotification($message);
 		
@@ -134,11 +159,14 @@ final class MediawikiDiscordHooks
 	
 	static function onFileDeleteComplete($file, $oldimage, $article, $user, $reason)
 	{
-		$message = "User " . MediawikiDiscord::getUserText($user) . " deleted file " . MediawikiDiscord::getFileText ($file);				
-			
+		$message = wfMessage('onFileDeleteComplete', MediawikiDiscord::getUserText($user), 
+												     MediawikiDiscord::getFileText($file))->plain();		
+														 
 		if (empty($reason) == false) 
 		{
-			$message .= " (reason: `" .  $reason . "`)";
+			$message .= sprintf(" (%s `%s`)", 
+						wfMessage('mergehistory-reason')->plain(), 
+						$reason);
 		}
 		
 	    (new DiscordNotification($message))->Send();	
@@ -146,27 +174,42 @@ final class MediawikiDiscordHooks
 	
 	static function onLocalUserCreated($user, $autocreated) 
 	{ 
-		$message = "User " . MediawikiDiscord::getUserText($user)  . " registered";
-		
+		$message = wfMessage('onLocalUserCreated', MediawikiDiscord::getUserText($user))->plain();	
+													 
 	    (new DiscordNotification($message))->Send();	
 	}
 	
 	static function onBlockIpComplete($block, $user)
 	{
-		$message = "User " . MediawikiDiscord::getUserText($user)  . " blocked user " . MediawikiDiscord::getUserText($block->getTarget());				
-			
+		$message = wfMessage('onBlockIpComplete', MediawikiDiscord::getUserText($user), 
+												  MediawikiDiscord::getUserText($block->getTarget()))->plain();		
+													 
 		if (empty($block->mReason) == false) 
 		{
-			$message .= " with reason: `" .  $block->mReason . "`";
+			$message .= sprintf(" (%s `%s`)", 
+						wfMessage('mergehistory-reason')->plain(), 
+						$block->mReason);
 		}
 			
 		if (($expires = strtotime($block->mExpiry))) 
 		{
-			$message .= " (expires: `" . date('Y-m-d H:i:s', $expires) ."`)";
+			$message .= sprintf(" (%s `%s`)", 
+						wfMessage('blocklist-expiry')->plain(), 
+						date('Y-m-d H:i:s', $expires));
 		} 
 		else 
 		{
-			$message .= " (expires: `" . $block->mExpiry  ."`)";
+			if ($block->mExpiry == "infinity") 
+			{
+				$message .= sprintf(" (`%s`)", 
+							wfMessage('infiniteblock')->plain());	
+			}
+			else
+			{
+				$message .= sprintf(" (%s `%s`)", 
+							wfMessage('blocklist-expiry')->plain(), 
+							$block->mExpiry );
+			}			
 		}
 		
 	    (new DiscordNotification($message))->Send();	
@@ -174,28 +217,28 @@ final class MediawikiDiscordHooks
 	
 	static function onUnblockUserComplete($block, $user)
 	{
-		$message = "User " . MediawikiDiscord::getUserText($user) . " unblocked user `" . MediawikiDiscord::getUserText($block->getTarget()) . "`";				
-			
-		if (empty($block->mReason) == false) 
-		{
-			$message .= " with reason: `" .  $block->mReason . "`";
-		}
+		$message = wfMessage('onUnblockUserComplete', MediawikiDiscord::getUserText($user), 
+													  MediawikiDiscord::getUserText($block->getTarget()))->plain();
 		
 	    (new DiscordNotification($message))->Send();	
 	}
 	
 	static function onUserRights($user, array $addedGroups, array $removedGroups)
 	{
-		$message = "Group memberships of user " . MediawikiDiscord::getUserText($user) . " have been changed.";
-
+		$message = wfMessage('onUserRights', MediawikiDiscord::getUserText($user))->plain();		
+													  
 		if (count($addedGroups) > 0) 
 		{
-			$message .= " Added: `" . join(', ', $addedGroups) . "`";
+			$message .= sprintf(" %s: `%s`", 
+						wfMessage('added')->plain(), 
+						join(', ', $addedGroups));
 		}		
 		
 		if (count($removedGroups) > 0) 
 		{
-			$message .= " Removed: `" . join(', ', $removedGroups) . "`";
+			$message .= sprintf(" %s: `%s`", 
+						wfMessage('removed')->plain(), 
+						join(', ', $removedGroups));
 		}	
 	
 	    (new DiscordNotification($message))->Send();	

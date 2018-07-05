@@ -11,6 +11,9 @@
 		"MediawikiDiscordHooks": "MediawikiDiscord.php",
 		"MediawikiDiscordUtils": "MediawikiDiscordUtils.php"
 	},
+	"MessagesDirs": {
+		"mediawiki-discord": "i18n"
+	},
 	"Hooks": {
 		"PageContentSaveComplete": 	 "MediawikiDiscordHooks::onPageContentSaveComplete",
 		"PageContentInsertComplete": "MediawikiDiscordHooks::onPageContentInsertComplete",

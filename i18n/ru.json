@@ -1,0 +1,18 @@
+{
+	"onPageContentSaveComplete": "Участник $1 сохранил изменения на страницу $2",
+	"onPageContentInsertComplete": "Участник $1 создал новую страницу $2",
+	"onTitleMoveComplete": "Участник $1 переименовал страницу $2 в $3",
+	"onArticleDeleteComplete": "Участник $1 удалил страницу $2",
+	"onArticleUndelete": "Страницу $1 восстановлена",
+	"onArticleProtectComplete": "Участник $1 изменил уровень защиты страницу $2",
+	"onUploadComplete": "Участник $1 загрузил файл $2",
+	"onUploadComplete_NewVersion": "Участник $1 загрузил новую версию файла $2",
+	"onFileDeleteComplete": "Участник $1 удалил файл $2",
+	"onLocalUserCreated": "Новый участник: $1",
+	"onBlockIpComplete": "Участник $1 заблокировал участника $2",
+	"onUnblockUserComplete": "Участник $1 разблокировал участника $2",
+	"onUserRights": "Членство в группах изменено для $1.",
+
+	"added": "Добавлены",
+	"removed": "Удаленные"
+}

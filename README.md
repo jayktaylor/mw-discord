@@ -24,3 +24,6 @@ This project was developed primarily for the purpose of assisting the SoulFire t
 - :x: `ArticleProtectComplete` - showing new protection settings of page, eg. in embed variables
 - :heavy_check_mark: `UploadComplete` - sending pictures as embeds
 - :heavy_check_mark: i18n
+  - :heavy_check_mark: English
+  - :heavy_check_mark: Polish
+  - :x: Russian

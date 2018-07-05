@@ -1,12 +1,12 @@
 # mediawiki-discord
 
-> A simple extension for MediaWiki which sends notifications of wiki activity to Discord. Early stage of development.
+> A simple extension for [MediaWiki](https://www.mediawiki.org/wiki/MediaWiki) which sends notifications of wiki activity to [Discord](https://discordapp.com/). Early stage of development.
 
 This project was developed primarily for the purpose of assisting the SoulFire team with the development of [Gothic II: The Chronicles of Myrtana](https://kronikimyrtany.pl/en).
 
 ## Features / Roadmap 
 
-- :heavy_check_mark: simple notification (`content` key) to Discord channel with Webhook 
+- :heavy_check_mark: simple notification (`content` key) to Discord channel with [webhook](https://discordapp.com/developers/docs/resources/webhook)
 - :heavy_check_mark: hooks
   - :heavy_check_mark: [PageContentSaveComplete](https://www.mediawiki.org/wiki/Manual:Hooks/PageContentSaveComplete)
   - :heavy_check_mark: [PageContentInsertComplete](https://www.mediawiki.org/wiki/Manual:Hooks/PageContentInsertComplete)
@@ -21,9 +21,15 @@ This project was developed primarily for the purpose of assisting the SoulFire t
   - :heavy_check_mark: [UnblockUserComplete](https://www.mediawiki.org/wiki/Manual:Hooks/UnblockUserComplete)
   - :heavy_check_mark: [UserRights](https://www.mediawiki.org/wiki/Manual:Hooks/UserRights)
 - :heavy_check_mark: clickable URLs in notifications
-- :x: `ArticleProtectComplete` - showing new protection settings of page, eg. in embed variables
 - :heavy_check_mark: `UploadComplete` - sending pictures as embeds
 - :heavy_check_mark: i18n
   - :heavy_check_mark: English
   - :heavy_check_mark: Polish
   - :x: Russian
+- :x: `ArticleProtectComplete` - showing new protection settings of page, eg. in embed variables
+- :x: configuration
+  - :x: setting language of notifications
+  - :x: excluding specific notifications
+  - :x: excluding specific pages
+  - :x: excluding specific namespaces
+  - :x: excluding specific user roles

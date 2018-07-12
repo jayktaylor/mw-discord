@@ -8,8 +8,8 @@
 		"DiscordWebhookUrl": ""
 	},
 	"AutoloadClasses": {
-		"MediawikiDiscordHooks": "MediawikiDiscord.php",
-		"MediawikiDiscordUtils": "MediawikiDiscordUtils.php"
+		"MediawikiDiscordHooks": "src/MediawikiDiscord.php",
+		"MediawikiDiscordUtils": "src/Utils.php"
 	},
 	"MessagesDirs": {
 		"mediawiki-discord": "i18n"

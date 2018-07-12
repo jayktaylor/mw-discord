@@ -1,4 +1,7 @@
 # mediawiki-discord
+<img src="https://discordapp.com/assets/fc0b01fe10a0b8c602fb0106d8189d9b.png" align="right" height=100>
+<img src="https://takahashi-it.com/wp-content/uploads/2017/01/MediaWiki_logo_1-800x538.jpg" align="right" height=100>
+<br>
 
 > A simple extension for [MediaWiki](https://www.mediawiki.org/wiki/MediaWiki) which sends notifications of wiki activity to [Discord](https://discordapp.com/). Early stage of development.
 

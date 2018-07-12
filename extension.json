@@ -5,7 +5,8 @@
 	"license-name": "MIT",
 	"manifest_version": 1,
 	"config": {
-		"DiscordWebhookUrl": ""
+		"DiscordWebhookUrl": "",
+		"DiscordNotificationsLanguage": ""
 	},
 	"AutoloadClasses": {
 		"MediawikiDiscordHooks": "src/MediawikiDiscord.php",

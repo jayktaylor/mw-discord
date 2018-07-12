@@ -21,6 +21,20 @@ final class MediawikiDiscord
 	{
 		return MediawikiDiscordUtils::CreateMarkdownLink ($file->getName(), $file->getTitle()->getFullUrl());
 	}
+	
+	static function translate ($key, ...$parameters) 
+	{
+		global $wgDiscordNotificationsLanguage;
+		
+		if ($wgDiscordNotificationsLanguage != null) 
+		{
+			return wfMessage($key, $parameters)->inLanguage($wgDiscordNotificationsLanguage)->plain();
+		} 
+		else 
+		{
+			return wfMessage($key, $parameters)->inContentLanguage()->plain();
+		}
+	}
 }
 
 final class MediawikiDiscordHooks 
@@ -40,10 +54,10 @@ final class MediawikiDiscordHooks
 		{
 			$messageTranslationKey = "onPageContentSaveComplete";
 		}
-						
-		$message = wfMessage($messageTranslationKey, MediawikiDiscord::getUserText($user), 
-												     MediawikiDiscord::getPageText($wikiPage))->inContentLanguage()->plain();
-													 
+							
+		$message = MediawikiDiscord::translate($messageTranslationKey, MediawikiDiscord::getUserText($user), 
+																	   MediawikiDiscord::getPageText($wikiPage));
+							
 		if (empty($summary) == false)
 		{
 			$message .= sprintf(" (%s `%s`)", 
@@ -61,18 +75,18 @@ final class MediawikiDiscordHooks
 			return;
 		}
 
-		$message = wfMessage('onPageContentInsertComplete', MediawikiDiscord::getUserText($user), 
-														    MediawikiDiscord::getPageText($wikiPage))->inContentLanguage()->plain();			
-														  
+		$message = MediawikiDiscord::translate('onPageContentInsertComplete', MediawikiDiscord::getUserText($user), 
+																			  MediawikiDiscord::getPageText($wikiPage));
+																			  
 	    (new DiscordNotification($message))->Send();	
 	}
 	
 	static function onTitleMoveComplete ($title, $newTitle, $user, $oldid, $newid, $reason, $revision) 
-	{
-		$message = wfMessage('onTitleMoveComplete', MediawikiDiscord::getUserText($user), 
-												    MediawikiDiscord::getTitleText($title),
-													MediawikiDiscord::getTitleText($newTitle))->inContentLanguage()->plain();			
-															
+	{							
+		$message = MediawikiDiscord::translate('onTitleMoveComplete', MediawikiDiscord::getUserText($user), 
+																	  MediawikiDiscord::getTitleText($title),
+																	  MediawikiDiscord::getTitleText($newTitle));
+																	  
 		if (empty($reason) == false) 
 		{
 			$message .= sprintf(" (%s `%s`)", 
@@ -90,13 +104,13 @@ final class MediawikiDiscordHooks
 			return;
 		}
 		
-		$message = wfMessage('onArticleDeleteComplete', MediawikiDiscord::getUserText($user), 
-														MediawikiDiscord::getPageText($wikiPage))->inContentLanguage()->plain();		
-															
+		$message = MediawikiDiscord::translate('onArticleDeleteComplete', MediawikiDiscord::getUserText($user), 
+																		  MediawikiDiscord::getPageText($wikiPage));
+																		  
 		if (empty($reason) == false) 
 		{
 			$message .= sprintf(" (%s `%s`)", 
-						wfMessage('mergehistory-reason')->inContentLanguage()->plain(), 
+						MediawikiDiscord::translate('mergehistory-reason'), 
 						$reason);
 		}
 		
@@ -105,12 +119,12 @@ final class MediawikiDiscordHooks
 	
 	static function onArticleUndelete($title, $create, $comment)
 	{
-		$message = wfMessage('onArticleUndelete', MediawikiDiscord::getTitleText($title))->inContentLanguage()->plain();		
+		$message = MediawikiDiscord::translate('onArticleUndelete', MediawikiDiscord::getTitleText($title));	
 														
 		if (empty($comment) == false) 
 		{
 			$message .= sprintf(" (%s `%s`)", 
-						wfMessage('import-comment')->inContentLanguage()->plain(), 
+						MediawikiDiscord::translate('import-comment'), 
 						$comment);
 		}
 		
@@ -119,13 +133,13 @@ final class MediawikiDiscordHooks
 	
 	static function onArticleProtectComplete ($wikiPage, $user, $protect, $reason, $moveonly) 
 	{
-		$message = wfMessage('onArticleProtectComplete', MediawikiDiscord::getUserText($user), 
-														 MediawikiDiscord::getPageText($wikiPage))->inContentLanguage()->plain();		
-															
+		$message = MediawikiDiscord::translate('onArticleProtectComplete', MediawikiDiscord::getUserText($user), 
+																		   MediawikiDiscord::getPageText($wikiPage));
+																		   
 		if (empty($reason) == false) 
 		{
 			$message .= sprintf(" (%s `%s`)", 
-						wfMessage('mergehistory-reason')->inContentLanguage()->plain(), 
+						MediawikiDiscord::translate('mergehistory-reason'), 
 						$reason);
 		}
 		
@@ -140,13 +154,13 @@ final class MediawikiDiscordHooks
 						
 		if ($isNewRevision == true) 
 		{
-			$message = wfMessage('onUploadComplete_NewVersion', MediawikiDiscord::getUserText($wgUser),
-													 MediawikiDiscord::getFileText($image->getLocalFile()))->inContentLanguage()->plain();
+			$message = MediawikiDiscord::translate('onUploadComplete_NewVersion', MediawikiDiscord::getUserText($wgUser),
+																				  MediawikiDiscord::getFileText($image->getLocalFile()));
 		}	
 		else
 		{
-			$message = wfMessage('onUploadComplete', MediawikiDiscord::getUserText($wgUser),
-													 MediawikiDiscord::getFileText($image->getLocalFile()))->inContentLanguage()->plain();
+			$message = MediawikiDiscord::translate('onUploadComplete', MediawikiDiscord::getUserText($wgUser),
+																	   MediawikiDiscord::getFileText($image->getLocalFile()));
 		}	
 		
 		$discordNotification = new DiscordNotification($message);
@@ -168,13 +182,13 @@ final class MediawikiDiscordHooks
 	
 	static function onFileDeleteComplete($file, $oldimage, $article, $user, $reason)
 	{
-		$message = wfMessage('onFileDeleteComplete', MediawikiDiscord::getUserText($user), 
-												     MediawikiDiscord::getFileText($file))->inContentLanguage()->plain();		
-														 
+		$message = MediawikiDiscord::translate('onFileDeleteComplete', MediawikiDiscord::getUserText($user), 
+																	   MediawikiDiscord::getFileText($file));
+																	   
 		if (empty($reason) == false) 
 		{
 			$message .= sprintf(" (%s `%s`)", 
-						wfMessage('mergehistory-reason')->inContentLanguage()->plain(), 
+						MediawikiDiscord::translate('mergehistory-reason'), 
 						$reason);
 		}
 		
@@ -183,27 +197,27 @@ final class MediawikiDiscordHooks
 	
 	static function onLocalUserCreated($user, $autocreated) 
 	{ 
-		$message = wfMessage('onLocalUserCreated', MediawikiDiscord::getUserText($user))->inContentLanguage()->plain();	
+		$message = MediawikiDiscord::translate('onLocalUserCreated', MediawikiDiscord::getUserText($user));
 													 
 	    (new DiscordNotification($message))->Send();	
 	}
 	
 	static function onBlockIpComplete($block, $user)
 	{
-		$message = wfMessage('onBlockIpComplete', MediawikiDiscord::getUserText($user), 
-												  MediawikiDiscord::getUserText($block->getTarget()))->inContentLanguage()->plain();		
-													 
+		$message = MediawikiDiscord::translate('onBlockIpComplete', MediawikiDiscord::getUserText($user), 
+																	MediawikiDiscord::getUserText($block->getTarget()));
+																	
 		if (empty($block->mReason) == false) 
 		{
 			$message .= sprintf(" (%s `%s`)", 
-						wfMessage('mergehistory-reason')->inContentLanguage()->plain(), 
+						MediawikiDiscord::translate('mergehistory-reason'), 
 						$block->mReason);
 		}
 			
 		if (($expires = strtotime($block->mExpiry))) 
 		{
 			$message .= sprintf(" (%s `%s`)", 
-						wfMessage('blocklist-expiry')->inContentLanguage()->plain(), 
+						MediawikiDiscord::translate('blocklist-expiry'), 
 						date('Y-m-d H:i:s', $expires));
 		} 
 		else 
@@ -211,12 +225,12 @@ final class MediawikiDiscordHooks
 			if ($block->mExpiry == "infinity") 
 			{
 				$message .= sprintf(" (`%s`)", 
-							wfMessage('infiniteblock')->inContentLanguage()->plain());	
+							MediawikiDiscord::translate('infiniteblock'));	
 			}
 			else
 			{
 				$message .= sprintf(" (%s `%s`)", 
-							wfMessage('blocklist-expiry')->inContentLanguage()->plain(), 
+							MediawikiDiscord::translate('blocklist-expiry'), 
 							$block->mExpiry );
 			}			
 		}
@@ -226,27 +240,27 @@ final class MediawikiDiscordHooks
 	
 	static function onUnblockUserComplete($block, $user)
 	{
-		$message = wfMessage('onUnblockUserComplete', MediawikiDiscord::getUserText($user), 
-													  MediawikiDiscord::getUserText($block->getTarget()))->inContentLanguage()->plain();
-		
+		$message = MediawikiDiscord::translate('onUnblockUserComplete', MediawikiDiscord::getUserText($user), 
+																		MediawikiDiscord::getUserText($block->getTarget()));
+																		
 	    (new DiscordNotification($message))->Send();	
 	}
 	
 	static function onUserRights($user, array $addedGroups, array $removedGroups)
 	{
-		$message = wfMessage('onUserRights', MediawikiDiscord::getUserText($user))->inContentLanguage()->plain();		
-													  
+		$message = MediawikiDiscord::translate('onUserRights', MediawikiDiscord::getUserText($user));
+		
 		if (count($addedGroups) > 0) 
 		{
 			$message .= sprintf(" %s: `%s`", 
-						wfMessage('added')->inContentLanguage()->plain(), 
+						MediawikiDiscord::translate('added'), 
 						join(', ', $addedGroups));
 		}		
 		
 		if (count($removedGroups) > 0) 
 		{
 			$message .= sprintf(" %s: `%s`", 
-						wfMessage('removed')->inContentLanguage()->plain(), 
+						MediawikiDiscord::translate('removed'), 
 						join(', ', $removedGroups));
 		}	
 	

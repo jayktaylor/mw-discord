@@ -73,14 +73,14 @@ final class MediawikiDiscordHooks
 		if (empty($summary) == false)
 		{
 			$message .= sprintf(" (%s `%s`)", 
-						wfMessage('summary')->inContentLanguage()->plain(), 
+						MediawikiDiscord::translate('summary'), 
 						$summary);
 		}
 		
 	    (new DiscordNotification($message))->Send();		
 	}
 	
-	static function onPageContentInsertComplete ($wikiPage, $user) 
+	static function onPageContentInsertComplete ($wikiPage, $user, $content, $summary, $isMinor, $isWatch, $section, $flags, $revision) 
 	{
 		if (MediawikiDiscord::isNotificationExcluded("onPageContentInsertComplete")) 
 		{
@@ -94,6 +94,13 @@ final class MediawikiDiscordHooks
 
 		$message = MediawikiDiscord::translate('onPageContentInsertComplete', MediawikiDiscord::getUserText($user), 
 																			  MediawikiDiscord::getPageText($wikiPage));
+																			  
+		if (empty($summary) == false)
+		{
+			$message .= sprintf(" (%s `%s`)", 
+						MediawikiDiscord::translate('summary'), 
+						$summary);
+		}
 																			  
 	    (new DiscordNotification($message))->Send();	
 	}

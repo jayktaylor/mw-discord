@@ -32,7 +32,7 @@ This project was developed primarily for the purpose of assisting the SoulFire t
 - :x: `ArticleProtectComplete` - showing new protection settings of page, eg. in embed variables
 - :x: configuration
   - :heavy_check_mark: setting language of notifications
-  - :x: excluding specific notifications
+  - :heavy_check_mark: excluding specific notifications
   - :x: excluding specific pages
   - :x: excluding specific namespaces
   - :x: excluding specific user roles

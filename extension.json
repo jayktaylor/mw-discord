@@ -6,7 +6,8 @@
 	"manifest_version": 1,
 	"config": {
 		"DiscordWebhookUrl": "",
-		"DiscordNotificationsLanguage": ""
+		"DiscordNotificationsLanguage": "",
+		"DiscordExcludedNotifications": ""
 	},
 	"AutoloadClasses": {
 		"MediawikiDiscordHooks": "src/MediawikiDiscord.php",

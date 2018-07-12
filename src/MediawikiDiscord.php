@@ -35,12 +35,24 @@ final class MediawikiDiscord
 			return wfMessage($key, $parameters)->inContentLanguage()->plain();
 		}
 	}
+	
+	static function isNotificationExcluded ($hook) 
+	{
+		global $wgDiscordExcludedNotifications;
+	
+		return in_array($hook, $wgDiscordExcludedNotifications);
+	}
 }
 
 final class MediawikiDiscordHooks 
 {	
 	static function onPageContentSaveComplete ($wikiPage, $user, $content, $summary, $isMinor, $isWatch, $section, $flags, $revision, $status, $baseRevId)
 	{		
+		if (MediawikiDiscord::isNotificationExcluded("onPageContentSaveComplete")) 
+		{
+			return;
+		}
+		
 		if ($status->value['new'] == true) //page is just created, there is no need to trigger second notification
 		{
 			return;
@@ -70,6 +82,11 @@ final class MediawikiDiscordHooks
 	
 	static function onPageContentInsertComplete ($wikiPage, $user) 
 	{
+		if (MediawikiDiscord::isNotificationExcluded("onPageContentInsertComplete")) 
+		{
+			return;
+		}
+		
 		if ($wikiPage->getTitle()->getNamespace() == NS_FILE) //the page is file, there is no need to trigger second notification of file's page creation
 		{
 			return;
@@ -82,7 +99,12 @@ final class MediawikiDiscordHooks
 	}
 	
 	static function onTitleMoveComplete ($title, $newTitle, $user, $oldid, $newid, $reason, $revision) 
-	{							
+	{		
+		if (MediawikiDiscord::isNotificationExcluded("onTitleMoveComplete")) 
+		{
+			return;
+		}
+		
 		$message = MediawikiDiscord::translate('onTitleMoveComplete', MediawikiDiscord::getUserText($user), 
 																	  MediawikiDiscord::getTitleText($title),
 																	  MediawikiDiscord::getTitleText($newTitle));
@@ -99,6 +121,11 @@ final class MediawikiDiscordHooks
 	
 	static function onArticleDeleteComplete($wikiPage, $user, $reason)
 	{
+		if (MediawikiDiscord::isNotificationExcluded("onArticleDeleteComplete")) 
+		{
+			return;
+		}
+		
 		if ($wikiPage->getTitle()->getNamespace() == NS_FILE) //the page is file, there is no need to trigger second notification of file's page deletion
 		{
 			return;
@@ -119,6 +146,11 @@ final class MediawikiDiscordHooks
 	
 	static function onArticleUndelete($title, $create, $comment)
 	{
+		if (MediawikiDiscord::isNotificationExcluded("onArticleUndelete")) 
+		{
+			return;
+		}
+		
 		$message = MediawikiDiscord::translate('onArticleUndelete', MediawikiDiscord::getTitleText($title));	
 														
 		if (empty($comment) == false) 
@@ -133,6 +165,11 @@ final class MediawikiDiscordHooks
 	
 	static function onArticleProtectComplete ($wikiPage, $user, $protect, $reason, $moveonly) 
 	{
+		if (MediawikiDiscord::isNotificationExcluded("onArticleProtectComplete")) 
+		{
+			return;
+		}
+		
 		$message = MediawikiDiscord::translate('onArticleProtectComplete', MediawikiDiscord::getUserText($user), 
 																		   MediawikiDiscord::getPageText($wikiPage));
 																		   
@@ -148,6 +185,11 @@ final class MediawikiDiscordHooks
 	
 	static function onUploadComplete($image) 
 	{ 
+		if (MediawikiDiscord::isNotificationExcluded("onUploadComplete")) 
+		{
+			return;
+		}
+		
 	    global $wgUser;
 		
 		$isNewRevision = count($image->getLocalFile()->getHistory()) > 0;
@@ -182,6 +224,11 @@ final class MediawikiDiscordHooks
 	
 	static function onFileDeleteComplete($file, $oldimage, $article, $user, $reason)
 	{
+		if (MediawikiDiscord::isNotificationExcluded("onFileDeleteComplete")) 
+		{
+			return;
+		}
+		
 		$message = MediawikiDiscord::translate('onFileDeleteComplete', MediawikiDiscord::getUserText($user), 
 																	   MediawikiDiscord::getFileText($file));
 																	   
@@ -197,6 +244,11 @@ final class MediawikiDiscordHooks
 	
 	static function onLocalUserCreated($user, $autocreated) 
 	{ 
+		if (MediawikiDiscord::isNotificationExcluded("onLocalUserCreated")) 
+		{
+			return;
+		}
+		
 		$message = MediawikiDiscord::translate('onLocalUserCreated', MediawikiDiscord::getUserText($user));
 													 
 	    (new DiscordNotification($message))->Send();	
@@ -204,6 +256,11 @@ final class MediawikiDiscordHooks
 	
 	static function onBlockIpComplete($block, $user)
 	{
+		if (MediawikiDiscord::isNotificationExcluded("onBlockIpComplete")) 
+		{
+			return;
+		}
+		
 		$message = MediawikiDiscord::translate('onBlockIpComplete', MediawikiDiscord::getUserText($user), 
 																	MediawikiDiscord::getUserText($block->getTarget()));
 																	
@@ -240,6 +297,11 @@ final class MediawikiDiscordHooks
 	
 	static function onUnblockUserComplete($block, $user)
 	{
+		if (MediawikiDiscord::isNotificationExcluded("onUnblockUserComplete")) 
+		{
+			return;
+		}
+		
 		$message = MediawikiDiscord::translate('onUnblockUserComplete', MediawikiDiscord::getUserText($user), 
 																		MediawikiDiscord::getUserText($block->getTarget()));
 																		
@@ -248,6 +310,11 @@ final class MediawikiDiscordHooks
 	
 	static function onUserRights($user, array $addedGroups, array $removedGroups)
 	{
+		if (MediawikiDiscord::isNotificationExcluded("onUserRights")) 
+		{
+			return;
+		}
+		
 		$message = MediawikiDiscord::translate('onUserRights', MediawikiDiscord::getUserText($user));
 		
 		if (count($addedGroups) > 0) 

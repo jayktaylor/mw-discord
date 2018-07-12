@@ -1,5 +1,5 @@
 {
-	"onPageContentSaveComplete": "Użytkownik $1 zapisał zmiany na stronie $2",
+	"onPageContentSaveComplete": "Użytkownik $1 edytował stronę $2",
 	"onPageContentInsertComplete": "Użytkownik $1 utworzył nową stronę $2",
 	"onTitleMoveComplete": "Użytkownik $1 przeniósł stronę $2 do $3",
 	"onArticleDeleteComplete": "Użytkownik $1 usunął stronę $2",

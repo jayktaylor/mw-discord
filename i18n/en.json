@@ -1,5 +1,5 @@
 {
-	"onPageContentSaveComplete": "User $1 saved changes on page $2",
+	"onPageContentSaveComplete": "User $1 edited page $2",
 	"onPageContentInsertComplete": "User $1 created new page $2",
 	"onTitleMoveComplete": "User $1 moved page $2 to $3",
 	"onArticleDeleteComplete": "User $1 deleted page $2",

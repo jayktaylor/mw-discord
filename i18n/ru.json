@@ -1,5 +1,6 @@
 {
 	"onPageContentSaveComplete": "Участник $1 редактировал страницу $2",
+	"onPageContentSaveComplete_MinorEdit": "Участник $1 сделал небольшое правки на страницу $2",
 	"onPageContentInsertComplete": "Участник $1 создал новую страницу $2",
 	"onTitleMoveComplete": "Участник $1 переименовал страницу $2 в $3",
 	"onArticleDeleteComplete": "Участник $1 удалил страницу $2",

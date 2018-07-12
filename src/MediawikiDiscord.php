@@ -32,9 +32,18 @@ final class MediawikiDiscordHooks
 			return;
 		}
 					
-		$message = wfMessage('onPageContentSaveComplete', MediawikiDiscord::getUserText($user), 
-														  MediawikiDiscord::getPageText($wikiPage))->inContentLanguage()->plain();			
-														  
+		if ($isMinor) 
+		{
+			$messageTranslationKey = "onPageContentSaveComplete_MinorEdit";
+		}
+		else
+		{
+			$messageTranslationKey = "onPageContentSaveComplete";
+		}
+						
+		$message = wfMessage($messageTranslationKey, MediawikiDiscord::getUserText($user), 
+												     MediawikiDiscord::getPageText($wikiPage))->inContentLanguage()->plain();
+													 
 		if (empty($summary) == false)
 		{
 			$message .= sprintf(" (%s `%s`)", 

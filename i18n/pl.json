@@ -1,5 +1,6 @@
 {
 	"onPageContentSaveComplete": "Użytkownik $1 edytował stronę $2",
+	"onPageContentSaveComplete_MinorEdit": "Użytkownik $1 dokonał drobnej edycji na stronie $2",
 	"onPageContentInsertComplete": "Użytkownik $1 utworzył nową stronę $2",
 	"onTitleMoveComplete": "Użytkownik $1 przeniósł stronę $2 do $3",
 	"onArticleDeleteComplete": "Użytkownik $1 usunął stronę $2",

@@ -4,12 +4,39 @@ final class MediawikiDiscord
 {
 	static function getUserText ($user) 
 	{
-		return MediawikiDiscordUtils::CreateMarkdownLink ($user, $user->getUserPage()->getFullUrl());
+		global $wgServer, $wgScriptPath;
+		
+		$userUrl = $user->getUserPage()->getFullUrl(); 
+				
+		$userPageLink = MediawikiDiscordUtils::CreateMarkdownLink ($user, $userUrl);				
+		$userTalkLink = MediawikiDiscordUtils::CreateMarkdownLink (strtolower(MediawikiDiscord::translate("talk")), $user->getTalkPage()->getFullURL());	
+		$userContributionsLink = MediawikiDiscordUtils::CreateMarkdownLink (strtolower(MediawikiDiscord::translate("sp-deletedcontributions-contribs")), $wgServer . "/" . $wgScriptPath . "/?title=Special:Contributions/" . $user);	
+		$userBlockLink = MediawikiDiscordUtils::CreateMarkdownLink (strtolower(MediawikiDiscord::translate("blocklink")), $wgServer . "/" . $wgScriptPath . "/?title=Special:Block/" . $user);	
+										
+		return sprintf("%s (%s | %s | %s)", $userPageLink, $userTalkLink, $userContributionsLink, $userBlockLink);
 	}
 	
-	static function getPageText ($wikiPage) 
+	static function getPageText ($wikiPage, $links = true) 
 	{
-		return MediawikiDiscordUtils::CreateMarkdownLink ($wikiPage->getTitle()->getFullText(), $wikiPage->getTitle()->getFullURL());
+		$pageUrl = $wikiPage->getTitle()->getFullURL(); 
+				
+		$pageLink = MediawikiDiscordUtils::CreateMarkdownLink ($wikiPage->getTitle()->getFullText(), $pageUrl);
+			
+		if ($links == true)
+		{
+			$revisionId = $wikiPage->getRevision()->getID();
+				
+			$editLink = MediawikiDiscordUtils::CreateMarkdownLink (MediawikiDiscord::translate("tags-edit"), $pageUrl . "&action=edit");		
+			$historyLink = MediawikiDiscordUtils::CreateMarkdownLink (MediawikiDiscord::translate("hist"), $pageUrl . "&action=history");		
+			$diffLink = MediawikiDiscordUtils::CreateMarkdownLink (MediawikiDiscord::translate("diff"), $pageUrl . "&diff=prev&oldid=" . $revisionId);
+			$undoLink = MediawikiDiscordUtils::CreateMarkdownLink (MediawikiDiscord::translate("editundo"), $pageUrl . "&action=edit&undoafter=" . (int)($revisionId - 1) . "&undo=" . $revisionId);
+			
+			return sprintf("%s (%s | %s | %s | %s)", $pageLink, $editLink, $historyLink, $diffLink, $undoLink);
+		}
+		else
+		{
+			return $pageLink;
+		}				
 	}
 	
 	static function getTitleText ($title)
@@ -93,7 +120,7 @@ final class MediawikiDiscordHooks
 		}
 
 		$message = MediawikiDiscord::translate('onPageContentInsertComplete', MediawikiDiscord::getUserText($user), 
-																			  MediawikiDiscord::getPageText($wikiPage));
+																			  MediawikiDiscord::getPageText($wikiPage, false));
 																			  
 		if (empty($summary) == false)
 		{
@@ -139,7 +166,7 @@ final class MediawikiDiscordHooks
 		}
 		
 		$message = MediawikiDiscord::translate('onArticleDeleteComplete', MediawikiDiscord::getUserText($user), 
-																		  MediawikiDiscord::getPageText($wikiPage));
+																		  MediawikiDiscord::getPageText($wikiPage, false));
 																		  
 		if (empty($reason) == false) 
 		{
@@ -178,7 +205,7 @@ final class MediawikiDiscordHooks
 		}
 		
 		$message = MediawikiDiscord::translate('onArticleProtectComplete', MediawikiDiscord::getUserText($user), 
-																		   MediawikiDiscord::getPageText($wikiPage));
+																		   MediawikiDiscord::getPageText($wikiPage, false));
 																		   
 		if (empty($reason) == false) 
 		{

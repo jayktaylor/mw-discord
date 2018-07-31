@@ -2,43 +2,44 @@
 
 final class MediawikiDiscord
 {
-        static function getUserText ($user)
-        {
-                global $wgServer, $wgScriptPath;
+	static function getUserText ($user)
+	{
+			global $wgServer, $wgScriptPath;
 
-                $userUrl = $user->getUserPage()->getFullUrl();
+			$userUrl = $user->getUserPage()->getFullUrl();
 
-                $userPageLink = MediawikiDiscordUtils::CreateMarkdownLink ($user, $userUrl);
-                $userTalkLink = MediawikiDiscordUtils::CreateMarkdownLink (strtolower(MediawikiDiscord::translate("talk")), $user->getTalkPage()->getFullURL());
-                $userContributionsLink = MediawikiDiscordUtils::CreateMarkdownLink (strtolower(MediawikiDiscord::translate("sp-deletedcontributions-contribs")), Title::newFromText("Special:Contributions/" . $user)->getFullURL());
-                $userBlockLink = MediawikiDiscordUtils::CreateMarkdownLink (strtolower(MediawikiDiscord::translate("blocklink")), "<" . Title::newFromText("Special:Block/" . $user)->getFullURL() . ">"); // prevent embed - see #5
+			$userPageLink = MediawikiDiscordUtils::CreateMarkdownLink ($user, $userUrl);
+			$userTalkLink = MediawikiDiscordUtils::CreateMarkdownLink (strtolower(MediawikiDiscord::translate("talk")), $user->getTalkPage()->getFullURL());
+			$userContributionsLink = MediawikiDiscordUtils::CreateMarkdownLink (strtolower(MediawikiDiscord::translate("sp-deletedcontributions-contribs")), Title::newFromText("Special:Contributions/" . $user)->getFullURL());
+			$userBlockLink = MediawikiDiscordUtils::CreateMarkdownLink (strtolower(MediawikiDiscord::translate("blocklink")), "<" . Title::newFromText("Special:Block/" . $user)->getFullURL() . ">"); // prevent embed - see #5
 
-                return sprintf("%s (%s | %s | %s)", $userPageLink, $userTalkLink, $userContributionsLink, $userBlockLink);
-        }
+			return sprintf("%s (%s | %s | %s)", $userPageLink, $userTalkLink, $userContributionsLink, $userBlockLink);
+	}
 
-        static function getPageText ($wikiPage, $links = true)
-        {
-                $pageUrl = $wikiPage->getTitle()->getFullURL();
+	static function getPageText ($wikiPage, $links = true)
+	{
+			$pageUrl = $wikiPage->getTitle()->getFullURL();
 
-                $pageLink = MediawikiDiscordUtils::CreateMarkdownLink ($wikiPage->getTitle()->getFullText(), $pageUrl);
+			$pageLink = MediawikiDiscordUtils::CreateMarkdownLink ($wikiPage->getTitle()->getFullText(), $pageUrl);
 
-                if ($links == true)
-                {
-                        $revisionId = $wikiPage->getRevision()->getID();
+			if ($links == true)
+			{
+					$revisionId = $wikiPage->getRevision()->getID();
 
-                        $editLink = MediawikiDiscordUtils::CreateMarkdownLink (MediawikiDiscord::translate("tags-edit"), $wikiPage->getTitle()->getFullUrl("action=edit"));
-                        $historyLink = MediawikiDiscordUtils::CreateMarkdownLink (MediawikiDiscord::translate("hist"), $wikiPage->getTitle()->getFullUrl("action=history"));
-			// need to use arrays here for the second parameter since mediawiki doesn't allow more than two query string parameters, but you can use arrays to specify more.
-                        $diffLink = MediawikiDiscordUtils::CreateMarkdownLink (MediawikiDiscord::translate("diff"), $wikiPage->getTitle()->getFullUrl("diff=prev", array("oldid" => $revisionId)));
-                        $undoLink = MediawikiDiscordUtils::CreateMarkdownLink (MediawikiDiscord::translate("editundo"), $wikiPage->getTitle()->getFullUrl("action=edit", array("undoafter" => (int)($revisionId - 1), "undo" => $revisionId)));
+					$editLink = MediawikiDiscordUtils::CreateMarkdownLink (MediawikiDiscord::translate("tags-edit"), $wikiPage->getTitle()->getFullUrl("action=edit"));
+					$historyLink = MediawikiDiscordUtils::CreateMarkdownLink (MediawikiDiscord::translate("hist"), $wikiPage->getTitle()->getFullUrl("action=history"));
+					
+					// need to use arrays here for the second parameter since mediawiki doesn't allow more than two query string parameters, but you can use arrays to specify more.
+					$diffLink = MediawikiDiscordUtils::CreateMarkdownLink (MediawikiDiscord::translate("diff"), $wikiPage->getTitle()->getFullUrl("diff=prev", array("oldid" => $revisionId)));
+					$undoLink = MediawikiDiscordUtils::CreateMarkdownLink (MediawikiDiscord::translate("editundo"), $wikiPage->getTitle()->getFullUrl("action=edit", array("undoafter" => (int)($revisionId - 1), "undo" => $revisionId)));
 
-                        return sprintf("%s (%s | %s | %s | %s)", $pageLink, $editLink, $historyLink, $diffLink, $undoLink);
-                }
-                else
-                {
-                        return $pageLink;
-                }
-        }
+					return sprintf("%s (%s | %s | %s | %s)", $pageLink, $editLink, $historyLink, $diffLink, $undoLink);
+			}
+			else
+			{
+					return $pageLink;
+			}
+	}
 	
 	static function getTitleText ($title)
 	{

@@ -1,6 +1,9 @@
 {
 	"name": "mediawiki-discord",
-	"author": "Szymon Zak",
+	"author": [
+		"Szymon Zak", 
+		"Lewis Crichton"
+	],
 	"url": "https://github.com/Szmyk/mediawiki-discord",
 	"license-name": "MIT",
 	"manifest_version": 1,

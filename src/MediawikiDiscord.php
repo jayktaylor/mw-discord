@@ -18,20 +18,22 @@ final class MediawikiDiscord
 
 	static function getPageText ($wikiPage, $links = true)
 	{
-			$pageUrl = $wikiPage->getTitle()->getFullURL();
+			$title = $wikiPage->getTitle();
+			
+			$pageUrl = $title->getFullURL();
 
-			$pageLink = MediawikiDiscordUtils::CreateMarkdownLink ($wikiPage->getTitle()->getFullText(), $pageUrl);
+			$pageLink = MediawikiDiscordUtils::CreateMarkdownLink ($title->getFullText(), $pageUrl);
 
 			if ($links == true)
 			{
 					$revisionId = $wikiPage->getRevision()->getID();
 
-					$editLink = MediawikiDiscordUtils::CreateMarkdownLink (MediawikiDiscord::translate("tags-edit"), $wikiPage->getTitle()->getFullUrl("action=edit"));
-					$historyLink = MediawikiDiscordUtils::CreateMarkdownLink (MediawikiDiscord::translate("hist"), $wikiPage->getTitle()->getFullUrl("action=history"));
+					$editLink = MediawikiDiscordUtils::CreateMarkdownLink (MediawikiDiscord::translate("tags-edit"), $title->getFullUrl("action=edit"));
+					$historyLink = MediawikiDiscordUtils::CreateMarkdownLink (MediawikiDiscord::translate("hist"), $title->getFullUrl("action=history"));
 					
 					// need to use arrays here for the second parameter since mediawiki doesn't allow more than two query string parameters, but you can use arrays to specify more.
-					$diffLink = MediawikiDiscordUtils::CreateMarkdownLink (MediawikiDiscord::translate("diff"), $wikiPage->getTitle()->getFullUrl("diff=prev", array("oldid" => $revisionId)));
-					$undoLink = MediawikiDiscordUtils::CreateMarkdownLink (MediawikiDiscord::translate("editundo"), $wikiPage->getTitle()->getFullUrl("action=edit", array("undoafter" => (int)($revisionId - 1), "undo" => $revisionId)));
+					$diffLink = MediawikiDiscordUtils::CreateMarkdownLink (MediawikiDiscord::translate("diff"), $title->getFullUrl("diff=prev", array("oldid" => $revisionId)));
+					$undoLink = MediawikiDiscordUtils::CreateMarkdownLink (MediawikiDiscord::translate("editundo"), $title->getFullUrl("action=edit", array("undoafter" => (int)($revisionId - 1), "undo" => $revisionId)));
 
 					return sprintf("%s (%s | %s | %s | %s)", $pageLink, $editLink, $historyLink, $diffLink, $undoLink);
 			}

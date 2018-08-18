@@ -29,7 +29,7 @@ This project was developed primarily for the purpose of assisting the SoulFire t
   - :heavy_check_mark: English
   - :heavy_check_mark: Polish
   - :heavy_check_mark: Russian
-- :x: `ArticleProtectComplete` - showing new protection settings of page, eg. in embed variables
+- :heavy_check_mark: `ArticleProtectComplete` - showing new protection settings of page, eg. in embed variables
 - :x: configuration
   - :heavy_check_mark: setting language of notifications
   - :heavy_check_mark: excluding specific notifications

@@ -218,7 +218,10 @@ final class MediawikiDiscordHooks
 						$reason);
 		}
 		
-	    (new DiscordNotification($message))->Send();	
+		
+		$notification = new DiscordNotification($message);
+		$notification->SetEmbedFields($protect);
+	    $notification->Send();
 	}	
 	
 	static function onUploadComplete($image) 
@@ -377,6 +380,7 @@ final class DiscordNotification
 {
 	private $message;
 	private $embedImageUrl;
+	private $embedFields;
 	
 	public function __construct($message) 
 	{
@@ -391,6 +395,11 @@ final class DiscordNotification
 	public function SetEmbedImage ($embedImageUrl)
 	{
 		$this->embedImageUrl = $embedImageUrl;
+	}
+	
+	public function SetEmbedFields ($embedFields) 
+	{
+		$this->embedFields = $embedFields;
 	}
 	
 	public function Send ()
@@ -412,6 +421,19 @@ final class DiscordNotification
 		if ($this->embedImageUrl != null)
 		{
 			$json->embeds[0]->image->url = $this->embedImageUrl;
+		}
+		
+		if ($this->embedFields != null)
+		{
+			foreach ($this->embedFields as $field => $value)
+			{
+				$json->embeds[0]->fields[] = 
+				[ 
+					"name" => ucfirst(MediawikiDiscord::translate("restriction-" . $field)), 
+					"value" => MediawikiDiscord::translate("group-" . (empty($value) ? "user" : $value)),
+					"inline" => "true" 
+				];
+			}			
 		}
 		
 		$data = array

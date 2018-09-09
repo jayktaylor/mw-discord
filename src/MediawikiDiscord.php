@@ -6,14 +6,14 @@ final class MediawikiDiscord
 	{
 			global $wgServer, $wgScriptPath;
 
-			$userUrl = $user->getUserPage()->getFullUrl( $proto = PROTO_HTTPS );
+			$userUrl = $user->getUserPage()->getFullUrl( '', '', $proto = PROTO_HTTPS );
 
 			$userPageLink = MediawikiDiscordUtils::CreateMarkdownLink ($user, $userUrl);
-			$userTalkLink = MediawikiDiscordUtils::CreateMarkdownLink ("t", $user->getTalkPage()->getFullURL( $proto = PROTO_HTTPS ));
-			$userContributionsLink = MediawikiDiscordUtils::CreateMarkdownLink ("c", Title::newFromText("Special:Contributions/" . $user)->getFullURL( $proto = PROTO_HTTPS ));
-			$userBlockLink = MediawikiDiscordUtils::CreateMarkdownLink ("b", "<" . Title::newFromText("Special:Block/" . $user)->getFullURL( $proto = PROTO_HTTPS ) . ">"); // prevent embed - see #5
+			$userTalkLink = MediawikiDiscordUtils::CreateMarkdownLink ("t", $user->getTalkPage()->getFullURL( '', '', $proto = PROTO_HTTPS ));
+			$userContributionsLink = MediawikiDiscordUtils::CreateMarkdownLink ("c", Title::newFromText("Special:Contributions/" . $user)->getFullURL( '', '', $proto = PROTO_HTTPS ));
+			$userBlockLink = MediawikiDiscordUtils::CreateMarkdownLink ("b", "<" . Title::newFromText("Special:Block/" . $user)->getFullURL( '', '', $proto = PROTO_HTTPS ) . ">"); // prevent embed - see #5
 
-			return sprintf("%s (%s | %s | %s)", $userPageLink, $userTalkLink, $userContributionsLink, $userBlockLink);
+			return sprintf("%s (%s|%s|%s)", $userPageLink, $userTalkLink, $userContributionsLink, $userBlockLink);
 	}
 
 	static function getPageText ($wikiPage, $links = true)
@@ -22,14 +22,14 @@ final class MediawikiDiscord
 			
 			$pageUrl = $title->getFullURL( $proto = PROTO_HTTPS );
 
-			$pageLink = MediawikiDiscordUtils::CreateMarkdownLink ($title->getFullText( $proto = PROTO_HTTPS ), $pageUrl);
+			$pageLink = MediawikiDiscordUtils::CreateMarkdownLink ($title->getFullText(), $pageUrl);
 
 			if ($links == true)
 			{
 					$revisionId = $wikiPage->getRevision()->getID();
 
-					$editLink = MediawikiDiscordUtils::CreateMarkdownLink (MediawikiDiscord::translate("tags-edit"), $title->getFullUrl("action=edit", $proto = PROTO_HTTPS ));
-					$historyLink = MediawikiDiscordUtils::CreateMarkdownLink (MediawikiDiscord::translate("hist"), $title->getFullUrl("action=history", $proto = PROTO_HTTPS ));
+					$editLink = MediawikiDiscordUtils::CreateMarkdownLink (MediawikiDiscord::translate("tags-edit"), $title->getFullUrl("action=edit", '', $proto = PROTO_HTTPS ));
+					$historyLink = MediawikiDiscordUtils::CreateMarkdownLink (MediawikiDiscord::translate("hist"), $title->getFullUrl("action=history", '', $proto = PROTO_HTTPS ));
 					
 					// need to use arrays here for the second parameter since mediawiki doesn't allow more than two query string parameters, but you can use arrays to specify more.
 					$diffLink = MediawikiDiscordUtils::CreateMarkdownLink (MediawikiDiscord::translate("diff"), $title->getFullUrl("diff=prev", array("oldid" => $revisionId), $proto = PROTO_HTTPS ));
@@ -45,12 +45,12 @@ final class MediawikiDiscord
 	
 	static function getTitleText ($title)
 	{
-		return MediawikiDiscordUtils::CreateMarkdownLink ($title, $title->getFullURL( $proto = PROTO_HTTPS ));
+		return MediawikiDiscordUtils::CreateMarkdownLink ($title, $title->getFullURL( '', '', $proto = PROTO_HTTPS ));
 	}
 	
 	static function getFileText ($file)
 	{
-		return MediawikiDiscordUtils::CreateMarkdownLink ($file->getName(), $file->getTitle()->getFullUrl( $proto = PROTO_HTTPS ));
+		return MediawikiDiscordUtils::CreateMarkdownLink ($file->getName(), $file->getTitle()->getFullUrl( '', '', $proto = PROTO_HTTPS ));
 	}
 	
 	static function translate ($key, ...$parameters) 
@@ -255,7 +255,7 @@ final class MediawikiDiscordHooks
 		||  ($mimeType == "image/gif")
 		||  ($mimeType == "image/webp"))
 		{				
-			$imageUrl = MediawikiDiscordUtils::RemoveMultipleSlashes($image->getLocalFile()->getFullUrl( $proto = PROTO_HTTPS ));
+			$imageUrl = MediawikiDiscordUtils::RemoveMultipleSlashes($image->getLocalFile()->getFullUrl( '', '', $proto = PROTO_HTTPS ));
 			
 			$discordNotification->SetEmbedImage($imageUrl);
 		}

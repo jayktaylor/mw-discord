@@ -28,14 +28,14 @@ final class MediawikiDiscord
 			{
 					$revisionId = $wikiPage->getRevision()->getID();
 
-					$editLink = MediawikiDiscordUtils::CreateMarkdownLink (MediawikiDiscord::translate("tags-edit"), $title->getFullUrl("action=edit", '', $proto = PROTO_HTTPS ));
-					$historyLink = MediawikiDiscordUtils::CreateMarkdownLink (MediawikiDiscord::translate("hist"), $title->getFullUrl("action=history", '', $proto = PROTO_HTTPS ));
+					$editLink = MediawikiDiscordUtils::CreateMarkdownLink ('e', $title->getFullUrl("action=edit", '', $proto = PROTO_HTTPS ));
+					$historyLink = MediawikiDiscordUtils::CreateMarkdownLink ('h', $title->getFullUrl("action=history", '', $proto = PROTO_HTTPS ));
 					
 					// need to use arrays here for the second parameter since mediawiki doesn't allow more than two query string parameters, but you can use arrays to specify more.
 					$diffLink = MediawikiDiscordUtils::CreateMarkdownLink (MediawikiDiscord::translate("diff"), $title->getFullUrl("diff=prev", array("oldid" => $revisionId), $proto = PROTO_HTTPS ));
 					$undoLink = MediawikiDiscordUtils::CreateMarkdownLink (MediawikiDiscord::translate("editundo"), $title->getFullUrl("action=edit", array("undoafter" => (int)($revisionId - 1), "undo" => $revisionId), $proto = PROTO_HTTPS ));
 
-					return sprintf("%s (%s | %s | %s | %s)", $pageLink, $editLink, $historyLink, $diffLink, $undoLink);
+					return sprintf("%s (%s|%s) (%s, %s)", $pageLink, $editLink, $historyLink, $diffLink, $undoLink);
 			}
 			else
 			{

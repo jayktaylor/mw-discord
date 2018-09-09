@@ -241,19 +241,6 @@ final class MediawikiDiscordHooks
 		}	
 		
 		$discordNotification = new DiscordNotification($message);
-		
-		$mimeType = $image->getLocalFile()->getMimeType();
-		
-		if (($mimeType == "image/jpeg") 
-		||  ($mimeType == "image/png")
-		||  ($mimeType == "image/gif")
-		||  ($mimeType == "image/webp"))
-		{				
-			$imageUrl = MediawikiDiscordUtils::RemoveMultipleSlashes($image->getLocalFile()->getFullUrl( '', '', $proto = PROTO_HTTPS ));
-			
-			$discordNotification->SetEmbedImage($imageUrl);
-		}
-			
 		$discordNotification->Send(); 
 	}
 	

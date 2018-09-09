@@ -9,9 +9,9 @@ final class MediawikiDiscord
 			$userUrl = $user->getUserPage()->getFullUrl( $proto = PROTO_HTTPS );
 
 			$userPageLink = MediawikiDiscordUtils::CreateMarkdownLink ($user, $userUrl);
-			$userTalkLink = MediawikiDiscordUtils::CreateMarkdownLink (strtolower(MediawikiDiscord::translate("talk")), $user->getTalkPage()->getFullURL( $proto = PROTO_HTTPS ));
-			$userContributionsLink = MediawikiDiscordUtils::CreateMarkdownLink (strtolower(MediawikiDiscord::translate("sp-deletedcontributions-contribs")), Title::newFromText("Special:Contributions/" . $user)->getFullURL( $proto = PROTO_HTTPS ));
-			$userBlockLink = MediawikiDiscordUtils::CreateMarkdownLink (strtolower(MediawikiDiscord::translate("blocklink")), "<" . Title::newFromText("Special:Block/" . $user)->getFullURL( $proto = PROTO_HTTPS ) . ">"); // prevent embed - see #5
+			$userTalkLink = MediawikiDiscordUtils::CreateMarkdownLink ("t", $user->getTalkPage()->getFullURL( $proto = PROTO_HTTPS ));
+			$userContributionsLink = MediawikiDiscordUtils::CreateMarkdownLink ("c", Title::newFromText("Special:Contributions/" . $user)->getFullURL( $proto = PROTO_HTTPS ));
+			$userBlockLink = MediawikiDiscordUtils::CreateMarkdownLink ("b", "<" . Title::newFromText("Special:Block/" . $user)->getFullURL( $proto = PROTO_HTTPS ) . ">"); // prevent embed - see #5
 
 			return sprintf("%s (%s | %s | %s)", $userPageLink, $userTalkLink, $userContributionsLink, $userBlockLink);
 	}

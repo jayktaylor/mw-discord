@@ -20,7 +20,7 @@ final class MediawikiDiscord
 	{
 			$title = $wikiPage->getTitle();
 			
-			$pageUrl = $title->getFullURL( $proto = PROTO_HTTPS );
+			$pageUrl = $title->getFullURL( '', '', $proto = PROTO_HTTPS );
 
 			$pageLink = MediawikiDiscordUtils::CreateMarkdownLink ($title->getFullText(), $pageUrl);
 

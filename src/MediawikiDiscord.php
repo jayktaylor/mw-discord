@@ -103,7 +103,7 @@ final class MediawikiDiscordHooks
 							
 		if (empty($summary) == false)
 		{
-			$message .= sprintf("`%s`", 
+			$message .= sprintf(" `%s`", 
 						$summary);
 		}
 		

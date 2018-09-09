@@ -127,8 +127,7 @@ final class MediawikiDiscordHooks
 																			  
 		if (empty($summary) == false)
 		{
-			$message .= sprintf(" (%s `%s`)", 
-						MediawikiDiscord::translate('summary'), 
+			$message .= sprintf(" `%s`", 
 						$summary);
 		}
 																			  
@@ -148,8 +147,7 @@ final class MediawikiDiscordHooks
 																	  
 		if (empty($reason) == false) 
 		{
-			$message .= sprintf(" (%s `%s`)", 
-						wfMessage('mergehistory-reason')->inContentLanguage()->plain(), 
+			$message .= sprintf(" `%s`", 
 						$reason);
 		}
 		
@@ -173,8 +171,7 @@ final class MediawikiDiscordHooks
 																		  
 		if (empty($reason) == false) 
 		{
-			$message .= sprintf(" (%s `%s`)", 
-						MediawikiDiscord::translate('mergehistory-reason'), 
+			$message .= sprintf(" `%s`", 
 						$reason);
 		}
 		
@@ -192,8 +189,7 @@ final class MediawikiDiscordHooks
 														
 		if (empty($comment) == false) 
 		{
-			$message .= sprintf(" (%s `%s`)", 
-						MediawikiDiscord::translate('import-comment'), 
+			$message .= sprintf(" `%s`", 
 						$comment);
 		}
 		
@@ -212,8 +208,7 @@ final class MediawikiDiscordHooks
 																		   
 		if (empty($reason) == false) 
 		{
-			$message .= sprintf(" (%s `%s`)", 
-						MediawikiDiscord::translate('mergehistory-reason'), 
+			$message .= sprintf(" `%s`", 
 						$reason);
 		}
 		
@@ -274,8 +269,7 @@ final class MediawikiDiscordHooks
 																	   
 		if (empty($reason) == false) 
 		{
-			$message .= sprintf(" (%s `%s`)", 
-						MediawikiDiscord::translate('mergehistory-reason'), 
+			$message .= sprintf(" `%s`", 
 						$reason);
 		}
 		
@@ -306,15 +300,13 @@ final class MediawikiDiscordHooks
 																	
 		if (empty($block->mReason) == false) 
 		{
-			$message .= sprintf(" (%s `%s`)", 
-						MediawikiDiscord::translate('mergehistory-reason'), 
+			$message .= sprintf(" `%s`", 
 						$block->mReason);
 		}
 			
 		if (($expires = strtotime($block->mExpiry))) 
 		{
-			$message .= sprintf(" (%s `%s`)", 
-						MediawikiDiscord::translate('blocklist-expiry'), 
+			$message .= sprintf(" `%s`", 
 						date('Y-m-d H:i:s', $expires));
 		} 
 		else 

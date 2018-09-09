@@ -103,8 +103,7 @@ final class MediawikiDiscordHooks
 							
 		if (empty($summary) == false)
 		{
-			$message .= sprintf(" (%s `%s`)", 
-						MediawikiDiscord::translate('summary'), 
+			$message .= sprintf("`%s`", 
 						$summary);
 		}
 		

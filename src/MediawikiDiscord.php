@@ -196,7 +196,7 @@ final class MediawikiDiscordHooks
 	    (new DiscordNotification($message))->Send();	
 	}
 	
-	static function onArticleProtectComplete ($wikiPage, $user, $protect, $reason, $moveonly) 
+	static function onArticleProtectComplete ($wikiPage, $user, $protect, $reason) 
 	{
 		if (MediawikiDiscord::isNotificationExcluded("onArticleProtectComplete")) 
 		{

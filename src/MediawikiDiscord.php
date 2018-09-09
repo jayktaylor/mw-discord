@@ -8,9 +8,9 @@ final class MediawikiDiscord
 
 			$userUrl = $user->getUserPage()->getFullUrl( '', '', $proto = PROTO_HTTPS );
 
-			$userPageLink = MediawikiDiscordUtils::CreateMarkdownLink ($user, $userUrl);
-			$userTalkLink = MediawikiDiscordUtils::CreateMarkdownLink ("t", $user->getTalkPage()->getFullURL( '', '', $proto = PROTO_HTTPS ));
-			$userContributionsLink = MediawikiDiscordUtils::CreateMarkdownLink ("c", Title::newFromText("Special:Contributions/" . $user)->getFullURL( '', '', $proto = PROTO_HTTPS ));
+			$userPageLink = MediawikiDiscordUtils::CreateMarkdownLink ($user, "<" . $userUrl . ">");
+			$userTalkLink = MediawikiDiscordUtils::CreateMarkdownLink ("t", "<" . $user->getTalkPage()->getFullURL( '', '', $proto = PROTO_HTTPS ) . ">");
+			$userContributionsLink = MediawikiDiscordUtils::CreateMarkdownLink ("c", "<" . Title::newFromText("Special:Contributions/" . $user)->getFullURL( '', '', $proto = PROTO_HTTPS ) . ">");
 			$userBlockLink = MediawikiDiscordUtils::CreateMarkdownLink ("b", "<" . Title::newFromText("Special:Block/" . $user)->getFullURL( '', '', $proto = PROTO_HTTPS ) . ">"); // prevent embed - see #5
 
 			return sprintf("%s (%s|%s|%s)", $userPageLink, $userTalkLink, $userContributionsLink, $userBlockLink);
@@ -28,12 +28,12 @@ final class MediawikiDiscord
 			{
 					$revisionId = $wikiPage->getRevision()->getID();
 
-					$editLink = MediawikiDiscordUtils::CreateMarkdownLink ('e', $title->getFullUrl("action=edit", '', $proto = PROTO_HTTPS ));
-					$historyLink = MediawikiDiscordUtils::CreateMarkdownLink ('h', $title->getFullUrl("action=history", '', $proto = PROTO_HTTPS ));
+					$editLink = MediawikiDiscordUtils::CreateMarkdownLink ('e', "<" . $title->getFullUrl("action=edit", '', $proto = PROTO_HTTPS ) . ">");
+					$historyLink = MediawikiDiscordUtils::CreateMarkdownLink ('h', "<" . $title->getFullUrl("action=history", '', $proto = PROTO_HTTPS ) . ">");
 					
 					// need to use arrays here for the second parameter since mediawiki doesn't allow more than two query string parameters, but you can use arrays to specify more.
-					$diffLink = MediawikiDiscordUtils::CreateMarkdownLink (MediawikiDiscord::translate("diff"), $title->getFullUrl("diff=prev", array("oldid" => $revisionId), $proto = PROTO_HTTPS ));
-					$undoLink = MediawikiDiscordUtils::CreateMarkdownLink (MediawikiDiscord::translate("editundo"), $title->getFullUrl("action=edit", array("undoafter" => (int)($revisionId - 1), "undo" => $revisionId), $proto = PROTO_HTTPS ));
+					$diffLink = MediawikiDiscordUtils::CreateMarkdownLink (MediawikiDiscord::translate("diff"), "<" . $title->getFullUrl("diff=prev", array("oldid" => $revisionId), $proto = PROTO_HTTPS ) . ">");
+					$undoLink = MediawikiDiscordUtils::CreateMarkdownLink (MediawikiDiscord::translate("editundo"), "<" . $title->getFullUrl("action=edit", array("undoafter" => (int)($revisionId - 1), "undo" => $revisionId), $proto = PROTO_HTTPS ) . ">");
 
 					return sprintf("%s (%s|%s) (%s, %s)", $pageLink, $editLink, $historyLink, $diffLink, $undoLink);
 			}
@@ -45,12 +45,12 @@ final class MediawikiDiscord
 	
 	static function getTitleText ($title)
 	{
-		return MediawikiDiscordUtils::CreateMarkdownLink ($title, $title->getFullURL( '', '', $proto = PROTO_HTTPS ));
+		return MediawikiDiscordUtils::CreateMarkdownLink ($title, "<" . $title->getFullURL( '', '', $proto = PROTO_HTTPS ) . ">");
 	}
 	
 	static function getFileText ($file)
 	{
-		return MediawikiDiscordUtils::CreateMarkdownLink ($file->getName(), $file->getTitle()->getFullUrl( '', '', $proto = PROTO_HTTPS ));
+		return MediawikiDiscordUtils::CreateMarkdownLink ($file->getName(), "<" . $file->getTitle()->getFullUrl( '', '', $proto = PROTO_HTTPS ) . ">");
 	}
 	
 	static function translate ($key, ...$parameters) 

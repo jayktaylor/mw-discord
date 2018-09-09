@@ -384,6 +384,10 @@ final class DiscordNotification
 	{
 		global $wgDiscordWebhookUrl;
 		global $wgSitename;
+
+		if ( empty($wgDiscordWebhookUrl) ) {
+			return;
+		}
 		
 		$userName = $wgSitename;
 						

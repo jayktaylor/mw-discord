@@ -6,12 +6,12 @@ final class MediawikiDiscord
 	{
 			global $wgServer, $wgScriptPath;
 
-			$userUrl = $user->getUserPage()->getFullUrl();
+			$userUrl = $user->getUserPage()->getFullUrl( $proto = PROTO_HTTPS );
 
 			$userPageLink = MediawikiDiscordUtils::CreateMarkdownLink ($user, $userUrl);
-			$userTalkLink = MediawikiDiscordUtils::CreateMarkdownLink (strtolower(MediawikiDiscord::translate("talk")), $user->getTalkPage()->getFullURL());
-			$userContributionsLink = MediawikiDiscordUtils::CreateMarkdownLink (strtolower(MediawikiDiscord::translate("sp-deletedcontributions-contribs")), Title::newFromText("Special:Contributions/" . $user)->getFullURL());
-			$userBlockLink = MediawikiDiscordUtils::CreateMarkdownLink (strtolower(MediawikiDiscord::translate("blocklink")), "<" . Title::newFromText("Special:Block/" . $user)->getFullURL() . ">"); // prevent embed - see #5
+			$userTalkLink = MediawikiDiscordUtils::CreateMarkdownLink (strtolower(MediawikiDiscord::translate("talk")), $user->getTalkPage()->getFullURL( $proto = PROTO_HTTPS ));
+			$userContributionsLink = MediawikiDiscordUtils::CreateMarkdownLink (strtolower(MediawikiDiscord::translate("sp-deletedcontributions-contribs")), Title::newFromText("Special:Contributions/" . $user)->getFullURL( $proto = PROTO_HTTPS ));
+			$userBlockLink = MediawikiDiscordUtils::CreateMarkdownLink (strtolower(MediawikiDiscord::translate("blocklink")), "<" . Title::newFromText("Special:Block/" . $user)->getFullURL( $proto = PROTO_HTTPS ) . ">"); // prevent embed - see #5
 
 			return sprintf("%s (%s | %s | %s)", $userPageLink, $userTalkLink, $userContributionsLink, $userBlockLink);
 	}
@@ -20,20 +20,20 @@ final class MediawikiDiscord
 	{
 			$title = $wikiPage->getTitle();
 			
-			$pageUrl = $title->getFullURL();
+			$pageUrl = $title->getFullURL( $proto = PROTO_HTTPS );
 
-			$pageLink = MediawikiDiscordUtils::CreateMarkdownLink ($title->getFullText(), $pageUrl);
+			$pageLink = MediawikiDiscordUtils::CreateMarkdownLink ($title->getFullText( $proto = PROTO_HTTPS ), $pageUrl);
 
 			if ($links == true)
 			{
 					$revisionId = $wikiPage->getRevision()->getID();
 
-					$editLink = MediawikiDiscordUtils::CreateMarkdownLink (MediawikiDiscord::translate("tags-edit"), $title->getFullUrl("action=edit"));
-					$historyLink = MediawikiDiscordUtils::CreateMarkdownLink (MediawikiDiscord::translate("hist"), $title->getFullUrl("action=history"));
+					$editLink = MediawikiDiscordUtils::CreateMarkdownLink (MediawikiDiscord::translate("tags-edit"), $title->getFullUrl("action=edit", $proto = PROTO_HTTPS ));
+					$historyLink = MediawikiDiscordUtils::CreateMarkdownLink (MediawikiDiscord::translate("hist"), $title->getFullUrl("action=history", $proto = PROTO_HTTPS ));
 					
 					// need to use arrays here for the second parameter since mediawiki doesn't allow more than two query string parameters, but you can use arrays to specify more.
-					$diffLink = MediawikiDiscordUtils::CreateMarkdownLink (MediawikiDiscord::translate("diff"), $title->getFullUrl("diff=prev", array("oldid" => $revisionId)));
-					$undoLink = MediawikiDiscordUtils::CreateMarkdownLink (MediawikiDiscord::translate("editundo"), $title->getFullUrl("action=edit", array("undoafter" => (int)($revisionId - 1), "undo" => $revisionId)));
+					$diffLink = MediawikiDiscordUtils::CreateMarkdownLink (MediawikiDiscord::translate("diff"), $title->getFullUrl("diff=prev", array("oldid" => $revisionId), $proto = PROTO_HTTPS ));
+					$undoLink = MediawikiDiscordUtils::CreateMarkdownLink (MediawikiDiscord::translate("editundo"), $title->getFullUrl("action=edit", array("undoafter" => (int)($revisionId - 1), "undo" => $revisionId), $proto = PROTO_HTTPS ));
 
 					return sprintf("%s (%s | %s | %s | %s)", $pageLink, $editLink, $historyLink, $diffLink, $undoLink);
 			}
@@ -45,12 +45,12 @@ final class MediawikiDiscord
 	
 	static function getTitleText ($title)
 	{
-		return MediawikiDiscordUtils::CreateMarkdownLink ($title, $title->getFullURL());
+		return MediawikiDiscordUtils::CreateMarkdownLink ($title, $title->getFullURL( $proto = PROTO_HTTPS ));
 	}
 	
 	static function getFileText ($file)
 	{
-		return MediawikiDiscordUtils::CreateMarkdownLink ($file->getName(), $file->getTitle()->getFullUrl());
+		return MediawikiDiscordUtils::CreateMarkdownLink ($file->getName(), $file->getTitle()->getFullUrl( $proto = PROTO_HTTPS ));
 	}
 	
 	static function translate ($key, ...$parameters) 
@@ -255,7 +255,7 @@ final class MediawikiDiscordHooks
 		||  ($mimeType == "image/gif")
 		||  ($mimeType == "image/webp"))
 		{				
-			$imageUrl = MediawikiDiscordUtils::RemoveMultipleSlashes($image->getLocalFile()->getFullUrl());
+			$imageUrl = MediawikiDiscordUtils::RemoveMultipleSlashes($image->getLocalFile()->getFullUrl( $proto = PROTO_HTTPS ));
 			
 			$discordNotification->SetEmbedImage($imageUrl);
 		}

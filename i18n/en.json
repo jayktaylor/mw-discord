@@ -4,7 +4,7 @@
 	"onPageContentInsertComplete": "$1 created new page $2",
 	"onTitleMoveComplete": "$1 moved page $2 to $3",
 	"onArticleDeleteComplete": "$1 deleted page $2",
-	"onArticleUndelete": "Deleted page $1 restored",
+	"onArticleUndelete": "$1 restored page $1",
 	"onArticleProtectComplete": "$1 changed protection of page $2",
 	"onUploadComplete": "$1 uploaded file $2",
 	"onUploadComplete_NewVersion": "$1 uploaded new version of file $2",

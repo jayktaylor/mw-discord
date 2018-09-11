@@ -202,16 +202,18 @@ final class MediawikiDiscordHooks
 	
 	static function onArticleUndelete($title, $create, $comment)
 	{
+		global $wgUser;
+
 		if (MediawikiDiscord::isNotificationExcluded("onArticleUndelete")) 
 		{
 			return;
 		}
 		
-		$message = MediawikiDiscord::translate('onArticleUndelete', MediawikiDiscord::getTitleText($title));	
+		$message = MediawikiDiscord::translate('onArticleUndelete', MediawikiDiscord::getUserText($wgUser), MediawikiDiscord::getTitleText($title));	
 														
 		if (empty($comment) == false) 
 		{
-			$message .= sprintf(" `%s`", 
+			$message .= sprintf(": `%s`", 
 						$comment);
 		}
 		

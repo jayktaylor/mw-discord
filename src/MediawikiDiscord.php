@@ -79,30 +79,28 @@ final class MediawikiDiscordHooks
 {	
 	static function onPageContentSaveComplete ($wikiPage, $user, $content, $summary, $isMinor, $isWatch, $section, $flags, $revision, $status, $baseRevId)
 	{		
-		if (MediawikiDiscord::isNotificationExcluded("onPageContentSaveComplete")) 
-		{
+		if (MediawikiDiscord::isNotificationExcluded("onPageContentSaveComplete")) {
 			return;
 		}
 		
-		if ($status->value['new'] == true) //page is just created, there is no need to trigger second notification
-		{
+		if ($status->value['new'] == true) { // Page was just created, there is no need to trigger second notification
 			return;
 		}
-					
-		if ($isMinor) 
-		{
+
+		if ( !$revision || is_null( $status->getValue()['revision'] ) ) { // Edit was a null edit
+      return;
+    }
+
+		if ($isMinor)  {
 			$messageTranslationKey = "onPageContentSaveComplete_MinorEdit";
-		}
-		else
-		{
+		} else {
 			$messageTranslationKey = "onPageContentSaveComplete";
 		}
 							
 		$message = MediawikiDiscord::translate($messageTranslationKey, MediawikiDiscord::getUserText($user), 
 																	   MediawikiDiscord::getPageText($wikiPage));
 							
-		if (empty($summary) == false)
-		{
+		if (empty($summary) == false) {
 			$message .= sprintf(" `%s`", 
 						$summary);
 		}

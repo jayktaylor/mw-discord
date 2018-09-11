@@ -5,7 +5,8 @@
 		"[https://github.com/LewisTehMinerz Lewis Crichton]",
 		"[https://github.com/jaydenkieran Jayden Bailey]"
 	],
-	"url": "https://github.com/Szmyk/mediawiki-discord",
+	"url": "https://github.com/jaydenkieran/mediawiki-discord",
+	"description": "Sends messages to a Discord channel when certain events occur",
 	"license-name": "MIT",
 	"manifest_version": 1,
 	"config": {

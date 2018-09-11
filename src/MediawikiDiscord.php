@@ -351,7 +351,8 @@ final class MediawikiDiscordHooks
 
 		if (empty($block->mReason) == false) 
 		{
-			$message .= sprintf(": `%s`", 
+			$message .= sprintf(". %s: `%s`",
+						MediawikiDiscord::translate('reason'),
 						$block->mReason);
 		}
 		

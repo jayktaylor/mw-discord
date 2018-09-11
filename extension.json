@@ -11,7 +11,9 @@
 	"config": {
 		"DiscordWebhookUrl": "",
 		"DiscordNotificationsLanguage": "",
-		"DiscordExcludedNotifications": ""
+		"DiscordExcludedNotifications": "",
+		"DiscordShowBotEdits": false,
+		"DiscordShowNullEdits": false
 	},
 	"AutoloadClasses": {
 		"MediawikiDiscordHooks": "src/MediawikiDiscord.php",

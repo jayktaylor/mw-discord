@@ -36,3 +36,11 @@ This project was developed primarily for the purpose of assisting the SoulFire t
   - :x: excluding specific pages
   - :x: excluding specific namespaces
   - :x: excluding specific user roles
+
+## Configuration
+
+- `wgDiscordWebhookUrl` - str - URL of the Discord webhook
+- `wgDiscordShowBotEdits` - bool - Whether bot edits should be included - default: `false`
+- `wgDiscordShowNullEdits` - bool - Whether null edits should be included - default: `false`
+- `wgDiscordExcludedNotifications` - array - Array of hooks to exclude
+- `wgDiscordNotificationsLanguage` - str - Language code of i18n to use

@@ -78,7 +78,9 @@ final class MediawikiDiscord
 final class MediawikiDiscordHooks 
 {	
 	static function onPageContentSaveComplete ($wikiPage, $user, $content, $summary, $isMinor, $isWatch, $section, $flags, $revision, $status, $baseRevId)
-	{		
+	{
+		global $wgDiscordShowNullEdits, $wgDiscordShowBotEdits;
+
 		if (MediawikiDiscord::isNotificationExcluded("onPageContentSaveComplete")) {
 			return;
 		}
@@ -87,7 +89,11 @@ final class MediawikiDiscordHooks
 			return;
 		}
 
-		if ( !$revision || is_null( $status->getValue()['revision'] ) ) { // Edit was a null edit
+		if ( !$wgDiscordShowBotEdits && ( $user->isBot() ) ) { // Edit was from a bot
+			return;
+		}
+
+		if ( !$wgDiscordShowNullEdits && ( !$revision || is_null( $status->getValue()['revision'] ) ) ) { // Edit was a null edit
       return;
     }
 
@@ -110,12 +116,18 @@ final class MediawikiDiscordHooks
 	
 	static function onPageContentInsertComplete ($wikiPage, $user, $content, $summary, $isMinor, $isWatch, $section, $flags, $revision) 
 	{
+		global $wgDiscordShowBotEdits;
+
 		if (MediawikiDiscord::isNotificationExcluded("onPageContentInsertComplete")) 
 		{
 			return;
 		}
+
+		if ( !$wgDiscordShowBotEdits && ( $user->isBot() ) ) { // Edit was from a bot
+			return;
+		}
 		
-		if ($wikiPage->getTitle()->getNamespace() == NS_FILE) //the page is file, there is no need to trigger second notification of file's page creation
+		if ($wikiPage->getTitle()->getNamespace() == NS_FILE) // The page is file, there is no need to trigger second notification of file's page creation
 		{
 			return;
 		}
@@ -133,9 +145,15 @@ final class MediawikiDiscordHooks
 	}
 	
 	static function onTitleMoveComplete ($title, $newTitle, $user, $oldid, $newid, $reason, $revision) 
-	{		
+	{
+		global $wgDiscordShowBotEdits;
+
 		if (MediawikiDiscord::isNotificationExcluded("onTitleMoveComplete")) 
 		{
+			return;
+		}
+
+		if ( !$wgDiscordShowBotEdits && ( $user->isBot() ) ) { // Edit was from a bot
 			return;
 		}
 		
@@ -154,12 +172,18 @@ final class MediawikiDiscordHooks
 	
 	static function onArticleDeleteComplete($wikiPage, $user, $reason)
 	{
+		global $wgDiscordShowBotEdits;
+
 		if (MediawikiDiscord::isNotificationExcluded("onArticleDeleteComplete")) 
 		{
 			return;
 		}
+
+		if ( !$wgDiscordShowBotEdits && ( $user->isBot() ) ) { // Edit was from a bot
+			return;
+		}
 		
-		if ($wikiPage->getTitle()->getNamespace() == NS_FILE) //the page is file, there is no need to trigger second notification of file's page deletion
+		if ($wikiPage->getTitle()->getNamespace() == NS_FILE) // The page is file, there is no need to trigger second notification of file's page deletion
 		{
 			return;
 		}
@@ -196,8 +220,14 @@ final class MediawikiDiscordHooks
 	
 	static function onArticleProtectComplete ($wikiPage, $user, $protect, $reason) 
 	{
+		global $wgDiscordShowBotEdits;
+
 		if (MediawikiDiscord::isNotificationExcluded("onArticleProtectComplete")) 
 		{
+			return;
+		}
+
+		if ( !$wgDiscordShowBotEdits && ( $user->isBot() ) ) { // Edit was from a bot
 			return;
 		}
 		
@@ -218,12 +248,18 @@ final class MediawikiDiscordHooks
 	
 	static function onUploadComplete($image) 
 	{ 
+		global $wgDiscordShowBotEdits;
+
 		if (MediawikiDiscord::isNotificationExcluded("onUploadComplete")) 
 		{
 			return;
 		}
 		
-	    global $wgUser;
+			global $wgUser;
+
+		if ( !$wgDiscordShowBotEdits && ( $wgUser->isBot() ) ) { // Edit was from a bot
+			return;
+		}
 		
 		$isNewRevision = count($image->getLocalFile()->getHistory()) > 0;
 						
@@ -244,8 +280,14 @@ final class MediawikiDiscordHooks
 	
 	static function onFileDeleteComplete($file, $oldimage, $article, $user, $reason)
 	{
+		global $wgDiscordShowBotEdits;
+
 		if (MediawikiDiscord::isNotificationExcluded("onFileDeleteComplete")) 
 		{
+			return;
+		}
+
+		if ( !$wgDiscordShowBotEdits && ( $user->isBot() ) ) { // Edit was from a bot
 			return;
 		}
 		

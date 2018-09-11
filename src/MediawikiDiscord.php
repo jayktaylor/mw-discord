@@ -326,19 +326,19 @@ final class MediawikiDiscordHooks
 
 		if (($expires = strtotime($block->mExpiry))) 
 		{
-			$expiryMsg = sprintf(" `%s`", 
+			$expiryMsg = sprintf(" %s", 
 						date('d F Y H:i', $expires));
 		} 
 		else 
 		{
 			if ($block->mExpiry == "infinity") 
 			{
-				$expiryMsg = sprintf(" (`%s`)", 
+				$expiryMsg = sprintf(" %s", 
 							MediawikiDiscord::translate('infiniteblock'));	
 			}
 			else
 			{
-				$expiryMsg = sprintf(" (%s `%s`)", 
+				$expiryMsg = sprintf(" (%s %s)", 
 							MediawikiDiscord::translate('blocklist-expiry'), 
 							$block->mExpiry );
 			}			

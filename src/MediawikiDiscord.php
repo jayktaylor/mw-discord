@@ -367,28 +367,34 @@ final class MediawikiDiscordHooks
 	    (new DiscordNotification($message))->Send();	
 	}
 	
-	static function onUserRights($user, array $addedGroups, array $removedGroups)
+	static function onUserGroupsChanged($user, array $added, array $removed, $performer, $reason)
 	{
-		if (MediawikiDiscord::isNotificationExcluded("onUserRights")) 
+		if (MediawikiDiscord::isNotificationExcluded("onUserGroupsChanged")) 
 		{
 			return;
 		}
 		
-		$message = MediawikiDiscord::translate('onUserRights', MediawikiDiscord::getUserText($user));
+		$message = MediawikiDiscord::translate('onUserGroupsChanged', MediawikiDiscord::getUserText($performer), MediawikiDiscord::getUserText($user));
 		
-		if (count($addedGroups) > 0) 
+		if (count($added) > 0) 
 		{
-			$message .= sprintf(" %s: `%s`", 
+			$message .= sprintf(" %s: `%s`.", 
 						MediawikiDiscord::translate('added'), 
-						join(', ', $addedGroups));
+						join(', ', $added));
 		}		
 		
-		if (count($removedGroups) > 0) 
+		if (count($removed) > 0) 
 		{
-			$message .= sprintf(" %s: `%s`", 
+			$message .= sprintf(" %s: `%s`.", 
 						MediawikiDiscord::translate('removed'), 
-						join(', ', $removedGroups));
-		}	
+						join(', ', $removed));
+		}
+
+		if ($reason) {
+			$message .= sprintf(" %s: `%s`.", 
+						MediawikiDiscord::translate('reason'), 
+						$reason);
+		}
 	
 	    (new DiscordNotification($message))->Send();	
 	}

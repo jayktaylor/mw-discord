@@ -12,8 +12,9 @@
 	"onLocalUserCreated": "$1 registered",
 	"onBlockIpComplete": "$1 blocked user $2",
 	"onUnblockUserComplete": "$1 unblocked user $2",
-	"onUserRights": "Group memberships of user $1 have been changed.",
+	"onUserGroupsChanged": "$1 changed rights of user $1.",
 
 	"added": "Added",
-	"removed": "Removed"
+	"removed": "Removed",
+	"reason": "Reason"
 }

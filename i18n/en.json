@@ -10,7 +10,7 @@
 	"onUploadComplete_NewVersion": "$1 uploaded new version of file $2",
 	"onFileDeleteComplete": "$1 deleted file $2",
 	"onLocalUserCreated": "$1 registered",
-	"onBlockIpComplete": "$1 blocked user $2",
+	"onBlockIpComplete": "$1 blocked user $2 until $3",
 	"onUnblockUserComplete": "$1 unblocked user $2",
 	"onUserGroupsChanged": "$1 changed rights of user $1.",
 

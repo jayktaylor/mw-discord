@@ -323,34 +323,36 @@ final class MediawikiDiscordHooks
 		{
 			return;
 		}
-		
-		$message = MediawikiDiscord::translate('onBlockIpComplete', MediawikiDiscord::getUserText($user), 
-																	MediawikiDiscord::getUserText($block->getTarget()));
-																	
-		if (empty($block->mReason) == false) 
-		{
-			$message .= sprintf(" `%s`", 
-						$block->mReason);
-		}
-			
+
 		if (($expires = strtotime($block->mExpiry))) 
 		{
-			$message .= sprintf(" `%s`", 
-						date('Y-m-d H:i:s', $expires));
+			$expiryMsg = sprintf(" `%s`", 
+						date('d F Y H:i', $expires));
 		} 
 		else 
 		{
 			if ($block->mExpiry == "infinity") 
 			{
-				$message .= sprintf(" (`%s`)", 
+				$expiryMsg = sprintf(" (`%s`)", 
 							MediawikiDiscord::translate('infiniteblock'));	
 			}
 			else
 			{
-				$message .= sprintf(" (%s `%s`)", 
+				$expiryMsg = sprintf(" (%s `%s`)", 
 							MediawikiDiscord::translate('blocklist-expiry'), 
 							$block->mExpiry );
 			}			
+		}
+		
+		$message = MediawikiDiscord::translate('onBlockIpComplete', MediawikiDiscord::getUserText($user),
+																	MediawikiDiscord::getUserText($block->getTarget()),
+																	$expiryMsg
+																);
+
+		if (empty($block->mReason) == false) 
+		{
+			$message .= sprintf(": `%s`", 
+						$block->mReason);
 		}
 		
 	    (new DiscordNotification($message))->Send();	

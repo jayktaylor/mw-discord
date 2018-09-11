@@ -110,6 +110,12 @@ final class MediawikiDiscordHooks
 			$message .= sprintf(" `%s`", 
 						$summary);
 		}
+
+		$change = $revision->getRecentChange();
+		if (empty($change) == false) {
+			$message .= sprintf(" (%s)",
+				$change->getCharacterDifference());
+		}
 		
 	    (new DiscordNotification($message))->Send();		
 	}

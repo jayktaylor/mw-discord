@@ -12,7 +12,7 @@
 	"config": {
 		"DiscordWebhookUrl": "",
 		"DiscordNotificationsLanguage": "",
-		"DiscordExcludedNotifications": "",
+		"DiscordExcludedNotifications": [],
 		"DiscordShowBotEdits": false,
 		"DiscordShowNullEdits": false
 	},

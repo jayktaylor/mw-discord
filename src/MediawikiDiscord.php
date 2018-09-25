@@ -480,6 +480,7 @@ final class DiscordNotification
 			'http' => array
 			(				
 				'method'  => 'POST',
+				'header'  => "Content-Type: application/x-www-form-urlencoded\n",
 				'content' => json_encode($json)
 			)
 		);

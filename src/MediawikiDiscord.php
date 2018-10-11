@@ -111,11 +111,8 @@ final class MediawikiDiscordHooks
 						$summary);
 		}
 
-		$change = $revision->getRecentChange();
-		if (empty($change) == false) {
-			$message .= sprintf(" (%s)",
-				$change->getCharacterDifference());
-		}
+		$message .= sprintf(" (%+d)",
+			$wikiPage->getRevision()->getSize() - $wikiPage->getRevision()->getPrevious()->getSize());
 		
 	    (new DiscordNotification($message))->Send();		
 	}
@@ -146,6 +143,9 @@ final class MediawikiDiscordHooks
 			$message .= sprintf(" `%s`", 
 						$summary);
 		}
+
+		$message .= sprintf(" (%d)",
+			$wikiPage->getRevision()->getSize());
 																			  
 	    (new DiscordNotification($message))->Send();	
 	}

@@ -112,7 +112,7 @@ final class MediawikiDiscordHooks
 		}
 
 		$message .= sprintf(" (%+d)",
-			$wikiPage->getRevision()->getSize() - $wikiPage->getRevision()->getPrevious()->getSize());
+			$revision->getSize() - $revision->getPrevious()->getSize());
 		
 	    (new DiscordNotification($message))->Send();		
 	}
@@ -145,7 +145,7 @@ final class MediawikiDiscordHooks
 		}
 
 		$message .= sprintf(" (%d)",
-			$wikiPage->getRevision()->getSize());
+			$revision->getSize());
 																			  
 	    (new DiscordNotification($message))->Send();	
 	}

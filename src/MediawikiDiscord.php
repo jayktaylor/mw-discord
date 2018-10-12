@@ -110,12 +110,9 @@ final class MediawikiDiscordHooks
 			$message .= sprintf(" `%s`", 
 						$summary);
 		}
-		try {
-			$message .= sprintf(" (%+d)",
-				$revision->getSize() - $revision->getPrevious()->getSize());
-		} catch (Exception $e) {
-			// this code is broken so let exceptions slide for now
-		}
+
+		// $message .= sprintf(" (%+d)",
+		// 		$revision->getSize() - $revision->getPrevious()->getSize());
 		
 	    (new DiscordNotification($message))->Send();		
 	}
@@ -147,8 +144,8 @@ final class MediawikiDiscordHooks
 						$summary);
 		}
 
-		$message .= sprintf(" (%d)",
-			$revision->getSize());
+		// $message .= sprintf(" (%d)",
+		// 	$revision->getSize());
 																			  
 	    (new DiscordNotification($message))->Send();	
 	}

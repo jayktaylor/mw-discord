@@ -110,9 +110,12 @@ final class MediawikiDiscordHooks
 			$message .= sprintf(" `%s`", 
 						$summary);
 		}
-
-		$message .= sprintf(" (%+d)",
-			$revision->getSize() - $revision->getPrevious()->getSize());
+		try {
+			$message .= sprintf(" (%+d)",
+				$revision->getSize() - $revision->getPrevious()->getSize());
+		} catch (Exception $e) {
+			// this code is broken so let exceptions slide for now
+		}
 		
 	    (new DiscordNotification($message))->Send();		
 	}

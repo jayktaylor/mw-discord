@@ -151,4 +151,22 @@ class DiscordHooks {
 		DiscordUtils::handleDiscord($msg);
 		return true;
 	}
+
+	/**
+	 * Called when a user's rights are changed
+	 */
+	public static function onUserGroupsChanged( User $user, array $added, array $removed, $performer, $reason ) {
+		if ($performer === false) {
+			// Rights were changed by autopromotion, do nothing
+			return true;
+		}
+
+		$msg .= DiscordUtils::createUserLinks( $performer ) . ' changed rights of ';
+		$msg .= DiscordUtils::createUserLinks( $user );
+		$msg .= ( $reason ? (' `' . $reason . '` ' ) : ' ' );
+		$msg .= ( ( count($added) > 0 ) ? ('(added: ' . join(', ', $added) . ') ') : ' ');
+		$msg .= ( ( count($removed) > 0 ) ? ('(removed: ' . join(', ', $removed) . ')') : '');
+		DiscordUtils::handleDiscord($msg);
+		return true;
+	}
 }

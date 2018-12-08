@@ -29,6 +29,7 @@
 		"TitleMoveComplete": "DiscordHooks::onTitleMoveComplete",
 		"LocalUserCreated": "DiscordHooks::onLocalUserCreated",
 		"BlockIpComplete": "DiscordHooks::onBlockIpComplete",
-		"UnblockUserComplete": "DiscordHooks::onUnblockUserComplete"
+		"UnblockUserComplete": "DiscordHooks::onUnblockUserComplete",
+		"UserGroupsChanged": "DiscordHooks::onUserGroupsChanged"
 	}
 }

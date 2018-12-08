@@ -17,3 +17,5 @@ MediaWiki extension for sending notifications to a Discord webhook from MediaWik
 ## Hooks used
 - `PageContentSaveComplete` - New edits to pages and page creations
 - `ArticleDeleteComplete` - Page deletions
+- `ArticleUndelete` - Page restorations
+- `ArticleRevisionVisibilitySet` - Revision visibility changes

@@ -29,7 +29,7 @@ class DiscordHooks {
 
 		$msg .= DiscordUtils::createUserLinks( $user ) . ' edited ';
 		$msg .= DiscordUtils::createMarkdownLink( $wikiPage->getTitle(), $wikiPage->getTitle()->getFullUrl() );
-		$msg .= ($summary ? (' `' . $summary . '` ' ) : ' ' ) . DiscordUtils::createRevisionText( $revision );
+		$msg .= ( $summary ? (' `' . $summary . '` ' ) : ' ' ) . DiscordUtils::createRevisionText( $revision );
 		DiscordUtils::handleDiscord($msg);
 		return true;
 	}
@@ -47,7 +47,20 @@ class DiscordHooks {
 
 		$msg .= DiscordUtils::createUserLinks( $user ) . ' deleted ';
 		$msg .= DiscordUtils::createMarkdownLink( $article->getTitle(), $article->getTitle()->getFullUrl() );
-		$msg .= ($reason ? (' `' . $reason . '` ' ) : ' ' ) . "($archivedRevisionCount revisions deleted)";
+		$msg .= ( $reason ? (' `' . $reason . '` ' ) : ' ' ) . "($archivedRevisionCount revisions deleted)";
+		DiscordUtils::handleDiscord($msg);
+		return true;
+	}
+
+	/**
+	 * Called when a page's revisions are restored
+	 */
+	public static function onArticleUndelete( Title $title, $create, $comment, $oldPageId, $restoredPages ) {
+		global $wgUser;
+
+		$msg .= DiscordUtils::createUserLinks( $wgUser ) . ' restored ' . ($create ? ( '' ) : 'revisions for ' );
+		$msg .= DiscordUtils::createMarkdownLink( $title, $title->getFullUrl() );
+		$msg .= ( $comment ? (' `' . $comment . '`' ) : '' );
 		DiscordUtils::handleDiscord($msg);
 		return true;
 	}

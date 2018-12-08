@@ -1,40 +1,27 @@
 {
-	"name": "mediawiki-discord",
+	"name": "Discord",
 	"author": [
-		"[https://github.com/Szmyk Szymon Zak]", 
-		"[https://github.com/LewisTehMinerz Lewis Crichton]",
 		"[https://github.com/jaydenkieran Jayden Bailey]"
 	],
-	"url": "https://github.com/jaydenkieran/mediawiki-discord",
+	"url": "https://github.com/jaydenkieran/mw-discord",
 	"description": "Sends messages to a Discord channel when certain events occur",
 	"license-name": "MIT",
 	"manifest_version": 1,
 	"config": {
-		"DiscordWebhookUrl": "",
+		"DiscordWebhookURL": [],
 		"DiscordNotificationsLanguage": "",
 		"DiscordExcludedNotifications": [],
 		"DiscordShowBotEdits": false,
 		"DiscordShowNullEdits": false
 	},
 	"AutoloadClasses": {
-		"MediawikiDiscordHooks": "src/MediawikiDiscord.php",
-		"MediawikiDiscordUtils": "src/Utils.php"
+		"DiscordHooks": "src/DiscordHooks.php",
+		"DiscordUtils": "src/Utils.php"
 	},
 	"MessagesDirs": {
-		"mediawiki-discord": "i18n"
+		"mw-discord": "i18n"
 	},
 	"Hooks": {
-		"PageContentSaveComplete": 	 "MediawikiDiscordHooks::onPageContentSaveComplete",
-		"PageContentInsertComplete": "MediawikiDiscordHooks::onPageContentInsertComplete",
-		"TitleMoveComplete": 		 "MediawikiDiscordHooks::onTitleMoveComplete",
-		"ArticleDeleteComplete": 	 "MediawikiDiscordHooks::onArticleDeleteComplete",
-		"ArticleUndelete": 			 "MediawikiDiscordHooks::onArticleUndelete",
-		"ArticleProtectComplete": 	 "MediawikiDiscordHooks::onArticleProtectComplete",
-		"UploadComplete": 			 "MediawikiDiscordHooks::onUploadComplete",
-		"FileDeleteComplete": 		 "MediawikiDiscordHooks::onFileDeleteComplete",
-		"LocalUserCreated": 		 "MediawikiDiscordHooks::onLocalUserCreated",
-		"BlockIpComplete": 			 "MediawikiDiscordHooks::onBlockIpComplete",
-		"UnblockUserComplete": 		 "MediawikiDiscordHooks::onUnblockUserComplete",
-		"UserGroupsChanged": 				 "MediawikiDiscordHooks::onUserGroupsChanged"
+		"PageContentSaveComplete": 	 "DiscordHooks::onPageContentSaveComplete"
 	}
 }

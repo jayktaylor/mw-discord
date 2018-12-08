@@ -95,4 +95,23 @@ class DiscordHooks {
 		DiscordUtils::handleDiscord($msg);
 		return true;
 	}
+
+	/**
+	 * Called when a page is moved
+	 */
+	public static function onTitleMoveComplete( Title &$title, Title &$newTitle, User $user, $oldid, $newid, $reason, Revision $revision ) {
+		global $wgDiscordNoBots;
+
+		if ( $wgDiscordNoBots && $user->isBot() ) {
+			// Don't continue, this is a bot change
+			return true;
+		}
+
+		$msg .= DiscordUtils::createUserLinks( $user ) . ' moved ';
+		$msg .= DiscordUtils::createMarkdownLink( $title, $title->getFullUrl() ) . ' to ';
+		$msg .= DiscordUtils::createMarkdownLink( $newTitle, $newTitle->getFullUrl() );
+		$msg .= ( $reason ? (' `' . $reason . '` ' ) : ' ' ) . DiscordUtils::createRevisionText( $revision );;
+		DiscordUtils::handleDiscord($msg);
+		return true;
+	}
 }

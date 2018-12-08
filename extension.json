@@ -25,6 +25,7 @@
 		"ArticleDeleteComplete": "DiscordHooks::onArticleDeleteComplete",
 		"ArticleUndelete": "DiscordHooks::onArticleUndelete",
 		"ArticleRevisionVisibilitySet": "DiscordHooks::onArticleRevisionVisibilitySet",
-		"ArticleProtectComplete": "DiscordHooks::onArticleProtectComplete"
+		"ArticleProtectComplete": "DiscordHooks::onArticleProtectComplete",
+		"TitleMoveComplete": "DiscordHooks::onTitleMoveComplete"
 	}
 }

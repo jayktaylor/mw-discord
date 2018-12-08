@@ -9,7 +9,6 @@ MediaWiki extension for sending notifications to a Discord webhook from MediaWik
 - `$wgDiscordWebhookURL` - A string or array containing webhook URLs
 
 ### Optional
-
 - `$wgDiscordNoBots` - Do not send notifications that are triggered by a bot account - default: `true`
 - `$wgDiscordNoMinor` - Do not send notifications that are for minor edits - default: `false`
 - `$wgDiscordNoNull` - Do not send notifications for null edits - default: `true`
@@ -20,3 +19,4 @@ MediaWiki extension for sending notifications to a Discord webhook from MediaWik
 - `ArticleUndelete` - Page restorations
 - `ArticleRevisionVisibilitySet` - Revision visibility changes
 - `ArticleProtectComplete` - Page protections
+- `TitleMoveComplete` - Page moves

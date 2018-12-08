@@ -123,4 +123,32 @@ class DiscordHooks {
 		DiscordUtils::handleDiscord($msg);
 		return true;
 	}
+
+	/**
+	 * Called when a user is blocked
+	 */
+	public static function onBlockIpComplete( Block $block, User $user ) {
+		$expiry = $block->getExpiry();
+		if ($expires = strtotime($expiry)) {
+			$expiryMsg = sprintf('%s', date('d F Y H:i', $expires));
+		} else {
+			$expiryMsg = $expiry;
+		}
+
+		$msg .= DiscordUtils::createUserLinks( $user ) . ' blocked ';
+		$msg .= DiscordUtils::createUserLinks( $block->getTarget() );
+		$msg .= ( $block->mReason ? (' `' . $block->mReason . '` ' ) : ' ' ) . "($expiryMsg)";
+		DiscordUtils::handleDiscord($msg);
+		return true;
+	}
+
+	/**
+	 * Called when a user is unblocked
+	 */
+	public static function onUnblockUserComplete( Block $block, User $user ) {
+		$msg .= DiscordUtils::createUserLinks( $user ) . ' unblocked ';
+		$msg .= DiscordUtils::createUserLinks( $block->getTarget() );
+		DiscordUtils::handleDiscord($msg);
+		return true;
+	}
 }

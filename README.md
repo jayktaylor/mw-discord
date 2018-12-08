@@ -21,3 +21,5 @@ MediaWiki extension for sending notifications to a Discord webhook from MediaWik
 - `ArticleProtectComplete` - Page protections
 - `TitleMoveComplete` - Page moves
 - `LocalUserCreated` - User registrations
+- `BlockIpComplete` - User blocked
+- `UnblockUserComplete` - User unblocked

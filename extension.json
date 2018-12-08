@@ -28,5 +28,7 @@
 		"ArticleProtectComplete": "DiscordHooks::onArticleProtectComplete",
 		"TitleMoveComplete": "DiscordHooks::onTitleMoveComplete",
 		"LocalUserCreated": "DiscordHooks::onLocalUserCreated",
+		"BlockIpComplete": "DiscordHooks::onBlockIpComplete",
+		"UnblockUserComplete": "DiscordHooks::onUnblockUserComplete"
 	}
 }

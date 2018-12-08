@@ -9,10 +9,9 @@
 	"manifest_version": 1,
 	"config": {
 		"DiscordWebhookURL": [],
-		"DiscordNotificationsLanguage": "",
-		"DiscordExcludedNotifications": [],
-		"DiscordShowBotEdits": false,
-		"DiscordShowNullEdits": false
+		"DiscordNoBots": true,
+		"DiscordNoMinor": false,
+		"DiscordNoNull": true
 	},
 	"AutoloadClasses": {
 		"DiscordHooks": "src/DiscordHooks.php",
@@ -22,6 +21,7 @@
 		"mw-discord": "i18n"
 	},
 	"Hooks": {
-		"PageContentSaveComplete": 	 "DiscordHooks::onPageContentSaveComplete"
+		"PageContentSaveComplete": "DiscordHooks::onPageContentSaveComplete",
+		"ArticleDeleteComplete": "DiscordHooks::onArticleDeleteComplete"
 	}
 }

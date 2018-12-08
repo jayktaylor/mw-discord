@@ -57,17 +57,45 @@ class DiscordUtils {
 		return $result;
 	}
 
-	public static function CreateMarkdownLink ($text, $url) 
-	{
-		return "[" . $text . "]" . "(" . self::EncodeUrl($url) . ")";
-	} 
+	/**
+	 * Creates a formatted markdown link based on text and given URL
+	 */
+	public static function createMarkdownLink ($text, $url)  {
+		return "[" . $text . "]" . "(" . self::encodeURL($url) . ")";
+	}
+
+	/**
+	 * Creates links for a specific MediaWiki User object
+	 */
+	public static function createUserLinks ($user) {
+		$userPage = DiscordUtils::createMarkdownLink(	$user, $user->getUserPage()->getFullUrl() );
+		$userTalk = DiscordUtils::createMarkdownLink( 't', $user->getTalkPage()->getFullUrl() );
+		$userContribs = DiscordUtils::createMarkdownLink( 'c', Title::newFromText("Special:Contributions/" . $user)->getFullURL() );
+		return sprintf( "%s (%s|%s)", $userPage, $userTalk, $userContribs );
+	}
+
+	/**
+	 * Creates formatted text for a specific Revision object
+	 */
+	public static function createRevisionText ($revision) {
+		$previous = $revision->getPrevious();
+		$text = '(' . DiscordUtils::createMarkdownLink( 'diff', $revision->getTitle()->getFullUrl("diff=prev", ["oldid" => $revision->getID()]) ) . ') ';
+		if ($revision->isMinor()) {
+			$text .= '(m) ';
+		}
+		if ($previous) {
+			$text .= sprintf( "(%+d)", $revision->getSize() - $previous->getSize() );
+		}
+		return $text;
+	}
 	
-	public static function EncodeUrl($url)
-	{
+	/**
+	 * Strip bad characters from a URL
+	 */
+	public static function encodeURL($url) {
 		$url = str_replace(" ", "%20", $url);
 		$url = str_replace("(", "%28", $url);
 		$url = str_replace(")", "%29", $url);
-		
 		return $url;
 	}
 	

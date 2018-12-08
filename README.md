@@ -19,3 +19,4 @@ MediaWiki extension for sending notifications to a Discord webhook from MediaWik
 - `ArticleDeleteComplete` - Page deletions
 - `ArticleUndelete` - Page restorations
 - `ArticleRevisionVisibilitySet` - Revision visibility changes
+- `ArticleProtectComplete` - Page protections

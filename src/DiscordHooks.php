@@ -77,4 +77,22 @@ class DiscordHooks {
 		DiscordUtils::handleDiscord($msg);
 		return true;
 	}
+
+	/**
+	 * Called when a page is protected (or unprotected)
+	 */
+	public static function onArticleProtectComplete( &$article, &$user, $protect, $reason ) {
+		global $wgDiscordNoBots;
+
+		if ( $wgDiscordNoBots && $user->isBot() ) {
+			// Don't continue, this is a bot change
+			return true;
+		}
+
+		$msg .= DiscordUtils::createUserLinks( $user ) . ' changed protection of ';
+		$msg .= DiscordUtils::createMarkdownLink( $article->getTitle(), $article->getTitle()->getFullUrl() );
+		$msg .= ( $reason ? (' `' . $reason . '` ' ) : ' ' ) . "(" . (implode(", ", $protect)) . ")";
+		DiscordUtils::handleDiscord($msg);
+		return true;
+	}
 }

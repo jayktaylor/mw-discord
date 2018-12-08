@@ -24,6 +24,7 @@
 		"PageContentSaveComplete": "DiscordHooks::onPageContentSaveComplete",
 		"ArticleDeleteComplete": "DiscordHooks::onArticleDeleteComplete",
 		"ArticleUndelete": "DiscordHooks::onArticleUndelete",
-		"ArticleRevisionVisibilitySet": "DiscordHooks::onArticleRevisionVisibilitySet"
+		"ArticleRevisionVisibilitySet": "DiscordHooks::onArticleRevisionVisibilitySet",
+		"ArticleProtectComplete": "DiscordHooks::onArticleProtectComplete"
 	}
 }

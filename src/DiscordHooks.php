@@ -64,4 +64,17 @@ class DiscordHooks {
 		DiscordUtils::handleDiscord($msg);
 		return true;
 	}
+
+	/**
+	 * Called after committing revision visibility changes to the database
+	 */
+	public static function onArticleRevisionVisibilitySet( &$title, $ids, $visibilityChangeMap ) {
+		global $wgUser;
+
+		$msg .= DiscordUtils::createUserLinks( $wgUser ) . ' changed visibility of ';
+		$msg .= count($visibilityChangeMap) . ' revisions on ';
+		$msg .= DiscordUtils::createMarkdownLink( $title, $title->getFullUrl() );
+		DiscordUtils::handleDiscord($msg);
+		return true;
+	}
 }

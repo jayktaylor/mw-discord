@@ -20,3 +20,4 @@ MediaWiki extension for sending notifications to a Discord webhook from MediaWik
 - `ArticleRevisionVisibilitySet` - Revision visibility changes
 - `ArticleProtectComplete` - Page protections
 - `TitleMoveComplete` - Page moves
+- `LocalUserCreated` - User registrations

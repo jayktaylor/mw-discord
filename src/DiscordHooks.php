@@ -114,4 +114,13 @@ class DiscordHooks {
 		DiscordUtils::handleDiscord($msg);
 		return true;
 	}
+
+	/**
+	 * Called when a user is created
+	 */
+	public static function onLocalUserCreated( $user, $autocreated ) {
+		$msg .= DiscordUtils::createUserLinks( $user ) . ' registered';
+		DiscordUtils::handleDiscord($msg);
+		return true;
+	}
 }

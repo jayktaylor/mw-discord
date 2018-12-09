@@ -1,20 +1,3 @@
 {
-	"onPageContentSaveComplete": "$1 edited page $2",
-	"onPageContentSaveComplete_MinorEdit": "$1 made minor edit to page $2",
-	"onPageContentInsertComplete": "$1 created new page $2",
-	"onTitleMoveComplete": "$1 moved page $2 to $3",
-	"onArticleDeleteComplete": "$1 deleted page $2",
-	"onArticleUndelete": "$1 restored page $2",
-	"onArticleProtectComplete": "$1 changed protection of page $2",
-	"onUploadComplete": "$1 uploaded file $2",
-	"onUploadComplete_NewVersion": "$1 uploaded new version of file $2",
-	"onFileDeleteComplete": "$1 deleted file $2",
-	"onLocalUserCreated": "$1 registered",
-	"onBlockIpComplete": "$1 blocked user $2 until $3",
-	"onUnblockUserComplete": "$1 unblocked user $2",
-	"onUserGroupsChanged": "$1 changed rights of user $2.",
-
-	"added": "Added",
-	"removed": "Removed",
-	"reason": "Reason"
+	
 }

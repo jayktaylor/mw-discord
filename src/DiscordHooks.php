@@ -212,7 +212,7 @@ class DiscordHooks {
 	 */
 	public static function onFileUndeleteComplete( $title, $fileVersions, $user, $reason ) {
 		$msg .= DiscordUtils::createUserLinks( $user ) . ' restored some versions of file ';
-		$msg .= DiscordUtils::createMarkdownLink( $title->getName(), $title->getFullUrl() );
+		$msg .= DiscordUtils::createMarkdownLink( $title, $title->getFullUrl() );
 		$msg .= ( $reason ? (' `' . $reason . '` ' ) : ' ' );
 		DiscordUtils::handleDiscord($msg);
 		return true;

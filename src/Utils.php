@@ -2,17 +2,32 @@
 
 class DiscordUtils {
 	/**
-	 * Checks if a hook is disabled
+	 * Checks if criteria is met for this action to be cancelled
 	 */
-	public static function hookDisabled ( $hook ) {
-		global $wgDiscordDisabledHooks;
+	public static function isDisabled ( $hook, $ns ) {
+		global $wgDiscordDisabledHooks, $wgDiscordDisabledNS;
+
 		if ( is_array( $wgDiscordDisabledHooks ) ) {
-			// Following line is slightly more complex than the average in_array call to enable case insensitivity
-			return in_array(strtolower($hook), array_map('strtolower', $wgDiscordDisabledHooks));
+			if ( in_array( strtolower( $hook ), array_map( 'strtolower', $wgDiscordDisabledHooks ) ) ) {
+				// Hook is disabled, return true
+				return true;
+			}
 		} else {
 			wfDebugLog( 'discord', 'The value of $wgDiscordDisabledHooks is not valid and therefore all hooks are enabled.' );
-			return false;
 		}
+		if ( is_array( $wgDiscordDisabledNS ) ) {
+			if ( !is_null( $ns ) ) {
+				$ns = (int)$ns;
+				if ( in_array( $ns, $wgDiscordDisabledNS ) ) {
+					// Namespace is disabled, return true
+					return true;
+				}
+			}
+		} else {
+			wfDebugLog( 'discord', 'The value of $wgDiscordDisabledNS is not valid and therefore all namespaces are enabled.' );
+		}
+
+		return false;
 	}
 
 	/**

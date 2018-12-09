@@ -19,6 +19,7 @@ Multiple webhook URLs are supported and messages will be sent to all of them usi
 - `$wgDiscordNoNull` - Do not send notifications for [null edits](https://www.mediawiki.org/wiki/Manual:Purge#Null_edits) - default: `true`
 - `$wgDiscordSuppressPreviews` - Force previews for links in Discord messages to be suppressed - default: `true`
 - `$wgDiscordDisabledHooks` - Array containing list of hooks to disable sending webhooks for (see [below](#hooks-used)) - default: `[]`
+- `$wgDiscordDisabledNS` - Array containing list of namespaces indexes (ints) to disable sending webhooks for - default: `[]`
 
 ## Hooks used
 - `PageContentSaveComplete` - New edits to pages and page creations

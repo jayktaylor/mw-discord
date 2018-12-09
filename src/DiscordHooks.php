@@ -13,8 +13,7 @@ class DiscordHooks {
 	public static function onPageContentSaveComplete( &$wikiPage, &$user, $content, $summary, $isMinor, $isWatch, $section, &$flags, $revision, &$status, $baseRevId, $undidRevId ) {
 		global $wgDiscordNoBots, $wgDiscordNoMinor, $wgDiscordNoNull;
 
-		if ( DiscordUtils::hookDisabled( 'PageContentSaveComplete' ) ) {
-			// User has disabled hook, do nothing
+		if ( DiscordUtils::isDisabled( 'PageContentSaveComplete', $wikiPage->getTitle()->getNamespace() ) ) {
 			return true;
 		}
 
@@ -52,8 +51,7 @@ class DiscordHooks {
 	public static function onArticleDeleteComplete( &$article, User &$user, $reason, $id, $content, LogEntry $logEntry, $archivedRevisionCount ) {
 		global $wgDiscordNoBots, $wgDiscordNoMinor, $wgDiscordNoNull;
 
-		if ( DiscordUtils::hookDisabled( 'ArticleDeleteComplete' ) ) {
-			// User has disabled hook, do nothing
+		if ( DiscordUtils::isDisabled( 'ArticleDeleteComplete', $article->getTitle()->getNamespace() ) ) {
 			return true;
 		}
 
@@ -76,8 +74,7 @@ class DiscordHooks {
 	public static function onArticleUndelete( Title $title, $create, $comment, $oldPageId, $restoredPages ) {
 		global $wgUser;
 
-		if ( DiscordUtils::hookDisabled( 'ArticleUndelete' ) ) {
-			// User has disabled hook, do nothing
+		if ( DiscordUtils::isDisabled( 'ArticleUndelete', $title->getNamespace() ) ) {
 			return true;
 		}
 
@@ -95,8 +92,7 @@ class DiscordHooks {
 	public static function onArticleRevisionVisibilitySet( &$title, $ids, $visibilityChangeMap ) {
 		global $wgUser;
 
-		if ( DiscordUtils::hookDisabled( 'ArticleRevisionVisibilitySet' ) ) {
-			// User has disabled hook, do nothing
+		if ( DiscordUtils::isDisabled( 'ArticleRevisionVisibilitySet', $title->getNamespace() ) ) {
 			return true;
 		}
 
@@ -114,8 +110,7 @@ class DiscordHooks {
 	public static function onArticleProtectComplete( &$article, &$user, $protect, $reason ) {
 		global $wgDiscordNoBots;
 
-		if ( DiscordUtils::hookDisabled( 'ArticleProtectComplete' ) ) {
-			// User has disabled hook, do nothing
+		if ( DiscordUtils::isDisabled( 'ArticleProtectComplete', $article->getTitle()->getNamespace() ) ) {
 			return true;
 		}
 
@@ -138,8 +133,7 @@ class DiscordHooks {
 	public static function onTitleMoveComplete( Title &$title, Title &$newTitle, User $user, $oldid, $newid, $reason, Revision $revision ) {
 		global $wgDiscordNoBots;
 
-		if ( DiscordUtils::hookDisabled( 'TitleMoveComplete' ) ) {
-			// User has disabled hook, do nothing
+		if ( DiscordUtils::isDisabled( 'TitleMoveComplete', $title->getNamespace() ) ) {
 			return true;
 		}
 
@@ -161,8 +155,7 @@ class DiscordHooks {
 	 * @see https://www.mediawiki.org/wiki/Manual:Hooks/LocalUserCreated
 	 */
 	public static function onLocalUserCreated( $user, $autocreated ) {
-		if ( DiscordUtils::hookDisabled( 'LocalUserCreated' ) ) {
-			// User has disabled hook, do nothing
+		if ( DiscordUtils::isDisabled( 'LocalUserCreated', NULL ) ) {
 			return true;
 		}
 
@@ -176,8 +169,7 @@ class DiscordHooks {
 	 * @see https://www.mediawiki.org/wiki/Manual:Hooks/BlockIpComplete
 	 */
 	public static function onBlockIpComplete( Block $block, User $user ) {
-		if ( DiscordUtils::hookDisabled( 'BlockIpComplete' ) ) {
-			// User has disabled hook, do nothing
+		if ( DiscordUtils::isDisabled( 'BlockIpComplete', NULL ) ) {
 			return true;
 		}
 
@@ -200,8 +192,7 @@ class DiscordHooks {
 	 * @see https://www.mediawiki.org/wiki/Manual:Hooks/UnblockUserComplete
 	 */
 	public static function onUnblockUserComplete( Block $block, User $user ) {
-		if ( DiscordUtils::hookDisabled( 'UnblockUserComplete' ) ) {
-			// User has disabled hook, do nothing
+		if ( DiscordUtils::isDisabled( 'UnblockUserComplete', NULL ) ) {
 			return true;
 		}
 
@@ -216,8 +207,7 @@ class DiscordHooks {
 	 * @see https://www.mediawiki.org/wiki/Manual:Hooks/UserGroupsChanged
 	 */
 	public static function onUserGroupsChanged( User $user, array $added, array $removed, $performer, $reason ) {
-		if ( DiscordUtils::hookDisabled( 'UserGroupsChanged' ) ) {
-			// User has disabled hook, do nothing
+		if ( DiscordUtils::isDisabled( 'UserGroupsChanged', NULL ) ) {
 			return true;
 		}
 
@@ -240,8 +230,7 @@ class DiscordHooks {
 	 * @see https://www.mediawiki.org/wiki/Manual:Hooks/UploadComplete
 	 */
 	public static function onUploadComplete( &$image ) {
-		if ( DiscordUtils::hookDisabled( 'UploadComplete' ) ) {
-			// User has disabled hook, do nothing
+		if ( DiscordUtils::isDisabled( 'UploadComplete', NS_FILE ) ) {
 			return true;
 		}
 
@@ -262,8 +251,7 @@ class DiscordHooks {
 	 * @see https://www.mediawiki.org/wiki/Manual:Hooks/FileDeleteComplete
 	 */
 	public static function onFileDeleteComplete( $file, $oldimage, $article, $user, $reason ) {
-		if ( DiscordUtils::hookDisabled( 'FileDeleteComplete' ) ) {
-			// User has disabled hook, do nothing
+		if ( DiscordUtils::isDisabled( 'FileDeleteComplete', NS_FILE ) ) {
 			return true;
 		}
 
@@ -284,8 +272,7 @@ class DiscordHooks {
 	 * @see https://www.mediawiki.org/wiki/Manual:Hooks/FileUndeleteComplete
 	 */
 	public static function onFileUndeleteComplete( $title, $fileVersions, $user, $reason ) {
-		if ( DiscordUtils::hookDisabled( 'FileUndeleteComplete' ) ) {
-			// User has disabled hook, do nothing
+		if ( DiscordUtils::isDisabled( 'FileUndeleteComplete', NS_FILE ) ) {
 			return true;
 		}
 

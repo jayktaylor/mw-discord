@@ -13,7 +13,8 @@
 		"DiscordNoMinor": false,
 		"DiscordNoNull": true,
 		"DiscordSuppressPreviews": true,
-		"DiscordDisabledHooks": []
+		"DiscordDisabledHooks": [],
+		"DiscordDisabledNS": []
 	},
 	"AutoloadClasses": {
 		"DiscordHooks": "src/DiscordHooks.php",

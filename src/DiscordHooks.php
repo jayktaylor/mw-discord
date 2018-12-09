@@ -197,7 +197,7 @@ class DiscordHooks {
 		$msg .= DiscordUtils::createUserLinks( $user ) . ' uploaded ' . ( $isNewRevision ? 'new version of ' : '' );
 		$msg .= DiscordUtils::createMarkdownLink( $lf->getName(), $lf->getTitle()->getFullUrl( '', '', $proto = PROTO_HTTP ) );
 		$msg .= ( $comment ? (' `' . $comment . '` ' ) : ' ' );
-		$msg .= '(' . DiscordUtils::formatBytes($lf->getSize()) . ', ' . $lf->getWidth() . 'x' . $lf->getHeight() . ', ' . $lf->getMimeType() . ')';
+		$msg .= '(' . DiscordUtils::formatBytes($lf->getSize()) . ', ' . $lf->getHeight() . 'x' . $lf->getWidth() . ', ' . $lf->getMimeType() . ')';
 		DiscordUtils::handleDiscord($msg);
 		return true;
 	}

@@ -33,7 +33,7 @@ class DiscordHooks {
 		}
 
 		$msg .= DiscordUtils::createUserLinks( $user ) . ' edited ';
-		$msg .= DiscordUtils::createMarkdownLink( $wikiPage->getTitle(), $wikiPage->getTitle()->getFullUrl( $proto = PROTO_HTTP ) );
+		$msg .= DiscordUtils::createMarkdownLink( $wikiPage->getTitle(), $wikiPage->getTitle()->getFullUrl( '', '', $proto = PROTO_HTTP ) );
 		$msg .= ( $summary ? (' `' . $summary . '` ' ) : ' ' ) . DiscordUtils::createRevisionText( $revision );
 		DiscordUtils::handleDiscord($msg);
 		return true;
@@ -51,7 +51,7 @@ class DiscordHooks {
 		}
 
 		$msg .= DiscordUtils::createUserLinks( $user ) . ' deleted ';
-		$msg .= DiscordUtils::createMarkdownLink( $article->getTitle(), $article->getTitle()->getFullUrl( $proto = PROTO_HTTP ) );
+		$msg .= DiscordUtils::createMarkdownLink( $article->getTitle(), $article->getTitle()->getFullUrl( '', '', $proto = PROTO_HTTP ) );
 		$msg .= ( $reason ? (' `' . $reason . '` ' ) : ' ' ) . "($archivedRevisionCount revisions deleted)";
 		DiscordUtils::handleDiscord($msg);
 		return true;
@@ -64,7 +64,7 @@ class DiscordHooks {
 		global $wgUser;
 
 		$msg .= DiscordUtils::createUserLinks( $wgUser ) . ' restored ' . ($create ? ( '' ) : 'revisions for ' );
-		$msg .= DiscordUtils::createMarkdownLink( $title, $title->getFullUrl( $proto = PROTO_HTTP ) );
+		$msg .= DiscordUtils::createMarkdownLink( $title, $title->getFullUrl( '', '', $proto = PROTO_HTTP ) );
 		$msg .= ( $comment ? (' `' . $comment . '`' ) : '' );
 		DiscordUtils::handleDiscord($msg);
 		return true;
@@ -78,7 +78,7 @@ class DiscordHooks {
 
 		$msg .= DiscordUtils::createUserLinks( $wgUser ) . ' changed visibility of ';
 		$msg .= count($visibilityChangeMap) . ' revisions on ';
-		$msg .= DiscordUtils::createMarkdownLink( $title, $title->getFullUrl( $proto = PROTO_HTTP ) );
+		$msg .= DiscordUtils::createMarkdownLink( $title, $title->getFullUrl( '', '', $proto = PROTO_HTTP ) );
 		DiscordUtils::handleDiscord($msg);
 		return true;
 	}
@@ -95,7 +95,7 @@ class DiscordHooks {
 		}
 
 		$msg .= DiscordUtils::createUserLinks( $user ) . ' changed protection of ';
-		$msg .= DiscordUtils::createMarkdownLink( $article->getTitle(), $article->getTitle()->getFullUrl( $proto = PROTO_HTTP ) );
+		$msg .= DiscordUtils::createMarkdownLink( $article->getTitle(), $article->getTitle()->getFullUrl( '', '', $proto = PROTO_HTTP ) );
 		$msg .= ( $reason ? (' `' . $reason . '` ' ) : ' ' ) . "(" . (implode(", ", $protect)) . ")";
 		DiscordUtils::handleDiscord($msg);
 		return true;
@@ -113,8 +113,8 @@ class DiscordHooks {
 		}
 
 		$msg .= DiscordUtils::createUserLinks( $user ) . ' moved ';
-		$msg .= DiscordUtils::createMarkdownLink( $title, $title->getFullUrl( $proto = PROTO_HTTP ) ) . ' to ';
-		$msg .= DiscordUtils::createMarkdownLink( $newTitle, $newTitle->getFullUrl( $proto = PROTO_HTTP ) );
+		$msg .= DiscordUtils::createMarkdownLink( $title, $title->getFullUrl( '', '', $proto = PROTO_HTTP ) ) . ' to ';
+		$msg .= DiscordUtils::createMarkdownLink( $newTitle, $newTitle->getFullUrl( '', '', $proto = PROTO_HTTP ) );
 		$msg .= ( $reason ? (' `' . $reason . '` ' ) : ' ' ) . DiscordUtils::createRevisionText( $revision );
 		DiscordUtils::handleDiscord($msg);
 		return true;
@@ -184,7 +184,7 @@ class DiscordHooks {
 		$comment = $lf->getDescription();
 		$isNewRevision = count($lf->getHistory()) > 0;
 		$msg .= DiscordUtils::createUserLinks( $user ) . ' uploaded ' . ( $isNewRevision ? 'new version of ' : '' );
-		$msg .= DiscordUtils::createMarkdownLink( $lf->getName(), $lf->getTitle()->getFullUrl( $proto = PROTO_HTTP ) );
+		$msg .= DiscordUtils::createMarkdownLink( $lf->getName(), $lf->getTitle()->getFullUrl( '', '', $proto = PROTO_HTTP ) );
 		$msg .= ( $comment ? (' `' . $comment . '` ' ) : ' ' );
 		$msg .= '(' . DiscordUtils::formatBytes($lf->getSize()) . ', ' . $lf->getWidth() . 'x' . $lf->getHeight() . ', ' . $lf->getMimeType() . ')';
 		DiscordUtils::handleDiscord($msg);
@@ -201,7 +201,7 @@ class DiscordHooks {
 		}
 
 		$msg .= DiscordUtils::createUserLinks( $user ) . ' deleted a version of file ';
-		$msg .= DiscordUtils::createMarkdownLink( $file->getName(), $file->getTitle()->getFullUrl( $proto = PROTO_HTTP ) );
+		$msg .= DiscordUtils::createMarkdownLink( $file->getName(), $file->getTitle()->getFullUrl( '', '', $proto = PROTO_HTTP ) );
 		$msg .= ( $reason ? (' `' . $reason . '` ' ) : ' ' );
 		DiscordUtils::handleDiscord($msg);
 		return true;
@@ -212,7 +212,7 @@ class DiscordHooks {
 	 */
 	public static function onFileUndeleteComplete( $title, $fileVersions, $user, $reason ) {
 		$msg .= DiscordUtils::createUserLinks( $user ) . ' restored some versions of file ';
-		$msg .= DiscordUtils::createMarkdownLink( $title, $title->getFullUrl( $proto = PROTO_HTTP ) );
+		$msg .= DiscordUtils::createMarkdownLink( $title, $title->getFullUrl( '', '', $proto = PROTO_HTTP ) );
 		$msg .= ( $reason ? (' `' . $reason . '` ' ) : ' ' );
 		DiscordUtils::handleDiscord($msg);
 		return true;

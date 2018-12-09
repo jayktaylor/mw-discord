@@ -68,9 +68,9 @@ class DiscordUtils {
 	 * Creates links for a specific MediaWiki User object
 	 */
 	public static function createUserLinks ($user) {
-		$userPage = DiscordUtils::createMarkdownLink(	$user, $user->getUserPage()->getFullUrl( $proto = PROTO_HTTP ) );
-		$userTalk = DiscordUtils::createMarkdownLink( 't', $user->getTalkPage()->getFullUrl( $proto = PROTO_HTTP ) );
-		$userContribs = DiscordUtils::createMarkdownLink( 'c', Title::newFromText("Special:Contributions/" . $user)->getFullURL( $proto = PROTO_HTTP ) );
+		$userPage = DiscordUtils::createMarkdownLink(	$user, $user->getUserPage()->getFullUrl( '', '', $proto = PROTO_HTTP ) );
+		$userTalk = DiscordUtils::createMarkdownLink( 't', $user->getTalkPage()->getFullUrl( '', '', $proto = PROTO_HTTP ) );
+		$userContribs = DiscordUtils::createMarkdownLink( 'c', Title::newFromText("Special:Contributions/" . $user)->getFullURL( '', '', $proto = PROTO_HTTP ) );
 		return sprintf( "%s (%s|%s)", $userPage, $userTalk, $userContribs );
 	}
 

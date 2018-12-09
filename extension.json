@@ -30,6 +30,7 @@
 		"LocalUserCreated": "DiscordHooks::onLocalUserCreated",
 		"BlockIpComplete": "DiscordHooks::onBlockIpComplete",
 		"UnblockUserComplete": "DiscordHooks::onUnblockUserComplete",
-		"UserGroupsChanged": "DiscordHooks::onUserGroupsChanged"
+		"UserGroupsChanged": "DiscordHooks::onUserGroupsChanged",
+		"UploadComplete": "DiscordHooks::onUploadComplete"
 	}
 }

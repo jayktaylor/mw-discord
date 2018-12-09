@@ -24,3 +24,4 @@ MediaWiki extension for sending notifications to a Discord webhook from MediaWik
 - `BlockIpComplete` - User blocked
 - `UnblockUserComplete` - User unblocked
 - `UserGroupsChanged` - User rights changed
+- `UploadComplete` - File was uploaded

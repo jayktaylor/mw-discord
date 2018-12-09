@@ -27,6 +27,11 @@ class DiscordHooks {
 			return true;
 		}
 
+		if ( $wikiPage->getTitle()->inNamespace( NS_FILE ) ) {
+			// Don't continue, it's a file which onUploadComplete will handle instead
+			return true;
+		}
+
 		$msg .= DiscordUtils::createUserLinks( $user ) . ' edited ';
 		$msg .= DiscordUtils::createMarkdownLink( $wikiPage->getTitle(), $wikiPage->getTitle()->getFullUrl() );
 		$msg .= ( $summary ? (' `' . $summary . '` ' ) : ' ' ) . DiscordUtils::createRevisionText( $revision );
@@ -110,7 +115,7 @@ class DiscordHooks {
 		$msg .= DiscordUtils::createUserLinks( $user ) . ' moved ';
 		$msg .= DiscordUtils::createMarkdownLink( $title, $title->getFullUrl() ) . ' to ';
 		$msg .= DiscordUtils::createMarkdownLink( $newTitle, $newTitle->getFullUrl() );
-		$msg .= ( $reason ? (' `' . $reason . '` ' ) : ' ' ) . DiscordUtils::createRevisionText( $revision );;
+		$msg .= ( $reason ? (' `' . $reason . '` ' ) : ' ' ) . DiscordUtils::createRevisionText( $revision );
 		DiscordUtils::handleDiscord($msg);
 		return true;
 	}
@@ -166,6 +171,22 @@ class DiscordHooks {
 		$msg .= ( $reason ? (' `' . $reason . '` ' ) : ' ' );
 		$msg .= ( ( count($added) > 0 ) ? ('(added: ' . join(', ', $added) . ') ') : ' ');
 		$msg .= ( ( count($removed) > 0 ) ? ('(removed: ' . join(', ', $removed) . ')') : '');
+		DiscordUtils::handleDiscord($msg);
+		return true;
+	}
+
+	/**
+	 * Called when an update is complete
+	 */
+	public static function onUploadComplete( &$image ) {
+		$lf = $image->getLocalFile();
+		$user = $lf->getUser( $type = 'object' ); // only supported in MW 1.31+
+		$comment = $lf->getDescription();
+		$isNewRevision = count($lf->getHistory()) > 0;
+		$msg .= DiscordUtils::createUserLinks( $user ) . ' uploaded ' . ( $isNewRevision ? 'new version of ' : '' );
+		$msg .= DiscordUtils::createMarkdownLink( $lf->getName(), $lf->getTitle()->getFullUrl() );
+		$msg .= ( $comment ? (' `' . $comment . '` ' ) : ' ' );
+		$msg .= '(' . DiscordUtils::formatBytes($lf->getSize()) . ', ' . $lf->getWidth() . 'x' . $lf->getHeight() . ', ' . $lf->getMimeType() . ')';
 		DiscordUtils::handleDiscord($msg);
 		return true;
 	}

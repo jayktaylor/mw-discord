@@ -61,6 +61,7 @@ class DiscordHooks {
 
 	/**
 	 * Called when a page's revisions are restored
+	 * @see https://www.mediawiki.org/wiki/Manual:Hooks/ArticleUndelete
 	 */
 	public static function onArticleUndelete( Title $title, $create, $comment, $oldPageId, $restoredPages ) {
 		global $wgUser;

@@ -9,8 +9,6 @@ class DiscordUtils {
 			return false;
 		}
 
-		$json_data = [ 'content' => "$msg" ];
-		$json = json_encode($json_data);
 		$urls = [];
 
 		if ( is_array( $wgDiscordWebhookURL ) ) {
@@ -22,39 +20,44 @@ class DiscordUtils {
 			return false;
 		}
 
-		// Set up cURL multi handlers
-		$c_handlers = [];
-		$result = [];
-		$mh = curl_multi_init();
+		DeferredUpdates::addCallableUpdate( function() use ( $msg, $urls ) {
+			$json_data = [ 'content' => "$msg" ];
+			$json = json_encode($json_data);	
 
-		foreach ($urls as &$value) {
-			$c_handlers[$value] = curl_init( $value );
-			curl_setopt( $c_handlers[$value], CURLOPT_POST, 1 ); // Send as a POST request
-			curl_setopt( $c_handlers[$value], CURLOPT_POSTFIELDS, $json ); // Send the JSON in the POST request
-			curl_setopt( $c_handlers[$value], CURLOPT_FOLLOWLOCATION, 1 );
-			curl_setopt( $c_handlers[$value], CURLOPT_HEADER, 0 );
-			curl_setopt( $c_handlers[$value], CURLOPT_RETURNTRANSFER, 1 );
-			curl_setopt( $c_handlers[$value], CURLOPT_CONNECTTIMEOUT, 10 ); // Add a timeout for connecting to the site
-			curl_setopt( $c_handlers[$value], CURLOPT_TIMEOUT, 20 ); // Do not allow cURL to run for a long time
-			curl_setopt( $c_handlers[$value], CURLOPT_USERAGENT, 'mw-discord/1.0 (github.com/jaydenkieran)' ); // Add a unique user agent
-			curl_multi_add_handle( $mh, $c_handlers[$value] );
-			$response = curl_exec( $ch );
-		}
+			// Set up cURL multi handlers
+			$c_handlers = [];
+			$result = [];
+			$mh = curl_multi_init();
 
-		$running = null;
-		do {
-			curl_multi_exec($mh, $running);
-		} while ($running);
+			foreach ($urls as &$value) {
+				$c_handlers[$value] = curl_init( $value );
+				curl_setopt( $c_handlers[$value], CURLOPT_POST, 1 ); // Send as a POST request
+				curl_setopt( $c_handlers[$value], CURLOPT_POSTFIELDS, $json ); // Send the JSON in the POST request
+				curl_setopt( $c_handlers[$value], CURLOPT_FOLLOWLOCATION, 1 );
+				curl_setopt( $c_handlers[$value], CURLOPT_HEADER, 0 );
+				curl_setopt( $c_handlers[$value], CURLOPT_RETURNTRANSFER, 1 );
+				curl_setopt( $c_handlers[$value], CURLOPT_CONNECTTIMEOUT, 10 ); // Add a timeout for connecting to the site
+				curl_setopt( $c_handlers[$value], CURLOPT_TIMEOUT, 20 ); // Do not allow cURL to run for a long time
+				curl_setopt( $c_handlers[$value], CURLOPT_USERAGENT, 'mw-discord/1.0 (github.com/jaydenkieran)' ); // Add a unique user agent
+				curl_multi_add_handle( $mh, $c_handlers[$value] );
+				$response = curl_exec( $ch );
+			}
 
-		// Remove all handlers and then close the multi handler
-		foreach($c_handlers as $k => $ch) {
-			$result[$k] = curl_multi_getcontent($ch);
-			curl_multi_remove_handle($mh, $ch);
-		}
+			$running = null;
+			do {
+				curl_multi_exec($mh, $running);
+			} while ($running);
 
-		curl_multi_close($mh);
+			// Remove all handlers and then close the multi handler
+			foreach($c_handlers as $k => $ch) {
+				$result[$k] = curl_multi_getcontent($ch);
+				curl_multi_remove_handle($mh, $ch);
+			}
 
-		return $result;
+			curl_multi_close($mh);
+		} );
+
+		return true;
 	}
 
 	/**

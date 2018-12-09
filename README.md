@@ -3,6 +3,8 @@ MediaWiki extension for sending notifications to a Discord webhook from MediaWik
 
 Multiple webhook URLs are supported and messages will be sent to all of them using cURL, so your web server is required to have cURL installed (for most Linux distros, installing using `sudo apt install curl` should work).
 
+**Live demo**: https://runescape.wiki (https://discord.gg/runescapewiki)
+
 ## Requirements
 - **Discord webhook URL**: This can be obtained by editing a channel on a server with the correct permissions.
 - **MediaWiki 1.31+**

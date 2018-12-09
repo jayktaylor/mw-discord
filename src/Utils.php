@@ -78,13 +78,19 @@ class DiscordUtils {
 	 * Creates formatted text for a specific Revision object
 	 */
 	public static function createRevisionText ($revision) {
-		$previous = $revision->getPrevious();
 		$text = '(' . DiscordUtils::createMarkdownLink( 'diff', $revision->getTitle()->getFullUrl("diff=prev", ["oldid" => $revision->getID()], $proto = PROTO_HTTP) ) . ') ';
-		if ($revision->isMinor()) {
+		if ( $revision->isMinor() ) {
 			$text .= '(m) ';
 		}
-		if ($previous) {
+		$previous = $revision->getPrevious();
+		if ( $previous ) {
 			$text .= sprintf( "(%+d)", $revision->getSize() - $previous->getSize() );
+		} else if ( $revision->getParentId() ) {
+			// Try and get the parent revision based on the ID, if we can
+			$previous = Revision::newFromId( $revision->getParentId() );
+			if ($previous) {
+				$text .= sprintf( "(%+d)", $revision->getSize() - $previous->getSize() );
+			}
 		}
 		return $text;
 	}

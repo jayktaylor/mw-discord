@@ -83,16 +83,16 @@ class DiscordUtils {
 	public static function createRevisionText ($revision) {
 		$text = '(' . DiscordUtils::createMarkdownLink( 'diff', $revision->getTitle()->getFullUrl("diff=prev", ["oldid" => $revision->getID()], $proto = PROTO_HTTP) ) . ') ';
 		if ( $revision->isMinor() ) {
-			$text .= '(m)';
+			$text .= '(m) ';
 		}
 		$previous = $revision->getPrevious();
 		if ( $previous ) {
-			$text .= sprintf( " (%+d)", $revision->getSize() - $previous->getSize() );
+			$text .= sprintf( "(%+d)", $revision->getSize() - $previous->getSize() );
 		} else if ( $revision->getParentId() ) {
 			// Try and get the parent revision based on the ID, if we can
 			$previous = Revision::newFromId( $revision->getParentId() );
 			if ($previous) {
-				$text .= sprintf( " (%+d)", $revision->getSize() - $previous->getSize() );
+				$text .= sprintf( "(%+d)", $revision->getSize() - $previous->getSize() );
 			}
 		}
 		return $text;

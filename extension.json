@@ -31,6 +31,8 @@
 		"BlockIpComplete": "DiscordHooks::onBlockIpComplete",
 		"UnblockUserComplete": "DiscordHooks::onUnblockUserComplete",
 		"UserGroupsChanged": "DiscordHooks::onUserGroupsChanged",
-		"UploadComplete": "DiscordHooks::onUploadComplete"
+		"UploadComplete": "DiscordHooks::onUploadComplete",
+		"FileDeleteComplete": "DiscordHooks::onFileDeleteComplete",
+		"FileUndeleteComplete": "DiscordHooks::onFileUndeleteComplete"
 	}
 }

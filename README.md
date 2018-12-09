@@ -25,3 +25,5 @@ MediaWiki extension for sending notifications to a Discord webhook from MediaWik
 - `UnblockUserComplete` - User unblocked
 - `UserGroupsChanged` - User rights changed
 - `UploadComplete` - File was uploaded
+- `FileDeleteComplete` - File revision was deleted
+- `FileUndeleteComplete` - File revision was restored

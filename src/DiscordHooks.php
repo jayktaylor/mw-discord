@@ -176,7 +176,7 @@ class DiscordHooks {
 	}
 
 	/**
-	 * Called when an update is complete
+	 * Called when a file upload is complete
 	 */
 	public static function onUploadComplete( &$image ) {
 		$lf = $image->getLocalFile();
@@ -187,6 +187,33 @@ class DiscordHooks {
 		$msg .= DiscordUtils::createMarkdownLink( $lf->getName(), $lf->getTitle()->getFullUrl() );
 		$msg .= ( $comment ? (' `' . $comment . '` ' ) : ' ' );
 		$msg .= '(' . DiscordUtils::formatBytes($lf->getSize()) . ', ' . $lf->getWidth() . 'x' . $lf->getHeight() . ', ' . $lf->getMimeType() . ')';
+		DiscordUtils::handleDiscord($msg);
+		return true;
+	}
+
+	/**
+	 * Called when a file is deleted
+	 */
+	public static function onFileDeleteComplete( $file, $oldimage, $article, $user, $reason ) {
+		if ( $article ) {
+			// Entire page was deleted, onArticleDeleteComplete will handle this
+			return true;
+		}
+
+		$msg .= DiscordUtils::createUserLinks( $user ) . ' deleted a version of file ';
+		$msg .= DiscordUtils::createMarkdownLink( $file->getName(), $file->getTitle()->getFullUrl() );
+		$msg .= ( $reason ? (' `' . $reason . '` ' ) : ' ' );
+		DiscordUtils::handleDiscord($msg);
+		return true;
+	}
+
+	/**
+	 * Called when a file is deleted
+	 */
+	public static function onFileUndeleteComplete( $title, $fileVersions, $user, $reason ) {
+		$msg .= DiscordUtils::createUserLinks( $user ) . ' restored some versions of file ';
+		$msg .= DiscordUtils::createMarkdownLink( $title->getName(), $title->getFullUrl() );
+		$msg .= ( $reason ? (' `' . $reason . '` ' ) : ' ' );
 		DiscordUtils::handleDiscord($msg);
 		return true;
 	}

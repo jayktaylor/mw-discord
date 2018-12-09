@@ -61,7 +61,7 @@ class DiscordUtils {
 	 * Creates a formatted markdown link based on text and given URL
 	 */
 	public static function createMarkdownLink ($text, $url)  {
-		return "[" . $text . "]" . "(" . self::encodeURL($url) . ")";
+		return "[" . $text . "]" . "(<" . self::encodeURL($url) . ">)";
 	}
 
 	/**

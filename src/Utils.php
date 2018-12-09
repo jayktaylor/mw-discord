@@ -1,6 +1,23 @@
 <?php
 
 class DiscordUtils {
+	/**
+	 * Checks if a hook is disabled
+	 */
+	public static function hookDisabled ( $hook ) {
+		global $wgDiscordDisabledHooks;
+		if ( is_array( $wgDiscordDisabledHooks ) ) {
+			// Following line is slightly more complex than the average in_array call to enable case insensitivity
+			return in_array(strtolower($hook), array_map('strtolower', $wgDiscordDisabledHooks));
+		} else {
+			wfDebugLog( 'discord', 'The value of $wgDiscordDisabledHooks is not valid and therefore all hooks are enabled.' );
+			return false;
+		}
+	}
+
+	/**
+	 * Handles sending a webhook to Discord using cURL
+	 */
 	public static function handleDiscord ($msg) {
 		global $wgDiscordWebhookURL;
 

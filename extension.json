@@ -11,7 +11,8 @@
 		"DiscordWebhookURL": [],
 		"DiscordNoBots": true,
 		"DiscordNoMinor": false,
-		"DiscordNoNull": true
+		"DiscordNoNull": true,
+		"DiscordSuppressPreviews": true
 	},
 	"AutoloadClasses": {
 		"DiscordHooks": "src/DiscordHooks.php",

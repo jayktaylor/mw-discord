@@ -17,6 +17,7 @@ Multiple webhook URLs are supported and messages will be sent to all of them usi
 - `$wgDiscordNoBots` - Do not send notifications that are triggered by a [bot account](https://www.mediawiki.org/wiki/Manual:Bots) - default: `true`
 - `$wgDiscordNoMinor` - Do not send notifications that are for [minor edits](https://meta.wikimedia.org/wiki/Help:Minor_edit) - default: `false`
 - `$wgDiscordNoNull` - Do not send notifications for [null edits](https://www.mediawiki.org/wiki/Manual:Purge#Null_edits) - default: `true`
+- `$wgDiscordSuppressPreviews` - Force previews for links in Discord messages to be suppressed - default: `true`
 
 ## Hooks used
 - `PageContentSaveComplete` - New edits to pages and page creations

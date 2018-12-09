@@ -68,9 +68,9 @@ class DiscordUtils {
 	 * Creates links for a specific MediaWiki User object
 	 */
 	public static function createUserLinks ($user) {
-		$userPage = DiscordUtils::createMarkdownLink(	$user, $user->getUserPage()->getFullUrl() );
-		$userTalk = DiscordUtils::createMarkdownLink( 't', $user->getTalkPage()->getFullUrl() );
-		$userContribs = DiscordUtils::createMarkdownLink( 'c', Title::newFromText("Special:Contributions/" . $user)->getFullURL() );
+		$userPage = DiscordUtils::createMarkdownLink(	$user, $user->getUserPage()->getFullUrl( $proto = PROTO_HTTP ) );
+		$userTalk = DiscordUtils::createMarkdownLink( 't', $user->getTalkPage()->getFullUrl( $proto = PROTO_HTTP ) );
+		$userContribs = DiscordUtils::createMarkdownLink( 'c', Title::newFromText("Special:Contributions/" . $user)->getFullURL( $proto = PROTO_HTTP ) );
 		return sprintf( "%s (%s|%s)", $userPage, $userTalk, $userContribs );
 	}
 
@@ -79,7 +79,7 @@ class DiscordUtils {
 	 */
 	public static function createRevisionText ($revision) {
 		$previous = $revision->getPrevious();
-		$text = '(' . DiscordUtils::createMarkdownLink( 'diff', $revision->getTitle()->getFullUrl("diff=prev", ["oldid" => $revision->getID()]) ) . ') ';
+		$text = '(' . DiscordUtils::createMarkdownLink( 'diff', $revision->getTitle()->getFullUrl("diff=prev", ["oldid" => $revision->getID()], $proto = PROTO_HTTP) ) . ') ';
 		if ($revision->isMinor()) {
 			$text .= '(m) ';
 		}

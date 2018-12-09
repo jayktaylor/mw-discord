@@ -5,6 +5,10 @@ Multiple webhook URLs are supported and messages will be sent to all of them usi
 
 **Live demo**: https://runescape.wiki (https://discord.gg/runescapewiki)
 
+<p align="center">
+  <img src="https://i.imgur.com/tCehglJ.png" alt="Example"/>
+</p>
+
 ## Requirements
 - **Discord webhook URL**: This can be obtained by editing a channel on a server with the correct permissions.
 - **MediaWiki 1.31+**

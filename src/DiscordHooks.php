@@ -1,6 +1,6 @@
 <?php
 /**
- * Hooks for Discord extension
+ * Hooks for the Discord extension
  *
  * @file
  * @ingroup Extensions
@@ -8,6 +8,7 @@
 class DiscordHooks {
 	/**
 	 * Called when a page is created or edited
+	 * @see https://www.mediawiki.org/wiki/Manual:Hooks/PageContentSaveComplete
 	 */
 	public static function onPageContentSaveComplete( &$wikiPage, &$user, $content, $summary, $isMinor, $isWatch, $section, &$flags, $revision, &$status, $baseRevId, $undidRevId ) {
 		global $wgDiscordNoBots, $wgDiscordNoMinor, $wgDiscordNoNull;
@@ -41,6 +42,7 @@ class DiscordHooks {
 
 	/**
 	 * Called when a page is deleted
+	 * @see https://www.mediawiki.org/wiki/Manual:Hooks/ArticleDeleteComplete
 	 */
 	public static function onArticleDeleteComplete( &$article, User &$user, $reason, $id, $content, LogEntry $logEntry, $archivedRevisionCount ) {
 		global $wgDiscordNoBots, $wgDiscordNoMinor, $wgDiscordNoNull;
@@ -72,6 +74,7 @@ class DiscordHooks {
 
 	/**
 	 * Called after committing revision visibility changes to the database
+	 * @see https://www.mediawiki.org/wiki/Manual:Hooks/ArticleRevisionVisibilitySet
 	 */
 	public static function onArticleRevisionVisibilitySet( &$title, $ids, $visibilityChangeMap ) {
 		global $wgUser;
@@ -85,6 +88,7 @@ class DiscordHooks {
 
 	/**
 	 * Called when a page is protected (or unprotected)
+	 * @see https://www.mediawiki.org/wiki/Manual:Hooks/ArticleProtectComplete
 	 */
 	public static function onArticleProtectComplete( &$article, &$user, $protect, $reason ) {
 		global $wgDiscordNoBots;
@@ -103,6 +107,7 @@ class DiscordHooks {
 
 	/**
 	 * Called when a page is moved
+	 * @see https://www.mediawiki.org/wiki/Manual:Hooks/TitleMoveComplete
 	 */
 	public static function onTitleMoveComplete( Title &$title, Title &$newTitle, User $user, $oldid, $newid, $reason, Revision $revision ) {
 		global $wgDiscordNoBots;
@@ -122,6 +127,7 @@ class DiscordHooks {
 
 	/**
 	 * Called when a user is created
+	 * @see https://www.mediawiki.org/wiki/Manual:Hooks/LocalUserCreated
 	 */
 	public static function onLocalUserCreated( $user, $autocreated ) {
 		$msg .= DiscordUtils::createUserLinks( $user ) . ' registered';
@@ -131,6 +137,7 @@ class DiscordHooks {
 
 	/**
 	 * Called when a user is blocked
+	 * @see https://www.mediawiki.org/wiki/Manual:Hooks/BlockIpComplete
 	 */
 	public static function onBlockIpComplete( Block $block, User $user ) {
 		$expiry = $block->getExpiry();
@@ -149,6 +156,7 @@ class DiscordHooks {
 
 	/**
 	 * Called when a user is unblocked
+	 * @see https://www.mediawiki.org/wiki/Manual:Hooks/UnblockUserComplete
 	 */
 	public static function onUnblockUserComplete( Block $block, User $user ) {
 		$msg .= DiscordUtils::createUserLinks( $user ) . ' unblocked ';
@@ -159,6 +167,7 @@ class DiscordHooks {
 
 	/**
 	 * Called when a user's rights are changed
+	 * @see https://www.mediawiki.org/wiki/Manual:Hooks/UserGroupsChanged
 	 */
 	public static function onUserGroupsChanged( User $user, array $added, array $removed, $performer, $reason ) {
 		if ($performer === false) {
@@ -177,6 +186,7 @@ class DiscordHooks {
 
 	/**
 	 * Called when a file upload is complete
+	 * @see https://www.mediawiki.org/wiki/Manual:Hooks/UploadComplete
 	 */
 	public static function onUploadComplete( &$image ) {
 		$lf = $image->getLocalFile();
@@ -193,6 +203,7 @@ class DiscordHooks {
 
 	/**
 	 * Called when a file is deleted
+	 * @see https://www.mediawiki.org/wiki/Manual:Hooks/FileDeleteComplete
 	 */
 	public static function onFileDeleteComplete( $file, $oldimage, $article, $user, $reason ) {
 		if ( $article ) {
@@ -208,7 +219,8 @@ class DiscordHooks {
 	}
 
 	/**
-	 * Called when a file is deleted
+	 * Called when a file is restored
+	 * @see https://www.mediawiki.org/wiki/Manual:Hooks/FileUndeleteComplete
 	 */
 	public static function onFileUndeleteComplete( $title, $fileVersions, $user, $reason ) {
 		$msg .= DiscordUtils::createUserLinks( $user ) . ' restored some versions of file ';

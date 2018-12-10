@@ -18,7 +18,7 @@ Multiple webhook URLs are supported and messages will be sent to all of them usi
 This extension can be configured using the `LocalSettings.php` file in your MediaWiki installation.
 
 | Variable | Type | Description |
-| --- | --- | --- | --- |
+| --- | --- | --- |
 | `$wgDiscordWebhookURL` | string/array | Discord webhook URLs
 
 ### Optional

@@ -106,9 +106,10 @@ class DiscordUtils {
 	 */
 	public static function createUserLinks ($user) {
 		$userPage = DiscordUtils::createMarkdownLink(	$user, $user->getUserPage()->getFullUrl( '', '', $proto = PROTO_HTTP ) );
-		$userTalk = DiscordUtils::createMarkdownLink( 't', $user->getTalkPage()->getFullUrl( '', '', $proto = PROTO_HTTP ) );
-		$userContribs = DiscordUtils::createMarkdownLink( 'c', Title::newFromText("Special:Contributions/" . $user)->getFullURL( '', '', $proto = PROTO_HTTP ) );
-		return sprintf( "%s (%s|%s)", $userPage, $userTalk, $userContribs );
+		$userTalk = DiscordUtils::createMarkdownLink( wfMessage( 'discord-talk' )->text(), $user->getTalkPage()->getFullUrl( '', '', $proto = PROTO_HTTP ) );
+		$userContribs = DiscordUtils::createMarkdownLink( wfMessage( 'discord-contribs' )->text(), Title::newFromText("Special:Contributions/" . $user)->getFullURL( '', '', $proto = PROTO_HTTP ) );
+		$text = wfMessage( 'discord-userlinks', $userPage, $userTalk, $userContribs )->text();
+		return $text;
 	}
 
 	/**

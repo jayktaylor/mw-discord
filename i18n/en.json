@@ -1,7 +1,11 @@
 {
 	"discord-desc": "Sends messages to a Discord channel when certain events occur",
 	"discord-userlinks": "$1 ($2|$3)",
+	"discord-revisionlinks": "($1)$2$3",
 	"discord-talk": "t",
 	"discord-contribs": "c",
+	"discord-diff": "diff",
+	"discord-minor": " (m)",
+	"discord-size": " ($1)",
 	"discord-edit": "$1 edited $2 $3 $4"
 }

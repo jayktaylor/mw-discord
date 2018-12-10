@@ -116,20 +116,23 @@ class DiscordUtils {
 	 * Creates formatted text for a specific Revision object
 	 */
 	public static function createRevisionText ($revision) {
-		$text = '(' . DiscordUtils::createMarkdownLink( 'diff', $revision->getTitle()->getFullUrl("diff=prev", ["oldid" => $revision->getID()], $proto = PROTO_HTTP) ) . ') ';
+		$diff = DiscordUtils::createMarkdownLink( wfMessage( 'discord-diff' )->text(), $revision->getTitle()->getFullUrl("diff=prev", ["oldid" => $revision->getID()], $proto = PROTO_HTTP) );
+		$minor = '';
+		$size = '';
 		if ( $revision->isMinor() ) {
-			$text .= '(m) ';
+			$minor .= wfMessage( 'discord-minor' )->text();
 		}
 		$previous = $revision->getPrevious();
 		if ( $previous ) {
-			$text .= sprintf( "(%+d)", $revision->getSize() - $previous->getSize() );
+			$size .= wfMessage( 'discord-size', sprintf( "%+d", $revision->getSize() - $previous->getSize() ) )->text();
 		} else if ( $revision->getParentId() ) {
 			// Try and get the parent revision based on the ID, if we can
 			$previous = Revision::newFromId( $revision->getParentId() );
 			if ($previous) {
-				$text .= sprintf( "(%+d)", $revision->getSize() - $previous->getSize() );
+				$size .= wfMessage( 'discord-size', sprintf( "%+d", $revision->getSize() - $previous->getSize() ) )->text();
 			}
 		}
+		$text = wfMessage( 'discord-revisionlinks', $diff, $minor, $size )->text();
 		return $text;
 	}
 	

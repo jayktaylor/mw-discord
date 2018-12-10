@@ -1,7 +1,11 @@
 {
   "discord-desc": "The description used for the Discord extension",
-  "discord-userlinks": "Used for display of the user links. Parameters\n* $1 - User page link\n* $2 - Talk page link\n* $3 - Contributions page link",
+  "discord-userlinks": "Used for display of the user links. Parameters\n* $1 - User page link\n* $2 - discord-talk\n* $3 - discord-contribs",
+  "discord-revisionlinks": "Used for display of revision links. Parameters\n* $1 - discord-diff\n* $2 - discord-minor\n* $3 - discord-size",
   "discord-talk": "Used as the text for $2 in discord-userlinks",
   "discord-contribs": "Used as the text for $3 in discord-userlinks",
+	"discord-diff": "Used as the text for $1 in discord-revisionlinks",
+	"discord-minor": "Used as the text for $2 in discord-revisionlinks",
+	"discord-size": "Used as the text for $3 in discord-revisionlinks. Parameters\n* $1 - Calculated revision size diff",
   "discord-edit": "Message sent to Discord for when a page edit/creation is made. Parameters:\n* $1 - User text\n* $2 - Page text\n* $3 - Revision text\n* $4 - Summary (always surrounded in tildes)"
 }

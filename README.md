@@ -14,6 +14,20 @@ Multiple webhook URLs are supported and messages will be sent to all of them usi
 - **MediaWiki 1.31+**
 - **cURL**
 
+## Installation
+
+1. Clone this repository to your MediaWiki installation's `extensions` folder using `git clone https://github.com/jaydenkieran/mw-discord.git Discord`
+2. Modify your `LocalSettings.php` file and add:
+
+```php
+// Load the extension
+wfLoadExtension( 'Discord' );
+// Set the webhook URL(s) (string or array)
+$wgDiscordWebhookURL = [ '' ];
+```
+
+For further configuration variables, see [below](#configuration).
+
 ## Configuration
 This extension can be configured using the `LocalSettings.php` file in your MediaWiki installation.
 

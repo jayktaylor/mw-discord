@@ -37,9 +37,10 @@ class DiscordHooks {
 			return true;
 		}
 
-		$msg .= DiscordUtils::createUserLinks( $user ) . ' edited ';
-		$msg .= DiscordUtils::createMarkdownLink( $wikiPage->getTitle(), $wikiPage->getTitle()->getFullUrl( '', '', $proto = PROTO_HTTP ) );
-		$msg .= ' ' . DiscordUtils::createRevisionText( $revision ) . ( $summary ? (' `' . $summary . '` ' ) : '' );
+		$msg .= wfMessage( 'discord-edit', DiscordUtils::createUserLinks( $user ),
+			DiscordUtils::createMarkdownLink( $wikiPage->getTitle(), $wikiPage->getTitle()->getFullUrl( '', '', $proto = PROTO_HTTP ) ),
+			DiscordUtils::createRevisionText( $revision ),
+			( $summary ? ('`' . $summary . '`' ) : '' ) )->text();
 		DiscordUtils::handleDiscord($msg);
 		return true;
 	}

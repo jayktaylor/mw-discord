@@ -1,0 +1,4 @@
+{
+  "discord-desc": "The description used for the Discord extension",
+  "discord-edit": "Message sent to Discord for when a page edit/creation is made. Parameters:\n* $1 - User text\n* $2 - Page text\n* $3 - Revision text\n* $4 - Summary (always surrounded in tildes)"
+}

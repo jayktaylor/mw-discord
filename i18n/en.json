@@ -1,3 +1,4 @@
 {
-	
+	"discord-desc": "Sends messages to a Discord channel when certain events occur",
+	"discord-edit": "$1 edited $2 $3 $4"
 }

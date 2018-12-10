@@ -8,5 +8,5 @@
 	"discord-minor": " (m)",
 	"discord-size": " ($1)",
 	"discord-edit": "$1 edited $2 $3 $4",
-	"discord-articledelete": "$1 deleted $2 $3 ($4 revisions deleted)"
+	"discord-articledelete": "$1 deleted $2$3 ($4 revisions deleted)"
 }

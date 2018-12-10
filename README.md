@@ -28,6 +28,9 @@ $wgDiscordWebhookURL = [ '' ];
 
 For further configuration variables, see [below](#configuration).
 
+### Getting a webhook URL
+To get a webhook URL for use with this extension, open the Discord client and go to a server where you have the `Manage Webhooks` permission. Click the cog icon when hovering over a text channel, switch to the Webhooks tab on the left of the interface, and click 'Create webhook'. The webhook URL can then be copied from that interface.
+
 ## Configuration
 This extension can be configured using the `LocalSettings.php` file in your MediaWiki installation.
 

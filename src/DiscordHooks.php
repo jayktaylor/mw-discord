@@ -63,7 +63,7 @@ class DiscordHooks {
 
 		$msg = wfMessage( 'discord-articledelete', DiscordUtils::createUserLinks( $user ),
 			DiscordUtils::createMarkdownLink( $article->getTitle(), $article->getTitle()->getFullUrl( '', '', $proto = PROTO_HTTP ) ),
-			( $reason ? ('`' . $reason . '` ' ) : ' ' ),
+			( $reason ? ('`' . $reason . '`' ) : '' ),
 			$archivedRevisionCount)->text();
 		DiscordUtils::handleDiscord($msg);
 		return true;
@@ -80,9 +80,10 @@ class DiscordHooks {
 			return true;
 		}
 
-		$msg .= DiscordUtils::createUserLinks( $wgUser ) . ' restored ' . ($create ? ( '' ) : 'revisions for ' );
-		$msg .= DiscordUtils::createMarkdownLink( $title, $title->getFullUrl( '', '', $proto = PROTO_HTTP ) );
-		$msg .= ( $comment ? (' `' . $comment . '`' ) : '' );
+		$msg = wfMessage( 'discord-articleundelete', DiscordUtils::createUserLinks( $wgUser ),
+			($create ? '' : wfMessage( 'discord-undeleterev' )->text() ),
+			DiscordUtils::createMarkdownLink( $title, $title->getFullUrl( '', '', $proto = PROTO_HTTP ) ),
+			( $comment ? ('`' . $comment . '`' ) : '' ))->text();
 		DiscordUtils::handleDiscord($msg);
 		return true;
 	}
@@ -98,9 +99,9 @@ class DiscordHooks {
 			return true;
 		}
 
-		$msg .= DiscordUtils::createUserLinks( $wgUser ) . ' changed visibility of ';
-		$msg .= count($visibilityChangeMap) . ' revisions on ';
-		$msg .= DiscordUtils::createMarkdownLink( $title, $title->getFullUrl( '', '', $proto = PROTO_HTTP ) );
+		$msg = wfMessage( 'discord-revvisibility', DiscordUtils::createUserLinks( $wgUser ),
+			count($visibilityChangeMap),
+			DiscordUtils::createMarkdownLink( $title, $title->getFullUrl( '', '', $proto = PROTO_HTTP ) ) )->text();
 		DiscordUtils::handleDiscord($msg);
 		return true;
 	}
@@ -121,9 +122,10 @@ class DiscordHooks {
 			return true;
 		}
 
-		$msg .= DiscordUtils::createUserLinks( $user ) . ' changed protection of ';
-		$msg .= DiscordUtils::createMarkdownLink( $article->getTitle(), $article->getTitle()->getFullUrl( '', '', $proto = PROTO_HTTP ) );
-		$msg .= ( $reason ? (' `' . $reason . '` ' ) : ' ' ) . "(" . (implode(", ", $protect)) . ")";
+		$msg = wfMessage( 'discord-articleprotect', DiscordUtils::createUserLinks( $user ),
+			DiscordUtils::createMarkdownLink( $article->getTitle(), $article->getTitle()->getFullUrl( '', '', $proto = PROTO_HTTP ) ),
+			( $reason ? ('`' . $reason . '`' ) : '' ),
+			implode(", ", $protect) )->text();
 		DiscordUtils::handleDiscord($msg);
 		return true;
 	}
@@ -144,10 +146,11 @@ class DiscordHooks {
 			return true;
 		}
 
-		$msg .= DiscordUtils::createUserLinks( $user ) . ' moved ';
-		$msg .= DiscordUtils::createMarkdownLink( $title, $title->getFullUrl( '', '', $proto = PROTO_HTTP ) ) . ' to ';
-		$msg .= DiscordUtils::createMarkdownLink( $newTitle, $newTitle->getFullUrl( '', '', $proto = PROTO_HTTP ) );
-		$msg .= ( $reason ? (' `' . $reason . '` ' ) : ' ' ) . DiscordUtils::createRevisionText( $revision );
+		$msg = wfMessage( 'discord-titlemove', DiscordUtils::createUserLinks( $user ),
+			DiscordUtils::createMarkdownLink( $title, $title->getFullUrl( '', '', $proto = PROTO_HTTP ) ),
+			DiscordUtils::createMarkdownLink( $newTitle, $newTitle->getFullUrl( '', '', $proto = PROTO_HTTP ) ),
+			( $reason ? ('`' . $reason . '`' ) : '' ),
+			DiscordUtils::createRevisionText( $revision ) )->text();
 		DiscordUtils::handleDiscord($msg);
 		return true;
 	}
@@ -161,7 +164,7 @@ class DiscordHooks {
 			return true;
 		}
 
-		$msg .= DiscordUtils::createUserLinks( $user ) . ' registered';
+		$msg = wfMessage( 'discord-localusercreated', DiscordUtils::createUserLinks( $user ) )->text();
 		DiscordUtils::handleDiscord($msg);
 		return true;
 	}
@@ -177,14 +180,14 @@ class DiscordHooks {
 
 		$expiry = $block->getExpiry();
 		if ($expires = strtotime($expiry)) {
-			$expiryMsg = sprintf('%s', date('d F Y H:i', $expires));
+			$expiryMsg = sprintf('%s', date( wfMessage( 'discord-blocktimeformat' )->text(), $expires));
 		} else {
 			$expiryMsg = $expiry;
 		}
 
-		$msg .= DiscordUtils::createUserLinks( $user ) . ' blocked ';
-		$msg .= DiscordUtils::createUserLinks( $block->getTarget() );
-		$msg .= ( $block->mReason ? (' `' . $block->mReason . '` ' ) : ' ' ) . "($expiryMsg)";
+		$msg = wfMessage( 'discord-blockipcomplete', DiscordUtils::createUserLinks( $user ), DiscordUtils::createUserLinks( $block->getTarget() ),
+			( $block->mReason ? ('`' . $block->mReason . '`' ) : '' ),
+			$expiryMsg )->text();
 		DiscordUtils::handleDiscord($msg);
 		return true;
 	}
@@ -198,8 +201,7 @@ class DiscordHooks {
 			return true;
 		}
 
-		$msg .= DiscordUtils::createUserLinks( $user ) . ' unblocked ';
-		$msg .= DiscordUtils::createUserLinks( $block->getTarget() );
+		$msg = wfMessage( 'discord-unblockusercomplete', DiscordUtils::createUserLinks( $user ), DiscordUtils::createUserLinks( $block->getTarget() ) )->text();
 		DiscordUtils::handleDiscord($msg);
 		return true;
 	}
@@ -218,11 +220,11 @@ class DiscordHooks {
 			return true;
 		}
 
-		$msg .= DiscordUtils::createUserLinks( $performer ) . ' changed rights of ';
-		$msg .= DiscordUtils::createUserLinks( $user );
-		$msg .= ( $reason ? (' `' . $reason . '` ' ) : ' ' );
-		$msg .= ( ( count($added) > 0 ) ? ('(added: ' . join(', ', $added) . ') ') : ' ');
-		$msg .= ( ( count($removed) > 0 ) ? ('(removed: ' . join(', ', $removed) . ')') : '');
+		$msg = wfMessage( 'discord-usergroupschanged', DiscordUtils::createUserLinks( $performer ),
+			DiscordUtils::createUserLinks( $user ),
+			( $reason ? ('`' . $reason . '`' ) : '' ),
+			( ( count($added) > 0 ) ? ( '+ ' . join(', ', $added) ) : ''),
+			( ( count($removed) > 0 ) ? ( '- ' . join(', ', $removed) ) : '' ) )->text();
 		DiscordUtils::handleDiscord($msg);
 		return true;
 	}
@@ -240,10 +242,15 @@ class DiscordHooks {
 		$user = $lf->getUser( $type = 'object' ); // only supported in MW 1.31+
 		$comment = $lf->getDescription();
 		$isNewRevision = count($lf->getHistory()) > 0;
-		$msg .= DiscordUtils::createUserLinks( $user ) . ' uploaded ' . ( $isNewRevision ? 'new version of ' : '' );
-		$msg .= DiscordUtils::createMarkdownLink( $lf->getName(), $lf->getTitle()->getFullUrl( '', '', $proto = PROTO_HTTP ) );
-		$msg .= ( $comment ? (' `' . $comment . '` ' ) : ' ' );
-		$msg .= '(' . DiscordUtils::formatBytes($lf->getSize()) . ', ' . $lf->getHeight() . 'x' . $lf->getWidth() . ', ' . $lf->getMimeType() . ')';
+
+		$msg = wfMessage( 'discord-uploadcomplete', DiscordUtils::createUserLinks( $user ),
+			( $isNewRevision ? wfMessage( 'discord-uploadnewver' )->text() : '' ),
+			DiscordUtils::createMarkdownLink( $lf->getName(), $lf->getTitle()->getFullUrl( '', '', $proto = PROTO_HTTP ) ), 
+			( $comment ? ('`' . $comment . '`' ) : '' ),
+			DiscordUtils::formatBytes($lf->getSize()),
+			$lf->getWidth(),
+			$lf->getHeight(),
+			$lf->getMimeType() )->text();
 		DiscordUtils::handleDiscord($msg);
 		return true;
 	}
@@ -262,9 +269,9 @@ class DiscordHooks {
 			return true;
 		}
 
-		$msg .= DiscordUtils::createUserLinks( $user ) . ' deleted a version of file ';
-		$msg .= DiscordUtils::createMarkdownLink( $file->getName(), $file->getTitle()->getFullUrl( '', '', $proto = PROTO_HTTP ) );
-		$msg .= ( $reason ? (' `' . $reason . '` ' ) : ' ' );
+		$msg = wfMessage( 'discord-filedeletecomplete', DiscordUtils::createUserLinks( $user ),
+			DiscordUtils::createMarkdownLink( $file->getName(), $file->getTitle()->getFullUrl( '', '', $proto = PROTO_HTTP ) ),
+			( $reason ? ('`' . $reason . '`' ) : '' ) )->text();
 		DiscordUtils::handleDiscord($msg);
 		return true;
 	}
@@ -278,9 +285,9 @@ class DiscordHooks {
 			return true;
 		}
 
-		$msg .= DiscordUtils::createUserLinks( $user ) . ' restored some versions of file ';
-		$msg .= DiscordUtils::createMarkdownLink( $title, $title->getFullUrl( '', '', $proto = PROTO_HTTP ) );
-		$msg .= ( $reason ? (' `' . $reason . '` ' ) : ' ' );
+		$msg = wfMessage( 'discord-fileundeletecomplete', DiscordUtils::createUserLinks( $user ),
+			DiscordUtils::createMarkdownLink( $title, $title->getFullUrl( '', '', $proto = PROTO_HTTP ) ),
+			( $reason ? ('`' . $reason . '`' ) : '' ) )->text();
 		DiscordUtils::handleDiscord($msg);
 		return true;
 	}

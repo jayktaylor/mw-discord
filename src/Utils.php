@@ -52,8 +52,11 @@ class DiscordUtils {
 			return false;
 		}
 
-		DeferredUpdates::addCallableUpdate( function() use ( $msg, $urls ) {
-			$json_data = [ 'content' => "$msg" ];
+		// Strip whitespace to just one space
+		$stripped = preg_replace('/\s+/', ' ', $msg);
+
+		DeferredUpdates::addCallableUpdate( function() use ( $stripped, $urls ) {
+			$json_data = [ 'content' => "$stripped" ];
 			$json = json_encode($json_data);	
 
 			// Set up cURL multi handlers

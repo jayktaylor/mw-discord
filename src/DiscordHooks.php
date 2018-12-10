@@ -37,7 +37,7 @@ class DiscordHooks {
 			return true;
 		}
 
-		$msg .= wfMessage( 'discord-edit', DiscordUtils::createUserLinks( $user ),
+		$msg = wfMessage( 'discord-edit', DiscordUtils::createUserLinks( $user ),
 			DiscordUtils::createMarkdownLink( $wikiPage->getTitle(), $wikiPage->getTitle()->getFullUrl( '', '', $proto = PROTO_HTTP ) ),
 			DiscordUtils::createRevisionText( $revision ),
 			( $summary ? ('`' . $summary . '`' ) : '' ) )->text();
@@ -61,9 +61,10 @@ class DiscordHooks {
 			return true;
 		}
 
-		$msg .= DiscordUtils::createUserLinks( $user ) . ' deleted ';
-		$msg .= DiscordUtils::createMarkdownLink( $article->getTitle(), $article->getTitle()->getFullUrl( '', '', $proto = PROTO_HTTP ) );
-		$msg .= ( $reason ? (' `' . $reason . '` ' ) : ' ' ) . "($archivedRevisionCount revisions deleted)";
+		$msg = wfMessage( 'discord-articledelete', DiscordUtils::createUserLinks( $user ),
+			DiscordUtils::createMarkdownLink( $article->getTitle(), $article->getTitle()->getFullUrl( '', '', $proto = PROTO_HTTP ) ),
+			( $reason ? ('`' . $reason . '`' ) : '' ),
+			$archivedRevisionCount)->text();
 		DiscordUtils::handleDiscord($msg);
 		return true;
 	}

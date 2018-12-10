@@ -4,8 +4,9 @@
   "discord-revisionlinks": "Used for display of revision links. Parameters\n* $1 - discord-diff\n* $2 - discord-minor\n* $3 - discord-size",
   "discord-talk": "Used as the text for $2 in discord-userlinks",
   "discord-contribs": "Used as the text for $3 in discord-userlinks",
-	"discord-diff": "Used as the text for $1 in discord-revisionlinks",
-	"discord-minor": "Used as the text for $2 in discord-revisionlinks",
-	"discord-size": "Used as the text for $3 in discord-revisionlinks. Parameters\n* $1 - Calculated revision size diff",
-  "discord-edit": "Message sent to Discord for when a page edit/creation is made. Parameters:\n* $1 - User text\n* $2 - Page text\n* $3 - Revision text\n* $4 - Summary (always surrounded in tildes)"
+  "discord-diff": "Used as the text for $1 in discord-revisionlinks",
+  "discord-minor": "Used as the text for $2 in discord-revisionlinks",
+  "discord-size": "Used as the text for $3 in discord-revisionlinks. Parameters\n* $1 - Calculated revision size diff",
+  "discord-edit": "Message sent to Discord for when a page edit/creation is made. Parameters:\n* $1 - discord-userlinks\n* $2 - Page link\n* $3 - discord-revisionlinks\n* $4 - Summary (always surrounded in tildes)",
+  "discord-articledelete": "Message sent to Discord when a page is deleted. Parameters:\n* $1 - discord-userlinks\n* $2 - Page link\n* $3 - Reason (always surrounded in tildes)\n* $4 - Number of revisions deleted"
 }

@@ -40,5 +40,8 @@ Multiple webhook URLs are supported and messages will be sent to all of them usi
 - `FileDeleteComplete` - File revision was deleted
 - `FileUndeleteComplete` - File revision was restored
 
+## Translation
+This extension can be translated through the messages in the `ì18n` folder if you're a developer. As a wiki administrator, you may find it a better option to edit the messages on-site in the MediaWiki namespace.
+
 ## License
 This extension is licensed under the MIT License, [see here](LICENSE) for more information. This project is originally inspired by Szmyk's [mediawiki-discord](https://github.com/Szmyk/mediawiki-discord) project, but has been rewritten completely to be more suitable for my needs.

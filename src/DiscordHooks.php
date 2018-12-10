@@ -63,7 +63,7 @@ class DiscordHooks {
 
 		$msg = wfMessage( 'discord-articledelete', DiscordUtils::createUserLinks( $user ),
 			DiscordUtils::createMarkdownLink( $article->getTitle(), $article->getTitle()->getFullUrl( '', '', $proto = PROTO_HTTP ) ),
-			( $reason ? ('`' . $reason . '`' ) : ' ' ),
+			( $reason ? ('`' . $reason . '` ' ) : ' ' ),
 			$archivedRevisionCount)->text();
 		DiscordUtils::handleDiscord($msg);
 		return true;

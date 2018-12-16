@@ -4,7 +4,7 @@
 		"[https://github.com/jaydenkieran Jayden Bailey]"
 	],
 	"url": "https://github.com/jaydenkieran/mw-discord",
-	"version": "1.0",
+	"version": "1.0.1",
 	"descriptionmsg": "discord-desc",
 	"license-name": "MIT",
 	"manifest_version": 1,
@@ -14,6 +14,7 @@
 		"DiscordNoMinor": false,
 		"DiscordNoNull": true,
 		"DiscordSuppressPreviews": true,
+		"DiscordMaxChars": null,
 		"DiscordDisabledHooks": [],
 		"DiscordDisabledNS": []
 	},

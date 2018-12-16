@@ -162,7 +162,21 @@ class DiscordUtils {
     $bytes /= (1 << (10 * $pow)); 
 
     return round($bytes, $precision) . ' ' . $units[$pow]; 
-	} 
+	}
+
+	/**
+	 * Truncate text to maximum allowed characters
+	 */
+	public static function truncateText($text) {
+		global $wgDiscordMaxChars;
+		if ($wgDiscordMaxChars) {
+			if (strlen($text) > $wgDiscordMaxChars) {
+				$text = substr($text, 0, $wgDiscordMaxChars);
+				$text = $text.'...';
+			}
+		}
+		return $text;
+	}
 }
 
 ?>

@@ -4,7 +4,7 @@
 		"[https://github.com/jaydenkieran Jayden Bailey]"
 	],
 	"url": "https://github.com/jaydenkieran/mw-discord",
-	"version": "1.0.1",
+	"version": "1.0.2",
 	"descriptionmsg": "discord-desc",
 	"license-name": "MIT",
 	"manifest_version": 1,
@@ -16,7 +16,8 @@
 		"DiscordSuppressPreviews": true,
 		"DiscordMaxChars": null,
 		"DiscordDisabledHooks": [],
-		"DiscordDisabledNS": []
+		"DiscordDisabledNS": [],
+		"DiscordDisabledUsers": []
 	},
 	"AutoloadClasses": {
 		"DiscordHooks": "src/DiscordHooks.php",

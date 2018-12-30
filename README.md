@@ -48,6 +48,7 @@ This extension can be configured using the `LocalSettings.php` file in your Medi
 | `$wgDiscordMaxChars` | int | Maximum amount of characters for user-generated text (e.g summaries, reasons). Set to `null` to disable truncation | `null`
 | `$wgDiscordDisabledHooks` | array | List of hooks to disable sending webhooks for (see [below](#hooks-used)) | `[]`
 | `$wgDiscordDisabledNS` | array | List of namespaces to disable sending webhooks for | `[]`
+| `$wgDiscordDisabledUsers` | array | List of users whose performed actions shouldn't send webhooks | `[]`
 
 ## Hooks used
 - `PageContentSaveComplete` - New edits to pages and page creations

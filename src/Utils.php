@@ -4,8 +4,8 @@ class DiscordUtils {
 	/**
 	 * Checks if criteria is met for this action to be cancelled
 	 */
-	public static function isDisabled ( $hook, $ns ) {
-		global $wgDiscordDisabledHooks, $wgDiscordDisabledNS;
+	public static function isDisabled ( $hook, $ns, $user ) {
+		global $wgDiscordDisabledHooks, $wgDiscordDisabledNS, $wgDiscordDisabledUsers;
 
 		if ( is_array( $wgDiscordDisabledHooks ) ) {
 			if ( in_array( strtolower( $hook ), array_map( 'strtolower', $wgDiscordDisabledHooks ) ) ) {
@@ -25,6 +25,18 @@ class DiscordUtils {
 			}
 		} else {
 			wfDebugLog( 'discord', 'The value of $wgDiscordDisabledNS is not valid and therefore all namespaces are enabled.' );
+		}
+		if ( is_array( $wgDiscordDisabledUsers ) ) {
+			if ( !is_null( $user ) ) {
+				if ( $user instanceof User ) {
+					if ( in_array( $user->getName(), $wgDiscordDisabledUsers ) ) {
+						// User shouldn't trigger a message, return true
+						return true;
+					}
+				}
+			}
+		} else {
+			wfDebugLog( 'discord', 'The value of $wgDiscordDisabledUsers is not valid and therefore all users can trigger messages.' );
 		}
 
 		return false;

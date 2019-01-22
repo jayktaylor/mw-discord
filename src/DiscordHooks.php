@@ -32,8 +32,8 @@ class DiscordHooks {
 			return true;
 		}
 
-		if ( $wikiPage->getTitle()->inNamespace( NS_FILE ) ) {
-			// Don't continue, it's a file which onUploadComplete will handle instead
+		if ( $wikiPage->getTitle()->inNamespace( NS_FILE ) && is_null( $revision->getPrevious() ) ) {
+			// Don't continue, it's a new file which onUploadComplete will handle instead
 			return true;
 		}
 

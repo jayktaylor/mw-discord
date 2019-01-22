@@ -40,7 +40,7 @@ class DiscordHooks {
 		$msg = wfMessage( 'discord-edit', DiscordUtils::createUserLinks( $user ),
 			DiscordUtils::createMarkdownLink( $wikiPage->getTitle(), $wikiPage->getTitle()->getFullUrl( '', '', $proto = PROTO_HTTP ) ),
 			DiscordUtils::createRevisionText( $revision ),
-			( $summary ? ('`' . DiscordUtils::truncateText( $summary ) . '`' ) : '' ) )->text();
+			( $summary ? ('`' . DiscordUtils::truncateText( $summary ) . '`' ) : '' ) )->plain();
 		DiscordUtils::handleDiscord($msg);
 		return true;
 	}

@@ -1,0 +1,31 @@
+{
+	"@metadata": {
+		"authors": [
+			"Railfail536"
+		]
+	},
+	"discord-desc": "Wysyła wiadomości o dokonywanych akcjach na serwer Discord",
+	"discord-userlinks": "$1 ($2|$3)",
+	"discord-revisionlinks": "($1) $2 $3",
+	"discord-talk": "d",
+	"discord-contribs": "w",
+	"discord-diff": "różn.",
+	"discord-minor": "(m)",
+	"discord-size": "($1)",
+	"discord-edit": "$1 edytował $2 $3 $4",
+	"discord-articledelete": "$1 usunął $2 $3 ($4 wersje usunięte)",
+	"discord-undeleterev": "wersje",
+	"discord-articleundelete": "$1 odtworzył $2 $3 $4",
+	"discord-revvisibility": "$1 zmienił widoczność $2 wersji $3",
+	"discord-articleprotect": "$1 zmienił poziom zabezpoeczenia strony $2 $2 $3 ($4)",
+	"discord-titlemove": "$1 przeniósł $2 na $3 $4 $5",
+	"discord-localusercreated": "$1 założył konto",
+	"discord-blocktimeformat": "d F Y H:i",
+	"discord-blockipcomplete": "$1 zablokował $2 $3 ($4)",
+	"discord-unblockusercomplete": "$1 zdjął blokadę z $2",
+	"discord-usergroupschanged": "$1 zmienił uprawnienia użytkownika $2 $3 ($4) ($5)",
+	"discord-uploadnewver": "nową wersję",
+	"discord-uploadcomplete": "$1 przesłał $2 $3 $4 ($5, $6x$7, $8)",
+	"discord-filedeletecomplete": "$1 usunął wersję pliku $2 $3",
+	"discord-fileundeletecomplete": "$1 odtworzył wersje pliku $2 $3"
+}

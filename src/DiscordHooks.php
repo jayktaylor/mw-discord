@@ -37,7 +37,14 @@ class DiscordHooks {
 			return true;
 		}
 
-		$msg = wfMessage( 'discord-edit', DiscordUtils::createUserLinks( $user ),
+		$msgKey = 'discord-edit';
+
+		$isNew = $status->value['new'];
+		if ($isNew == 1) { // is a new page
+			$msgKey = 'discord-create';
+		}
+
+		$msg = wfMessage( $msgKey, DiscordUtils::createUserLinks( $user ),
 			DiscordUtils::createMarkdownLink( $wikiPage->getTitle(), $wikiPage->getTitle()->getFullUrl( '', '', $proto = PROTO_HTTP ) ),
 			DiscordUtils::createRevisionText( $revision ),
 			( $summary ? ('`' . DiscordUtils::truncateText( $summary ) . '`' ) : '' ) )->plain();

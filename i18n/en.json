@@ -8,6 +8,7 @@
 	"discord-minor": "(m)",
 	"discord-size": "($1)",
 	"discord-edit": "$1 edited $2 $3 $4",
+	"discord-create": "$1 created $2 $3 $4",
 	"discord-articledelete": "$1 deleted $2 $3 ($4 revisions deleted)",
 	"discord-undeleterev": "revisions for",
 	"discord-articleundelete": "$1 undeleted $2 $3 $4",

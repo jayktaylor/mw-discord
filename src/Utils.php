@@ -87,7 +87,6 @@ class DiscordUtils {
 				curl_setopt( $c_handlers[$value], CURLOPT_TIMEOUT, 20 ); // Do not allow cURL to run for a long time
 				curl_setopt( $c_handlers[$value], CURLOPT_USERAGENT, 'mw-discord/1.0 (github.com/jaydenkieran)' ); // Add a unique user agent
 				curl_multi_add_handle( $mh, $c_handlers[$value] );
-				$response = curl_exec( $ch );
 			}
 
 			$running = null;

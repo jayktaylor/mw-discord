@@ -57,7 +57,7 @@ class DiscordHooks {
 	 * @see https://www.mediawiki.org/wiki/Manual:Hooks/ArticleDeleteComplete
 	 */
 	public static function onArticleDeleteComplete( &$article, User &$user, $reason, $id, $content, LogEntry $logEntry, $archivedRevisionCount ) {
-		global $wgDiscordNoBots, $wgDiscordNoMinor, $wgDiscordNoNull;
+		global $wgDiscordNoBots;
 
 		if ( DiscordUtils::isDisabled( 'ArticleDeleteComplete', $article->getTitle()->getNamespace(), $user ) ) {
 			return true;
@@ -81,9 +81,14 @@ class DiscordHooks {
 	 * @see https://www.mediawiki.org/wiki/Manual:Hooks/ArticleUndelete
 	 */
 	public static function onArticleUndelete( Title $title, $create, $comment, $oldPageId, $restoredPages ) {
-		global $wgUser;
+		global $wgDiscordNoBots, $wgUser;
 
 		if ( DiscordUtils::isDisabled( 'ArticleUndelete', $title->getNamespace(), $wgUser ) ) {
+			return true;
+		}
+
+		if ( $wgDiscordNoBots && $wgUser->isBot() ) {
+			// Don't continue, this is a bot change
 			return true;
 		}
 
@@ -100,9 +105,14 @@ class DiscordHooks {
 	 * @see https://www.mediawiki.org/wiki/Manual:Hooks/ArticleRevisionVisibilitySet
 	 */
 	public static function onArticleRevisionVisibilitySet( &$title, $ids, $visibilityChangeMap ) {
-		global $wgUser;
+		global $wgDiscordNoBots, $wgUser;
 
 		if ( DiscordUtils::isDisabled( 'ArticleRevisionVisibilitySet', $title->getNamespace(), $wgUser ) ) {
+			return true;
+		}
+
+		if ( $wgDiscordNoBots && $wgUser->isBot() ) {
+			// Don't continue, this is a bot change
 			return true;
 		}
 
@@ -241,6 +251,13 @@ class DiscordHooks {
 	 * @see https://www.mediawiki.org/wiki/Manual:Hooks/UploadComplete
 	 */
 	public static function onUploadComplete( &$image ) {
+		global $wgDiscordNoBots, $wgUser;
+
+		if ( $wgDiscordNoBots && $wgUser->isBot() ) {
+			// Don't continue, this is a bot change
+			return true;
+		}
+
 		$lf = $image->getLocalFile();
 		$user = $lf->getUser( $type = 'object' ); // only supported in MW 1.31+
 
@@ -268,7 +285,14 @@ class DiscordHooks {
 	 * @see https://www.mediawiki.org/wiki/Manual:Hooks/FileDeleteComplete
 	 */
 	public static function onFileDeleteComplete( $file, $oldimage, $article, $user, $reason ) {
+		global $wgDiscordNoBots;
+
 		if ( DiscordUtils::isDisabled( 'FileDeleteComplete', NS_FILE, $user ) ) {
+			return true;
+		}
+
+		if ( $wgDiscordNoBots && $user->isBot() ) {
+			// Don't continue, this is a bot change
 			return true;
 		}
 
@@ -289,7 +313,14 @@ class DiscordHooks {
 	 * @see https://www.mediawiki.org/wiki/Manual:Hooks/FileUndeleteComplete
 	 */
 	public static function onFileUndeleteComplete( $title, $fileVersions, $user, $reason ) {
+		global $wgDiscordNoBots;
+
 		if ( DiscordUtils::isDisabled( 'FileUndeleteComplete', NS_FILE, $user ) ) {
+			return true;
+		}
+
+		if ( $wgDiscordNoBots && $user->isBot() ) {
+			// Don't continue, this is a bot change
 			return true;
 		}
 

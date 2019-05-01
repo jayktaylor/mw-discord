@@ -251,17 +251,17 @@ class DiscordHooks {
 	 * @see https://www.mediawiki.org/wiki/Manual:Hooks/UploadComplete
 	 */
 	public static function onUploadComplete( &$image ) {
-		global $wgDiscordNoBots, $wgUser;
-
-		if ( $wgDiscordNoBots && $wgUser->isBot() ) {
-			// Don't continue, this is a bot change
-			return true;
-		}
+		global $wgDiscordNoBots;
 
 		$lf = $image->getLocalFile();
 		$user = $lf->getUser( $type = 'object' ); // only supported in MW 1.31+
 
 		if ( DiscordUtils::isDisabled( 'UploadComplete', NS_FILE, $user ) ) {
+			return true;
+		}
+
+		if ( $wgDiscordNoBots && $user->isBot() ) {
+			// Don't continue, this is a bot change
 			return true;
 		}
 

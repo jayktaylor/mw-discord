@@ -152,6 +152,9 @@ class DiscordUtils {
 				$size .= wfMessage( 'discord-size', sprintf( "%+d", $revision->getSize() - $previous->getSize() ) )->text();
 			}
 		}
+		if ( $size == '' ) {
+			$size .= wfMessage( 'discord-size', sprintf( "%d", $revision->getSize() ) )->text();
+		}
 		$text = wfMessage( 'discord-revisionlinks', $diff, $minor, $size )->text();
 		return $text;
 	}

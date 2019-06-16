@@ -49,6 +49,7 @@ This extension can be configured using the `LocalSettings.php` file in your Medi
 | `$wgDiscordDisabledHooks` | array | List of hooks to disable sending webhooks for (see [below](#hooks-used)) | `[]`
 | `$wgDiscordDisabledNS` | array | List of namespaces to disable sending webhooks for | `[]`
 | `$wgDiscordDisabledUsers` | array | List of users whose performed actions shouldn't send webhooks | `[]`
+| `$wgDiscordPrependTimestamp` | bool | Prepend a timestamp (in UTC) to all sent messages. The format can be changed by editing the MediaWiki message `discord-timestampformat` | `false`
 
 ## Hooks used
 - `PageContentSaveComplete` - New edits to pages and page creations

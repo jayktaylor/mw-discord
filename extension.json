@@ -17,7 +17,8 @@
 		"DiscordMaxChars": null,
 		"DiscordDisabledHooks": [],
 		"DiscordDisabledNS": [],
-		"DiscordDisabledUsers": []
+		"DiscordDisabledUsers": [],
+		"DiscordPrependTimestamp": false
 	},
 	"AutoloadClasses": {
 		"DiscordHooks": "src/DiscordHooks.php",

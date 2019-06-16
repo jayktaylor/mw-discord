@@ -46,7 +46,7 @@ class DiscordUtils {
 	 * Handles sending a webhook to Discord using cURL
 	 */
 	public static function handleDiscord ($msg) {
-		global $wgDiscordWebhookURL;
+		global $wgDiscordWebhookURL, $wgDiscordPrependTimestamp;
 
 		if ( !$wgDiscordWebhookURL ) {
 			// There's nothing in here, so we won't do anything
@@ -66,6 +66,12 @@ class DiscordUtils {
 
 		// Strip whitespace to just one space
 		$stripped = preg_replace('/\s+/', ' ', $msg);
+
+		if ( $wgDiscordPrependTimestamp ) {
+			// Add timestamp
+			$dateString = gmdate( wfMessage( 'discord-timestampformat' )->text() );
+			$stripped = $dateString . ' ' . $stripped;
+		}
 
 		DeferredUpdates::addCallableUpdate( function() use ( $stripped, $urls ) {
 			$json_data = [ 'content' => "$stripped" ];

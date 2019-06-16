@@ -1,4 +1,9 @@
 {
+	"@metadata": {
+		"authors": [
+			"Jayden Bailey"
+		]
+	},
 	"discord-desc": "Sends messages to a Discord channel when certain events occur",
 	"discord-userlinks": "$1 ($2|$3)",
 	"discord-revisionlinks": "($1) $2 $3",
@@ -23,5 +28,6 @@
 	"discord-uploadnewver": "new version of",
 	"discord-uploadcomplete": "$1 uploaded $2 $3 $4 ($5, $6x$7, $8)",
 	"discord-filedeletecomplete": "$1 deleted a version of file $2 $3",
-	"discord-fileundeletecomplete": "$1 restored some versions of file $2 $3"
+	"discord-fileundeletecomplete": "$1 restored some versions of file $2 $3",
+	"discord-timestampformat": "**H:i e:**"
 }

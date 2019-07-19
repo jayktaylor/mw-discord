@@ -109,7 +109,7 @@ class DiscordUtils {
 					curl_setopt( $c_handlers[$value], CURLOPT_HEADER, 0 );
 					curl_setopt( $c_handlers[$value], CURLOPT_RETURNTRANSFER, 1 );
 					curl_setopt( $c_handlers[$value], CURLOPT_CONNECTTIMEOUT, 10 ); // Add a timeout for connecting to the site
-					curl_setopt( $c_handlers[$value], CURLOPT_TIMEOUT, 20 ); // Do not allow cURL to run for a long time
+					curl_setopt( $c_handlers[$value], CURLOPT_TIMEOUT, 10 ); // Do not allow cURL to run for a long time
 					curl_setopt( $c_handlers[$value], CURLOPT_USERAGENT, $user_agent ); // Add a unique user agent
 					curl_multi_add_handle( $mh, $c_handlers[$value] );
 				}

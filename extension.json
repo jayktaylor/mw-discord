@@ -18,7 +18,8 @@
 		"DiscordDisabledHooks": [],
 		"DiscordDisabledNS": [],
 		"DiscordDisabledUsers": [],
-		"DiscordPrependTimestamp": false
+		"DiscordPrependTimestamp": false,
+		"DiscordUseFileGetContents": false
 	},
 	"AutoloadClasses": {
 		"DiscordHooks": "src/DiscordHooks.php",

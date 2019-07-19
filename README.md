@@ -50,6 +50,7 @@ This extension can be configured using the `LocalSettings.php` file in your Medi
 | `$wgDiscordDisabledNS` | array | List of namespaces to disable sending webhooks for | `[]`
 | `$wgDiscordDisabledUsers` | array | List of users whose performed actions shouldn't send webhooks | `[]`
 | `$wgDiscordPrependTimestamp` | bool | Prepend a timestamp (in UTC) to all sent messages. The format can be changed by editing the MediaWiki message `discord-timestampformat` | `false`
+| `$wgDiscordUseFileGetContents` | bool | Use `file_get_contents` instead of cURL. Requires `allow_url_fopen` to be set to true in `php.ini`. Not recommended as cURL makes simultaneous calls instead. | `false`
 
 ## Hooks used
 - `PageContentSaveComplete` - New edits to pages and page creations

@@ -146,9 +146,12 @@ class DiscordUtils {
 	 */
 	public static function createUserLinks ($user) {
 		if ( $user instanceof User ) {
-			$userPage = DiscordUtils::createMarkdownLink(	$user, $user->getUserPage()->getFullUrl( '', '', $proto = PROTO_HTTP ) );
+			$isAnon = $user->isAnon();
+			$contribs = Title::newFromText("Special:Contributions/" . $user);
+
+			$userPage = DiscordUtils::createMarkdownLink(	$user, ( $isAnon ? $contribs : $user->getUserPage() )->getFullUrl( '', '', $proto = PROTO_HTTP ) );
 			$userTalk = DiscordUtils::createMarkdownLink( wfMessage( 'discord-talk' )->text(), $user->getTalkPage()->getFullUrl( '', '', $proto = PROTO_HTTP ) );
-			$userContribs = DiscordUtils::createMarkdownLink( wfMessage( 'discord-contribs' )->text(), Title::newFromText("Special:Contributions/" . $user)->getFullURL( '', '', $proto = PROTO_HTTP ) );
+			$userContribs = DiscordUtils::createMarkdownLink( wfMessage( 'discord-contribs' )->text(), $contribs->getFullURL( '', '', $proto = PROTO_HTTP ) );
 			$text = wfMessage( 'discord-userlinks', $userPage, $userTalk, $userContribs )->text();	
 		} else {
 			// If it's a string, which can be likely (for example when range blocking a user)

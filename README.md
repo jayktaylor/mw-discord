@@ -1,7 +1,7 @@
 # Discord (mw-discord)
 MediaWiki extension for sending notifications to a Discord webhook from MediaWiki. When a certain event occurs on your MediaWiki wiki, including new edits, they can be sent as a message to a channel on a Discord server using a webhook.
 
-Multiple webhook URLs are supported and messages will be sent to all of them using cURL, so your web server is required to have cURL installed (for most Linux distros, installing using `sudo apt install curl` should work).
+Multiple webhook URLs are supported and messages will be sent to all of them.
 
 **Live demo**: https://runescape.wiki (https://discord.gg/runescapewiki)
 
@@ -12,7 +12,9 @@ Multiple webhook URLs are supported and messages will be sent to all of them usi
 ## Requirements
 - **Discord webhook URL**: This can be obtained by editing a channel on a server with the correct permissions.
 - **MediaWiki 1.31+**
-- **cURL**
+
+### Recommended
+- **cURL**: By default, this extension sends requests using cURL. If you don't have cURL, you could try setting `$wgDiscordUseFileGetContents` to `true` instead, but this is not recommended.
 
 ## Installation
 

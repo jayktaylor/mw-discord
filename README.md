@@ -68,6 +68,7 @@ This extension can be configured using the `LocalSettings.php` file in your Medi
 - `UploadComplete` - File was uploaded
 - `FileDeleteComplete` - File revision was deleted
 - `FileUndeleteComplete` - File revision was restored
+- `AfterImportPage` - Page was imported
 
 ## Translation
 This extension can be translated through the messages in the `ì18n` folder if you're a developer. As a wiki administrator, you may find it a better option to edit the messages on-site in the MediaWiki namespace.

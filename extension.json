@@ -4,7 +4,7 @@
 		"[https://github.com/jaydenkieran Jayden Bailey]"
 	],
 	"url": "https://github.com/jaydenkieran/mw-discord",
-	"version": "1.0.7",
+	"version": "1.0.8",
 	"descriptionmsg": "discord-desc",
 	"license-name": "MIT",
 	"manifest_version": 1,
@@ -41,6 +41,7 @@
 		"UserGroupsChanged": "DiscordHooks::onUserGroupsChanged",
 		"UploadComplete": "DiscordHooks::onUploadComplete",
 		"FileDeleteComplete": "DiscordHooks::onFileDeleteComplete",
-		"FileUndeleteComplete": "DiscordHooks::onFileUndeleteComplete"
+		"FileUndeleteComplete": "DiscordHooks::onFileUndeleteComplete",
+		"AfterImportPage": "DiscordHooks::onAfterImportPage"
 	}
 }

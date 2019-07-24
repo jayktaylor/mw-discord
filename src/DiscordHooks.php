@@ -330,4 +330,27 @@ class DiscordHooks {
 		DiscordUtils::handleDiscord($msg);
 		return true;
 	}
+
+	/**
+	 * Called when a page is imported
+	 * @see https://www.mediawiki.org/wiki/Manual:Hooks/AfterImportPage
+	 */
+	public static function onAfterImportPage( $title, $origTitle, $revCount, $sRevCount, $pageInfo ) {
+		global $wgDiscordNoBots, $wgUser;
+
+		if ( DiscordUtils::isDisabled( 'AfterImportPage', $title->getNamespace(), $wgUser ) ) {
+			return true;
+		}
+
+		if ( $wgDiscordNoBots && $wgUser->isBot() ) {
+			// Don't continue, this is a bot
+			return true;
+		}
+
+		$msg = wfMessage( 'discord-afterimportpage', DiscordUtils::createUserLinks( $wgUser ),
+			DiscordUtils::createMarkdownLink( $title, $title->getFullUrl( '', '', $proto = PROTO_HTTP ) ),
+			$revCount, $sRevCount)->plain();
+		DiscordUtils::handleDiscord($msg);
+		return true;
+	}
 }

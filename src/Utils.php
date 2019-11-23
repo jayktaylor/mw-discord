@@ -125,6 +125,7 @@ class DiscordUtils {
 				// Remove all handlers and then close the multi handler
 				foreach($c_handlers as $k => $ch) {
 					$result[$k] = curl_multi_getcontent($ch);
+					wfDebugLog( 'discord', 'Result of cURL was: ' . $result[$k] );
 					curl_multi_remove_handle($mh, $ch);
 				}
 	

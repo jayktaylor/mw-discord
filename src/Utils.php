@@ -73,7 +73,7 @@ class DiscordUtils {
 			$stripped = $dateString . ' ' . $stripped;
 		}
 
-		DeferredUpdates::addCallableUpdate( function() use ( $stripped, $urls ) {
+		DeferredUpdates::addCallableUpdate( function() use ( $stripped, $urls, $wgDiscordUseFileGetContents ) {
 			$user_agent = 'mw-discord/1.0 (github.com/jaydenkieran)';
 			$json_data = [ 'content' => "$stripped" ];
 			$json = json_encode($json_data);	

@@ -111,6 +111,9 @@ class DiscordUtils {
 					curl_setopt( $c_handlers[$value], CURLOPT_CONNECTTIMEOUT, 10 ); // Add a timeout for connecting to the site
 					curl_setopt( $c_handlers[$value], CURLOPT_TIMEOUT, 10 ); // Do not allow cURL to run for a long time
 					curl_setopt( $c_handlers[$value], CURLOPT_USERAGENT, $user_agent ); // Add a unique user agent
+					curl_setopt( $c_handlers[$value], CURLOPT_HTTPHEADER, array(
+						'Content-Type: application/json'
+					));
 					curl_multi_add_handle( $mh, $c_handlers[$value] );
 				}
 	

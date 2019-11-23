@@ -81,18 +81,20 @@ class DiscordHooks {
 	 * @see https://www.mediawiki.org/wiki/Manual:Hooks/ArticleUndelete
 	 */
 	public static function onArticleUndelete( Title $title, $create, $comment, $oldPageId, $restoredPages ) {
-		global $wgDiscordNoBots, $wgUser;
+		global $wgDiscordNoBots;
 
-		if ( DiscordUtils::isDisabled( 'ArticleUndelete', $title->getNamespace(), $wgUser ) ) {
+		$user = RequestContext::getMain()->getUser();
+
+		if ( DiscordUtils::isDisabled( 'ArticleUndelete', $title->getNamespace(), $user ) ) {
 			return true;
 		}
 
-		if ( $wgDiscordNoBots && $wgUser->isBot() ) {
+		if ( $wgDiscordNoBots && $user->isBot() ) {
 			// Don't continue, this is a bot change
 			return true;
 		}
 
-		$msg = wfMessage( 'discord-articleundelete', DiscordUtils::createUserLinks( $wgUser ),
+		$msg = wfMessage( 'discord-articleundelete', DiscordUtils::createUserLinks( $user ),
 			($create ? '' : wfMessage( 'discord-undeleterev' )->text() ),
 			DiscordUtils::createMarkdownLink( $title, $title->getFullUrl( '', '', $proto = PROTO_HTTP ) ),
 			( $comment ? ('`' . DiscordUtils::truncateText( $comment ) . '`' ) : '' ))->plain();
@@ -105,18 +107,20 @@ class DiscordHooks {
 	 * @see https://www.mediawiki.org/wiki/Manual:Hooks/ArticleRevisionVisibilitySet
 	 */
 	public static function onArticleRevisionVisibilitySet( &$title, $ids, $visibilityChangeMap ) {
-		global $wgDiscordNoBots, $wgUser;
+		global $wgDiscordNoBots;
 
-		if ( DiscordUtils::isDisabled( 'ArticleRevisionVisibilitySet', $title->getNamespace(), $wgUser ) ) {
+		$user = RequestContext::getMain()->getUser();
+
+		if ( DiscordUtils::isDisabled( 'ArticleRevisionVisibilitySet', $title->getNamespace(), $user ) ) {
 			return true;
 		}
 
-		if ( $wgDiscordNoBots && $wgUser->isBot() ) {
+		if ( $wgDiscordNoBots && $user->isBot() ) {
 			// Don't continue, this is a bot change
 			return true;
 		}
 
-		$msg = wfMessage( 'discord-revvisibility', DiscordUtils::createUserLinks( $wgUser ),
+		$msg = wfMessage( 'discord-revvisibility', DiscordUtils::createUserLinks( $user ),
 			count($visibilityChangeMap),
 			DiscordUtils::createMarkdownLink( $title, $title->getFullUrl( '', '', $proto = PROTO_HTTP ) ) )->plain();
 		DiscordUtils::handleDiscord($msg);
@@ -336,18 +340,20 @@ class DiscordHooks {
 	 * @see https://www.mediawiki.org/wiki/Manual:Hooks/AfterImportPage
 	 */
 	public static function onAfterImportPage( $title, $origTitle, $revCount, $sRevCount, $pageInfo ) {
-		global $wgDiscordNoBots, $wgUser;
+		global $wgDiscordNoBots;
 
-		if ( DiscordUtils::isDisabled( 'AfterImportPage', $title->getNamespace(), $wgUser ) ) {
+		$user = RequestContext::getMain()->getUser();
+
+		if ( DiscordUtils::isDisabled( 'AfterImportPage', $title->getNamespace(), $user ) ) {
 			return true;
 		}
 
-		if ( $wgDiscordNoBots && $wgUser->isBot() ) {
+		if ( $wgDiscordNoBots && $user->isBot() ) {
 			// Don't continue, this is a bot
 			return true;
 		}
 
-		$msg = wfMessage( 'discord-afterimportpage', DiscordUtils::createUserLinks( $wgUser ),
+		$msg = wfMessage( 'discord-afterimportpage', DiscordUtils::createUserLinks( $user ),
 			DiscordUtils::createMarkdownLink( $title, $title->getFullUrl( '', '', $proto = PROTO_HTTP ) ),
 			$revCount, $sRevCount)->plain();
 		DiscordUtils::handleDiscord($msg);

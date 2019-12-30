@@ -6,6 +6,7 @@
 	},
 	"discord-desc": "Wysyła wiadomości o dokonywanych akcjach na serwer Discord",
 	"discord-userlinks": "$1 ($2|$3)",
+	"discord-anonuserlinks": "$1 ($2)",
 	"discord-revisionlinks": "($1) $2 $3",
 	"discord-talk": "d",
 	"discord-contribs": "w",

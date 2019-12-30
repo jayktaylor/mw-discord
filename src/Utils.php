@@ -156,7 +156,7 @@ class DiscordUtils {
 			$userPage = DiscordUtils::createMarkdownLink(	$user, ( $isAnon ? $contribs : $user->getUserPage() )->getFullUrl( '', '', $proto = PROTO_HTTP ) );
 			$userTalk = DiscordUtils::createMarkdownLink( wfMessage( 'discord-talk' )->text(), $user->getTalkPage()->getFullUrl( '', '', $proto = PROTO_HTTP ) );
 			$userContribs = DiscordUtils::createMarkdownLink( wfMessage( 'discord-contribs' )->text(), $contribs->getFullURL( '', '', $proto = PROTO_HTTP ) );
-			$text = wfMessage( 'discord-userlinks', $userPage, $userTalk, $userContribs )->text();	
+			$text = wfMessage( ( $isAnon ? 'discord-anonuserlinks' : 'discord-userlinks' ), $userPage, $userTalk, $userContribs )->text();	
 		} else {
 			// If it's a string, which can be likely (for example when range blocking a user)
 			// We need to handle this differently.

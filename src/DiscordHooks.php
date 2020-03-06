@@ -44,10 +44,25 @@ class DiscordHooks {
 			$msgKey = 'discord-create';
 		}
 
+		// Sanitize summary and parse it for section links
+		$pageUrl = $wikiPage->getTitle()->getFullUrl( '', '', PROTO_HTTP );
+		if ( $summary ) {
+			$summary = DiscordUtils::truncateText( $summary );
+			$summary = '``' . DiscordUtils::sanitizeText( $summary, true ) . '``';
+			$summary = preg_replace_callback( '@ ?/\* ([^*]+?) \*/ ?@', function( $matches ) use ( $pageUrl ) {
+				return
+					  '`` '
+					. DiscordUtils::createMarkdownLink( '→', $pageUrl . '#' . $matches[1] )
+					. DiscordUtils::sanitizeText( $matches[1] ) . ': ``';
+
+			}, $summary );
+			$summary = preg_replace( [ '/^```` /', '/ ````$/' ], '', $summary );
+		}
+
 		$msg = wfMessage( $msgKey, DiscordUtils::createUserLinks( $user ),
-			DiscordUtils::createMarkdownLink( $wikiPage->getTitle(), $wikiPage->getTitle()->getFullUrl( '', '', PROTO_HTTP ) ),
+			DiscordUtils::createMarkdownLink( $wikiPage->getTitle(), $pageUrl ),
 			DiscordUtils::createRevisionText( $revision ),
-			( $summary ? ( '``' . DiscordUtils::sanitizeText( DiscordUtils::truncateText( $summary ), true ) . '``' ) : '' ) )->plain();
+			$summary )->plain();
 		DiscordUtils::handleDiscord($msg);
 		return true;
 	}

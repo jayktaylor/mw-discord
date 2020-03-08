@@ -153,7 +153,10 @@ class DiscordUtils {
 			$isAnon = $user->isAnon();
 			$contribs = Title::newFromText("Special:Contributions/" . $user);
 
-			$userPage = DiscordUtils::createMarkdownLink(	$user, ( $isAnon ? $contribs : $user->getUserPage() )->getFullUrl( '', '', PROTO_HTTP ) );
+			// Prevent IPv6 blocks from being interpreted as emoji
+			$userName = str_replace( ':', '\\:', (string)$user );
+
+			$userPage = DiscordUtils::createMarkdownLink( $userName, ( $isAnon ? $contribs : $user->getUserPage() )->getFullUrl( '', '', PROTO_HTTP ) );
 			$userTalk = DiscordUtils::createMarkdownLink( wfMessage( 'discord-talk' )->text(), $user->getTalkPage()->getFullUrl( '', '', PROTO_HTTP ) );
 			$userContribs = DiscordUtils::createMarkdownLink( wfMessage( 'discord-contribs' )->text(), $contribs->getFullURL( '', '', PROTO_HTTP ) );
 			$text = wfMessage( 'discord-userlinks', $userPage, $userTalk, $userContribs )->text();

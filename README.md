@@ -53,6 +53,7 @@ This extension can be configured using the `LocalSettings.php` file in your Medi
 | `$wgDiscordDisabledUsers` | array | List of users whose performed actions shouldn't send webhooks | `[]`
 | `$wgDiscordPrependTimestamp` | bool | Prepend a timestamp (in UTC) to all sent messages. The format can be changed by editing the MediaWiki message `discord-timestampformat` | `false`
 | `$wgDiscordUseFileGetContents` | bool | Use `file_get_contents` instead of cURL. Requires `allow_url_fopen` to be set to true in `php.ini`. Not recommended as cURL makes simultaneous calls instead. | `false`
+| `$wgDiscordUseEmojis` | bool | Prepend emojis to different types of messages to help distinguish them | `false`
 
 ## Hooks used
 - `PageContentSaveComplete` - New edits to pages and page creations
@@ -69,6 +70,13 @@ This extension can be configured using the `LocalSettings.php` file in your Medi
 - `FileDeleteComplete` - File revision was deleted
 - `FileUndeleteComplete` - File revision was restored
 - `AfterImportPage` - Page was imported
+- `ArticleMergeComplete` - Article histories was merged
+
+### [Approved Revs](https://www.mediawiki.org/wiki/Extension:Approved_Revs)
+- `ApprovedRevsRevisionApproved` - Revision was approved
+- `ApprovedRevsRevisionUnapproved` - Revision was unapproved
+- `ApprovedRevsFileRevisionApproved` - File revision was approved
+- `ApprovedRevsFileRevisionUnapproved` - File revision was unapproved
 
 ## Translation
 This extension can be translated through the messages in the `ì18n` folder if you're a developer. As a wiki administrator, you may find it a better option to edit the messages on-site in the MediaWiki namespace.

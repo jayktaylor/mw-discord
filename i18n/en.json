@@ -30,5 +30,6 @@
 	"discord-filedeletecomplete": "$1 deleted a version of file $2 $3",
 	"discord-fileundeletecomplete": "$1 restored some versions of file $2 $3",
 	"discord-afterimportpage": "$1 imported $2 (imported $4/$3 revisions)",
-	"discord-timestampformat": "**H:i e:**"
+	"discord-timestampformat": "**H:i e:**",
+	"discord-articlemergecomplete": "$1 merged revisions from $2 into $3"
 }

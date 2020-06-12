@@ -42,6 +42,7 @@
 		"UploadComplete": "DiscordHooks::onUploadComplete",
 		"FileDeleteComplete": "DiscordHooks::onFileDeleteComplete",
 		"FileUndeleteComplete": "DiscordHooks::onFileUndeleteComplete",
-		"AfterImportPage": "DiscordHooks::onAfterImportPage"
+		"AfterImportPage": "DiscordHooks::onAfterImportPage",
+		"ArticleMergeComplete": "DiscordHooks::onArticleMergeComplete"
 	}
 }

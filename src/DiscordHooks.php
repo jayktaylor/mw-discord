@@ -359,4 +359,25 @@ class DiscordHooks {
 		DiscordUtils::handleDiscord($msg);
 		return true;
 	}
+
+	public static function onArticleMergeComplete( $targetTitle, $destTitle ) {
+		global $wgDiscordNoBots;
+
+		$user = RequestContext::getMain()->getUser();
+
+		if ( DiscordUtils::isDisabled( 'ArticleMergeComplete', $destTitle->getNamespace(), $user ) ) {
+			return true;
+		}
+
+		if ( $wgDiscordNoBots && $user->isBot() ) {
+			// Don't continue, this is a bot
+			return true;
+		}
+
+		$msg = wfMessage( 'discord-articlemergecomplete', DiscordUtils::createUserLinks( $user ),
+			DiscordUtils::createMarkdownLink( $targetTitle, $targetTitle->getFullUrl( '', '', $proto = PROTO_HTTP ) ),
+			DiscordUtils::createMarkdownLink( $destTitle, $destTitle->getFullUrl( '', '', $proto = PROTO_HTTP ) ))->plain();
+		DiscordUtils::handleDiscord($msg);
+		return true;
+	}
 }

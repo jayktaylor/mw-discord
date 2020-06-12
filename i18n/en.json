@@ -31,5 +31,9 @@
 	"discord-fileundeletecomplete": "$1 restored some versions of file $2 $3",
 	"discord-afterimportpage": "$1 imported $2 (imported $4/$3 revisions)",
 	"discord-timestampformat": "**H:i e:**",
-	"discord-articlemergecomplete": "$1 merged revisions from $2 into $3"
+	"discord-articlemergecomplete": "$1 merged revisions from $2 into $3",
+	"discord-approvedrevsrevisionapproved": "$1 approved a new revision of $2 (revision $3) from user $4",
+	"discord-approvedrevsrevisionunapproved": "$1 unapproved the approved revision for $2",
+	"discord-approvedrevsfilerevisionapproved": "$1 approved a new file revision of $2 ($3) from user $4",
+	"discord-approvedrevsfilerevisionunapproved": "$1 unapproved the approved file revision for $2"
 }

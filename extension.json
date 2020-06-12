@@ -43,6 +43,10 @@
 		"FileDeleteComplete": "DiscordHooks::onFileDeleteComplete",
 		"FileUndeleteComplete": "DiscordHooks::onFileUndeleteComplete",
 		"AfterImportPage": "DiscordHooks::onAfterImportPage",
-		"ArticleMergeComplete": "DiscordHooks::onArticleMergeComplete"
+		"ArticleMergeComplete": "DiscordHooks::onArticleMergeComplete",
+		"ApprovedRevsRevisionApproved": "DiscordHooks::externalonApprovedRevsRevisionApproved",
+		"ApprovedRevsRevisionUnapproved": "DiscordHooks::externalonApprovedRevsRevisionUnapproved",
+		"ApprovedRevsFileRevisionApproved": "DiscordHooks::externalonApprovedRevsFileRevisionApproved",
+		"ApprovedRevsFileRevisionUnapproved": "DiscordHooks::externalonApprovedRevsFileRevisionUnapproved"
 	}
 }

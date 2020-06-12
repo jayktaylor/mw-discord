@@ -31,5 +31,9 @@
   "discord-fileundeletecomplete": "Message sent to Discord when a file version is restored (not an entire file). Parameters:\n$1 - discord-userlinks\n$2 - File link\n$3 - Comment (always surrounded in tildes)",
   "discord-afterimportpage": "Message sent to Discord when a page is imported. Parameters:\n$1 - discord-userlinks\n$2 - Page link\n$3 - Number of revisions in XML file\n$4 - Number of revisions successfully imported",
   "discord-timestampformat": "The formatting used in the gmtime() function for displaying the time an event happened in UTC.",
-	"discord-articlemergecomplete": "Message sent to Discord when page histories are merged. Parameters:\n$1 - discord-userlinks\n$2 - Target link\n$3 - Destination link"
+  "discord-articlemergecomplete": "Message sent to Discord when page histories are merged. Parameters:\n$1 - discord-userlinks\n$2 - Target link\n$3 - Destination link",
+  "discord-approvedrevsrevisionapproved": "Message sent to Discord when a revision is approved (Approved Revs extension). Parameters:\n$1 - discord-userlinks (admin user)\n$2 - Target link\n$3 - Revision link or ID\n$4 - discord-userlinks (revision author) or ID",
+  "discord-approvedrevsrevisionunapproved": "Message sent to Discord when a revision is unapproved (Approved Revs extension). Parameters:\n$1 - discord-userlinks (admin user)\n$2 - Target link",
+  "discord-approvedrevsfilerevisionapproved": "Message sent to Discord when a file revision is approved (Approved Revs extension). Parameters:\n$1 - discord-userlinks (admin user)\n$2 - Target link\n$3 - SHA of uploaded file\n$4 - discord-userlinks (revision author)",
+  "discord-approvedrevsfilerevisionunapproved": "Message sent to Discord when a file revision is unapproved (Approved Revs extension). Parameters:\n$1 - discord-userlinks (admin user)\n$2 - Target link"
 }

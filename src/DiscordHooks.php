@@ -380,4 +380,126 @@ class DiscordHooks {
 		DiscordUtils::handleDiscord($msg);
 		return true;
 	}
+
+	/**
+	 * Called when a revision is approved (Approved Revs extension)
+	 * @see https://github.com/wikimedia/mediawiki-extensions-ApprovedRevs/blob/REL1_34/includes/ApprovedRevs_body.php
+	 */
+	public static function externalonApprovedRevsRevisionApproved ( $output, $title, $rev_id, $content ) {
+		global $wgDiscordNoBots;
+
+		$user = RequestContext::getMain()->getUser();
+
+		if ( DiscordUtils::isDisabled( 'ApprovedRevsRevisionApproved', $title->getNamespace(), $user ) ) {
+			return true;
+		}
+
+		if ( $wgDiscordNoBots && $user->isBot() ) {
+			// Don't continue, this is a bot
+			return true;
+		}
+
+		// Get the revision being approved here
+		$rev = Revision::newFromTitle( $title, $rev_id );
+		$revLink = $title->getFullURL( array( 'oldid' => $rev_id ), '', $proto = PROTO_HTTP );
+		$revAuthor = $rev->getUser( Revision::RAW );
+
+		if ($revAuthor === 0) {
+			$revAuthor = DiscordUtils::createUserLinks( User::newFromName($rev->getUserText(), false) );
+		} else if ($revAuthor) {
+			$revAuthor = DiscordUtils::createUserLinks( User::newFromId($revAuthor) );
+		}
+
+		$msg = wfMessage( 'discord-approvedrevsrevisionapproved', DiscordUtils::createUserLinks( $user ),
+			DiscordUtils::createMarkdownLink( $title, $title->getFullUrl( '', '', $proto = PROTO_HTTP ) ),
+			DiscordUtils::createMarkdownLink( $rev_id, $revLink ),
+			$revAuthor)->plain();
+		DiscordUtils::handleDiscord($msg);
+		return true;
+	}
+
+	/**
+	 * Called when a revision is unapproved (Approved Revs extension)
+	 * @see https://github.com/wikimedia/mediawiki-extensions-ApprovedRevs/blob/REL1_34/includes/ApprovedRevs_body.php
+	 */
+	public static function externalonApprovedRevsRevisionUnapproved ( $output, $title, $content ) {
+		global $wgDiscordNoBots;
+
+		$user = RequestContext::getMain()->getUser();
+
+		if ( DiscordUtils::isDisabled( 'ApprovedRevsRevisionUnapproved', $title->getNamespace(), $user ) ) {
+			return true;
+		}
+
+		if ( $wgDiscordNoBots && $user->isBot() ) {
+			// Don't continue, this is a bot
+			return true;
+		}
+
+		$msg = wfMessage( 'discord-approvedrevsrevisionunapproved', DiscordUtils::createUserLinks( $user ),
+			DiscordUtils::createMarkdownLink( $title, $title->getFullUrl( '', '', $proto = PROTO_HTTP ) ))->plain();
+		DiscordUtils::handleDiscord($msg);
+		return true;
+	}
+
+	/**
+	 * Called when a file is approved (Approved Revs extension)
+	 * @see https://github.com/wikimedia/mediawiki-extensions-ApprovedRevs/blob/REL1_34/includes/ApprovedRevs_body.php
+	 */
+	public static function externalonApprovedRevsFileRevisionApproved ( $parser, $title, $timestamp, $sha1 ) {
+		global $wgDiscordNoBots;
+
+		$user = RequestContext::getMain()->getUser();
+
+		if ( DiscordUtils::isDisabled( 'ApprovedRevsFileRevisionApproved', $title->getNamespace(), $user ) ) {
+			return true;
+		}
+
+		if ( $wgDiscordNoBots && $user->isBot() ) {
+			// Don't continue, this is a bot
+			return true;
+		}
+
+		$imagepage = ImagePage::newFromID( $title->getArticleID() );
+		$displayedFile = $imagepage->getDisplayedFile();
+		$displayedFileUrl = $displayedFile->getCanonicalUrl(); // getFullURL doesn't work quite the same on File classes
+		$uploader = $displayedFile->getUser();
+
+		if (is_string($uploader)) {
+			$uploader = User::newFromName($uploader, false);
+		} else {
+			$uploader = User::newFromId($uploader);
+		}
+
+		$msg = wfMessage( 'discord-approvedrevsfilerevisionapproved', DiscordUtils::createUserLinks( $user ),
+		    DiscordUtils::createMarkdownLink( $title, $title->getFullURL('', '', $proto = PROTO_HTTP) ),
+			DiscordUtils::createMarkdownLink( 'direct', $displayedFileUrl ),
+			DiscordUtils::createUserLinks( $uploader ) )->plain();
+		DiscordUtils::handleDiscord($msg);
+		return true;
+	}
+
+	/**
+	 * Called when a file is unapproved (Approved Revs extension)
+	 * @see https://github.com/wikimedia/mediawiki-extensions-ApprovedRevs/blob/REL1_34/includes/ApprovedRevs_body.php
+	 */
+	public static function externalonApprovedRevsFileRevisionUnapproved ( $parser, $title ) {
+		global $wgDiscordNoBots;
+
+		$user = RequestContext::getMain()->getUser();
+
+		if ( DiscordUtils::isDisabled( 'ApprovedRevsFileRevisionUnapproved', $title->getNamespace(), $user ) ) {
+			return true;
+		}
+
+		if ( $wgDiscordNoBots && $user->isBot() ) {
+			// Don't continue, this is a bot
+			return true;
+		}
+
+		$msg = wfMessage( 'discord-approvedrevsfilerevisionunapproved', DiscordUtils::createUserLinks( $user ),
+			DiscordUtils::createMarkdownLink( $title, $title->getFullUrl( '', '', $proto = PROTO_HTTP ) ))->plain();
+		DiscordUtils::handleDiscord($msg);
+		return true;
+	}
 }

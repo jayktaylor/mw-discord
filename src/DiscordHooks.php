@@ -206,9 +206,15 @@ class DiscordHooks {
 			$expiryMsg = $expiry;
 		}
 
+		if (substr(MW_VERSION, 0, 4) >= 1.35) { 
+			$msg = wfMessage( 'discord-blockipcomplete', DiscordUtils::createUserLinks( $user ), DiscordUtils::createUserLinks( $block->getTarget() ),
+			( $block->getReasonComment()->text ? ('`' . DiscordUtils::truncateText( $block->getReasonComment()->text ) . '`' ) : '' ),
+			$expiryMsg )->plain();
+		} else {
 		$msg = wfMessage( 'discord-blockipcomplete', DiscordUtils::createUserLinks( $user ), DiscordUtils::createUserLinks( $block->getTarget() ),
 			( $block->mReason ? ('`' . DiscordUtils::truncateText( $block->mReason ) . '`' ) : '' ),
 			$expiryMsg )->plain();
+		}
 		DiscordUtils::handleDiscord(':no_entry_sign:', $msg);
 		return true;
 	}

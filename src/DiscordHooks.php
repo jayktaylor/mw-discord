@@ -207,7 +207,7 @@ class DiscordHooks {
 		}
 
 		$msg = wfMessage( 'discord-blockipcomplete', DiscordUtils::createUserLinks( $user ), DiscordUtils::createUserLinks( $block->getTarget() ),
-			( $block->mReason ? ('`' . DiscordUtils::truncateText( $block->mReason ) . '`' ) : '' ),
+			( $block->getReasonComment()->text ? ('`' . DiscordUtils::truncateText( $block->getReasonComment()->text ) . '`' ) : '' ),
 			$expiryMsg )->plain();
 		DiscordUtils::handleDiscord(':no_entry_sign:', $msg);
 		return true;

@@ -18,7 +18,7 @@ Multiple webhook URLs are supported and messages will be sent to all of them.
 
 ## Installation
 
-1. Clone this repository to your MediaWiki installation's `extensions` folder using `git clone https://github.com/jaydenkieran/mw-discord.git Discord`
+1. Clone this repository to your MediaWiki installation's `extensions` folder using `git clone https://github.com/jaydenkieran/mw-discord.git -b REL1_35 Discord` (or change `REL1_35` to the branch that corresponds with or is the closest version under your MediaWiki version, e.g `REL1_31` will work for 1.32, 1.33, and 1.34)
 2. Modify your `LocalSettings.php` file and add:
 
 ```php

@@ -155,11 +155,21 @@ class DiscordUtils {
 	 * Creates links for a specific MediaWiki User object
 	 */
 	public static function createUserLinks ($user) {
+		global $wgDiscordMaxCharsUsernames;
+
 		if ( $user instanceof User ) {
 			$isAnon = $user->isAnon();
 			$contribs = Title::newFromText("Special:Contributions/" . $user);
 
-			$userPage = DiscordUtils::createMarkdownLink(	$user, ( $isAnon ? $contribs : $user->getUserPage() )->getFullUrl( '', '', $proto = PROTO_HTTP ) );
+			if ($wgDiscordMaxCharsUsernames) {
+				$user_abbr = strval($user);
+				if (strlen($user_abbr) > $wgDiscordMaxCharsUsernames) {
+					$user_abbr = substr($user_abbr, 0, $wgDiscordMaxCharsUsernames);
+					$user_abbr = $user_abbr.'...';
+				}
+			}
+
+			$userPage = DiscordUtils::createMarkdownLink(	$user_abbr, ( $isAnon ? $contribs : $user->getUserPage() )->getFullUrl( '', '', $proto = PROTO_HTTP ) );
 			$userTalk = DiscordUtils::createMarkdownLink( wfMessage( 'discord-talk' )->text(), $user->getTalkPage()->getFullUrl( '', '', $proto = PROTO_HTTP ) );
 			$userContribs = DiscordUtils::createMarkdownLink( wfMessage( 'discord-contribs' )->text(), $contribs->getFullURL( '', '', $proto = PROTO_HTTP ) );
 			$text = wfMessage( 'discord-userlinks', $userPage, $userTalk, $userContribs )->text();	

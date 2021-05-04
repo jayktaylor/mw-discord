@@ -12,8 +12,9 @@ class DiscordHooks {
 	 */
 	public static function onPageContentSaveComplete( &$wikiPage, &$user, $content, $summary, $isMinor, $isWatch, $section, &$flags, $revision, &$status, $baseRevId, $undidRevId ) {
 		global $wgDiscordNoBots, $wgDiscordNoMinor, $wgDiscordNoNull;
+		$hookName = 'PageContentSaveComplete';
 
-		if ( DiscordUtils::isDisabled( 'PageContentSaveComplete', $wikiPage->getTitle()->getNamespace(), $user ) ) {
+		if ( DiscordUtils::isDisabled( $hookName, $wikiPage->getTitle()->getNamespace(), $user ) ) {
 			return true;
 		}
 
@@ -48,7 +49,7 @@ class DiscordHooks {
 			DiscordUtils::createMarkdownLink( $wikiPage->getTitle(), $wikiPage->getTitle()->getFullUrl( '', '', $proto = PROTO_HTTP ) ),
 			DiscordUtils::createRevisionText( $revision ),
 			( $summary ? ('`' . DiscordUtils::sanitiseText( DiscordUtils::truncateText( $summary ) ) . '`' ) : '' ) )->plain();
-		DiscordUtils::handleDiscord(':pencil2:', $msg);
+		DiscordUtils::handleDiscord($hookName, $msg);
 		return true;
 	}
 
@@ -58,8 +59,9 @@ class DiscordHooks {
 	 */
 	public static function onArticleDeleteComplete( &$article, User &$user, $reason, $id, $content, LogEntry $logEntry, $archivedRevisionCount ) {
 		global $wgDiscordNoBots;
+		$hookName = 'ArticleDeleteComplete';
 
-		if ( DiscordUtils::isDisabled( 'ArticleDeleteComplete', $article->getTitle()->getNamespace(), $user ) ) {
+		if ( DiscordUtils::isDisabled( $hookName, $article->getTitle()->getNamespace(), $user ) ) {
 			return true;
 		}
 
@@ -72,7 +74,7 @@ class DiscordHooks {
 			DiscordUtils::createMarkdownLink( $article->getTitle(), $article->getTitle()->getFullUrl( '', '', $proto = PROTO_HTTP ) ),
 			( $reason ? ('`' . DiscordUtils::sanitiseText( DiscordUtils::truncateText( $reason ) ) . '`' ) : '' ),
 			$archivedRevisionCount)->plain();
-		DiscordUtils::handleDiscord(':wastebasket:', $msg);
+		DiscordUtils::handleDiscord($hookName, $msg);
 		return true;
 	}
 
@@ -82,10 +84,11 @@ class DiscordHooks {
 	 */
 	public static function onArticleUndelete( Title $title, $create, $comment, $oldPageId, $restoredPages ) {
 		global $wgDiscordNoBots;
+		$hookName = 'ArticleUndelete';
 
 		$user = RequestContext::getMain()->getUser();
 
-		if ( DiscordUtils::isDisabled( 'ArticleUndelete', $title->getNamespace(), $user ) ) {
+		if ( DiscordUtils::isDisabled( $hookName, $title->getNamespace(), $user ) ) {
 			return true;
 		}
 
@@ -98,7 +101,7 @@ class DiscordHooks {
 			($create ? '' : wfMessage( 'discord-undeleterev' )->text() ),
 			DiscordUtils::createMarkdownLink( $title, $title->getFullUrl( '', '', $proto = PROTO_HTTP ) ),
 			( $comment ? ('`' . DiscordUtils::sanitiseText( DiscordUtils::truncateText( $comment ) ) . '`' ) : '' ))->plain();
-		DiscordUtils::handleDiscord(':wastebasket:', $msg);
+		DiscordUtils::handleDiscord($hookName, $msg);
 		return true;
 	}
 
@@ -108,10 +111,11 @@ class DiscordHooks {
 	 */
 	public static function onArticleRevisionVisibilitySet( &$title, $ids, $visibilityChangeMap ) {
 		global $wgDiscordNoBots;
+		$hookName = 'ArticleRevisionVisibilitySet';
 
 		$user = RequestContext::getMain()->getUser();
 
-		if ( DiscordUtils::isDisabled( 'ArticleRevisionVisibilitySet', $title->getNamespace(), $user ) ) {
+		if ( DiscordUtils::isDisabled( $hookName, $title->getNamespace(), $user ) ) {
 			return true;
 		}
 
@@ -123,7 +127,7 @@ class DiscordHooks {
 		$msg = wfMessage( 'discord-revvisibility', DiscordUtils::createUserLinks( $user ),
 			count($visibilityChangeMap),
 			DiscordUtils::createMarkdownLink( $title, $title->getFullUrl( '', '', $proto = PROTO_HTTP ) ) )->plain();
-		DiscordUtils::handleDiscord(':spy:', $msg);
+		DiscordUtils::handleDiscord($hookName, $msg);
 		return true;
 	}
 
@@ -133,8 +137,9 @@ class DiscordHooks {
 	 */
 	public static function onArticleProtectComplete( &$article, &$user, $protect, $reason ) {
 		global $wgDiscordNoBots;
+		$hookName = 'ArticleProtectComplete';
 
-		if ( DiscordUtils::isDisabled( 'ArticleProtectComplete', $article->getTitle()->getNamespace(), $user ) ) {
+		if ( DiscordUtils::isDisabled( $hookName, $article->getTitle()->getNamespace(), $user ) ) {
 			return true;
 		}
 
@@ -147,7 +152,7 @@ class DiscordHooks {
 			DiscordUtils::createMarkdownLink( $article->getTitle(), $article->getTitle()->getFullUrl( '', '', $proto = PROTO_HTTP ) ),
 			( $reason ? ('`' . DiscordUtils::sanitiseText( DiscordUtils::truncateText( $reason ) ) . '`' ) : '' ),
 			implode(", ", $protect) )->plain();
-		DiscordUtils::handleDiscord(':lock:', $msg);
+		DiscordUtils::handleDiscord($hookName, $msg);
 		return true;
 	}
 
@@ -157,8 +162,9 @@ class DiscordHooks {
 	 */
 	public static function onTitleMoveComplete( Title &$title, Title &$newTitle, User $user, $oldid, $newid, $reason, Revision $revision ) {
 		global $wgDiscordNoBots;
+		$hookName = 'TitleMoveComplete';
 
-		if ( DiscordUtils::isDisabled( 'TitleMoveComplete', $title->getNamespace(), $user ) ) {
+		if ( DiscordUtils::isDisabled( $hookName, $title->getNamespace(), $user ) ) {
 			return true;
 		}
 
@@ -172,7 +178,7 @@ class DiscordHooks {
 			DiscordUtils::createMarkdownLink( $newTitle, $newTitle->getFullUrl( '', '', $proto = PROTO_HTTP ) ),
 			( $reason ? ('`' . DiscordUtils::sanitiseText( DiscordUtils::truncateText( $reason ) ) . '`' ) : '' ),
 			DiscordUtils::createRevisionText( $revision ) )->plain();
-		DiscordUtils::handleDiscord(':truck:', $msg);
+		DiscordUtils::handleDiscord($hookName, $msg);
 		return true;
 	}
 
@@ -181,12 +187,14 @@ class DiscordHooks {
 	 * @see https://www.mediawiki.org/wiki/Manual:Hooks/LocalUserCreated
 	 */
 	public static function onLocalUserCreated( $user, $autocreated ) {
-		if ( DiscordUtils::isDisabled( 'LocalUserCreated', NULL, $user ) ) {
+		$hookName = 'LocalUserCreated';
+
+		if ( DiscordUtils::isDisabled( $hookName, NULL, $user ) ) {
 			return true;
 		}
 
 		$msg = wfMessage( 'discord-localusercreated', DiscordUtils::createUserLinks( $user ) )->plain();
-		DiscordUtils::handleDiscord(':wave:', $msg);
+		DiscordUtils::handleDiscord($hookName, $msg);
 		return true;
 	}
 
@@ -195,7 +203,9 @@ class DiscordHooks {
 	 * @see https://www.mediawiki.org/wiki/Manual:Hooks/BlockIpComplete
 	 */
 	public static function onBlockIpComplete( Block $block, User $user ) {
-		if ( DiscordUtils::isDisabled( 'BlockIpComplete', NULL, $user ) ) {
+		$hookName = 'BlockIpComplete';
+
+		if ( DiscordUtils::isDisabled( $hookName, NULL, $user ) ) {
 			return true;
 		}
 
@@ -209,7 +219,7 @@ class DiscordHooks {
 		$msg = wfMessage( 'discord-blockipcomplete', DiscordUtils::createUserLinks( $user ), DiscordUtils::createUserLinks( $block->getTarget() ),
 			( $block->mReason ? ('`' . DiscordUtils::sanitiseText( DiscordUtils::truncateText( $block->mReason ) ) . '`' ) : '' ),
 			$expiryMsg )->plain();
-		DiscordUtils::handleDiscord(':no_entry_sign:', $msg);
+		DiscordUtils::handleDiscord($hookName, $msg);
 		return true;
 	}
 
@@ -218,12 +228,14 @@ class DiscordHooks {
 	 * @see https://www.mediawiki.org/wiki/Manual:Hooks/UnblockUserComplete
 	 */
 	public static function onUnblockUserComplete( Block $block, User $user ) {
-		if ( DiscordUtils::isDisabled( 'UnblockUserComplete', NULL, $user ) ) {
+		$hookName = 'UnblockUserComplete';
+
+		if ( DiscordUtils::isDisabled( $hookName, NULL, $user ) ) {
 			return true;
 		}
 
 		$msg = wfMessage( 'discord-unblockusercomplete', DiscordUtils::createUserLinks( $user ), DiscordUtils::createUserLinks( $block->getTarget() ) )->text();
-		DiscordUtils::handleDiscord(':no_entry_sign:', $msg);
+		DiscordUtils::handleDiscord($hookName, $msg);
 		return true;
 	}
 
@@ -232,7 +244,9 @@ class DiscordHooks {
 	 * @see https://www.mediawiki.org/wiki/Manual:Hooks/UserGroupsChanged
 	 */
 	public static function onUserGroupsChanged( User $user, array $added, array $removed, $performer, $reason ) {
-		if ( DiscordUtils::isDisabled( 'UserGroupsChanged', NULL, $performer ) ) {
+		$hookName = 'UserGroupsChanged';
+
+		if ( DiscordUtils::isDisabled( $hookName, NULL, $performer ) ) {
 			return true;
 		}
 
@@ -246,7 +260,7 @@ class DiscordHooks {
 			( $reason ? ('`' . DiscordUtils::sanitiseText( DiscordUtils::truncateText( $reason ) ) . '`' ) : '' ),
 			( ( count($added) > 0 ) ? ( '+ ' . join(', ', $added) ) : ''),
 			( ( count($removed) > 0 ) ? ( '- ' . join(', ', $removed) ) : '' ) )->plain();
-		DiscordUtils::handleDiscord(':people_holding_hands:', $msg);
+		DiscordUtils::handleDiscord($hookName, $msg);
 		return true;
 	}
 
@@ -256,11 +270,12 @@ class DiscordHooks {
 	 */
 	public static function onUploadComplete( &$image ) {
 		global $wgDiscordNoBots;
+		$hookName = 'UploadComplete';
 
 		$lf = $image->getLocalFile();
 		$user = $lf->getUser( $type = 'object' ); // only supported in MW 1.31+
 
-		if ( DiscordUtils::isDisabled( 'UploadComplete', NS_FILE, $user ) ) {
+		if ( DiscordUtils::isDisabled( $hookName, NS_FILE, $user ) ) {
 			return true;
 		}
 
@@ -280,7 +295,7 @@ class DiscordHooks {
 			$lf->getWidth(),
 			$lf->getHeight(),
 			$lf->getMimeType() )->plain();
-		DiscordUtils::handleDiscord(':inbox_tray:', $msg);
+		DiscordUtils::handleDiscord($hookName, $msg);
 		return true;
 	}
 
@@ -290,8 +305,9 @@ class DiscordHooks {
 	 */
 	public static function onFileDeleteComplete( $file, $oldimage, $article, $user, $reason ) {
 		global $wgDiscordNoBots;
+		$hookName = 'FileDeleteComplete';
 
-		if ( DiscordUtils::isDisabled( 'FileDeleteComplete', NS_FILE, $user ) ) {
+		if ( DiscordUtils::isDisabled( $hookName, NS_FILE, $user ) ) {
 			return true;
 		}
 
@@ -308,7 +324,7 @@ class DiscordHooks {
 		$msg = wfMessage( 'discord-filedeletecomplete', DiscordUtils::createUserLinks( $user ),
 			DiscordUtils::createMarkdownLink( $file->getName(), $file->getTitle()->getFullUrl( '', '', $proto = PROTO_HTTP ) ),
 			( $reason ? ('`' . DiscordUtils::sanitiseText( DiscordUtils::truncateText( $reason ) ) . '`' ) : '' ) )->plain();
-		DiscordUtils::handleDiscord(':wastebasket:', $msg);
+		DiscordUtils::handleDiscord($hookName, $msg);
 		return true;
 	}
 
@@ -318,8 +334,9 @@ class DiscordHooks {
 	 */
 	public static function onFileUndeleteComplete( $title, $fileVersions, $user, $reason ) {
 		global $wgDiscordNoBots;
+		$hookName = 'FileUndeleteComplete';
 
-		if ( DiscordUtils::isDisabled( 'FileUndeleteComplete', NS_FILE, $user ) ) {
+		if ( DiscordUtils::isDisabled( $hookName, NS_FILE, $user ) ) {
 			return true;
 		}
 
@@ -331,7 +348,7 @@ class DiscordHooks {
 		$msg = wfMessage( 'discord-fileundeletecomplete', DiscordUtils::createUserLinks( $user ),
 			DiscordUtils::createMarkdownLink( $title, $title->getFullUrl( '', '', $proto = PROTO_HTTP ) ),
 			( $reason ? ('`' . DiscordUtils::sanitiseText( DiscordUtils::truncateText( $reason ) ) . '`' ) : '' ) )->plain();
-		DiscordUtils::handleDiscord(':wastebasket:', $msg);
+		DiscordUtils::handleDiscord($hookName, $msg);
 		return true;
 	}
 
@@ -341,10 +358,11 @@ class DiscordHooks {
 	 */
 	public static function onAfterImportPage( $title, $origTitle, $revCount, $sRevCount, $pageInfo ) {
 		global $wgDiscordNoBots;
+		$hookName = 'AfterImportPage';
 
 		$user = RequestContext::getMain()->getUser();
 
-		if ( DiscordUtils::isDisabled( 'AfterImportPage', $title->getNamespace(), $user ) ) {
+		if ( DiscordUtils::isDisabled( $hookName, $title->getNamespace(), $user ) ) {
 			return true;
 		}
 
@@ -356,16 +374,17 @@ class DiscordHooks {
 		$msg = wfMessage( 'discord-afterimportpage', DiscordUtils::createUserLinks( $user ),
 			DiscordUtils::createMarkdownLink( $title, $title->getFullUrl( '', '', $proto = PROTO_HTTP ) ),
 			$revCount, $sRevCount)->plain();
-		DiscordUtils::handleDiscord(':books:', $msg);
+		DiscordUtils::handleDiscord($hookName, $msg);
 		return true;
 	}
 
 	public static function onArticleMergeComplete( $targetTitle, $destTitle ) {
 		global $wgDiscordNoBots;
+		$hookName = 'ArticleMergeComplete';
 
 		$user = RequestContext::getMain()->getUser();
 
-		if ( DiscordUtils::isDisabled( 'ArticleMergeComplete', $destTitle->getNamespace(), $user ) ) {
+		if ( DiscordUtils::isDisabled( $hookName, $destTitle->getNamespace(), $user ) ) {
 			return true;
 		}
 
@@ -377,7 +396,7 @@ class DiscordHooks {
 		$msg = wfMessage( 'discord-articlemergecomplete', DiscordUtils::createUserLinks( $user ),
 			DiscordUtils::createMarkdownLink( $targetTitle, $targetTitle->getFullUrl( '', '', $proto = PROTO_HTTP ) ),
 			DiscordUtils::createMarkdownLink( $destTitle, $destTitle->getFullUrl( '', '', $proto = PROTO_HTTP ) ))->plain();
-		DiscordUtils::handleDiscord(':card_box:', $msg);
+		DiscordUtils::handleDiscord($hookName, $msg);
 		return true;
 	}
 
@@ -387,10 +406,11 @@ class DiscordHooks {
 	 */
 	public static function externalonApprovedRevsRevisionApproved ( $output, $title, $rev_id, $content ) {
 		global $wgDiscordNoBots;
+		$hookName = 'ApprovedRevsRevisionApproved';
 
 		$user = RequestContext::getMain()->getUser();
 
-		if ( DiscordUtils::isDisabled( 'ApprovedRevsRevisionApproved', $title->getNamespace(), $user ) ) {
+		if ( DiscordUtils::isDisabled( $hookName, $title->getNamespace(), $user ) ) {
 			return true;
 		}
 
@@ -414,7 +434,7 @@ class DiscordHooks {
 			DiscordUtils::createMarkdownLink( $title, $title->getFullUrl( '', '', $proto = PROTO_HTTP ) ),
 			DiscordUtils::createMarkdownLink( $rev_id, $revLink ),
 			$revAuthor)->plain();
-		DiscordUtils::handleDiscord(':white_check_mark:', $msg);
+		DiscordUtils::handleDiscord($hookName, $msg);
 		return true;
 	}
 
@@ -424,10 +444,11 @@ class DiscordHooks {
 	 */
 	public static function externalonApprovedRevsRevisionUnapproved ( $output, $title, $content ) {
 		global $wgDiscordNoBots;
+		$hookName = 'ApprovedRevsRevisionUnapproved';
 
 		$user = RequestContext::getMain()->getUser();
 
-		if ( DiscordUtils::isDisabled( 'ApprovedRevsRevisionUnapproved', $title->getNamespace(), $user ) ) {
+		if ( DiscordUtils::isDisabled( $hookName, $title->getNamespace(), $user ) ) {
 			return true;
 		}
 
@@ -438,7 +459,7 @@ class DiscordHooks {
 
 		$msg = wfMessage( 'discord-approvedrevsrevisionunapproved', DiscordUtils::createUserLinks( $user ),
 			DiscordUtils::createMarkdownLink( $title, $title->getFullUrl( '', '', $proto = PROTO_HTTP ) ))->plain();
-		DiscordUtils::handleDiscord(':white_check_mark:', $msg);
+		DiscordUtils::handleDiscord($hookName, $msg);
 		return true;
 	}
 
@@ -448,10 +469,11 @@ class DiscordHooks {
 	 */
 	public static function externalonApprovedRevsFileRevisionApproved ( $parser, $title, $timestamp, $sha1 ) {
 		global $wgDiscordNoBots;
+		$hookName = 'ApprovedRevsFileRevisionApproved';
 
 		$user = RequestContext::getMain()->getUser();
 
-		if ( DiscordUtils::isDisabled( 'ApprovedRevsFileRevisionApproved', $title->getNamespace(), $user ) ) {
+		if ( DiscordUtils::isDisabled( $hookName, $title->getNamespace(), $user ) ) {
 			return true;
 		}
 
@@ -475,7 +497,7 @@ class DiscordHooks {
 		    DiscordUtils::createMarkdownLink( $title, $title->getFullURL('', '', $proto = PROTO_HTTP) ),
 			DiscordUtils::createMarkdownLink( 'direct', $displayedFileUrl ),
 			DiscordUtils::createUserLinks( $uploader ) )->plain();
-		DiscordUtils::handleDiscord(':white_check_mark:', $msg);
+		DiscordUtils::handleDiscord($hookName, $msg);
 		return true;
 	}
 
@@ -485,10 +507,11 @@ class DiscordHooks {
 	 */
 	public static function externalonApprovedRevsFileRevisionUnapproved ( $parser, $title ) {
 		global $wgDiscordNoBots;
+		$hookName = 'ApprovedRevsFileRevisionUnapproved';
 
 		$user = RequestContext::getMain()->getUser();
 
-		if ( DiscordUtils::isDisabled( 'ApprovedRevsFileRevisionUnapproved', $title->getNamespace(), $user ) ) {
+		if ( DiscordUtils::isDisabled( $hookName, $title->getNamespace(), $user ) ) {
 			return true;
 		}
 
@@ -499,7 +522,7 @@ class DiscordHooks {
 
 		$msg = wfMessage( 'discord-approvedrevsfilerevisionunapproved', DiscordUtils::createUserLinks( $user ),
 			DiscordUtils::createMarkdownLink( $title, $title->getFullUrl( '', '', $proto = PROTO_HTTP ) ))->plain();
-		DiscordUtils::handleDiscord(':white_check_mark:', $msg);
+		DiscordUtils::handleDiscord($hookName, $msg);
 		return true;
 	}
 }

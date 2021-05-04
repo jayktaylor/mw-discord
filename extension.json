@@ -20,7 +20,28 @@
 		"DiscordDisabledUsers": [],
 		"DiscordPrependTimestamp": false,
 		"DiscordUseFileGetContents": false,
-		"DiscordUseEmojis": false
+		"DiscordUseEmojis": false,
+		"DiscordEmojis": {
+			"PageContentSaveComplete": ":pencil2:",
+			"ArticleDeleteComplete": ":wastebasket:",
+			"ArticleUndelete": ":wastebasket:",
+			"ArticleRevisionVisibilitySet": ":spy:",
+			"ArticleProtectComplete": ":lock:",
+			"TitleMoveComplete": ":truck:",
+			"LocalUserCreated": ":wave:",
+			"BlockIpComplete": ":no_entry_sign:",
+			"UnblockUserComplete": ":no_entry_sign:",
+			"UserGroupsChanged": ":people_holding_hands:",
+			"UploadComplete": ":inbox_tray:",
+			"FileDeleteComplete": ":wastebasket:",
+			"FileUndeleteComplete": ":wastebasket:",
+			"AfterImportPage": ":books:",
+			"ArticleMergeComplete": ":card_box:",
+			"ApprovedRevsRevisionApproved": ":white_check_mark",
+			"ApprovedRevsRevisionUnapproved": ":white_check_mark:",
+			"ApprovedRevsFileRevisionApproved": ":white_check_mark:",
+			"ApprovedRevsFileRevisionUnapproved": ":white_check_mark:"
+		}
 	},
 	"AutoloadClasses": {
 		"DiscordHooks": "src/DiscordHooks.php",

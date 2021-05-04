@@ -45,8 +45,8 @@ class DiscordUtils {
 	/**
 	 * Handles sending a webhook to Discord using cURL
 	 */
-	public static function handleDiscord ($emoji, $msg) {
-		global $wgDiscordWebhookURL, $wgDiscordUseEmojis, $wgDiscordPrependTimestamp, $wgDiscordUseFileGetContents;
+	public static function handleDiscord ($hookName, $msg) {
+		global $wgDiscordWebhookURL, $wgDiscordEmojis, $wgDiscordUseEmojis, $wgDiscordPrependTimestamp, $wgDiscordUseFileGetContents;
 
 		if ( !$wgDiscordWebhookURL ) {
 			// There's nothing in here, so we won't do anything
@@ -75,6 +75,7 @@ class DiscordUtils {
 
 		if ( $wgDiscordUseEmojis ) {
 			// Add emoji
+			$emoji = $wgDiscordEmojis[$hookName];
 			$stripped = $emoji . ' ' . $stripped;
 		}
 

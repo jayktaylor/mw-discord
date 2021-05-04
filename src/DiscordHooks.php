@@ -47,7 +47,7 @@ class DiscordHooks {
 		$msg = wfMessage( $msgKey, DiscordUtils::createUserLinks( $user ),
 			DiscordUtils::createMarkdownLink( $wikiPage->getTitle(), $wikiPage->getTitle()->getFullUrl( '', '', $proto = PROTO_HTTP ) ),
 			DiscordUtils::createRevisionText( $revision ),
-			( $summary ? ('`' . DiscordUtils::truncateText( $summary ) . '`' ) : '' ) )->plain();
+			( $summary ? ('`' . DiscordUtils::sanitiseText( DiscordUtils::truncateText( $summary ) ) . '`' ) : '' ) )->plain();
 		DiscordUtils::handleDiscord(':pencil2:', $msg);
 		return true;
 	}
@@ -70,7 +70,7 @@ class DiscordHooks {
 
 		$msg = wfMessage( 'discord-articledelete', DiscordUtils::createUserLinks( $user ),
 			DiscordUtils::createMarkdownLink( $article->getTitle(), $article->getTitle()->getFullUrl( '', '', $proto = PROTO_HTTP ) ),
-			( $reason ? ('`' . DiscordUtils::truncateText( $reason ) . '`' ) : '' ),
+			( $reason ? ('`' . DiscordUtils::sanitiseText( DiscordUtils::truncateText( $reason ) ) . '`' ) : '' ),
 			$archivedRevisionCount)->plain();
 		DiscordUtils::handleDiscord(':wastebasket:', $msg);
 		return true;
@@ -97,7 +97,7 @@ class DiscordHooks {
 		$msg = wfMessage( 'discord-articleundelete', DiscordUtils::createUserLinks( $user ),
 			($create ? '' : wfMessage( 'discord-undeleterev' )->text() ),
 			DiscordUtils::createMarkdownLink( $title, $title->getFullUrl( '', '', $proto = PROTO_HTTP ) ),
-			( $comment ? ('`' . DiscordUtils::truncateText( $comment ) . '`' ) : '' ))->plain();
+			( $comment ? ('`' . DiscordUtils::sanitiseText( DiscordUtils::truncateText( $comment ) ) . '`' ) : '' ))->plain();
 		DiscordUtils::handleDiscord(':wastebasket:', $msg);
 		return true;
 	}
@@ -145,7 +145,7 @@ class DiscordHooks {
 
 		$msg = wfMessage( 'discord-articleprotect', DiscordUtils::createUserLinks( $user ),
 			DiscordUtils::createMarkdownLink( $article->getTitle(), $article->getTitle()->getFullUrl( '', '', $proto = PROTO_HTTP ) ),
-			( $reason ? ('`' . DiscordUtils::truncateText( $reason ) . '`' ) : '' ),
+			( $reason ? ('`' . DiscordUtils::sanitiseText( DiscordUtils::truncateText( $reason ) ) . '`' ) : '' ),
 			implode(", ", $protect) )->plain();
 		DiscordUtils::handleDiscord(':lock:', $msg);
 		return true;
@@ -170,7 +170,7 @@ class DiscordHooks {
 		$msg = wfMessage( 'discord-titlemove', DiscordUtils::createUserLinks( $user ),
 			DiscordUtils::createMarkdownLink( $title, $title->getFullUrl( '', '', $proto = PROTO_HTTP ) ),
 			DiscordUtils::createMarkdownLink( $newTitle, $newTitle->getFullUrl( '', '', $proto = PROTO_HTTP ) ),
-			( $reason ? ('`' . DiscordUtils::truncateText( $reason ) . '`' ) : '' ),
+			( $reason ? ('`' . DiscordUtils::sanitiseText( DiscordUtils::truncateText( $reason ) ) . '`' ) : '' ),
 			DiscordUtils::createRevisionText( $revision ) )->plain();
 		DiscordUtils::handleDiscord(':truck:', $msg);
 		return true;
@@ -207,7 +207,7 @@ class DiscordHooks {
 		}
 
 		$msg = wfMessage( 'discord-blockipcomplete', DiscordUtils::createUserLinks( $user ), DiscordUtils::createUserLinks( $block->getTarget() ),
-			( $block->mReason ? ('`' . DiscordUtils::truncateText( $block->mReason ) . '`' ) : '' ),
+			( $block->mReason ? ('`' . DiscordUtils::sanitiseText( DiscordUtils::truncateText( $block->mReason ) ) . '`' ) : '' ),
 			$expiryMsg )->plain();
 		DiscordUtils::handleDiscord(':no_entry_sign:', $msg);
 		return true;
@@ -243,7 +243,7 @@ class DiscordHooks {
 
 		$msg = wfMessage( 'discord-usergroupschanged', DiscordUtils::createUserLinks( $performer ),
 			DiscordUtils::createUserLinks( $user ),
-			( $reason ? ('`' . DiscordUtils::truncateText( $reason ) . '`' ) : '' ),
+			( $reason ? ('`' . DiscordUtils::sanitiseText( DiscordUtils::truncateText( $reason ) ) . '`' ) : '' ),
 			( ( count($added) > 0 ) ? ( '+ ' . join(', ', $added) ) : ''),
 			( ( count($removed) > 0 ) ? ( '- ' . join(', ', $removed) ) : '' ) )->plain();
 		DiscordUtils::handleDiscord(':people_holding_hands:', $msg);
@@ -275,7 +275,7 @@ class DiscordHooks {
 		$msg = wfMessage( 'discord-uploadcomplete', DiscordUtils::createUserLinks( $user ),
 			( $isNewRevision ? wfMessage( 'discord-uploadnewver' )->text() : '' ),
 			DiscordUtils::createMarkdownLink( $lf->getName(), $lf->getTitle()->getFullUrl( '', '', $proto = PROTO_HTTP ) ), 
-			( $comment ? ('`' . DiscordUtils::truncateText( $comment ) . '`' ) : '' ),
+			( $comment ? ('`' . DiscordUtils::sanitiseText( DiscordUtils::truncateText( $comment ) ) . '`' ) : '' ),
 			DiscordUtils::formatBytes($lf->getSize()),
 			$lf->getWidth(),
 			$lf->getHeight(),
@@ -307,7 +307,7 @@ class DiscordHooks {
 
 		$msg = wfMessage( 'discord-filedeletecomplete', DiscordUtils::createUserLinks( $user ),
 			DiscordUtils::createMarkdownLink( $file->getName(), $file->getTitle()->getFullUrl( '', '', $proto = PROTO_HTTP ) ),
-			( $reason ? ('`' . DiscordUtils::truncateText( $reason ) . '`' ) : '' ) )->plain();
+			( $reason ? ('`' . DiscordUtils::sanitiseText( DiscordUtils::truncateText( $reason ) ) . '`' ) : '' ) )->plain();
 		DiscordUtils::handleDiscord(':wastebasket:', $msg);
 		return true;
 	}
@@ -330,7 +330,7 @@ class DiscordHooks {
 
 		$msg = wfMessage( 'discord-fileundeletecomplete', DiscordUtils::createUserLinks( $user ),
 			DiscordUtils::createMarkdownLink( $title, $title->getFullUrl( '', '', $proto = PROTO_HTTP ) ),
-			( $reason ? ('`' . DiscordUtils::truncateText( $reason ) . '`' ) : '' ) )->plain();
+			( $reason ? ('`' . DiscordUtils::sanitiseText( DiscordUtils::truncateText( $reason ) ) . '`' ) : '' ) )->plain();
 		DiscordUtils::handleDiscord(':wastebasket:', $msg);
 		return true;
 	}

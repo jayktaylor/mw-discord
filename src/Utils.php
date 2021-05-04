@@ -235,6 +235,15 @@ class DiscordUtils {
 		}
 		return $text;
 	}
+
+	/**
+	 * Sanitise text input, including removing the potential for abuse
+	 * of Discord's @everyone and @here pings
+	 */
+	public static function sanitiseText($text) {
+		$text = preg_replace('/(`|@)/', '', $text);
+		return $text;
+	}
 }
 
 ?>

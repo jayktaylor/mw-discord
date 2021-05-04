@@ -48,6 +48,7 @@ This extension can be configured using the `LocalSettings.php` file in your Medi
 | `$wgDiscordNoNull` | bool | Do not send notifications for [null edits](https://www.mediawiki.org/wiki/Manual:Purge#Null_edits) | `true`
 | `$wgDiscordSuppressPreviews` | bool | Force previews for links in Discord messages to be suppressed | `true`
 | `$wgDiscordMaxChars` | int | Maximum amount of characters for user-generated text (e.g summaries, reasons). Set to `null` to disable truncation | `null`
+| `$wgDiscordMaxCharsUsernames` | int | Maximum amount of characters for usernames. Set to `null` to disable truncation | `25`
 | `$wgDiscordDisabledHooks` | array | List of hooks to disable sending webhooks for (see [below](#hooks-used)) | `[]`
 | `$wgDiscordDisabledNS` | array | List of namespaces to disable sending webhooks for | `[]`
 | `$wgDiscordDisabledUsers` | array | List of users whose performed actions shouldn't send webhooks | `[]`

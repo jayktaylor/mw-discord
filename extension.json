@@ -38,7 +38,7 @@
 			"FileUndeleteComplete": ":wastebasket:",
 			"AfterImportPage": ":books:",
 			"ArticleMergeComplete": ":card_box:",
-			"ApprovedRevsRevisionApproved": ":white_check_mark",
+			"ApprovedRevsRevisionApproved": ":white_check_mark:",
 			"ApprovedRevsRevisionUnapproved": ":white_check_mark:",
 			"ApprovedRevsFileRevisionApproved": ":white_check_mark:",
 			"ApprovedRevsFileRevisionUnapproved": ":white_check_mark:"

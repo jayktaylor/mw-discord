@@ -1,3 +1,5 @@
+> ⚠️ **This branch is no longer maintained.** MediaWiki 1.31 went End-of-Life in September 2021.
+
 # Discord (mw-discord)
 MediaWiki extension for sending notifications to a Discord webhook from MediaWiki. When a certain event occurs on your MediaWiki wiki, including new edits, they can be sent as a message to a channel on a Discord server using a webhook.
 

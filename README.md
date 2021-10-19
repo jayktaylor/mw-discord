@@ -11,16 +11,15 @@ Multiple webhook URLs are supported and messages will be sent to all of them.
 
 ## Requirements
 - **Discord webhook URL**: This can be obtained by editing a channel on a server with the correct permissions.
-- **MediaWiki 1.31+**
+- **MediaWiki 1.35+**. This extension aims to support the latest LTS release.
 
 ### Recommended
 - **cURL**: By default, this extension sends requests using cURL. If you don't have cURL, you could try setting `$wgDiscordUseFileGetContents` to `true` instead, but this is not recommended.
 
 ## Installation
 
-1. Clone this repository to your MediaWiki installation's `extensions` folder using `git clone https://github.com/jaydenkieran/mw-discord.git -b REL1_35 Discord` (or change `REL1_35` to the branch that corresponds with or is the closest version under your MediaWiki version, e.g `REL1_31` will work for 1.32, 1.33, and 1.34)
-2. Install dependencies `cd extensions/Discord; sudo -u www-data composer update --no-dev`
-3. Modify your `LocalSettings.php` file and add:
+1. Clone this repository to your MediaWiki installation's `extensions` folder using `git clone https://github.com/jaydenkieran/mw-discord.git -b REL1_35 Discord`
+2. Modify your `LocalSettings.php` file and add:
 
 ```php
 // Load the extension

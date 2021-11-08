@@ -1,0 +1,39 @@
+{
+	"@metadata": {
+		"authors": [
+			"WikiMANNia"
+		]
+	},
+	"discord-desc": "Sendet Nachrichten an einen Discord-Kanal, wenn bestimmte Ereignisse eintreten.",
+	"discord-userlinks": "$1 ($2|$3)",
+	"discord-revisionlinks": "($1) $2 $3",
+	"discord-talk": "t",
+	"discord-contribs": "c",
+	"discord-diff": "diff",
+	"discord-minor": "(m)",
+	"discord-size": "($1)",
+	"discord-edit": "$1 bearbeitete $2 $3 $4.",
+	"discord-create": "$1 erstellte $2 $3 $4.",
+	"discord-articledelete": "$1 löschte $2 $3 ($4 Versionen gelöscht).",
+	"discord-undeleterev": "Revisionen für",
+	"discord-articleundelete": "$1 machte die Löschung von $2 $3 $4 rückgängig.",
+	"discord-revvisibility": "$1 änderte die Sichtbarkeit von $2 Revisionen auf $3.",
+	"discord-articleprotect": "$1 änderte den Schutz von $2 $3 ($4).",
+	"discord-titlemove": "$1 verschob $2 nach $3 $4 $5.",
+	"discord-localusercreated": "$1 wurde registriert.",
+	"discord-blocktimeformat": "d F Y H:i",
+	"discord-blockipcomplete": "$1 gesperrte $2 $3 ($4).",
+	"discord-unblockusercomplete": "$1 entsperrte $2.",
+	"discord-usergroupschanged": "$1 geänderte die Rechte von $2 $3 ($4) ($5).",
+	"discord-uploadnewver": "neue Version von",
+	"discord-uploadcomplete": "$1 lud $2 $3 $4 ($5, $6x$7, $8) hoch.",
+	"discord-filedeletecomplete": "$1 hat eine Version der Datei $2 $3 gelöscht.",
+	"discord-fileundeletecomplete": "$1 hat einige Versionen der Datei $2 $3 wiederhergestellt.",
+	"discord-afterimportpage": "$1 importierte $2 (importierte $4/$3 Revisionen).",
+	"discord-timestampformat": "**H:i e:**",
+	"discord-articlemergecomplete": "$1 hat die Revisionen von $2 in $3 zusammengeführt.",
+	"discord-approvedrevsrevisionapproved": "$1 genehmigte eine neue Revision von $2 (Revision $3) von Benutzer $4.",
+	"discord-approvedrevsrevisionunapproved": "$1 hat die genehmigte Revision für $2 wieder freigegeben.",
+	"discord-approvedrevsfilerevisionapproved": "$1 genehmigte eine neue Dateirevision von $2 ($3) von Benutzer $4.",
+	"discord-approvedrevsfilerevisionunapproved": "$1 hebt die Genehmigung der genehmigten Dateirevision für $2 auf."
+}

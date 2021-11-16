@@ -169,9 +169,9 @@ class DiscordUtils {
 				}
 			}
 
-			$userPage = DiscordUtils::createMarkdownLink(	$user_abbr, ( $isAnon ? $contribs : $user->getUserPage() )->getFullUrl( '', '', $proto = PROTO_HTTP ) );
-			$userTalk = DiscordUtils::createMarkdownLink( wfMessage( 'discord-talk' )->text(), $user->getTalkPage()->getFullUrl( '', '', $proto = PROTO_HTTP ) );
-			$userContribs = DiscordUtils::createMarkdownLink( wfMessage( 'discord-contribs' )->text(), $contribs->getFullURL( '', '', $proto = PROTO_HTTP ) );
+			$userPage = DiscordUtils::createMarkdownLink(	$user_abbr, ( $isAnon ? $contribs : $user->getUserPage() )->getFullURL( '', false, PROTO_CANONICAL ) );
+			$userTalk = DiscordUtils::createMarkdownLink( wfMessage( 'discord-talk' )->text(), $user->getTalkPage()->getFullURL( '', false, PROTO_CANONICAL ) );
+			$userContribs = DiscordUtils::createMarkdownLink( wfMessage( 'discord-contribs' )->text(), $contribs->getFullURL( '', false, PROTO_CANONICAL ) );
 			$text = wfMessage( 'discord-userlinks', $userPage, $userTalk, $userContribs )->text();	
 		} else {
 			// If it's a string, which can be likely (for example when range blocking a user)
@@ -185,7 +185,7 @@ class DiscordUtils {
 	 * Creates formatted text for a specific Revision object
 	 */
 	public static function createRevisionText ($revision) {
-		$diff = DiscordUtils::createMarkdownLink( wfMessage( 'discord-diff' )->text(), $revision->getTitle()->getFullUrl("diff=prev", ["oldid" => $revision->getID()], $proto = PROTO_HTTP) );
+		$diff = DiscordUtils::createMarkdownLink( wfMessage( 'discord-diff' )->text(), $revision->getTitle()->getFullURL( 'diff=prev', [ 'oldid' => $revision->getID() ], PROTO_CANONICAL ) );
 		$minor = '';
 		$size = '';
 		if ( $revision->isMinor() ) {

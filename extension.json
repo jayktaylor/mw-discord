@@ -7,6 +7,9 @@
 	"version": "1.0.12",
 	"descriptionmsg": "discord-desc",
 	"license-name": "MIT",
+	"requires": {
+		"MediaWiki": ">= 1.35.0"
+	},
 	"manifest_version": 1,
 	"config": {
 		"DiscordWebhookURL": [],
@@ -52,12 +55,12 @@
 		"mw-discord": "i18n"
 	},
 	"Hooks": {
-		"PageContentSaveComplete": "DiscordHooks::onPageContentSaveComplete",
+		"PageSaveComplete": "DiscordHooks::onPageSaveComplete",
 		"ArticleDeleteComplete": "DiscordHooks::onArticleDeleteComplete",
 		"ArticleUndelete": "DiscordHooks::onArticleUndelete",
 		"ArticleRevisionVisibilitySet": "DiscordHooks::onArticleRevisionVisibilitySet",
 		"ArticleProtectComplete": "DiscordHooks::onArticleProtectComplete",
-		"TitleMoveComplete": "DiscordHooks::onTitleMoveComplete",
+		"PageMoveComplete": "DiscordHooks::onPageMoveComplete",
 		"LocalUserCreated": "DiscordHooks::onLocalUserCreated",
 		"BlockIpComplete": "DiscordHooks::onBlockIpComplete",
 		"UnblockUserComplete": "DiscordHooks::onUnblockUserComplete",

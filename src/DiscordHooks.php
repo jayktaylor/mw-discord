@@ -1,4 +1,11 @@
 <?php
+
+use MediaWiki\Linker\LinkTarget;
+use MediaWiki\Revision\RevisionRecord;
+use MediaWiki\Storage\EditResult;
+use MediaWiki\User\UserIdentity;
+use WikiPage;
+
 /**
  * Hooks for the Discord extension
  *
@@ -8,11 +15,12 @@
 class DiscordHooks {
 	/**
 	 * Called when a page is created or edited
-	 * @see https://www.mediawiki.org/wiki/Manual:Hooks/PageContentSaveComplete
+	 * @see https://www.mediawiki.org/wiki/Manual:Hooks/PageSaveComplete
 	 */
-	public static function onPageContentSaveComplete( &$wikiPage, &$user, $content, $summary, $isMinor, $isWatch, $section, &$flags, $revision, &$status, $baseRevId, $undidRevId ) {
+	public static function onPageSaveComplete( WikiPage $wikiPage, UserIdentity $userIdentity, string $summary, int $flags, RevisionRecord $revision, EditResult $editResult ) {
 		global $wgDiscordNoBots, $wgDiscordNoMinor, $wgDiscordNoNull;
 		$hookName = 'PageContentSaveComplete';
+		$user = User::newFromIdentity( $userIdentity );
 
 		if ( DiscordUtils::isDisabled( $hookName, $wikiPage->getTitle()->getNamespace(), $user ) ) {
 			return true;
@@ -23,25 +31,24 @@ class DiscordHooks {
 			return true;
 		}
 
-		if ( $wgDiscordNoMinor && $isMinor ) {
+		if ( $wgDiscordNoMinor && $revision->isMinor() ) {
 			// Don't continue, this is a minor edit
 			return true;
 		}
 
-		if ( $wgDiscordNoNull && ( !$revision || is_null( $status->getValue()['revision'] ) ) ) {
+		if ( $wgDiscordNoNull && $editResult->isNullEdit() ) {
 			// Don't continue, this is a null edit
 			return true;
 		}
 
-		if ( $wikiPage->getTitle()->inNamespace( NS_FILE ) && is_null( $revision->getPrevious() ) ) {
+		$isNew = $editResult->isNew();
+		if ( $wikiPage->getTitle()->inNamespace( NS_FILE ) && $isNew ) {
 			// Don't continue, it's a new file which onUploadComplete will handle instead
 			return true;
 		}
 
 		$msgKey = 'discord-edit';
-
-		$isNew = $status->value['new'];
-		if ($isNew == 1) { // is a new page
+		if ( $isNew ) { // is a new page
 			$msgKey = 'discord-create';
 		}
 
@@ -158,13 +165,14 @@ class DiscordHooks {
 
 	/**
 	 * Called when a page is moved
-	 * @see https://www.mediawiki.org/wiki/Manual:Hooks/TitleMoveComplete
+	 * @see https://www.mediawiki.org/wiki/Manual:Hooks/PageMoveComplete
 	 */
-	public static function onTitleMoveComplete( Title &$title, Title &$newTitle, User $user, $oldid, $newid, $reason, Revision $revision ) {
+	public static function onPageMoveComplete( LinkTarget $old, LinkTarget $new, UserIdentity $userIdentity, int $pageid, int $redirid, string $reason, RevisionRecord $revision ) {
 		global $wgDiscordNoBots;
 		$hookName = 'TitleMoveComplete';
+		$user = User::newFromIdentity( $userIdentity );
 
-		if ( DiscordUtils::isDisabled( $hookName, $title->getNamespace(), $user ) ) {
+		if ( DiscordUtils::isDisabled( $hookName, $old->getNamespace(), $user ) ) {
 			return true;
 		}
 
@@ -174,8 +182,8 @@ class DiscordHooks {
 		}
 
 		$msg = wfMessage( 'discord-titlemove', DiscordUtils::createUserLinks( $user ),
-			DiscordUtils::createMarkdownLink( $title, $title->getFullURL( '', false, PROTO_CANONICAL ) ),
-			DiscordUtils::createMarkdownLink( $newTitle, $newTitle->getFullURL( '', false, PROTO_CANONICAL ) ),
+			DiscordUtils::createMarkdownLink( $old, Title::castFromLinkTarget( $old )->getFullURL( '', false, PROTO_CANONICAL ) ),
+			DiscordUtils::createMarkdownLink( $new, Title::castFromLinkTarget( $new )->getFullURL( '', false, PROTO_CANONICAL ) ),
 			( $reason ? ('`' . DiscordUtils::sanitiseText( DiscordUtils::truncateText( $reason ) ) . '`' ) : '' ),
 			DiscordUtils::createRevisionText( $revision ) )->plain();
 		DiscordUtils::handleDiscord($hookName, $msg);

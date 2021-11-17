@@ -58,12 +58,12 @@ This extension can be configured using the `LocalSettings.php` file in your Medi
 | `$wgDiscordEmojis` | array | Map of hook names and their associated emojis to prepend to messages if `$wgDiscordUseEmojis` is enabled | See [extension.json](/extension.json)
 
 ## Hooks used
-- `PageContentSaveComplete` - New edits to pages and page creations
+- `PageSaveComplete` - New edits to pages and page creations
 - `ArticleDeleteComplete` - Page deletions
 - `ArticleUndelete` - Page restorations
 - `ArticleRevisionVisibilitySet` - Revision visibility changes
 - `ArticleProtectComplete` - Page protections
-- `TitleMoveComplete` - Page moves
+- `PageMoveComplete` - Page moves
 - `LocalUserCreated` - User registrations
 - `BlockIpComplete` - User blocked
 - `UnblockUserComplete` - User unblocked

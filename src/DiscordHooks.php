@@ -1,6 +1,7 @@
 <?php
 
 use MediaWiki\Linker\LinkTarget;
+use MediaWiki\MediaWikiServices;
 use MediaWiki\Revision\RevisionRecord;
 use MediaWiki\Storage\EditResult;
 use MediaWiki\User\UserIdentity;
@@ -428,15 +429,9 @@ class DiscordHooks {
 		}
 
 		// Get the revision being approved here
-		$rev = Revision::newFromTitle( $title, $rev_id );
+		$rev = MediaWikiServices::getInstance()->getRevisionLookup()->getRevisionByTitle( $title, $rev_id );
 		$revLink = $title->getFullURL( '', false, PROTO_CANONICAL );
-		$revAuthor = $rev->getUser( Revision::RAW );
-
-		if ($revAuthor === 0) {
-			$revAuthor = DiscordUtils::createUserLinks( User::newFromName($rev->getUserText(), false) );
-		} else if ($revAuthor) {
-			$revAuthor = DiscordUtils::createUserLinks( User::newFromId($revAuthor) );
-		}
+		$revAuthor = DiscordUtils::createUserLinks( $rev->getUser( RevisionRecord::RAW ) );
 
 		$msg = wfMessage( 'discord-approvedrevsrevisionapproved', DiscordUtils::createUserLinks( $user ),
 			DiscordUtils::createMarkdownLink( $title, $title->getFullURL( '', false, PROTO_CANONICAL ) ),

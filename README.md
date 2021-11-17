@@ -11,7 +11,7 @@ Multiple webhook URLs are supported and messages will be sent to all of them.
 
 ## Requirements
 - **Discord webhook URL**: This can be obtained by editing a channel on a server with the correct permissions.
-- **MediaWiki 1.35+**. This extension aims to support the latest LTS release.
+- **MediaWiki 1.35+**. This extension aims to support the latest LTS release. **Ensure you are using the correct branch of this extension for your MediaWiki version. The `master` branch includes changes only applicable for the latest MediaWiki version.**
 
 ### Recommended
 - **cURL**: By default, this extension sends requests using cURL. If you don't have cURL, you could try setting `$wgDiscordUseFileGetContents` to `true` instead, but this is not recommended.

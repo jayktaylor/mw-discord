@@ -1,5 +1,7 @@
 <?php
 
+use MediaWiki\MediaWikiServices;
+
 class DiscordUtils {
 	/**
 	 * Checks if criteria is met for this action to be cancelled
@@ -169,9 +171,9 @@ class DiscordUtils {
 				}
 			}
 
-			$userPage = DiscordUtils::createMarkdownLink(	$user_abbr, ( $isAnon ? $contribs : $user->getUserPage() )->getFullUrl( '', '', $proto = PROTO_HTTP ) );
-			$userTalk = DiscordUtils::createMarkdownLink( wfMessage( 'discord-talk' )->text(), $user->getTalkPage()->getFullUrl( '', '', $proto = PROTO_HTTP ) );
-			$userContribs = DiscordUtils::createMarkdownLink( wfMessage( 'discord-contribs' )->text(), $contribs->getFullURL( '', '', $proto = PROTO_HTTP ) );
+			$userPage = DiscordUtils::createMarkdownLink(	$user_abbr, ( $isAnon ? $contribs : $user->getUserPage() )->getFullURL( '', false, PROTO_CANONICAL ) );
+			$userTalk = DiscordUtils::createMarkdownLink( wfMessage( 'discord-talk' )->text(), $user->getTalkPage()->getFullURL( '', false, PROTO_CANONICAL ) );
+			$userContribs = DiscordUtils::createMarkdownLink( wfMessage( 'discord-contribs' )->text(), $contribs->getFullURL( '', false, PROTO_CANONICAL ) );
 			$text = wfMessage( 'discord-userlinks', $userPage, $userTalk, $userContribs )->text();	
 		} else {
 			// If it's a string, which can be likely (for example when range blocking a user)
@@ -185,20 +187,17 @@ class DiscordUtils {
 	 * Creates formatted text for a specific Revision object
 	 */
 	public static function createRevisionText ($revision) {
-		$diff = DiscordUtils::createMarkdownLink( wfMessage( 'discord-diff' )->text(), $revision->getTitle()->getFullUrl("diff=prev", ["oldid" => $revision->getID()], $proto = PROTO_HTTP) );
+		$diff = DiscordUtils::createMarkdownLink( wfMessage( 'discord-diff' )->text(), $revision->getPageAsLinkTarget()->getFullURL( 'diff=prev', [ 'oldid' => $revision->getId() ], PROTO_CANONICAL ) );
 		$minor = '';
 		$size = '';
 		if ( $revision->isMinor() ) {
 			$minor .= wfMessage( 'discord-minor' )->text();
 		}
-		$previous = $revision->getPrevious();
-		if ( $previous ) {
-			$size .= wfMessage( 'discord-size', sprintf( "%+d", $revision->getSize() - $previous->getSize() ) )->text();
-		} else if ( $revision->getParentId() ) {
-			// Try and get the parent revision based on the ID, if we can
-			$previous = Revision::newFromId( $revision->getParentId() );
-			if ($previous) {
-				$size .= wfMessage( 'discord-size', sprintf( "%+d", $revision->getSize() - $previous->getSize() ) )->text();
+		$parentId = $revision->getParentId();
+		if ( $parentId ) {
+			$parent = MediaWikiServices::getInstance()->getRevisionLookup()->getRevisionById( $parentId );
+			if ( $parent ) {
+				$size .= wfMessage( 'discord-size', sprintf( "%+d", $revision->getSize() - $parent->getSize() ) )->text();
 			}
 		}
 		if ( $size == '' ) {

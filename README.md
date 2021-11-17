@@ -11,7 +11,7 @@ Multiple webhook URLs are supported and messages will be sent to all of them.
 
 ## Requirements
 - **Discord webhook URL**: This can be obtained by editing a channel on a server with the correct permissions.
-- **MediaWiki 1.35+**. This extension aims to support the latest LTS release.
+- **MediaWiki 1.35+**. This extension aims to support the latest LTS release. **Ensure you are using the correct branch of this extension for your MediaWiki version. The `master` branch includes changes only applicable for the latest MediaWiki version.**
 
 ### Recommended
 - **cURL**: By default, this extension sends requests using cURL. If you don't have cURL, you could try setting `$wgDiscordUseFileGetContents` to `true` instead, but this is not recommended.
@@ -58,12 +58,12 @@ This extension can be configured using the `LocalSettings.php` file in your Medi
 | `$wgDiscordEmojis` | array | Map of hook names and their associated emojis to prepend to messages if `$wgDiscordUseEmojis` is enabled | See [extension.json](/extension.json)
 
 ## Hooks used
-- `PageContentSaveComplete` - New edits to pages and page creations
+- `PageSaveComplete` - New edits to pages and page creations
 - `ArticleDeleteComplete` - Page deletions
 - `ArticleUndelete` - Page restorations
 - `ArticleRevisionVisibilitySet` - Revision visibility changes
 - `ArticleProtectComplete` - Page protections
-- `TitleMoveComplete` - Page moves
+- `PageMoveComplete` - Page moves
 - `LocalUserCreated` - User registrations
 - `BlockIpComplete` - User blocked
 - `UnblockUserComplete` - User unblocked

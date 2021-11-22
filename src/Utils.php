@@ -187,7 +187,7 @@ class DiscordUtils {
 	 * Creates formatted text for a specific Revision object
 	 */
 	public static function createRevisionText ($revision) {
-		$diff = DiscordUtils::createMarkdownLink( wfMessage( 'discord-diff' )->text(), $revision->getPageAsLinkTarget()->getFullURL( [ 'diff=prev', 'oldid' => $revision->getId() ], false, PROTO_CANONICAL ) );
+		$diff = DiscordUtils::createMarkdownLink( wfMessage( 'discord-diff' )->text(), $revision->getPageAsLinkTarget()->getFullURL( [ 'diff' => 'prev', 'oldid' => $revision->getId() ], false, PROTO_CANONICAL ) );
 		$minor = '';
 		$size = '';
 		if ( $revision->isMinor() ) {

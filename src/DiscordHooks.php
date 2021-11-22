@@ -5,7 +5,6 @@ use MediaWiki\MediaWikiServices;
 use MediaWiki\Revision\RevisionRecord;
 use MediaWiki\Storage\EditResult;
 use MediaWiki\User\UserIdentity;
-use WikiPage;
 
 /**
  * Hooks for the Discord extension

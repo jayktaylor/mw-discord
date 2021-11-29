@@ -35,5 +35,6 @@
 	"discord-approvedrevsrevisionapproved": "$1 approved a new revision of $2 (revision $3) from user $4",
 	"discord-approvedrevsrevisionunapproved": "$1 unapproved the approved revision for $2",
 	"discord-approvedrevsfilerevisionapproved": "$1 approved a new file revision of $2 ($3) from user $4",
-	"discord-approvedrevsfilerevisionunapproved": "$1 unapproved the approved file revision for $2"
+	"discord-approvedrevsfilerevisionunapproved": "$1 unapproved the approved file revision for $2",
+	"discord-renameusercomplete": "$1 renamed the user $2 to $3"
 }

@@ -412,7 +412,7 @@ class DiscordHooks {
 	 * Called when a revision is approved (Approved Revs extension)
 	 * @see https://github.com/wikimedia/mediawiki-extensions-ApprovedRevs/blob/REL1_34/includes/ApprovedRevs_body.php
 	 */
-	public static function externalonApprovedRevsRevisionApproved ( $output, $title, $rev_id, $content ) {
+	public static function onApprovedRevsRevisionApproved ( $output, $title, $rev_id, $content ) {
 		global $wgDiscordNoBots;
 		$hookName = 'ApprovedRevsRevisionApproved';
 
@@ -444,7 +444,7 @@ class DiscordHooks {
 	 * Called when a revision is unapproved (Approved Revs extension)
 	 * @see https://github.com/wikimedia/mediawiki-extensions-ApprovedRevs/blob/REL1_34/includes/ApprovedRevs_body.php
 	 */
-	public static function externalonApprovedRevsRevisionUnapproved ( $output, $title, $content ) {
+	public static function onApprovedRevsRevisionUnapproved ( $output, $title, $content ) {
 		global $wgDiscordNoBots;
 		$hookName = 'ApprovedRevsRevisionUnapproved';
 
@@ -469,7 +469,7 @@ class DiscordHooks {
 	 * Called when a file is approved (Approved Revs extension)
 	 * @see https://github.com/wikimedia/mediawiki-extensions-ApprovedRevs/blob/REL1_34/includes/ApprovedRevs_body.php
 	 */
-	public static function externalonApprovedRevsFileRevisionApproved ( $parser, $title, $timestamp, $sha1 ) {
+	public static function onApprovedRevsFileRevisionApproved ( $parser, $title, $timestamp, $sha1 ) {
 		global $wgDiscordNoBots;
 		$hookName = 'ApprovedRevsFileRevisionApproved';
 
@@ -507,7 +507,7 @@ class DiscordHooks {
 	 * Called when a file is unapproved (Approved Revs extension)
 	 * @see https://github.com/wikimedia/mediawiki-extensions-ApprovedRevs/blob/REL1_34/includes/ApprovedRevs_body.php
 	 */
-	public static function externalonApprovedRevsFileRevisionUnapproved ( $parser, $title ) {
+	public static function onApprovedRevsFileRevisionUnapproved ( $parser, $title ) {
 		global $wgDiscordNoBots;
 		$hookName = 'ApprovedRevsFileRevisionUnapproved';
 
@@ -525,6 +525,28 @@ class DiscordHooks {
 		$msg = wfMessage( 'discord-approvedrevsfilerevisionunapproved', DiscordUtils::createUserLinks( $user ),
 			DiscordUtils::createMarkdownLink( $title, $title->getFullURL( '', false, PROTO_CANONICAL ) ) )->plain();
 		DiscordUtils::handleDiscord($hookName, $msg);
+		return true;
+	}
+
+	/**
+	 * Called when a user is renamed (Renameuser extension)
+	 * @see https://github.com/wikimedia/mediawiki-extensions-Renameuser/blob/REL1_36/includes/RenameuserSQL.php
+	 */
+	public static function onRenameUserComplete ( $uid, $old, $new ) {
+		$hookName = 'RenameUserComplete';
+
+		$user = RequestContext::getMain()->getUser();
+
+		if ( DiscordUtils::isDisabled( $hookName, null, null ) ) {
+			return true;
+		}
+
+		$renamedUserAsTitle = User::newFromName( $new )->getUserPage();
+
+		$msg = wfMessage( 'discord-renameusercomplete', DiscordUtils::createUserLinks( $user ),
+			"*$old*",
+			DiscordUtils::createMarkdownLink( $new, $renamedUserAsTitle->getFullURL( '', false, PROTO_CANONICAL ) ) )->plain();
+			DiscordUtils::handleDiscord($hookName, $msg);
 		return true;
 	}
 }

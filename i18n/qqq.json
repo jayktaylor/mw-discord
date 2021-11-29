@@ -35,5 +35,6 @@
   "discord-approvedrevsrevisionapproved": "Message sent to Discord when a revision is approved (Approved Revs extension). Parameters:\n$1 - discord-userlinks (admin user)\n$2 - Target link\n$3 - Revision link or ID\n$4 - discord-userlinks (revision author) or ID",
   "discord-approvedrevsrevisionunapproved": "Message sent to Discord when a revision is unapproved (Approved Revs extension). Parameters:\n$1 - discord-userlinks (admin user)\n$2 - Target link",
   "discord-approvedrevsfilerevisionapproved": "Message sent to Discord when a file revision is approved (Approved Revs extension). Parameters:\n$1 - discord-userlinks (admin user)\n$2 - Target link\n$3 - SHA of uploaded file\n$4 - discord-userlinks (revision author)",
-  "discord-approvedrevsfilerevisionunapproved": "Message sent to Discord when a file revision is unapproved (Approved Revs extension). Parameters:\n$1 - discord-userlinks (admin user)\n$2 - Target link"
+  "discord-approvedrevsfilerevisionunapproved": "Message sent to Discord when a file revision is unapproved (Approved Revs extension). Parameters:\n$1 - discord-userlinks (admin user)\n$2 - Target link",
+  "discord-renameusercomplete": "Message sent to Discord when a user is renamed (Renameuser extension). \n$1 - discord-userlinks (admin user)\n$2 - Old username\n$3 - New username link"
 }

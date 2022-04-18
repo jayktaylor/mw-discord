@@ -81,8 +81,13 @@ class DiscordUtils {
 
 		DeferredUpdates::addCallableUpdate( function() use ( $stripped, $urls, $wgDiscordUseFileGetContents ) {
 			$user_agent = 'mw-discord/1.0 (github.com/jaydenkieran)';
-			$json_data = [ 'content' => "$stripped" ];
-			$json = json_encode($json_data);	
+			$json_data = [
+				'content' => "$stripped",
+				'allowed_mentions' => [
+					'parse' => []
+				]
+			];
+			$json = json_encode($json_data);
 
 			if ( $wgDiscordUseFileGetContents ) {
 				// They want to use file_get_contents
@@ -101,12 +106,12 @@ class DiscordUtils {
 					$result = file_get_contents( $value, false, $context );
 				}
 			} else {
-				// By default, we use cURL	
+				// By default, we use cURL
 				// Set up cURL multi handlers
 				$c_handlers = [];
 				$result = [];
 				$mh = curl_multi_init();
-	
+
 				foreach ($urls as &$value) {
 					$c_handlers[$value] = curl_init( $value );
 					curl_setopt( $c_handlers[$value], CURLOPT_POST, 1 ); // Send as a POST request
@@ -122,19 +127,19 @@ class DiscordUtils {
 					));
 					curl_multi_add_handle( $mh, $c_handlers[$value] );
 				}
-	
+
 				$running = null;
 				do {
 					curl_multi_exec($mh, $running);
 				} while ($running);
-	
+
 				// Remove all handlers and then close the multi handler
 				foreach($c_handlers as $k => $ch) {
 					$result[$k] = curl_multi_getcontent($ch);
 					wfDebugLog( 'discord', 'Result of cURL was: ' . $result[$k] );
 					curl_multi_remove_handle($mh, $ch);
 				}
-	
+
 				curl_multi_close($mh);
 			}
 		} );
@@ -172,7 +177,7 @@ class DiscordUtils {
 			$userPage = DiscordUtils::createMarkdownLink(	$user_abbr, ( $isAnon ? $contribs : $user->getUserPage() )->getFullUrl( '', '', $proto = PROTO_HTTP ) );
 			$userTalk = DiscordUtils::createMarkdownLink( wfMessage( 'discord-talk' )->text(), $user->getTalkPage()->getFullUrl( '', '', $proto = PROTO_HTTP ) );
 			$userContribs = DiscordUtils::createMarkdownLink( wfMessage( 'discord-contribs' )->text(), $contribs->getFullURL( '', '', $proto = PROTO_HTTP ) );
-			$text = wfMessage( 'discord-userlinks', $userPage, $userTalk, $userContribs )->text();	
+			$text = wfMessage( 'discord-userlinks', $userPage, $userTalk, $userContribs )->text();
 		} else {
 			// If it's a string, which can be likely (for example when range blocking a user)
 			// We need to handle this differently.
@@ -207,7 +212,7 @@ class DiscordUtils {
 		$text = wfMessage( 'discord-revisionlinks', $diff, $minor, $size )->text();
 		return $text;
 	}
-	
+
 	/**
 	 * Strip bad characters from a URL
 	 */
@@ -217,20 +222,20 @@ class DiscordUtils {
 		$url = str_replace(")", "%29", $url);
 		return $url;
 	}
-	
+
 	/**
 	 * Formats bytes to a string representing B, KB, MB, GB, TB
 	 */
-	public static function formatBytes($bytes, $precision = 2) { 
-    $units = array('B', 'KB', 'MB', 'GB', 'TB'); 
+	public static function formatBytes($bytes, $precision = 2) {
+    $units = array('B', 'KB', 'MB', 'GB', 'TB');
 
-    $bytes = max($bytes, 0); 
-    $pow = floor(($bytes ? log($bytes) : 0) / log(1024)); 
-    $pow = min($pow, count($units) - 1); 
+    $bytes = max($bytes, 0);
+    $pow = floor(($bytes ? log($bytes) : 0) / log(1024));
+    $pow = min($pow, count($units) - 1);
 
-    $bytes /= (1 << (10 * $pow)); 
+    $bytes /= (1 << (10 * $pow));
 
-    return round($bytes, $precision) . ' ' . $units[$pow]; 
+    return round($bytes, $precision) . ' ' . $units[$pow];
 	}
 
 	/**

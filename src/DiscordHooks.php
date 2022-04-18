@@ -53,7 +53,7 @@ class DiscordHooks {
 		}
 
 		$msg = wfMessage( $msgKey, DiscordUtils::createUserLinks( $user ),
-			DiscordUtils::createMarkdownLink( $wikiPage->getTitle(), $wikiPage->getTitle()->getFullURL( '', false, PROTO_CANONICAL ) ),
+			DiscordUtils::createMarkdownLink( DiscordUtils::sanitiseText( $wikiPage->getTitle() ), $wikiPage->getTitle()->getFullURL( '', false, PROTO_CANONICAL ) ),
 			DiscordUtils::createRevisionText( $revision ),
 			( $summary ? ('`' . DiscordUtils::sanitiseText( DiscordUtils::truncateText( $summary ) ) . '`' ) : '' ) )->plain();
 		DiscordUtils::handleDiscord($hookName, $msg);

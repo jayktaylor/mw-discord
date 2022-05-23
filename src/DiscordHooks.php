@@ -20,7 +20,7 @@ class DiscordHooks {
 	public static function onPageSaveComplete( WikiPage $wikiPage, UserIdentity $userIdentity, string $summary, int $flags, RevisionRecord $revision, EditResult $editResult ) {
 		global $wgDiscordNoBots, $wgDiscordNoMinor, $wgDiscordNoNull;
 		$hookName = 'PageContentSaveComplete';
-		$user = User::newFromIdentity( $userIdentity );
+        $user = MediaWikiServices::getInstance()->getUserFactory()->newFromUserIdentity( $userIdentity );
 
 		if ( DiscordUtils::isDisabled( $hookName, $wikiPage->getTitle()->getNamespace(), $user ) ) {
 			return true;
@@ -170,7 +170,7 @@ class DiscordHooks {
 	public static function onPageMoveComplete( LinkTarget $old, LinkTarget $new, UserIdentity $userIdentity, int $pageid, int $redirid, string $reason, RevisionRecord $revision ) {
 		global $wgDiscordNoBots;
 		$hookName = 'TitleMoveComplete';
-		$user = User::newFromIdentity( $userIdentity );
+        $user = MediaWikiServices::getInstance()->getUserFactory()->newFromUserIdentity( $userIdentity );
 
 		if ( DiscordUtils::isDisabled( $hookName, $old->getNamespace(), $user ) ) {
 			return true;
@@ -224,7 +224,7 @@ class DiscordHooks {
 			$expiryMsg = $expiry;
 		}
 
-		$msg = wfMessage( 'discord-blockipcomplete', DiscordUtils::createUserLinks( $user ), DiscordUtils::createUserLinks( $block->getTarget() ),
+		$msg = wfMessage( 'discord-blockipcomplete', DiscordUtils::createUserLinks( $user ), DiscordUtils::createUserLinks( $block->getTargetUserIdentity() ),
 			( $block->getReasonComment()->text ? ('`' . DiscordUtils::sanitiseText( DiscordUtils::truncateText( $block->getReasonComment()->text ) ) . '`' ) : '' ),
 			$expiryMsg )->plain();
 		DiscordUtils::handleDiscord($hookName, $msg);
@@ -242,7 +242,7 @@ class DiscordHooks {
 			return true;
 		}
 
-		$msg = wfMessage( 'discord-unblockusercomplete', DiscordUtils::createUserLinks( $user ), DiscordUtils::createUserLinks( $block->getTarget() ) )->text();
+		$msg = wfMessage( 'discord-unblockusercomplete', DiscordUtils::createUserLinks( $user ), DiscordUtils::createUserLinks( $block->getTargetUserIdentity() ) )->text();
 		DiscordUtils::handleDiscord($hookName, $msg);
 		return true;
 	}
@@ -281,7 +281,7 @@ class DiscordHooks {
 		$hookName = 'UploadComplete';
 
 		$lf = $image->getLocalFile();
-		$user = $lf->getUser( $type = 'object' ); // only supported in MW 1.31+
+		$user = MediaWikiServices::getInstance()->getUserFactory()->newFromUserIdentity( $lf->getUploader() );
 
 		if ( DiscordUtils::isDisabled( $hookName, NS_FILE, $user ) ) {
 			return true;
@@ -487,13 +487,7 @@ class DiscordHooks {
 		$imagepage = ImagePage::newFromID( $title->getArticleID() );
 		$displayedFile = $imagepage->getDisplayedFile();
 		$displayedFileUrl = $displayedFile->getCanonicalUrl(); // getFullURL doesn't work quite the same on File classes
-		$uploader = $displayedFile->getUser();
-
-		if (is_string($uploader)) {
-			$uploader = User::newFromName($uploader, false);
-		} else {
-			$uploader = User::newFromId($uploader);
-		}
+		$uploader = MediaWikiServices::getInstance()->getUserFactory()->newFromUserIdentity( $displayedFile->getUploader() );
 
 		$msg = wfMessage( 'discord-approvedrevsfilerevisionapproved', DiscordUtils::createUserLinks( $user ),
 		    DiscordUtils::createMarkdownLink( $title, $title->getFullURL( '', false, PROTO_CANONICAL ) ),
@@ -541,7 +535,7 @@ class DiscordHooks {
 			return true;
 		}
 
-		$renamedUserAsTitle = User::newFromName( $new )->getUserPage();
+        $renamedUserAsTitle = MediaWikiServices::getInstance()->getUserFactory()->newFromName( $new )->getUserPage();
 
 		$msg = wfMessage( 'discord-renameusercomplete', DiscordUtils::createUserLinks( $user ),
 			"*$old*",

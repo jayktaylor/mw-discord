@@ -49,7 +49,7 @@ class DiscordHooks {
 			DiscordUtils::createMarkdownLink( $wikiPage->getTitle(), $wikiPage->getTitle()->getFullUrl( '', '', $proto = PROTO_HTTP ) ),
 			DiscordUtils::createRevisionText( $revision ),
 			( $summary ? ('`' . DiscordUtils::sanitiseText( DiscordUtils::truncateText( $summary ) ) . '`' ) : '' ) )->plain();
-		DiscordUtils::handleDiscord($hookName, $msg);
+		DiscordUtils::handleDiscord($hookName, $msg, $wikiPage->getTitle());
 		return true;
 	}
 
@@ -74,7 +74,7 @@ class DiscordHooks {
 			DiscordUtils::createMarkdownLink( $article->getTitle(), $article->getTitle()->getFullUrl( '', '', $proto = PROTO_HTTP ) ),
 			( $reason ? ('`' . DiscordUtils::sanitiseText( DiscordUtils::truncateText( $reason ) ) . '`' ) : '' ),
 			$archivedRevisionCount)->plain();
-		DiscordUtils::handleDiscord($hookName, $msg);
+		DiscordUtils::handleDiscord($hookName, $msg, $wikiPage->getTitle());
 		return true;
 	}
 

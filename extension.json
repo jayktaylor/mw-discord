@@ -1,9 +1,9 @@
 {
 	"name": "Discord",
 	"author": [
-		"[https://github.com/jaydenkieran Jayden Bailey]"
+		"[https://github.com/jayktaylor Jayden Bailey]"
 	],
-	"url": "https://github.com/jaydenkieran/mw-discord",
+	"url": "https://github.com/jayktaylor/mw-discord",
 	"version": "1.0.13",
 	"descriptionmsg": "discord-desc",
 	"license-name": "MIT",

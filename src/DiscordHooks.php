@@ -62,13 +62,16 @@ class DiscordHooks {
 
 	/**
 	 * Called when a page is deleted
-	 * @see https://www.mediawiki.org/wiki/Manual:Hooks/ArticleDeleteComplete
+	 * @see https://www.mediawiki.org/wiki/Manual:Hooks/PageDeleteComplete
 	 */
-	public static function onArticleDeleteComplete( &$article, User &$user, $reason, $id, $content, LogEntry $logEntry, $archivedRevisionCount ) {
+	public static function onPageDeleteComplete( MediaWiki\Page\ProperPageIdentity $page, MediaWiki\Permissions\Authority $deleter, string $reason, int $pageID, MediaWiki\Revision\RevisionRecord $deletedRev, ManualLogEntry $logEntry, int $archivedRevisionCount ) {
 		global $wgDiscordNoBots;
 		$hookName = 'ArticleDeleteComplete';
 
-		if ( DiscordUtils::isDisabled( $hookName, $article->getTitle()->getNamespace(), $user ) ) {
+		$user = MediaWikiServices::getInstance()->getUserFactory()->newFromUserIdentity($deleter->getUser());
+		$page = MediaWikiServices::getInstance()->getWikiPageFactory()->newFromTitle($page);
+
+		if ( DiscordUtils::isDisabled( $hookName, $page->getNamespace(), $user ) ) {
 			return true;
 		}
 
@@ -78,7 +81,7 @@ class DiscordHooks {
 		}
 
 		$msg = wfMessage( 'discord-articledelete', DiscordUtils::createUserLinks( $user ),
-			DiscordUtils::createMarkdownLink( $article->getTitle(), $article->getTitle()->getFullURL( '', false, PROTO_CANONICAL ) ),
+			DiscordUtils::createMarkdownLink( $page->getTitle(), $page->getTitle()->getFullURL( '', false, PROTO_CANONICAL ) ),
 			( $reason ? ('`' . DiscordUtils::sanitiseText( DiscordUtils::truncateText( $reason ) ) . '`' ) : '' ),
 			$archivedRevisionCount)->plain();
 		DiscordUtils::handleDiscord($hookName, $msg);

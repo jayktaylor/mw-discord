@@ -31,6 +31,10 @@ class DiscordUtils {
 		}
 		if ( is_array( $wgDiscordDisabledUsers ) ) {
 			if ( !is_null( $user ) ) {
+				if ( $user instanceof UserIdentity ) {
+					$user = MediaWikiServices::getInstance()->getUserFactory()->newFromUserIdentity($user);
+				}
+
 				if ( $user instanceof User ) {
 					if ( in_array( $user->getName(), $wgDiscordDisabledUsers ) ) {
 						// User shouldn't trigger a message, return true

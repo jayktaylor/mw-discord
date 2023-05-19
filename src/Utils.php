@@ -1,6 +1,7 @@
 <?php
 
 use MediaWiki\MediaWikiServices;
+use MediaWiki\User\UserIdentity;
 
 class DiscordUtils {
 	/**
@@ -161,8 +162,13 @@ class DiscordUtils {
 	/**
 	 * Creates links for a specific MediaWiki User object
 	 */
-	public static function createUserLinks ($user) {
+	public static function createUserLinks ( $user ) {
 		global $wgDiscordMaxCharsUsernames;
+
+		if ( $user instanceof UserIdentity ) {
+			// If we were passed a UserIdentity object, get the relevant user.
+			$user = MediaWikiServices::getInstance()->getUserFactory()->newFromUserIdentity($user);
+		}
 
 		if ( $user instanceof User ) {
 			$isAnon = $user->isAnon();
@@ -181,8 +187,7 @@ class DiscordUtils {
 			$userContribs = DiscordUtils::createMarkdownLink( wfMessage( 'discord-contribs' )->text(), $contribs->getFullURL( '', false, PROTO_CANONICAL ) );
 			$text = wfMessage( 'discord-userlinks', $userPage, $userTalk, $userContribs )->text();
 		} else {
-			// If it's a string, which can be likely (for example when range blocking a user)
-			// We need to handle this differently.
+			// If we were given a string, handle this differently.
 			$text = wfMessage( 'discord-userlinks', $user, 'n/a', 'n/a' )->text();
 		}
 		return $text;

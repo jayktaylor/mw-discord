@@ -224,7 +224,12 @@ class DiscordHooks {
 			$expiryMsg = $expiry;
 		}
 
-		$msg = wfMessage( 'discord-blockipcomplete', DiscordUtils::createUserLinks( $user ), DiscordUtils::createUserLinks( $block->getTargetUserIdentity() ),
+		$target = $block->getTargetUserIdentity();
+		if ( $target === null ) {
+			$target = $block->getTargetName();
+		}
+
+		$msg = wfMessage( 'discord-blockipcomplete', DiscordUtils::createUserLinks( $user ), DiscordUtils::createUserLinks( $target ),
 			( $block->getReasonComment()->text ? ('`' . DiscordUtils::sanitiseText( DiscordUtils::truncateText( $block->getReasonComment()->text ) ) . '`' ) : '' ),
 			$expiryMsg )->plain();
 		DiscordUtils::handleDiscord($hookName, $msg);
@@ -242,7 +247,12 @@ class DiscordHooks {
 			return true;
 		}
 
-		$msg = wfMessage( 'discord-unblockusercomplete', DiscordUtils::createUserLinks( $user ), DiscordUtils::createUserLinks( $block->getTargetUserIdentity() ) )->text();
+		$target = $block->getTargetUserIdentity();
+		if ( $target === null ) {
+			$target = $block->getTargetName();
+		}
+
+		$msg = wfMessage( 'discord-unblockusercomplete', DiscordUtils::createUserLinks( $user ), DiscordUtils::createUserLinks( $target ) )->text();
 		DiscordUtils::handleDiscord($hookName, $msg);
 		return true;
 	}

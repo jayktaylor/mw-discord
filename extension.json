@@ -44,7 +44,8 @@
 			"ApprovedRevsRevisionApproved": ":white_check_mark:",
 			"ApprovedRevsRevisionUnapproved": ":white_check_mark:",
 			"ApprovedRevsFileRevisionApproved": ":white_check_mark:",
-			"ApprovedRevsFileRevisionUnapproved": ":white_check_mark:"
+			"ApprovedRevsFileRevisionUnapproved": ":white_check_mark:",
+			"RenameUserComplete": ":people_holding_hands:"
 		}
 	},
 	"AutoloadClasses": {

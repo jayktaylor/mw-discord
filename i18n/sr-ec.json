@@ -1,0 +1,16 @@
+{
+	"@metadata": {
+		"authors": [
+			"Milicevic01"
+		]
+	},
+	"discord-talk": "р",
+	"discord-contribs": "д",
+	"discord-diff": "разл",
+	"discord-minor": "(м)",
+	"discord-create": "$1 ја направио $2 $3 $4",
+	"discord-localusercreated": "$1 се регистровао",
+	"discord-blockipcomplete": "$1 је блокирао $2 $3 ($4)",
+	"discord-afterimportpage": "$1 је увезао $2 (увезено $4/$3 ревизија)",
+	"discord-renameusercomplete": "$1 је преименовао корисника $2 у $3"
+}

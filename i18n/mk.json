@@ -1,0 +1,37 @@
+{
+	"@metadata": {
+		"authors": [
+			"Bjankuloski06"
+		]
+	},
+	"discord-desc": "Испраќа пораки на канал на Дискорд кога ќе се случат извесни настани",
+	"discord-talk": "t",
+	"discord-contribs": "c",
+	"discord-diff": "разл",
+	"discord-minor": "(м)",
+	"discord-edit": "$1 уреди $2 $3 $4",
+	"discord-create": "$1 создаде $2 $3 $4",
+	"discord-articledelete": "$1 избриша $2 $3 (избришани $4 преработки)",
+	"discord-undeleterev": "преработки за",
+	"discord-articleundelete": "$1 поврати $2 $3 $4",
+	"discord-revvisibility": "$1 смени видливост на $2 преработки на $3",
+	"discord-articleprotect": "$1 смени заштита на $2 $3 ($4)",
+	"discord-titlemove": "$1 премести $2 на $3 $4 $5",
+	"discord-localusercreated": "$1 зачленети",
+	"discord-blocktimeformat": "j F Y G:i ч.",
+	"discord-blockipcomplete": "$1 блокираше $2 $3 ($4)",
+	"discord-unblockusercomplete": "$1 одблокираше $2",
+	"discord-usergroupschanged": "$1 ги смени правата на $2 $3 ($4) ($5)",
+	"discord-uploadnewver": "нова преработка на",
+	"discord-uploadcomplete": "$1 подигна $2 $3 $4 ($5, $6×$7, $8)",
+	"discord-filedeletecomplete": "$1 избриша верзија на податотека $2 $3",
+	"discord-fileundeletecomplete": "$1 поврати некои верзии на податотека $2 $3",
+	"discord-afterimportpage": "$1 увезе $2 (увезени $4/$3 преработки)",
+	"discord-timestampformat": "**G:i ч. e:**",
+	"discord-articlemergecomplete": "$1 спои преработки од $2 во $3",
+	"discord-approvedrevsrevisionapproved": "$1 одобри нова преработка на $2 (преработка $3) од корисникот $4",
+	"discord-approvedrevsrevisionunapproved": "$1 тргна одобрение од одобрената преработка за $2",
+	"discord-approvedrevsfilerevisionapproved": "$1 одобри нова преработка на податотека на $2 ($3) од корисникот $4",
+	"discord-approvedrevsfilerevisionunapproved": "$1 тргна одобрение од одобрената преработка на податотека за $2",
+	"discord-renameusercomplete": "$1 го преименуваше корисникот $2 во $3"
+}

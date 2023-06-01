@@ -1,0 +1,40 @@
+{
+	"@metadata": {
+		"authors": [
+			"Verdy p"
+		]
+	},
+	"discord-desc": "Envoie des messages à un canal Discord quand certains événements surviennent",
+	"discord-userlinks": "$1 ($2|$3)",
+	"discord-revisionlinks": "($1) $2 $3",
+	"discord-talk": "t",
+	"discord-contribs": "c",
+	"discord-diff": "diff",
+	"discord-minor": "(m)",
+	"discord-size": "($1)",
+	"discord-edit": "$1 a modifié $2 $3 : $4",
+	"discord-create": "$1 a créé $2 $3 : $4",
+	"discord-articledelete": "$1 a supprimé $2 ($4 version(s) supprimée(s)) : $3",
+	"discord-undeleterev": "versions pour",
+	"discord-articleundelete": "$1 a restauré $2 $3 : $4",
+	"discord-revvisibility": "$1 a modifié la visibilité de $2 version(s) sur $3",
+	"discord-articleprotect": "$1 a modifié la protection de $2 ($4) : $3",
+	"discord-titlemove": "$1 a renommé $2 en $3 $5 : $4",
+	"discord-localusercreated": "$1 s’est inscrit(e)",
+	"discord-blocktimeformat": "d F Y H:i",
+	"discord-blockipcomplete": "$1 a bloqué $2 ($4) : $3",
+	"discord-unblockusercomplete": "$1 a débloqué $2",
+	"discord-usergroupschanged": "$1 a modifié les droits de $2 ($4) ($5) : $3",
+	"discord-uploadnewver": "nouvelle version de",
+	"discord-uploadcomplete": "$1 a téléversé $2 $3 ($5, $6x$7, $8) : $4",
+	"discord-filedeletecomplete": "$1 a supprimé une version du fichier $2 : $3",
+	"discord-fileundeletecomplete": "$1 a restauré certaines versions du fichier $2 : $3",
+	"discord-afterimportpage": "$1 a importé $2 ($4 / $3 révisions importées)",
+	"discord-timestampformat": "**H:i e:**",
+	"discord-articlemergecomplete": "$1 a fusionné des versions de $2 vers $3",
+	"discord-approvedrevsrevisionapproved": "$1 a approuvé une nouvelle version de $2 (version $3) créée par $4",
+	"discord-approvedrevsrevisionunapproved": "$1 a désapprouvé la version approuvée de $2",
+	"discord-approvedrevsfilerevisionapproved": "$1 a approuvé une nouvelle version de fichier dans $2 ($3) créée par $4",
+	"discord-approvedrevsfilerevisionunapproved": "$1 a désapprouvé la version de fichier approuvée dans $2",
+	"discord-renameusercomplete": "$1 a renommé l’utilisateur ou l’utilisatrice $2 en $3"
+}

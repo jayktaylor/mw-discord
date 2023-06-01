@@ -1,0 +1,37 @@
+{
+	"@metadata": {
+		"authors": [
+			"McDutchie"
+		]
+	},
+	"discord-desc": "Invia messages a un canal Discord quando certe eventos occurre",
+	"discord-talk": "t",
+	"discord-contribs": "c",
+	"discord-diff": "diff",
+	"discord-minor": "(m)",
+	"discord-edit": "$1 ha modificate $2 $3 $4",
+	"discord-create": "$1 ha create $2 $3 $4",
+	"discord-articledelete": "$1 ha delite $2 $3 ($4 versiones delite)",
+	"discord-undeleterev": "versiones pro",
+	"discord-articleundelete": "$1 ha restaurate $2 $3 $4",
+	"discord-revvisibility": "$1 ha cambiate le visibilitate de of $2 versiones sur $3",
+	"discord-articleprotect": "$1 ha cambiate le protection de $2 $3 ($4)",
+	"discord-titlemove": "$1 ha renominate $2 a $3 $4 $5",
+	"discord-localusercreated": "$1 se ha inscribite",
+	"discord-blocktimeformat": "d F Y H:i",
+	"discord-blockipcomplete": "$1 ha blocate $2 $3 ($4)",
+	"discord-unblockusercomplete": "$1 ha disblocate $2",
+	"discord-usergroupschanged": "$1 ha cambiate le derectos de $2 $3 ($4) ($5)",
+	"discord-uploadnewver": "nove version de",
+	"discord-uploadcomplete": "$1 ha incargate $2 $3 $4 ($5, $6x$7, $8)",
+	"discord-filedeletecomplete": "$1 ha delite un version del file $2 $3",
+	"discord-fileundeletecomplete": "$1 ha restaurate alcun versiones del file $2 $3",
+	"discord-afterimportpage": "$1 ha importate $2 ($4/$3 versiones importate)",
+	"discord-timestampformat": "**H:i e:**",
+	"discord-articlemergecomplete": "$1 ha fusionate le versiones de $2 in $3",
+	"discord-approvedrevsrevisionapproved": "$1 ha approbate un nove version de $2 (version $3) del usator $4",
+	"discord-approvedrevsrevisionunapproved": "$1 ha disapprobate le version approbate de $2",
+	"discord-approvedrevsfilerevisionapproved": "$1 ha approbate un nove version del file $2 ($3) del usator $4",
+	"discord-approvedrevsfilerevisionunapproved": "$1 ha disapprobate le version approbate del file $2",
+	"discord-renameusercomplete": "$1 ha renominate le usator $2 a $3"
+}

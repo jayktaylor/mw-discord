@@ -1,0 +1,37 @@
+{
+	"@metadata": {
+		"authors": [
+			"Eleassar"
+		]
+	},
+	"discord-desc": "Pošlje sporočila na kanal Discord ob nekaterih dogodkih",
+	"discord-talk": "t",
+	"discord-contribs": "c",
+	"discord-diff": "razl",
+	"discord-minor": "(m)",
+	"discord-edit": "$1 je uredil_a $2 $3 $4",
+	"discord-create": "$1 je ustvaril_a $2 $3 $4",
+	"discord-articledelete": "$1 je izbrisal_a $2 $3 (izbrisanih $4 redakcij)",
+	"discord-undeleterev": "redakcije za",
+	"discord-articleundelete": "$1 je odizbrisal_a $2 $3 $4",
+	"discord-revvisibility": "$1 je spremenil_a vidnost $2 redakcij strani $3",
+	"discord-articleprotect": "$1 je spremenil_a zaščito $2 $3 ($4)",
+	"discord-titlemove": "$1 je prestavil_a $2 na $3 $4 $5",
+	"discord-localusercreated": "Registracija $1",
+	"discord-blocktimeformat": "d. F Y, H:i",
+	"discord-blockipcomplete": "$1 je blokiral_a $2 $3 ($4)",
+	"discord-unblockusercomplete": "$1 je odblokiral_a $2",
+	"discord-usergroupschanged": "$1 je spremenil_a pravice $2 $3 ($4) ($5)",
+	"discord-uploadnewver": "nova različica datoteke",
+	"discord-uploadcomplete": "$1 je naložil_a $2 $3 $4 ($5, $6&nbsp;×&nbsp;$7, $8)",
+	"discord-filedeletecomplete": "$1 je izbrisal_a različico datoteke $2 $3",
+	"discord-fileundeletecomplete": "$1 je obnovil_a nekaj različic datoteke $2 $3",
+	"discord-afterimportpage": "$1 je uvozil_a $2 (uvoženih $4/$3 redakcij)",
+	"discord-timestampformat": "**H:i e:**",
+	"discord-articlemergecomplete": "$1 je združil_a redakcije iz $2 v $3",
+	"discord-approvedrevsrevisionapproved": "$1 je odobril_a novo redakcijo $2 (redakcija $3) uporabnika_ce $4",
+	"discord-approvedrevsrevisionunapproved": "$1 je od-odobrila odobreno redakcijo za $2",
+	"discord-approvedrevsfilerevisionapproved": "$1 je odobril_a novo različico datoteke $2 ($3) uporabnika_ce $4",
+	"discord-approvedrevsfilerevisionunapproved": "$1 je od-odobrila odobreno redakcijo datoteke za $2",
+	"discord-renameusercomplete": "$1 je preimenoval_a uporabnika $2 v $3"
+}

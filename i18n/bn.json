@@ -1,0 +1,15 @@
+{
+	"@metadata": {
+		"authors": [
+			"আফতাবুজ্জামান"
+		]
+	},
+	"discord-talk": "আ",
+	"discord-contribs": "অ",
+	"discord-diff": "পার্থক্য",
+	"discord-minor": "(অ)",
+	"discord-edit": "$1 $2 সম্পাদনা করেছেন $3 $4",
+	"discord-create": "$1 $2 তৈরি করেছেন $3 $4",
+	"discord-localusercreated": "$1 নিবন্ধিত হয়েছে",
+	"discord-blockipcomplete": "$1 $2-কে বাধা দিয়েছেন $3 ($4)"
+}

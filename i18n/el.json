@@ -1,0 +1,32 @@
+{
+	"@metadata": {
+		"authors": [
+			"Dogogos123"
+		]
+	},
+	"discord-desc": "Στέλνει μηνύματα σε ένα κανάλι Discord όταν συμβαίνουν ορισμένα συμβάντα",
+	"discord-diff": "διαφορά",
+	"discord-edit": "$1 επεξεργάστηκε $2 $3 $4.",
+	"discord-create": "$1 δημιούργησε $2 $3 $4",
+	"discord-articledelete": "$1 διαγράφηκε $2 $3 ($4 αναθεωρήσεις διαγράφηκαν)",
+	"discord-undeleterev": "αναθεωρήσεις για",
+	"discord-articleundelete": "$1 επανέφερε $2 $3 $4",
+	"discord-revvisibility": "$1 άλλαξε την ορατότητα των $2 αναθεωρήσεων στο $3",
+	"discord-articleprotect": "$1 άλλαξε προστασία του $2 $3 ( $4 )",
+	"discord-titlemove": "$1 μετακίνησε $2 στα $3 $4 $5",
+	"discord-localusercreated": "$1 εγγεγραμμένος",
+	"discord-blockipcomplete": "$1 αποκλεισμένο $2 $3 ( $4 )",
+	"discord-unblockusercomplete": "$1 ξεμπλόκαρε $2",
+	"discord-usergroupschanged": "$1 άλλαξε τα δικαιώματα των $2 $3 ( $4 ) ( $5 )",
+	"discord-uploadnewver": "νέα έκδοση του",
+	"discord-uploadcomplete": "$1 μεταφορτώθηκε $2 $3 $4 ( $5 , $6 x $7 , $8 )",
+	"discord-filedeletecomplete": "$1 διέγραψε μια έκδοση του αρχείου $2 $3",
+	"discord-fileundeletecomplete": "$1 επανέφερε ορισμένες εκδόσεις του αρχείου $2 $3",
+	"discord-afterimportpage": "$1 εισήχθη $2 (εισαγμένες $4 / $3 αναθεωρήσεις)",
+	"discord-articlemergecomplete": "$1 συγχώνευσε αναθεωρήσεις από $2 σε $3",
+	"discord-approvedrevsrevisionapproved": "$1 ενέκρινε μια νέα αναθεώρηση των $2 (αναθεώρηση $3 ) από τον χρήστη $4",
+	"discord-approvedrevsrevisionunapproved": "$1 κατάργησε την έγκριση της εγκεκριμένης αναθεώρησης του αρχείου για $2",
+	"discord-approvedrevsfilerevisionapproved": "$1 ενέκρινε μια νέα αναθεώρηση αρχείου $2 ( $3 ) από τον χρήστη $4",
+	"discord-approvedrevsfilerevisionunapproved": "$1 κατάργησε την έγκριση της εγκεκριμένης αναθεώρησης του αρχείου για $2",
+	"discord-renameusercomplete": "$1 μετονόμασε τον χρήστη $2 σε $3"
+}

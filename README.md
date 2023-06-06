@@ -11,7 +11,10 @@ Multiple webhook URLs are supported and messages will be sent to all of them.
 
 ## Requirements
 - **Discord webhook URL**: This can be obtained by editing a channel on a server with the correct permissions.
-- **MediaWiki 1.36+**. This extension aims to support the latest LTS release. **Ensure you are using the correct branch of this extension for your MediaWiki version. The `master` branch includes changes only applicable for the latest MediaWiki version.**
+- **MediaWiki**: This extension aims to always support the [latest LTS release](https://www.mediawiki.org/wiki/Version_lifecycle).
+  - Use the branch that is equal to, or below your version. For example, if you are using MediaWiki 1.37, use the `REL1_36` branch.
+  - We do not guarantee support for versions of MediaWiki that are considered end-of-life.
+  - The `master` branch may contain changes that are only applicable to the cutting-edge alpha version of MediaWiki.
 
 ### Recommended
 - **cURL**: By default, this extension sends requests using cURL. If you don't have cURL, you could try setting `$wgDiscordUseFileGetContents` to `true` instead, but this is not recommended.
@@ -41,6 +44,8 @@ This extension can be configured using the `LocalSettings.php` file in your Medi
 | `$wgDiscordWebhookURL` | string/array | Discord webhook URLs
 
 ### Optional
+These parameters aren't required for the extension to work.
+
 | Variable | Type | Description | Default |
 | --- | --- | --- | --- |
 | `$wgDiscordNoBots` | bool | Do not send notifications that are triggered by a [bot account](https://www.mediawiki.org/wiki/Manual:Bots) | `true`
@@ -59,7 +64,7 @@ This extension can be configured using the `LocalSettings.php` file in your Medi
 
 ## Hooks used
 - `PageSaveComplete` - New edits to pages and page creations
-- `ArticleDeleteComplete` - Page deletions
+- `PageDeleteComplete` - Page deletions
 - `ArticleUndelete` - Page restorations
 - `ArticleRevisionVisibilitySet` - Revision visibility changes
 - `ArticleProtectComplete` - Page protections
@@ -80,10 +85,13 @@ This extension can be configured using the `LocalSettings.php` file in your Medi
 - `ApprovedRevsFileRevisionApproved` - File revision was approved
 - `ApprovedRevsFileRevisionUnapproved` - File revision was unapproved
 
-## Translation
-This extension can be translated through the messages in the `ì18n` folder if you're a developer. As a wiki administrator, you may find it a better option to edit the messages on-site in the MediaWiki namespace.
+### [Renameuser](https://www.mediawiki.org/wiki/Extension:Renameuser)
+- `RenameUserComplete` - Rename was completed
 
-Any excess whitespace in text that is translated will be stripped (e.g double spaces, etc).
+## Translation
+You can submit translations for this extension on [Translatewiki.net](https://translatewiki.net/wiki/Special:Translate/mwgithub-mw-discord).
 
 ## License
-This extension is licensed under the MIT License, [see here](LICENSE) for more information. This project is originally inspired by Szmyk's [mediawiki-discord](https://github.com/Szmyk/mediawiki-discord) project, but has been rewritten completely to be more suitable for my needs.
+This extension is available under the MIT license. You can [see here](LICENSE) for more information.
+
+This extension  was inspired by Szmyk's [mediawiki-discord](https://github.com/Szmyk/mediawiki-discord) project.

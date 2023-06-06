@@ -177,9 +177,9 @@ class DiscordUtils {
 		if ( $user instanceof User ) {
 			$isAnon = $user->isAnon();
 			$contribs = Title::newFromText("Special:Contributions/" . $user);
+			$user_abbr = strval($user);
 
 			if ($wgDiscordMaxCharsUsernames) {
-				$user_abbr = strval($user);
 				if (strlen($user_abbr) > $wgDiscordMaxCharsUsernames) {
 					$user_abbr = substr($user_abbr, 0, $wgDiscordMaxCharsUsernames);
 					$user_abbr = $user_abbr.'...';

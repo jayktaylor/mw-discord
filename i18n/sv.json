@@ -1,0 +1,32 @@
+{
+	"@metadata": {
+		"authors": [
+			"Sabelöga"
+		]
+	},
+	"discord-desc": "Skickar meddelanden till en Discord-kanal när vissa händelser sker",
+	"discord-diff": "skillnad",
+	"discord-edit": "$1 redigerade $2 $3 $4",
+	"discord-create": "$1 skapade $2 $3 $4",
+	"discord-articledelete": "$1 raderade $2 $3 ( $4 sidvisioner raderade)",
+	"discord-undeleterev": "sidversioner för",
+	"discord-articleundelete": "$1 återställde $2 $3 $4",
+	"discord-revvisibility": "$1 ändrade synligheten för $2 sidversioner på $3",
+	"discord-articleprotect": "$1 ändrade skrivskydd av $2 $3 ($4)",
+	"discord-titlemove": "$1 flyttade $2 till $3 $4 $5",
+	"discord-localusercreated": "$1 registrerade",
+	"discord-blockipcomplete": "$1 blockerade $2 $3 ($4)",
+	"discord-unblockusercomplete": "$1 avblockerade $2",
+	"discord-usergroupschanged": "$1 ändrade rättigheter för $2 $3 ($4) ($5)",
+	"discord-uploadnewver": "ny version av",
+	"discord-uploadcomplete": "$1 laddade upp $2 $3 $4 ($5, $6x$7, $8)",
+	"discord-filedeletecomplete": "$1 raderad en version av filen $2 $3",
+	"discord-fileundeletecomplete": "$1 återställde några versioner av filen $2 $3",
+	"discord-afterimportpage": "$1 importerade $2 (importerade $4/$3 sidversioner)",
+	"discord-articlemergecomplete": "$1 sammanfogade sidversioner från $2 till $3",
+	"discord-approvedrevsrevisionapproved": "$1 godkände en ny sidversion av $2 (sidversion $3) från användare $4",
+	"discord-approvedrevsrevisionunapproved": "$1 drog in godkännandet av sidversionen för $2",
+	"discord-approvedrevsfilerevisionapproved": "$1 godkände en ny filrevision av $2 ($3) från användare $4",
+	"discord-approvedrevsfilerevisionunapproved": "$1 drog in godkännandet för filrevisionen för $2",
+	"discord-renameusercomplete": "$1 bytte namn på användare $2 till $3"
+}

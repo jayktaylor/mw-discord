@@ -1,0 +1,21 @@
+{
+	"@metadata": {
+		"authors": [
+			"Tbodt"
+		]
+	},
+	"discord-talk": "tk",
+	"discord-contribs": "pl",
+	"discord-diff": "ante",
+	"discord-minor": "(lili)",
+	"discord-edit": "$1 li ante e lipu $2 $3 $4",
+	"discord-create": "$1 li pali e lipu $2 $3 $4",
+	"discord-articledelete": "$1 li weka e lipu $2 $3 (lipu li ante lon tenpo $4)",
+	"discord-articleundelete": "$1 li lon sin e lipu $2 $3 $4",
+	"discord-titlemove": "$1 li ante e nimi lipu $2 tawa nimi $3 $4 $5",
+	"discord-localusercreated": "$1 li kama lon",
+	"discord-blockipcomplete": "$1 li ken ala e $2 $3 ($4)",
+	"discord-unblockusercomplete": "$1 li ken sin e $2",
+	"discord-usergroupschanged": "$1 li ante e ken jan lon $2 $3 ($4) ($5)",
+	"discord-renameusercomplete": "$1 li ante e nimi jan $2 tawa nimi $3"
+}

@@ -1,0 +1,37 @@
+{
+	"@metadata": {
+		"authors": [
+			"Asma"
+		]
+	},
+	"discord-desc": "يرسل رسائل إلى قناة Discord عند وقوع أحداث معينة",
+	"discord-talk": "ت",
+	"discord-contribs": "ج",
+	"discord-diff": "فرق",
+	"discord-minor": "(م)",
+	"discord-edit": "قام $1 بإنشاء $2 $3 $4",
+	"discord-create": "قام $1 بإنشاء $2 $3 $4",
+	"discord-articledelete": "تم حذف $1 $2 $3 (تم حذف $4 من المراجعات)",
+	"discord-undeleterev": "المراجعات لـ",
+	"discord-articleundelete": "$1 قام بإلغاء حذف $2 $3 $4",
+	"discord-revvisibility": "$1 غيرت رؤية $2 من المراجعات على $3",
+	"discord-articleprotect": "$1 تم تغييره لحماية $2 $3 ( $4 )",
+	"discord-titlemove": "قام $1 بنقل من $2 إلى $3 $4 $5",
+	"discord-localusercreated": "تم تسجيل $1",
+	"discord-blocktimeformat": "d F Y H:i",
+	"discord-blockipcomplete": "$1 حظر $2 $3 ($4)",
+	"discord-unblockusercomplete": "$1 قام بإلغاء حظر $2",
+	"discord-usergroupschanged": "$1 غير حقوق $2 $3 ($4) ($5)",
+	"discord-uploadnewver": "إصدار جديد من",
+	"discord-uploadcomplete": "قام $1 بتحميل $2 $3 $4 ($5، $6×$7 ،$8)",
+	"discord-filedeletecomplete": "قام $1 بحذف نسخة من الملف $2 $3",
+	"discord-fileundeletecomplete": "استعاد $1 بعض إصدارات الملف $2 $3",
+	"discord-afterimportpage": "قام $1 باستيراد $2 (تم استيراد مراجعات $4 / $3)",
+	"discord-timestampformat": "**H:i e:**",
+	"discord-articlemergecomplete": "دمج $1 المراجعات من $2 إلى $3",
+	"discord-approvedrevsrevisionapproved": "وافق $1 على مراجعة جديدة بقيمة $2 (المراجعة $3) من المستخدم $4",
+	"discord-approvedrevsrevisionunapproved": "لم يوافق $1 على مراجعة الملف المعتمدة لـ $2",
+	"discord-approvedrevsfilerevisionapproved": "وافق $1 على مراجعة ملف جديد بقيمة $2 ($3) من المستخدم $4",
+	"discord-approvedrevsfilerevisionunapproved": "لم يوافق $1 على مراجعة الملف المعتمدة لـ $2",
+	"discord-renameusercomplete": "أعاد $1 تسمية المستخدم $2 إلى $3"
+}

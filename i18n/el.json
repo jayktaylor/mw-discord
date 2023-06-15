@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Dogogos123"
+			"Dogogos123",
+			"Norhorn"
 		]
 	},
 	"discord-desc": "Στέλνει μηνύματα σε ένα κανάλι Discord όταν συμβαίνουν ορισμένα συμβάντα",
@@ -12,12 +13,12 @@
 	"discord-undeleterev": "αναθεωρήσεις για",
 	"discord-articleundelete": "$1 επανέφερε $2 $3 $4",
 	"discord-revvisibility": "$1 άλλαξε την ορατότητα των $2 αναθεωρήσεων στο $3",
-	"discord-articleprotect": "$1 άλλαξε προστασία του $2 $3 ( $4 )",
+	"discord-articleprotect": "$1 άλλαξε προστασία του $2 $3 ($4)",
 	"discord-titlemove": "$1 μετακίνησε $2 στα $3 $4 $5",
 	"discord-localusercreated": "$1 εγγεγραμμένος",
-	"discord-blockipcomplete": "$1 αποκλεισμένο $2 $3 ( $4 )",
+	"discord-blockipcomplete": "$1 αποκλεισμένο $2 $3 ($4)",
 	"discord-unblockusercomplete": "$1 ξεμπλόκαρε $2",
-	"discord-usergroupschanged": "$1 άλλαξε τα δικαιώματα των $2 $3 ( $4 ) ( $5 )",
+	"discord-usergroupschanged": "$1 άλλαξε τα δικαιώματα των $2 $3 ($4) ($5)",
 	"discord-uploadnewver": "νέα έκδοση του",
 	"discord-uploadcomplete": "$1 μεταφορτώθηκε $2 $3 $4 ( $5 , $6 x $7 , $8 )",
 	"discord-filedeletecomplete": "$1 διέγραψε μια έκδοση του αρχείου $2 $3",

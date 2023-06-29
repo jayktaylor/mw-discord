@@ -1,0 +1,37 @@
+{
+	"@metadata": {
+		"authors": [
+			"Kly"
+		]
+	},
+	"discord-desc": "當某些事件發生時向 Discord 頻道發送訊息",
+	"discord-talk": "t",
+	"discord-contribs": "c",
+	"discord-diff": "差異",
+	"discord-minor": "（m）",
+	"discord-edit": "$1編輯了$2、$3：$4",
+	"discord-create": "$1建立了$2、$3：$4",
+	"discord-articledelete": "$1刪除了$2：$3（已刪除修訂 $4）",
+	"discord-undeleterev": "修訂為",
+	"discord-articleundelete": "$1取消刪除$2 $3，意見：$4",
+	"discord-revvisibility": "$1更改了在$3上修訂$2的可見度",
+	"discord-articleprotect": "$1更改了$2的保護（$4），原因：$3",
+	"discord-titlemove": "$1將$2移動到$3，原因：$4，修訂連結：$5",
+	"discord-localusercreated": "$1已註冊",
+	"discord-blocktimeformat": "d F Y H:i",
+	"discord-blockipcomplete": "$1封鎖了$2，原因：$3（$4）",
+	"discord-unblockusercomplete": "$1取消封鎖$2",
+	"discord-usergroupschanged": "$1更改了$2的權限（新增：$4）（移除：$5），原因：$3",
+	"discord-uploadnewver": "新版本的",
+	"discord-uploadcomplete": "$1上傳了$2 $3（$5，$6x$7，$8），意見：$4",
+	"discord-filedeletecomplete": "$1刪除了檔案$2的一個版本，意見：$3",
+	"discord-fileundeletecomplete": "$1恢復了檔案$2的一些版本，意見：$3",
+	"discord-afterimportpage": "$1匯入了$2（匯入 $4/$3 個修訂）",
+	"discord-timestampformat": "**H:i e:**",
+	"discord-articlemergecomplete": "$1將$2的修訂合併到$3",
+	"discord-approvedrevsrevisionapproved": "$1批准了來自使用者$4的$2新修訂（$3）",
+	"discord-approvedrevsrevisionunapproved": "$1取消批准$2的已批准修訂",
+	"discord-approvedrevsfilerevisionapproved": "$1批准了來自使用者$4的$2新檔案修訂($3)",
+	"discord-approvedrevsfilerevisionunapproved": "$1取消批准$2已批准的檔案修訂",
+	"discord-renameusercomplete": "$1將使用者$2重新命名為$3"
+}

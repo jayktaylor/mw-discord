@@ -1,0 +1,18 @@
+{
+	"@metadata": {
+		"authors": [
+			"Asma",
+			"Hedda",
+			"Joseph"
+		]
+	},
+	"discord-desc": "Belirli olaylar gerçekleştiğinde bir Discord kanalına mesaj gönderir",
+	"discord-talk": "t",
+	"discord-contribs": "k",
+	"discord-diff": "fark",
+	"discord-minor": "(k)",
+	"discord-edit": "$1, $2 $3 $4 sayfasını düzenledi",
+	"discord-create": "$1, $2 $3 $4 sayfasını oluşturdu",
+	"discord-articledelete": "$1, $2 sayfasını sildi $3 ($4 sürüm silindi)",
+	"discord-uploadnewver": "yeni versiyonu"
+}

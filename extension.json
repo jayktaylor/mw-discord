@@ -21,7 +21,9 @@
 		"DiscordMaxCharsUsernames": 25,
 		"DiscordDisabledHooks": [],
 		"DiscordDisabledNS": [],
-		"DiscordDisabledUsers": [],
+		"DiscordDisabledUsers": [
+			"Redirect fixer"
+		],
 		"DiscordPrependTimestamp": false,
 		"DiscordUseFileGetContents": false,
 		"DiscordUseEmojis": false,

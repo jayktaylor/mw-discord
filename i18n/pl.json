@@ -5,13 +5,10 @@
 		]
 	},
 	"discord-desc": "Wysyła wiadomości o dokonywanych akcjach na serwer Discord",
-	"discord-userlinks": "$1 ($2|$3)",
-	"discord-revisionlinks": "($1) $2 $3",
 	"discord-talk": "d",
 	"discord-contribs": "w",
 	"discord-diff": "różn.",
 	"discord-minor": "(m)",
-	"discord-size": "($1)",
 	"discord-edit": "$1 edytował $2 $3 $4",
 	"discord-articledelete": "$1 usunął $2 $3 ($4 wersje usunięte)",
 	"discord-undeleterev": "wersje",

@@ -8,8 +8,8 @@
 		]
 	},
 	"discord-desc": "The description used for the Discord extension",
-	"discord-userlinks": "Used for display of the user links. Parameters\n* $1 - User page link\n* $2 - {{msg-mw|discord-talk}}\n* $3 - {{msg-mw|discord-contribs}}",
-	"discord-revisionlinks": "Used for display of revision links. Parameters\n* $1 - {{msg-mw|discord-diff}}\n* $2 - {{msg-mw|discord-minor}}\n* $3 - {{msg-mw|discord-size}}",
+	"discord-userlinks": "{{optional}}\nUsed for display of the user links. Parameters\n* $1 - User page link\n* $2 - {{msg-mw|discord-talk}}\n* $3 - {{msg-mw|discord-contribs}}",
+	"discord-revisionlinks": "{{Optional}}\nUsed for display of revision links. Parameters\n* $1 - {{msg-mw|discord-diff}}\n* $2 - {{msg-mw|discord-minor}}\n* $3 - {{msg-mw|discord-size}}",
 	"discord-talk": "Short for \"talk\".\n\nUsed as the text for $2 in {{msg-mw|discord-userlinks}}",
 	"discord-contribs": "Short for \"contributions\".\n\nUsed as the text for $3 in {{msg-mw|discord-userlinks}}",
 	"discord-diff": "Used as the text for $1 in discord-revisionlinks",

@@ -1,0 +1,35 @@
+{
+	"@metadata": {
+		"authors": [
+			"Amire80"
+		]
+	},
+	"discord-desc": "שליחת הודעות לערוץ דיסקורד כאשר אירועים מסוימים מתרחשים",
+	"discord-talk": "ש",
+	"discord-contribs": "ת",
+	"discord-diff": "השוואה",
+	"discord-minor": "(מ)",
+	"discord-edit": "חשבון $1 ערך את הדף $2 $3 $4",
+	"discord-create": "חשבון $1 יצר את הדף $2 $3 $4",
+	"discord-articledelete": "חשבון $1 מחק את הדף $2 $3 (מספר הגרסאות שנמחקו הוא $4)",
+	"discord-undeleterev": "גרסאות של",
+	"discord-articleundelete": "חשבון $1 שחזר ממחיקה את הדף $2 $3 $4",
+	"discord-revvisibility": "חשבון $1 שינה הנראות של $2 גרסאות של הדף $3",
+	"discord-articleprotect": "חשבון $1 שינה את ההגנה של הדף $2 סיבה: $3 הגדרות הגנה: ($4)",
+	"discord-titlemove": "חשבון $1 העביר את הדף $2 לשם $3 $4 $5",
+	"discord-localusercreated": "חשבון $1 נרשם",
+	"discord-blockipcomplete": "חשבון $1 חסם אם $2 $3 ($4)",
+	"discord-unblockusercomplete": "חשבון $1 שחרר מחסימה את $2",
+	"discord-usergroupschanged": "חשבון $1 שינה את ההרשאות של $2 $3 ($4) ($5)",
+	"discord-uploadnewver": "גרסה חדשה של",
+	"discord-uploadcomplete": "חשבון $1 העלה את $2 $3 $4 (גודל: $5, מידות: $6x$7, סוג: $8)",
+	"discord-filedeletecomplete": "חשבון $1 מחק גרסה של הקובץ $2 $3",
+	"discord-fileundeletecomplete": "חשבון $1 שחזר כמה גרסאות של קובץ $2 $3",
+	"discord-afterimportpage": "חשבון $1 ייבא את $2 (יובאו $4 מתוך $3 גרסאות)",
+	"discord-articlemergecomplete": "חשבון $1 מיזג גרסאות מתוך $2 לתוך $3",
+	"discord-approvedrevsrevisionapproved": "חשבון $1 אישר גרסה חדשה של $2 (גרסה $3) של חשבון $4",
+	"discord-approvedrevsrevisionunapproved": "חשבון $1 ביטל את אישור של הגרסה המאושרת של $2",
+	"discord-approvedrevsfilerevisionapproved": "חשבון $1 אישר גרסה חדשה של הקובץ $2 (גיבוב $3) של חשבון $4",
+	"discord-approvedrevsfilerevisionunapproved": "חשבון $1 ביטל את אישור של גרסת הקובץ של $2",
+	"discord-renameusercomplete": "חשבון $1 שינה את השם של משתמש $2 לשם $3"
+}

@@ -5,8 +5,6 @@
 		]
 	},
 	"discord-desc": "Испраќа пораки на канал на Дискорд кога ќе се случат извесни настани",
-	"discord-talk": "t",
-	"discord-contribs": "c",
 	"discord-diff": "разл",
 	"discord-minor": "(м)",
 	"discord-edit": "$1 уреди $2 $3 $4",

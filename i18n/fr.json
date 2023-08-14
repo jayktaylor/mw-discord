@@ -1,10 +1,15 @@
 {
 	"@metadata": {
 		"authors": [
+			"Gomoko",
 			"Verdy p"
 		]
 	},
 	"discord-desc": "Envoie des messages à un canal Discord quand certains événements surviennent",
+	"discord-talk": "t",
+	"discord-contribs": "c",
+	"discord-diff": "diff",
+	"discord-minor": "(m)",
 	"discord-edit": "$1 a modifié $2 $3 : $4",
 	"discord-create": "$1 a créé $2 $3 : $4",
 	"discord-articledelete": "$1 a supprimé $2 ($4 version(s) supprimée(s)) : $3",

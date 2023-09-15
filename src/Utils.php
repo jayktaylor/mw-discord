@@ -231,7 +231,7 @@ class DiscordUtils {
 		// $url = str_replace(")", "%29", $url);
 		// In fact, you even have to *undo* some encodings from MW's Title::getFullURL()
 		$url = preg_replace_callback(
-			"/(?<=[^%])%(?:21|25|27|28|29|2a)/i",
+			"/(?<=[^%])%(?:21|27|28|29|2a)/i",
 			function($matches) {
 				return urldecode($matches[0]);
 			},

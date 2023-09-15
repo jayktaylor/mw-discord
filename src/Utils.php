@@ -226,8 +226,17 @@ class DiscordUtils {
 	 */
 	public static function encodeURL($url) {
 		$url = str_replace(" ", "%20", $url);
-		$url = str_replace("(", "%28", $url);
-		$url = str_replace(")", "%29", $url);
+		//TEMP(?): Discord no longer allows these encoding sequences in markdown URLs
+		// $url = str_replace("(", "%28", $url);
+		// $url = str_replace(")", "%29", $url);
+		// In fact, you even have to *undo* some encodings from MW's Title::getFullURL()
+		$url = preg_replace_callback(
+			"/(?<=[^%])%(?:21|25|27|28|29|2a)/i",
+			function($matches) {
+				return urldecode($matches[0]);
+			},
+			$url
+		);
 		return $url;
 	}
 

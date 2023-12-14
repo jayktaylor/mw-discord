@@ -33,5 +33,5 @@
 	"discord-approvedrevsrevisionunapproved": "$1 je od-odobrila odobreno redakcijo za $2",
 	"discord-approvedrevsfilerevisionapproved": "$1 je odobril/a novo različico datoteke $2 ($3) uporabnika/ce $4",
 	"discord-approvedrevsfilerevisionunapproved": "$1 je od-odobrila odobreno redakcijo datoteke za $2",
-	"discord-renameusercomplete": "$1 je preimenoval/a uporabnika $2 v $3"
+	"discord-renameusercomplete": "$1 je preimenoval_a uporabnika $2 v $3"
 }

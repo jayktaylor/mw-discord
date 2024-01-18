@@ -19,7 +19,7 @@ class DiscordHooks {
 	 */
 	public static function onPageSaveComplete( WikiPage $wikiPage, UserIdentity $userIdentity, string $summary, int $flags, RevisionRecord $revision, EditResult $editResult ) {
 		global $wgDiscordNoBots, $wgDiscordNoMinor, $wgDiscordNoNull;
-		$hookName = 'PageContentSaveComplete';
+		$hookName = 'PageSaveComplete';
         $user = MediaWikiServices::getInstance()->getUserFactory()->newFromUserIdentity( $userIdentity );
 
 		if ( DiscordUtils::isDisabled( $hookName, $wikiPage->getTitle()->getNamespace(), $user ) ) {

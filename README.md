@@ -54,13 +54,13 @@ These parameters aren't required for the extension to work.
 | `$wgDiscordSuppressPreviews` | bool | Force previews for links in Discord messages to be suppressed | `true`
 | `$wgDiscordMaxChars` | int | Maximum amount of characters for user-generated text (e.g summaries, reasons). Set to `null` to disable truncation | `null`
 | `$wgDiscordMaxCharsUsernames` | int | Maximum amount of characters for usernames. Set to `null` to disable truncation | `25`
-| `$wgDiscordDisabledHooks` | array | List of hooks to disable sending webhooks for (see [below](#hooks-used)) | `[]`
-| `$wgDiscordDisabledNS` | array | List of namespaces to disable sending webhooks for | `[]`
-| `$wgDiscordDisabledUsers` | array | List of users whose performed actions shouldn't send webhooks | `[]`
+| `$wgDiscordDisabledHooks` | string array | List of hooks to disable sending webhooks for (see [below](#hooks-used)) | `[]`
+| `$wgDiscordDisabledNS` | int array | List of namespace **IDs** to disable sending webhooks for. (see [below](#namespaces)) | `[]`
+| `$wgDiscordDisabledUsers` | string array | List of users whose performed actions shouldn't send webhooks | `[]`
 | `$wgDiscordPrependTimestamp` | bool | Prepend a timestamp (in UTC) to all sent messages. The format can be changed by editing the MediaWiki message `discord-timestampformat` | `false`
 | `$wgDiscordUseFileGetContents` | bool | Use `file_get_contents` instead of cURL. Requires `allow_url_fopen` to be set to true in `php.ini`. Not recommended as cURL makes simultaneous calls instead. | `false`
 | `$wgDiscordUseEmojis` | bool | Prepend emojis to different types of messages to help distinguish them | `false`
-| `$wgDiscordEmojis` | array | Map of hook names and their associated emojis to prepend to messages if `$wgDiscordUseEmojis` is enabled | See [extension.json](/extension.json)
+| `$wgDiscordEmojis` | string associative array | Map of hook names and their associated emojis to prepend to messages if `$wgDiscordUseEmojis` is enabled | See [extension.json](/extension.json#L30)
 
 ## Hooks used
 - `PageSaveComplete` - New edits to pages and page creations
@@ -87,6 +87,11 @@ These parameters aren't required for the extension to work.
 
 ### [Renameuser](https://www.mediawiki.org/wiki/Extension:Renameuser)
 - `RenameUserComplete` - Rename was completed
+
+## Namespaces
+As we use Namespace IDs the following resources might be helpful:
+- [Built in namespaces' IDs](https://www.mediawiki.org/wiki/Manual:Namespace#Built-in_namespaces)
+- [Extension default namespaces](https://www.mediawiki.org/wiki/Extension_default_namespaces)
 
 ## Translation
 You can submit translations for this extension on [Translatewiki.net](https://translatewiki.net/wiki/Special:Translate/mwgithub-mw-discord).

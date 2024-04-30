@@ -48,7 +48,7 @@ These parameters aren't required for the extension to work.
 
 | Variable | Type | Description | Default |
 | --- | --- | --- | --- |
-| `$wgDiscordAnonymizeIP` | bool | Display "Anonymous" instead of user's IP. Best paired with [AnonPrivacy](https://www.mediawiki.org/wiki/Extension:AnonPrivacy) | `true`
+| `$wgDiscordAnonymizeIP` | bool | Display "Anonymous" instead of user's IP. Best paired with [AnonPrivacy](https://www.mediawiki.org/wiki/Extension:AnonPrivacy) | `false`
 | `$wgDiscordNoBots` | bool | Do not send notifications that are triggered by a [bot account](https://www.mediawiki.org/wiki/Manual:Bots) | `true`
 | `$wgDiscordNoMinor` | bool | Do not send notifications that are for [minor edits](https://meta.wikimedia.org/wiki/Help:Minor_edit) | `false`
 | `$wgDiscordNoNull` | bool | Do not send notifications for [null edits](https://www.mediawiki.org/wiki/Manual:Purge#Null_edits) | `true`

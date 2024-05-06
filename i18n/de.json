@@ -1,0 +1,37 @@
+{
+	"@metadata": {
+		"authors": [
+			"Brettchenweber",
+			"Fyoouki",
+			"TomatoCake"
+		]
+	},
+	"discord-desc": "Sendet Nachrichten an einen Discord-Kanal, wenn bestimmte Ereignisse eintreten",
+	"discord-talk": "Diskussion",
+	"discord-contribs": "Beiträge",
+	"discord-diff": "Unterschied",
+	"discord-minor": "(K)",
+	"discord-edit": "$1 bearbeitete $2 $3 $4",
+	"discord-create": "$1 erstellte $2 $3 $4",
+	"discord-articledelete": "$1 löschte $2 $3 ($4 revisionen gelöscht)",
+	"discord-undeleterev": "revisionen für",
+	"discord-articleundelete": "$1 hat $2 wiederhergestellt $3 $4",
+	"discord-revvisibility": "$1 veränderte die Sichtbarkeit von $2 revisionen auf $3",
+	"discord-articleprotect": "$1 änderte den Schutz von $2 $3 ($4)",
+	"discord-titlemove": "$1 verschob $2 zu $3 $4 $5",
+	"discord-localusercreated": "$1 hat sich registriert",
+	"discord-blockipcomplete": "$1 blockierte $2 $3 ($4)",
+	"discord-unblockusercomplete": "$1 entsperrte $2",
+	"discord-usergroupschanged": "$1 hat die Benutzerrechte geändert von $2 $3 ($4) ($5)",
+	"discord-uploadnewver": "neue Version von",
+	"discord-uploadcomplete": "$1 lud $2 $3 $4 ($5, $6x$7, $8)",
+	"discord-filedeletecomplete": "$1 hat eine Version der Datei gelöscht $2 $3",
+	"discord-fileundeletecomplete": "$1 hat eine Version einer Datei wiederhergestellt von $2 $3",
+	"discord-afterimportpage": "$1 importierte $2 (Import $4/$3 revisionen)",
+	"discord-articlemergecomplete": "$1 hat die Revisionen von $2 mit $3 zusammengeführt",
+	"discord-approvedrevsrevisionapproved": "$1 genehmigte eine neue Revision von $2 (Revision $3) von $4",
+	"discord-approvedrevsrevisionunapproved": "$1 hat die genehmigte Revsision von $2 zurückgezogen.",
+	"discord-approvedrevsfilerevisionapproved": "$1 genehmigte eine neue Dateirevision von $2 ($3) durch Benutzer $4",
+	"discord-approvedrevsfilerevisionunapproved": "$1 hat die genehmigte Dateirevision von $2 zurückgezogen",
+	"discord-renameusercomplete": "$1 hat Benutzer von $2 in $3 umbenannt"
+}

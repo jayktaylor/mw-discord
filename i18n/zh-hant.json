@@ -5,6 +5,8 @@
 		]
 	},
 	"discord-desc": "當某些事件發生時向 Discord 頻道發送訊息",
+	"discord-talk": "討論",
+	"discord-contribs": "貢獻",
 	"discord-diff": "差異",
 	"discord-minor": "（m）",
 	"discord-edit": "$1編輯了$2、$3：$4",

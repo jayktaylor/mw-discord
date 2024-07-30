@@ -49,7 +49,7 @@ These parameters aren't required for the extension to work.
 | Variable | Type | Description | Default |
 | --- | --- | --- | --- |
 | `$wgDiscordNoBots` | bool | Do not send notifications that are triggered by a [bot account](https://www.mediawiki.org/wiki/Manual:Bots) | `true`
-| `$wgDiscordNoMinor` | bool | Do not send notifications that are for [minor edits](https://meta.wikimedia.org/wiki/Help:Minor_edit) | `false`
+| `$wgDiscordNoMinor` | bool | Do not send notifications that are for [minor edits](https://www.mediawiki.org/wiki/Help:Minor_edit) | `false`
 | `$wgDiscordNoNull` | bool | Do not send notifications for [null edits](https://www.mediawiki.org/wiki/Manual:Purge#Null_edits) | `true`
 | `$wgDiscordSuppressPreviews` | bool | Force previews for links in Discord messages to be suppressed | `true`
 | `$wgDiscordMaxChars` | int | Maximum amount of characters for user-generated text (e.g summaries, reasons). Set to `null` to disable truncation | `null`

@@ -168,31 +168,37 @@ class DiscordUtils {
 	 */
 	public static function createUserLinks ( $user ) {
 		global $wgDiscordMaxCharsUsernames;
+		global $wgDiscordAnonymizeIP;
 
 		if ( $user instanceof UserIdentity ) {
 			// If we were passed a UserIdentity object, get the relevant user.
 			$user = MediaWikiServices::getInstance()->getUserFactory()->newFromUserIdentity($user);
 		}
 
-		if ( $user instanceof User ) {
-			$isAnon = $user->isAnon();
-			$contribs = Title::newFromText("Special:Contributions/" . $user);
-			$user_abbr = strval($user);
+		$isAnon = $user->isAnon();
 
-			if ($wgDiscordMaxCharsUsernames) {
-				if (strlen($user_abbr) > $wgDiscordMaxCharsUsernames) {
-					$user_abbr = substr($user_abbr, 0, $wgDiscordMaxCharsUsernames);
-					$user_abbr = $user_abbr.'...';
-				}
-			}
-
-			$userPage = DiscordUtils::createMarkdownLink(	$user_abbr, ( $isAnon ? $contribs : $user->getUserPage() )->getFullURL( '', false, PROTO_CANONICAL ) );
-			$userTalk = DiscordUtils::createMarkdownLink( wfMessage( 'discord-talk' )->text(), $user->getTalkPage()->getFullURL( '', false, PROTO_CANONICAL ) );
-			$userContribs = DiscordUtils::createMarkdownLink( wfMessage( 'discord-contribs' )->text(), $contribs->getFullURL( '', false, PROTO_CANONICAL ) );
-			$text = wfMessage( 'discord-userlinks', $userPage, $userTalk, $userContribs )->text();
+		if ( $isAnon && $wgDiscordAnonymizeIP ) {
+			$text = wfMessage( 'discord-userlinks', 'Anonymous', 'n/a', 'n/a' )->text();
 		} else {
-			// If we were given a string, handle this differently.
-			$text = wfMessage( 'discord-userlinks', $user, 'n/a', 'n/a' )->text();
+			if ( $user instanceof User ) {
+				$contribs = Title::newFromText("Special:Contributions/" . $user);
+				$user_abbr = strval($user);
+
+				if ($wgDiscordMaxCharsUsernames) {
+					if (strlen($user_abbr) > $wgDiscordMaxCharsUsernames) {
+						$user_abbr = substr($user_abbr, 0, $wgDiscordMaxCharsUsernames);
+						$user_abbr = $user_abbr.'...';
+					}
+				}
+
+				$userPage = DiscordUtils::createMarkdownLink(	$user_abbr, ( $isAnon ? $contribs : $user->getUserPage() )->getFullURL( '', false, PROTO_CANONICAL ) );
+				$userTalk = DiscordUtils::createMarkdownLink( wfMessage( 'discord-talk' )->text(), $user->getTalkPage()->getFullURL( '', false, PROTO_CANONICAL ) );
+				$userContribs = DiscordUtils::createMarkdownLink( wfMessage( 'discord-contribs' )->text(), $contribs->getFullURL( '', false, PROTO_CANONICAL ) );
+				$text = wfMessage( 'discord-userlinks', $userPage, $userTalk, $userContribs )->text();
+			} else {
+				// If we were given a string, handle this differently.
+				$text = wfMessage( 'discord-userlinks', $user, 'n/a', 'n/a' )->text();
+			}
 		}
 		return $text;
 	}

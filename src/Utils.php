@@ -76,7 +76,7 @@ class DiscordUtils {
 
 		if ( $wgDiscordPrependTimestamp ) {
 			// Add timestamp
-			$dateString = gmdate( wfMessage( 'discord-timestampformat' )->text() );
+			$dateString = gmdate( wfMessage( 'discord-timestampformat' )->inContentLanguage()->text() );
 			$stripped = $dateString . ' ' . $stripped;
 		}
 
@@ -187,12 +187,12 @@ class DiscordUtils {
 			}
 
 			$userPage = DiscordUtils::createMarkdownLink(	$user_abbr, ( $isAnon ? $contribs : $user->getUserPage() )->getFullURL( '', false, PROTO_CANONICAL ) );
-			$userTalk = DiscordUtils::createMarkdownLink( wfMessage( 'discord-talk' )->text(), $user->getTalkPage()->getFullURL( '', false, PROTO_CANONICAL ) );
-			$userContribs = DiscordUtils::createMarkdownLink( wfMessage( 'discord-contribs' )->text(), $contribs->getFullURL( '', false, PROTO_CANONICAL ) );
-			$text = wfMessage( 'discord-userlinks', $userPage, $userTalk, $userContribs )->text();
+			$userTalk = DiscordUtils::createMarkdownLink( wfMessage( 'discord-talk' )->inContentLanguage()->text(), $user->getTalkPage()->getFullURL( '', false, PROTO_CANONICAL ) );
+			$userContribs = DiscordUtils::createMarkdownLink( wfMessage( 'discord-contribs' )->inContentLanguage()->text(), $contribs->getFullURL( '', false, PROTO_CANONICAL ) );
+			$text = wfMessage( 'discord-userlinks', $userPage, $userTalk, $userContribs )->inContentLanguage()->text();
 		} else {
 			// If we were given a string, handle this differently.
-			$text = wfMessage( 'discord-userlinks', $user, 'n/a', 'n/a' )->text();
+			$text = wfMessage( 'discord-userlinks', $user, 'n/a', 'n/a' )->inContentLanguage()->text();
 		}
 		return $text;
 	}
@@ -201,23 +201,23 @@ class DiscordUtils {
 	 * Creates formatted text for a specific Revision object
 	 */
 	public static function createRevisionText ($revision) {
-		$diff = DiscordUtils::createMarkdownLink( wfMessage( 'discord-diff' )->text(), $revision->getPageAsLinkTarget()->getFullURL( [ 'diff' => 'prev', 'oldid' => $revision->getId() ], false, PROTO_CANONICAL ) );
+		$diff = DiscordUtils::createMarkdownLink( wfMessage( 'discord-diff' )->inContentLanguage()->text(), $revision->getPageAsLinkTarget()->getFullURL( [ 'diff' => 'prev', 'oldid' => $revision->getId() ], false, PROTO_CANONICAL ) );
 		$minor = '';
 		$size = '';
 		if ( $revision->isMinor() ) {
-			$minor .= wfMessage( 'discord-minor' )->text();
+			$minor .= wfMessage( 'discord-minor' )->inContentLanguage()->text();
 		}
 		$parentId = $revision->getParentId();
 		if ( $parentId ) {
 			$parent = MediaWikiServices::getInstance()->getRevisionLookup()->getRevisionById( $parentId );
 			if ( $parent ) {
-				$size .= wfMessage( 'discord-size', sprintf( "%+d", $revision->getSize() - $parent->getSize() ) )->text();
+				$size .= wfMessage( 'discord-size', sprintf( "%+d", $revision->getSize() - $parent->getSize() ) )->inContentLanguage()->text();
 			}
 		}
 		if ( $size == '' ) {
-			$size .= wfMessage( 'discord-size', sprintf( "%d", $revision->getSize() ) )->text();
+			$size .= wfMessage( 'discord-size', sprintf( "%d", $revision->getSize() ) )->inContentLanguage()->text();
 		}
-		$text = wfMessage( 'discord-revisionlinks', $diff, $minor, $size )->text();
+		$text = wfMessage( 'discord-revisionlinks', $diff, $minor, $size )->inContentLanguage()->text();
 		return $text;
 	}
 

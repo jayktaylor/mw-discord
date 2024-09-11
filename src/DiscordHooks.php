@@ -1,5 +1,6 @@
 <?php
 
+use MediaWiki\Block\DatabaseBlock;
 use MediaWiki\Linker\LinkTarget;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Revision\RevisionRecord;
@@ -213,7 +214,7 @@ class DiscordHooks {
 	 * Called when a user is blocked
 	 * @see https://www.mediawiki.org/wiki/Manual:Hooks/BlockIpComplete
 	 */
-	public static function onBlockIpComplete( Block $block, User $user ) {
+	public static function onBlockIpComplete( DatabaseBlock $block, User $user ) {
 		$hookName = 'BlockIpComplete';
 
 		if ( DiscordUtils::isDisabled( $hookName, NULL, $user ) ) {

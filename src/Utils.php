@@ -168,6 +168,7 @@ class DiscordUtils {
 	 */
 	public static function createUserLinks ( $user ) {
 		global $wgDiscordMaxCharsUsernames;
+		global $wgDiscordDisplayRealNames;
 
 		if ( $user instanceof UserIdentity ) {
 			// If we were passed a UserIdentity object, get the relevant user.
@@ -177,7 +178,7 @@ class DiscordUtils {
 		if ( $user instanceof User ) {
 			$isAnon = $user->isAnon();
 			$contribs = Title::newFromText("Special:Contributions/" . $user);
-			$user_abbr = strval($user);
+			$user_abbr = $wgDiscordDisplayRealNames && ($user_real_name = $user->getRealName()) !== '' ? $user_real_name : $user->getName();
 
 			if ($wgDiscordMaxCharsUsernames) {
 				if (strlen($user_abbr) > $wgDiscordMaxCharsUsernames) {

@@ -54,6 +54,7 @@ These parameters aren't required for the extension to work.
 | `$wgDiscordSuppressPreviews` | bool | Force previews for links in Discord messages to be suppressed | `true`
 | `$wgDiscordMaxChars` | int | Maximum amount of characters for user-generated text (e.g summaries, reasons). Set to `null` to disable truncation | `null`
 | `$wgDiscordMaxCharsUsernames` | int | Maximum amount of characters for usernames. Set to `null` to disable truncation | `25`
+| `$wgDiscordDisplayRealNames` | bool | If users have a real name set, display that instead of their username | `false`
 | `$wgDiscordDisabledHooks` | string array | List of hooks to disable sending webhooks for (see [below](#hooks-used)) | `[]`
 | `$wgDiscordDisabledNS` | int array | List of namespace **IDs** to disable sending webhooks for. (see [below](#namespaces)) | `[]`
 | `$wgDiscordDisabledUsers` | string array | List of users whose performed actions shouldn't send webhooks | `[]`

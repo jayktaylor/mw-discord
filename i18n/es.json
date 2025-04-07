@@ -1,0 +1,35 @@
+{
+	"@metadata": {
+		"authors": [
+			"MatyGamingHD"
+		]
+	},
+	"discord-desc": "Envía mensajes a un canal de Discord cuando ocurren ciertos eventos",
+	"discord-talk": "d",
+	"discord-contribs": "c",
+	"discord-diff": "difs",
+	"discord-minor": "(m)",
+	"discord-edit": "$1 editó $2 $3 $4",
+	"discord-create": "$1 creó $2 $3 $4",
+	"discord-articledelete": "$1 eliminó $2 $3 ($4 revisiones eliminadas)",
+	"discord-undeleterev": "revisiones de",
+	"discord-articleundelete": "$1 restauró $2 $3 $4",
+	"discord-revvisibility": "$1 cambió la visibilidad de $2 revisiones en $3",
+	"discord-articleprotect": "$1 cambió la protección de $2 $3 ($4)",
+	"discord-titlemove": "$1 movió $2 a $3 $4 $5",
+	"discord-localusercreated": "$1 se ha registrado",
+	"discord-blockipcomplete": "$1 bloqueó a $2 $3 ($4)",
+	"discord-unblockusercomplete": "$1 ha desbloqueado a $2",
+	"discord-usergroupschanged": "$1 ha cambiado los derechos de $2 $3 ($4) ($5)",
+	"discord-uploadnewver": "nueva versión de",
+	"discord-uploadcomplete": "$1 subió $2 $3 $4 ($5, $6x$7, $8)",
+	"discord-filedeletecomplete": "$1 eliminó una versión del archivo $2 $3",
+	"discord-fileundeletecomplete": "$1 restauró algunas versiones del archivo $2 $3",
+	"discord-afterimportpage": "$1 importó $2 (importadas $4/$3 revisiones)",
+	"discord-articlemergecomplete": "$1 fusionó las revisiones de $2 en $3",
+	"discord-approvedrevsrevisionapproved": "$1 ha aprobado una nueva revisión de $2 (revisión $3) del usuario $4",
+	"discord-approvedrevsrevisionunapproved": "$1 ha desaprobado la revisión aprobada de $2",
+	"discord-approvedrevsfilerevisionapproved": "$1 ha aprobado una nueva revisión del archivo $2 ($3) del usuario $4",
+	"discord-approvedrevsfilerevisionunapproved": "$1 desaprobó la revisión aprobada del archivo $2",
+	"discord-renameusercomplete": "$1 renombró al usuario $2 a $3"
+}

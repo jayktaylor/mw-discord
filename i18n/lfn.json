@@ -1,0 +1,28 @@
+{
+	"@metadata": {
+		"authors": [
+			"Elefentiste"
+		]
+	},
+	"discord-talk": "d",
+	"discord-contribs": "c",
+	"discord-diff": "dif",
+	"discord-minor": "(m)",
+	"discord-edit": "$1 ia edita $2 $3 $4",
+	"discord-create": "$1 ia crea $2 $3 $4",
+	"discord-articledelete": "$1 ia sutrae $2 $3 ($4 revisas ia es sutraeda)",
+	"discord-articleundelete": "$1 ia desutrae $2 $3 $4",
+	"discord-revvisibility": "$1 ia cambia vidablia de $2 revisas en $3",
+	"discord-articleprotect": "$1 ia cambia proteje de $2 $3 ($4)",
+	"discord-titlemove": "$1 ia move $2 a $3 $4 $5",
+	"discord-blockipcomplete": "$1 ia impedi $2 $3 ($4)",
+	"discord-unblockusercomplete": "$1 ia desimpedi $2",
+	"discord-uploadcomplete": "$1 ia carga $2 $3 $4 ($5, $6x$7, $8)",
+	"discord-afterimportpage": "$1 ia emporta $2 (emportada $4/$3 revisas)",
+	"discord-articlemergecomplete": "$1 ia fusa revisas de $2 a en $3",
+	"discord-approvedrevsrevisionapproved": "$1 ia aproba un revisa nova de $2 (revisa $3) de usor $4",
+	"discord-approvedrevsrevisionunapproved": "$1 ia desaproba la revisa aprobada per $2",
+	"discord-approvedrevsfilerevisionapproved": "$1 ia aproba un revisa de fix nova de $2 ($3) de usor $4",
+	"discord-approvedrevsfilerevisionunapproved": "$1 ia desaproba la revisa de fix aprobada per $2",
+	"discord-renameusercomplete": "$1 ia renomi la usor $2 a $3"
+}

@@ -244,7 +244,7 @@ class DiscordHooks {
 	 * Called when a user is unblocked
 	 * @see https://www.mediawiki.org/wiki/Manual:Hooks/UnblockUserComplete
 	 */
-	public static function onUnblockUserComplete( Block $block, User $user ) {
+	public static function onUnblockUserComplete( DatabaseBlock $block, User $user ) {
 		$hookName = 'UnblockUserComplete';
 
 		if ( DiscordUtils::isDisabled( $hookName, NULL, $user ) ) {

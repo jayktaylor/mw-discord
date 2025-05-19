@@ -1,0 +1,14 @@
+{
+	"@metadata": {
+		"authors": []
+	},
+	"discord-talk": "r",
+	"discord-contribs": "d",
+	"discord-diff": "razl",
+	"discord-minor": "(m)",
+	"discord-create": "$1 ja napravio $2 $3 $4",
+	"discord-localusercreated": "$1 se registrovao",
+	"discord-blockipcomplete": "$1 je blokirao $2 $3 ($4)",
+	"discord-afterimportpage": "$1 je uvezao $2 (uvezeno $4/$3 revizija)",
+	"discord-renameusercomplete": "$1 je preimenovao korisnika $2 u $3"
+}

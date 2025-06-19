@@ -67,7 +67,7 @@ class DiscordHooks {
 	 */
 	public static function onPageDeleteComplete( MediaWiki\Page\ProperPageIdentity $page, MediaWiki\Permissions\Authority $deleter, string $reason, int $pageID, MediaWiki\Revision\RevisionRecord $deletedRev, ManualLogEntry $logEntry, int $archivedRevisionCount ) {
 		global $wgDiscordNoBots;
-		$hookName = 'ArticleDeleteComplete';
+		$hookName = 'PageDeleteComplete';
 
 		$user = MediaWikiServices::getInstance()->getUserFactory()->newFromUserIdentity($deleter->getUser());
 		$page = MediaWikiServices::getInstance()->getWikiPageFactory()->newFromTitle($page);

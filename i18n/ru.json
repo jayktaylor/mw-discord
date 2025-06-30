@@ -1,0 +1,42 @@
+{
+	"@metadata": {
+		"authors": [
+			"Engineer56",
+			"Kareyac",
+			"Yurina Tatiana"
+		]
+	},
+	"discord-desc": "Отправляет сообщения на канал в Discord при возникновении некоторых событий.",
+	"discord-userlinks": "$1 ($2|$3)",
+	"discord-revisionlinks": "($1) $2 $3",
+	"discord-talk": "о",
+	"discord-contribs": "c",
+	"discord-diff": "разн.",
+	"discord-minor": "(m)",
+	"discord-size": "($1)",
+	"discord-edit": "$1 отредактировал $2 $3 $4",
+	"discord-create": "$1 создал $2 $3 $4",
+	"discord-articledelete": "$1 удалил $2 $3 ($4 версии удалены)",
+	"discord-undeleterev": "версии",
+	"discord-articleundelete": "$1 восстановил $2 $3 $4",
+	"discord-revvisibility": "$1 изменил видимость $2 версий на $3",
+	"discord-articleprotect": "$1 изменил защиту $2 $3 ($4)",
+	"discord-titlemove": "$1 переместил $2 на $3 $4 $5",
+	"discord-localusercreated": "$1 зарегистрировался",
+	"discord-blocktimeformat": "d F Y H:i",
+	"discord-blockipcomplete": "$1 заблокировал $2 $3 ($4)",
+	"discord-unblockusercomplete": "$1 разблокировал $2",
+	"discord-usergroupschanged": "$1 изменил права $2 $3 ($4) ($5)",
+	"discord-uploadnewver": "новая версия",
+	"discord-uploadcomplete": "$1 загрузил $2 $3 $4 ($5, $6x$7, $8)",
+	"discord-filedeletecomplete": "$1 удалил версию файла $2 $3",
+	"discord-fileundeletecomplete": "$1 восстановил некоторые версии файла $2 $3",
+	"discord-afterimportpage": "$1 импортировал $2 (импортировано $4/$3 версий)",
+	"discord-timestampformat": "**H:i e:**",
+	"discord-articlemergecomplete": "$1 объединил версии из $2 в $3",
+	"discord-approvedrevsrevisionapproved": "$1 одобрил новую версию $2 (версия $3) от пользователя $4",
+	"discord-approvedrevsrevisionunapproved": "$1 не одобрил утверждённую версию $2",
+	"discord-approvedrevsfilerevisionapproved": "$1 одобрил новую версию файла $2 ($3) от пользователя $4",
+	"discord-approvedrevsfilerevisionunapproved": "$1 не одобрил утверждённую версию файла $2",
+	"discord-renameusercomplete": "$1 переименовал пользователя $2 в $3"
+}

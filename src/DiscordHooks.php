@@ -173,7 +173,7 @@ class DiscordHooks {
 	 */
 	public static function onPageMoveComplete( LinkTarget $old, LinkTarget $new, UserIdentity $userIdentity, int $pageid, int $redirid, string $reason, RevisionRecord $revision ) {
 		global $wgDiscordNoBots;
-		$hookName = 'TitleMoveComplete';
+		$hookName = 'PageMoveComplete';
         $user = MediaWikiServices::getInstance()->getUserFactory()->newFromUserIdentity( $userIdentity );
 
 		if ( DiscordUtils::isDisabled( $hookName, $old->getNamespace(), $user ) ) {

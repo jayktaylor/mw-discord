@@ -53,7 +53,7 @@ class DiscordUtils {
 	 * Handles sending a webhook to Discord using cURL
 	 */
 	public static function handleDiscord ($hookName, $msg) {
-		global $wgDiscordWebhookURL, $wgDiscordEmojis, $wgDiscordUseEmojis, $wgDiscordPrependTimestamp, $wgDiscordUseFileGetContents;
+		global $wgDiscordWebhookURL, $wgDiscordEmojis, $wgDiscordUseEmojis, $wgDiscordPrependTimestamp, $wgDiscordUseFileGetContents, $wgDiscordPrependSitename;
 
 		if ( !$wgDiscordWebhookURL ) {
 			// There's nothing in here, so we won't do anything
@@ -84,6 +84,11 @@ class DiscordUtils {
 			// Add emoji
 			$emoji = $wgDiscordEmojis[$hookName];
 			$stripped = $emoji . ' ' . $stripped;
+		}
+
+		if( $wgDiscordPrependSitename ) {
+			global $wgSitename;
+			$stripped = '**[' . $wgSitename . ']** ' . $stripped;
 		}
 
 		DeferredUpdates::addCallableUpdate( function() use ( $stripped, $urls, $wgDiscordUseFileGetContents ) {

@@ -58,6 +58,7 @@ These parameters aren't required for the extension to work.
 | `$wgDiscordDisabledNS` | int array | List of namespace **IDs** to disable sending webhooks for. (see [below](#namespaces)) | `[]`
 | `$wgDiscordDisabledUsers` | string array | List of users whose performed actions shouldn't send webhooks | `[]`
 | `$wgDiscordPrependTimestamp` | bool | Prepend a timestamp (in UTC) to all sent messages. The format can be changed by editing the MediaWiki message `discord-timestampformat` | `false`
+| `$wgDiscordPrependSitename` | bool | Prepend the value of `$wgSitename` to messages. Useful for wiki families. | `false`
 | `$wgDiscordUseFileGetContents` | bool | Use `file_get_contents` instead of cURL. Requires `allow_url_fopen` to be set to true in `php.ini`. Not recommended as cURL makes simultaneous calls instead. | `false`
 | `$wgDiscordUseEmojis` | bool | Prepend emojis to different types of messages to help distinguish them | `false`
 | `$wgDiscordEmojis` | string associative array | Map of hook names and their associated emojis to prepend to messages if `$wgDiscordUseEmojis` is enabled | See [extension.json](/extension.json#L30)

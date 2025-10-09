@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Asma"
+			"Asma",
+			"Mohammed Qays"
 		]
 	},
 	"discord-desc": "يرسل رسائل إلى قناة Discord عند وقوع أحداث معينة",
@@ -18,8 +19,8 @@
 	"discord-articleprotect": "$1 تم تغييره لحماية $2 $3 ( $4 )",
 	"discord-titlemove": "قام $1 بنقل من $2 إلى $3 $4 $5",
 	"discord-localusercreated": "تم تسجيل $1",
-	"discord-blockipcomplete": "$1 حظر $2 $3 ($4)",
-	"discord-unblockusercomplete": "$1 قام بإلغاء حظر $2",
+	"discord-blockipcomplete": "$1 منع $2 $3 ($4)",
+	"discord-unblockusercomplete": "$1 قام بإلغاء منع $2",
 	"discord-usergroupschanged": "$1 غير حقوق $2 $3 ($4) ($5)",
 	"discord-uploadnewver": "إصدار جديد من",
 	"discord-uploadcomplete": "قام $1 بتحميل $2 $3 $4 ($5، $6×$7 ،$8)",

@@ -1,0 +1,35 @@
+{
+	"@metadata": {
+		"authors": [
+			"KockaAdmiralac"
+		]
+	},
+	"discord-desc": "Šalje poruke na Discord kanal kada se dese određeni događaji",
+	"discord-talk": "r",
+	"discord-contribs": "d",
+	"discord-diff": "razl",
+	"discord-minor": "(m)",
+	"discord-edit": "$1 je uredio/-la $2 $3 $4",
+	"discord-create": "$1 je napravio/-la $2 $3 $4",
+	"discord-articledelete": "$1 je obrisao/-la $2 $3 ($4 izmena obrisano)",
+	"discord-undeleterev": "izmene za",
+	"discord-articleundelete": "$1 je vratio/-la $2 $3 $4",
+	"discord-revvisibility": "$1 je promenio/-la vidljivost $2 izmena na $3",
+	"discord-articleprotect": "$1 je promenio/-la podešavanja zaštite na $2 $3 ($4)",
+	"discord-titlemove": "$1 je pomerio/-la $2 na $3 $4 $5",
+	"discord-localusercreated": "$1 se registrovao/-la",
+	"discord-blockipcomplete": "$1 je blokirao/-la $2 $3 ($4)",
+	"discord-unblockusercomplete": "$1 je deblokirao/-la $2",
+	"discord-usergroupschanged": "$1 je promenio/-la prava od $2 $3 ($4) ($5)",
+	"discord-uploadnewver": "novu verziju",
+	"discord-uploadcomplete": "$1 je otpremio/-la $2 $3 $4 ($5, $6x$7, $8)",
+	"discord-filedeletecomplete": "$1 je obrisao/-la verziju datoteke $2 $3",
+	"discord-fileundeletecomplete": "$1 je vratio/-la pojedine verzije datoteke $2 $3",
+	"discord-afterimportpage": "$1 je uvezao/-la $2 (uvezeno $4/$3 izmena)",
+	"discord-articlemergecomplete": "$1 je spojio/-la izmene iz $2 u $3",
+	"discord-approvedrevsrevisionapproved": "$1 je odobrio/-la novu izmenu $2 (izmena $3) od korisnika $4",
+	"discord-approvedrevsrevisionunapproved": "$1 je poništio/-la odobrenje izmene $2",
+	"discord-approvedrevsfilerevisionapproved": "$1 je odobrio/-la novu izmenu datoteke $2 ($3) od korisnika $4",
+	"discord-approvedrevsfilerevisionunapproved": "$1 je poništio/-la odobrenje izmene datoteke $2",
+	"discord-renameusercomplete": "$1 je preimenovao/-la korisnika $2 u $3"
+}

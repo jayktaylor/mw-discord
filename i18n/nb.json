@@ -1,0 +1,35 @@
+{
+	"@metadata": {
+		"authors": [
+			"EdoAug"
+		]
+	},
+	"discord-desc": "Sender meldinger til en Discord-kanal når visse hendelser forekommer",
+	"discord-talk": "d",
+	"discord-contribs": "b",
+	"discord-diff": "diff",
+	"discord-minor": "(m)",
+	"discord-edit": "$1 redigerte $2 $3 $4",
+	"discord-create": "$1 opprettet $2 $3 $4",
+	"discord-articledelete": "$1 slettet $2 $3 ($4 sideversjoner slettet)",
+	"discord-undeleterev": "sideversjoner for",
+	"discord-articleundelete": "$1 gjenopprettet $2 $3 $4",
+	"discord-revvisibility": "$1 endret synligheten til $2 sideversjoner for $3",
+	"discord-articleprotect": "$1 endra beskyttelsen av $2 $3 ($4)",
+	"discord-titlemove": "$1 flyttet $2 til $3 $4 $5",
+	"discord-localusercreated": "$1 registrerte",
+	"discord-blockipcomplete": "$1 blokkerte $2 $3 ($4)",
+	"discord-unblockusercomplete": "$1 opphevde blokkeringen til $2",
+	"discord-usergroupschanged": "$1 endret rettighetene til $2 $3 ($4) ($5)",
+	"discord-uploadnewver": "ny versjon av",
+	"discord-uploadcomplete": "$1 lastet opp $2 $3 $4 ($5, $6x$7, $8)",
+	"discord-filedeletecomplete": "$1 slettet en versjon av fila $2 $3",
+	"discord-fileundeletecomplete": "$1 gjenopprettet noen versjoner av fila $2 $3",
+	"discord-afterimportpage": "$1 importerte $2 (importerte $4/$3 sideversjoner)",
+	"discord-articlemergecomplete": "$1 flettet sideversjoner fra $2 inn i $3",
+	"discord-approvedrevsrevisionapproved": "$1 godkjente en ny sideversjon av $2 (sideversjon $3) fra brukeren $4",
+	"discord-approvedrevsrevisionunapproved": "$1 trakk tilbake godkjenningen av sideversjonen for $2",
+	"discord-approvedrevsfilerevisionapproved": "$1 godkjente en ny versjon av fila $2 ($3) fra brukeren $4",
+	"discord-approvedrevsfilerevisionunapproved": "$1 trakk tilbake godkjenningen av filversjon for $2",
+	"discord-renameusercomplete": "$1 omdøpte brukeren $2 til $3"
+}

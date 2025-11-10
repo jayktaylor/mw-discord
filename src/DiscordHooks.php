@@ -67,7 +67,7 @@ class DiscordHooks {
 	 */
 	public static function onPageDeleteComplete( MediaWiki\Page\ProperPageIdentity $page, MediaWiki\Permissions\Authority $deleter, string $reason, int $pageID, MediaWiki\Revision\RevisionRecord $deletedRev, ManualLogEntry $logEntry, int $archivedRevisionCount ) {
 		global $wgDiscordNoBots;
-		$hookName = 'ArticleDeleteComplete';
+		$hookName = 'PageDeleteComplete';
 
 		$user = MediaWikiServices::getInstance()->getUserFactory()->newFromUserIdentity($deleter->getUser());
 		$page = MediaWikiServices::getInstance()->getWikiPageFactory()->newFromTitle($page);
@@ -244,7 +244,7 @@ class DiscordHooks {
 	 * Called when a user is unblocked
 	 * @see https://www.mediawiki.org/wiki/Manual:Hooks/UnblockUserComplete
 	 */
-	public static function onUnblockUserComplete( Block $block, User $user ) {
+	public static function onUnblockUserComplete( DatabaseBlock $block, User $user ) {
 		$hookName = 'UnblockUserComplete';
 
 		if ( DiscordUtils::isDisabled( $hookName, NULL, $user ) ) {

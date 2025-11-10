@@ -1,16 +1,36 @@
 {
 	"@metadata": {
 		"authors": [
+			"KockaAdmiralac",
 			"Milicevic01"
 		]
 	},
+	"discord-desc": "Шаље поруке на Discord канал када се десе одређени догађаји",
 	"discord-talk": "р",
 	"discord-contribs": "д",
 	"discord-diff": "разл",
 	"discord-minor": "(м)",
-	"discord-create": "$1 ја направио $2 $3 $4",
-	"discord-localusercreated": "$1 се регистровао",
-	"discord-blockipcomplete": "$1 је блокирао $2 $3 ($4)",
-	"discord-afterimportpage": "$1 је увезао $2 (увезено $4/$3 ревизија)",
-	"discord-renameusercomplete": "$1 је преименовао корисника $2 у $3"
+	"discord-edit": "$1 је уредио/ла $2 $3 $4",
+	"discord-create": "$1 је направио/ла $2 $3 $4",
+	"discord-articledelete": "$1 је обрисао/ла $2 $3 ($4 измена обрисано)",
+	"discord-undeleterev": "измене за",
+	"discord-articleundelete": "$1 је вратио/ла $2 $3 $4",
+	"discord-revvisibility": "$1 је променио/ла видљивост измене $2 на $3",
+	"discord-articleprotect": "$1 је променио/ла подешавања заштите $2 $3 ($4)",
+	"discord-titlemove": "$1 је преместио/ла $2 на $3 $4 $5",
+	"discord-localusercreated": "$1 се регистровао/ла",
+	"discord-blockipcomplete": "$1 је блокирао/ла $2 $3 ($4)",
+	"discord-unblockusercomplete": "$1 је деблокирао/ла $2",
+	"discord-usergroupschanged": "$1 је променио/ла права $2 $3 ($4) ($5)",
+	"discord-uploadnewver": "нову верзију",
+	"discord-uploadcomplete": "$1 је отпремио/ла $2 $3 $4 ($5, $6x$7, $8)",
+	"discord-filedeletecomplete": "$1 је обрисао/ла верзију датотеке $2 $3",
+	"discord-fileundeletecomplete": "$1 је вратио/ла поједине верзије датотеке $2 $3",
+	"discord-afterimportpage": "$1 је увезао/ла $2 (увезено $4/$3 измена)",
+	"discord-articlemergecomplete": "$1 је спојио/ла измене из $2 у $3",
+	"discord-approvedrevsrevisionapproved": "$1 је одобрио/ла нову измену $2 (измена $3) корисника $4",
+	"discord-approvedrevsrevisionunapproved": "$1 је поништио/ла одобрену измену за $2",
+	"discord-approvedrevsfilerevisionapproved": "$1 је одобрио/ла нову верзију датотеке $2 ($3) корисника $4",
+	"discord-approvedrevsfilerevisionunapproved": "$1 је поништио/ла одобрену верзију датотеке $2",
+	"discord-renameusercomplete": "$1 је преименовао/ла корисника $2 у $3"
 }

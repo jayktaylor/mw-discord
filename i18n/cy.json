@@ -1,0 +1,17 @@
+{
+	"@metadata": {
+		"authors": [
+			"Ceirios"
+		]
+	},
+	"discord-desc": "Anfon negeseuon i sianel Discord pan fydd digwyddiadau penodol yn digwydd",
+	"discord-talk": "s",
+	"discord-contribs": "c",
+	"discord-diff": "gwahan",
+	"discord-minor": "(b)",
+	"discord-edit": "Golygodd $1 $2 $3 $4",
+	"discord-create": "Crëodd $1 $2 $3 $4",
+	"discord-articledelete": "Dilëodd $1 $2 $3 (dilëwyd $4 o olygiadau)",
+	"discord-undeleterev": "golygiadau ar gyfer",
+	"discord-articleundelete": "Adferodd $1 $2 $3 $4"
+}

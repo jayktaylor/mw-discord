@@ -1,0 +1,35 @@
+{
+	"@metadata": {
+		"authors": [
+			"Toliño"
+		]
+	},
+	"discord-desc": "Envía mensaxes a unha canle de Discord cando ocorren certos eventos",
+	"discord-talk": "conv",
+	"discord-contribs": "contr",
+	"discord-diff": "dif",
+	"discord-minor": "(m)",
+	"discord-edit": "$1 editou «$2» $3 $4",
+	"discord-create": "$1 creou «$2» $3 $4",
+	"discord-articledelete": "$1 eliminou «$2» $3 ($4 revisións eliminadas)",
+	"discord-undeleterev": "revisións de",
+	"discord-articleundelete": "$1 restaurou $2 «$3» $4",
+	"discord-revvisibility": "$1 cambiou a visibilidade de $2 revisións en «$3»",
+	"discord-articleprotect": "$1 cambiou a protección de «$2» $3 ($4)",
+	"discord-titlemove": "$1 trasladou «$2» a «$3» $4 $5",
+	"discord-localusercreated": "$1 rexistrouse",
+	"discord-blockipcomplete": "$1 bloqueou a $2 $3 ($4)",
+	"discord-unblockusercomplete": "$1 desbloqueou a $2",
+	"discord-usergroupschanged": "$1 cambiou os dereitos de $2 $3 ($4) ($5)",
+	"discord-uploadnewver": "unha nova versión de",
+	"discord-uploadcomplete": "$1 subiu $2 «$3» $4 ($5, $6×$7, $8)",
+	"discord-filedeletecomplete": "$1 eliminou unha versión do ficheiro «$2» $3",
+	"discord-fileundeletecomplete": "$1 restaurou algunhas versións do ficheiro «$2» $3",
+	"discord-afterimportpage": "$1 importou «$2» (importáronse $4/$3 revisións)",
+	"discord-articlemergecomplete": "$1 fusionou revisións de «$2» en «$3»",
+	"discord-approvedrevsrevisionapproved": "$1 aprobou unha nova revisión de «$2» (revisión $3) do usuario $4",
+	"discord-approvedrevsrevisionunapproved": "$1 non aprobou a revisión aprobada de «$2»",
+	"discord-approvedrevsfilerevisionapproved": "$1 aprobou unha nova revisión do ficheiro «$2» ($3) do usuario $4",
+	"discord-approvedrevsfilerevisionunapproved": "$1 non aprobou a revisión aprobada do ficheiro de «$2»",
+	"discord-renameusercomplete": "$1 renomeou o usuario $2 a $3"
+}

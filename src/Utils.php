@@ -81,9 +81,11 @@ class DiscordUtils {
 		}
 
 		if ( $wgDiscordUseEmojis ) {
-			// Add emoji
-			$emoji = $wgDiscordEmojis[$hookName];
-			$stripped = $emoji . ' ' . $stripped;
+			// Add Emoji
+			if ( isset($wgDiscordEmojis[$hookName]) ) {
+				$emoji = $wgDiscordEmojis[$hookName];
+				$stripped = $emoji . ' ' . $stripped;
+			}
 		}
 
 		DeferredUpdates::addCallableUpdate( function() use ( $stripped, $urls, $wgDiscordUseFileGetContents ) {

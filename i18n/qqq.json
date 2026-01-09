@@ -26,6 +26,7 @@
 	"discord-localusercreated": "Message sent to Discord when a user registers.\nParameters:\n* $1 - discord-userlinks",
 	"discord-blocktimeformat": "{{optional}}\n\nThe formatting used in the date() function for displaying the time a user is blocked for.\n\nSee also: https://www.php.net/manual/en/datetime.format.php",
 	"discord-blockipcomplete": "Message sent to Discord when a user is blocked. Parameters:\n* $1 - discord-userlinks (performer)\n* $2 - discord-userlinks (target)\n* $3 - Reason (always surrounded in tildes)\n* $4 - Expiry text (using discord-blocktimeformat)",
+	"discord-blockipcomplete-partial": "Message sent to Discord when a user is blocked partially. Parameters:\n* $1 - discord-userlinks (performer)\n* $2 - discord-userlinks (target)\n* $3 - Reason (always surrounded in tildes)\n* $4 - Expiry text (using discord-blocktimeformat)",
 	"discord-unblockusercomplete": "Message sent to Discord when a user is unblocked. Parameters:\n$1 - discord-userlinks (performer)\n$2 - discord-userlinks (target)",
 	"discord-usergroupschanged": "Message sent to Discord when a user's group is changed. Parameters:\n* $1 - discord-userlinks (performer)\n* $2 - discord-userlinks (target)\n* $3 - Reason (always surrounded in tildes)\n* $4 - Added rights (prepended by +)\n* $5 - Removed rights (prepended by -)",
 	"discord-uploadnewver": "Used as the text for $2 in discord-uploadcomplete",

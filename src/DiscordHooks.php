@@ -327,9 +327,9 @@ class DiscordHooks implements
 			$target = $block->getTargetName();
 		}
 
-		// Partial blocks
+		$msgName = $block->isSitewide() ? 'discord-blockipcomplete' : 'discord-blockipcomplete-partial';
 
-		$msg = wfMessage( 'discord-blockipcomplete', DiscordUtils::createUserLinks( $user ),
+		$msg = wfMessage( $msgName, DiscordUtils::createUserLinks( $user ),
 			DiscordUtils::createUserLinks( $target ),
 			( $block->getReasonComment()->text ? ( '`' . DiscordUtils::sanitiseText(
 				DiscordUtils::truncateText( $block->getReasonComment()->text ) ) . '`' ) : '' ),

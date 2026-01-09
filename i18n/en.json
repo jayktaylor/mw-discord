@@ -23,6 +23,7 @@
 	"discord-localusercreated": "$1 registered",
 	"discord-blocktimeformat": "d F Y H:i",
 	"discord-blockipcomplete": "$1 blocked $2 $3 ($4)",
+	"discord-blockipcomplete-partial": "$1 partially blocked $2 $3 ($4)",
 	"discord-unblockusercomplete": "$1 unblocked $2",
 	"discord-usergroupschanged": "$1 changed rights of $2 $3 ($4) ($5)",
 	"discord-uploadnewver": "new version of",

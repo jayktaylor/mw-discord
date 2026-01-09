@@ -25,7 +25,6 @@
 			"Redirect fixer"
 		],
 		"DiscordPrependTimestamp": false,
-		"DiscordUseFileGetContents": false,
 		"DiscordUseEmojis": false,
 		"DiscordEmojis": {
 			"PageSaveComplete": ":pencil2:",
@@ -58,7 +57,10 @@
 	},
 	"HookHandlers": {
 		"main": {
-			"class": "MediaWiki\\Extension\\Discord\\DiscordHooks"
+			"class": "MediaWiki\\Extension\\Discord\\DiscordHooks",
+			"services": [
+				"Discord.DiscordMessageSender"
+			]
 		}
 	},
 	"Hooks": {
@@ -82,5 +84,8 @@
 		"ApprovedRevsFileRevisionApproved": "main",
 		"ApprovedRevsFileRevisionUnapproved": "main",
 		"RenameUserComplete": "main"
-	}
+	},
+	"ServiceWiringFiles": [
+		"src/ServiceWiring.php"
+	]
 }

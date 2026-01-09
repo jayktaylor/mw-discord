@@ -63,6 +63,12 @@ class DiscordHooks implements
 	RenameUserCompleteHook,
 	PageUndeleteCompleteHook
 {
+	private DiscordMessageSender $messageSender;
+
+	public function __construct( DiscordMessageSender $messageSender ) {
+		$this->messageSender = $messageSender;
+	}
+
 	/**
 	 * @param WikiPage $wikiPage
 	 * @param UserIdentity $userIdentity
@@ -110,7 +116,7 @@ class DiscordHooks implements
 			DiscordUtils::createRevisionText( $revisionRecord ),
 			( $summary ? ( '`' . DiscordUtils::sanitiseText(
 				DiscordUtils::truncateText( $summary ) ) . '`' ) : '' ) )->inContentLanguage()->plain();
-		DiscordUtils::handleDiscord( $hookName, $msg );
+		$this->messageSender->sendToDiscord( $hookName, $msg );
 		return true;
 	}
 
@@ -143,7 +149,7 @@ class DiscordHooks implements
 				$page->getTitle()->getFullURL( '', false, PROTO_CANONICAL ) ),
 			( $reason ? ( '`' . DiscordUtils::sanitiseText( DiscordUtils::truncateText( $reason ) ) . '`' ) : '' ),
 			$archivedRevisionCount )->inContentLanguage()->plain();
-		DiscordUtils::handleDiscord( $hookName, $msg );
+		$this->messageSender->sendToDiscord( $hookName, $msg );
 		return true;
 	}
 
@@ -178,7 +184,7 @@ class DiscordHooks implements
 			DiscordUtils::createMarkdownLink( $title, $title->getFullURL( '', false, PROTO_CANONICAL ) ),
 			( $reason ? ( '`' . DiscordUtils::sanitiseText(
 				DiscordUtils::truncateText( $reason ) ) . '`' ) : '' ) )->inContentLanguage()->plain();
-		DiscordUtils::handleDiscord( $hookName, $msg );
+		$this->messageSender->sendToDiscord( $hookName, $msg );
 	}
 
 	/**
@@ -206,7 +212,7 @@ class DiscordHooks implements
 			count( $visibilityChangeMap ),
 			DiscordUtils::createMarkdownLink( $title,
 				$title->getFullURL( '', false, PROTO_CANONICAL ) ) )->inContentLanguage()->plain();
-		DiscordUtils::handleDiscord( $hookName, $msg );
+		$this->messageSender->sendToDiscord( $hookName, $msg );
 		return true;
 	}
 
@@ -235,7 +241,7 @@ class DiscordHooks implements
 				$wikiPage->getTitle()->getFullURL( '', false, PROTO_CANONICAL ) ),
 			( $reason ? ( '`' . DiscordUtils::sanitiseText( DiscordUtils::truncateText( $reason ) ) . '`' ) : '' ),
 			implode( ", ", $protect ) )->inContentLanguage()->plain();
-		DiscordUtils::handleDiscord( $hookName, $msg );
+		$this->messageSender->sendToDiscord( $hookName, $msg );
 		return true;
 	}
 
@@ -278,7 +284,7 @@ class DiscordHooks implements
 				Title::castFromLinkTarget( $new )->getFullURL( '', false, PROTO_CANONICAL ) ),
 			( $reason ? ( '`' . DiscordUtils::sanitiseText( DiscordUtils::truncateText( $reason ) ) . '`' ) : '' ),
 			DiscordUtils::createRevisionText( $revision ) )->inContentLanguage()->plain();
-		DiscordUtils::handleDiscord( $hookName, $msg );
+		$this->messageSender->sendToDiscord( $hookName, $msg );
 		return true;
 	}
 
@@ -296,7 +302,7 @@ class DiscordHooks implements
 
 		$msg = wfMessage( 'discord-msg-user-registered',
 			DiscordUtils::createUserLinks( $user ) )->inContentLanguage()->plain();
-		DiscordUtils::handleDiscord( $hookName, $msg );
+		$this->messageSender->sendToDiscord( $hookName, $msg );
 		return true;
 	}
 
@@ -334,7 +340,7 @@ class DiscordHooks implements
 			( $block->getReasonComment()->text ? ( '`' . DiscordUtils::sanitiseText(
 				DiscordUtils::truncateText( $block->getReasonComment()->text ) ) . '`' ) : '' ),
 			$expiryMsg )->inContentLanguage()->plain();
-		DiscordUtils::handleDiscord( $hookName, $msg );
+		$this->messageSender->sendToDiscord( $hookName, $msg );
 		return true;
 	}
 
@@ -357,7 +363,7 @@ class DiscordHooks implements
 
 		$msg = wfMessage( 'discord-msg-user-unblock', DiscordUtils::createUserLinks( $user ),
 			DiscordUtils::createUserLinks( $target ) )->inContentLanguage()->text();
-		DiscordUtils::handleDiscord( $hookName, $msg );
+		$this->messageSender->sendToDiscord( $hookName, $msg );
 		return true;
 	}
 
@@ -388,7 +394,7 @@ class DiscordHooks implements
 			( $reason ? ( '`' . DiscordUtils::sanitiseText( DiscordUtils::truncateText( $reason ) ) . '`' ) : '' ),
 			( ( count( $added ) > 0 ) ? ( '+ ' . implode( ', ', $added ) ) : '' ),
 			( ( count( $removed ) > 0 ) ? ( '- ' . implode( ', ', $removed ) ) : '' ) )->inContentLanguage()->plain();
-		DiscordUtils::handleDiscord( $hookName, $msg );
+		$this->messageSender->sendToDiscord( $hookName, $msg );
 		return true;
 	}
 
@@ -424,7 +430,7 @@ class DiscordHooks implements
 			$lf->getWidth(),
 			$lf->getHeight(),
 			$lf->getMimeType() )->inContentLanguage()->plain();
-		DiscordUtils::handleDiscord( $hookName, $msg );
+		$this->messageSender->sendToDiscord( $hookName, $msg );
 		return true;
 	}
 
@@ -459,7 +465,7 @@ class DiscordHooks implements
 				$file->getTitle()->getFullURL( '', false, PROTO_CANONICAL ) ),
 			( $reason ? ( '`' . DiscordUtils::sanitiseText(
 				DiscordUtils::truncateText( $reason ) ) . '`' ) : '' ) )->inContentLanguage()->plain();
-		DiscordUtils::handleDiscord( $hookName, $msg );
+		$this->messageSender->sendToDiscord( $hookName, $msg );
 		return true;
 	}
 
@@ -487,7 +493,7 @@ class DiscordHooks implements
 			DiscordUtils::createMarkdownLink( $title, $title->getFullURL( '', false, PROTO_CANONICAL ) ),
 			( $reason ? ( '`' . DiscordUtils::sanitiseText(
 				DiscordUtils::truncateText( $reason ) ) . '`' ) : '' ) )->inContentLanguage()->plain();
-		DiscordUtils::handleDiscord( $hookName, $msg );
+		$this->messageSender->sendToDiscord( $hookName, $msg );
 		return true;
 	}
 
@@ -517,7 +523,7 @@ class DiscordHooks implements
 		$msg = wfMessage( 'discord-msg-import', DiscordUtils::createUserLinks( $user ),
 			DiscordUtils::createMarkdownLink( $title, $title->getFullURL( '', false, PROTO_CANONICAL ) ),
 			$revCount, $sRevCount )->inContentLanguage()->plain();
-		DiscordUtils::handleDiscord( $hookName, $msg );
+		$this->messageSender->sendToDiscord( $hookName, $msg );
 		return true;
 	}
 
@@ -545,7 +551,7 @@ class DiscordHooks implements
 			DiscordUtils::createMarkdownLink( $targetTitle, $targetTitle->getFullURL( '', false, PROTO_CANONICAL ) ),
 			DiscordUtils::createMarkdownLink( $destTitle,
 				$destTitle->getFullURL( '', false, PROTO_CANONICAL ) ) )->inContentLanguage()->plain();
-		DiscordUtils::handleDiscord( $hookName, $msg );
+		$this->messageSender->sendToDiscord( $hookName, $msg );
 		return true;
 	}
 
@@ -581,7 +587,7 @@ class DiscordHooks implements
 			DiscordUtils::createMarkdownLink( $title, $title->getFullURL( '', false, PROTO_CANONICAL ) ),
 			DiscordUtils::createMarkdownLink( $rev_id, $revLink ),
 			$revAuthor )->inContentLanguage()->plain();
-		DiscordUtils::handleDiscord( $hookName, $msg );
+		$this->messageSender->sendToDiscord( $hookName, $msg );
 		return true;
 	}
 
@@ -610,7 +616,7 @@ class DiscordHooks implements
 		$msg = wfMessage( 'discord-msg-ext-approvedrevs-unapproved', DiscordUtils::createUserLinks( $user ),
 			DiscordUtils::createMarkdownLink( $title,
 				$title->getFullURL( '', false, PROTO_CANONICAL ) ) )->inContentLanguage()->plain();
-		DiscordUtils::handleDiscord( $hookName, $msg );
+		$this->messageSender->sendToDiscord( $hookName, $msg );
 		return true;
 	}
 
@@ -648,7 +654,7 @@ class DiscordHooks implements
 			DiscordUtils::createMarkdownLink( $title, $title->getFullURL( '', false, PROTO_CANONICAL ) ),
 			DiscordUtils::createMarkdownLink( 'direct', $displayedFileUrl ),
 			DiscordUtils::createUserLinks( $uploader ) )->inContentLanguage()->plain();
-		DiscordUtils::handleDiscord( $hookName, $msg );
+		$this->messageSender->sendToDiscord( $hookName, $msg );
 		return true;
 	}
 
@@ -676,7 +682,7 @@ class DiscordHooks implements
 		$msg = wfMessage( 'discord-msg-ext-approvedrevs-unapproved-file', DiscordUtils::createUserLinks( $user ),
 			DiscordUtils::createMarkdownLink( $title,
 				$title->getFullURL( '', false, PROTO_CANONICAL ) ) )->inContentLanguage()->plain();
-		DiscordUtils::handleDiscord( $hookName, $msg );
+		$this->messageSender->sendToDiscord( $hookName, $msg );
 		return true;
 	}
 
@@ -701,6 +707,6 @@ class DiscordHooks implements
 			"*$old*",
 			DiscordUtils::createMarkdownLink( $new,
 				$renamedUserAsTitle->getFullURL( '', false, PROTO_CANONICAL ) ) )->inContentLanguage()->plain();
-			DiscordUtils::handleDiscord( $hookName, $msg );
+			$this->messageSender->sendToDiscord( $hookName, $msg );
 	}
 }

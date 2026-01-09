@@ -10,14 +10,12 @@ Multiple webhook URLs are supported and messages will be sent to all of them.
 </p>
 
 ## Requirements
-- **Discord webhook URL**: This can be obtained by editing a channel on a server with the correct permissions.
+- **Discord webhook URL**: Found by editing a channel -> Integrations -> Webhooks
 - **MediaWiki**: This extension aims to always support the [latest LTS release](https://www.mediawiki.org/wiki/Version_lifecycle).
-  - Use the branch that is equal to, or below your version. For example, if you are using MediaWiki 1.37, use the `REL1_36` branch.
-  - We do not guarantee support for versions of MediaWiki that are considered end-of-life.
-  - The `master` branch may contain changes that are only applicable to the cutting-edge alpha version of MediaWiki.
-
-### Recommended
-- **cURL**: By default, this extension sends requests using cURL. If you don't have cURL, you could try setting `$wgDiscordUseFileGetContents` to `true` instead, but this is not recommended.
+  - Use the branch that is equal to, or below your current version.
+  - We do not support versions of MediaWiki that are considered end-of-life.
+  - The `master` branch may contain changes that are only applicable to the current alpha version of MediaWiki.
+- **[cURL](https://www.php.net/curl)** (likely installed already). Without this, the extension may still work, but requests will be sent inefficiently.
 
 ## Installation
 
@@ -58,7 +56,6 @@ These parameters aren't required for the extension to work.
 | `$wgDiscordDisabledNS` | int array | List of namespace **IDs** to disable sending webhooks for. (see [below](#namespaces)) | `[]`
 | `$wgDiscordDisabledUsers` | string array | List of users whose performed actions shouldn't send webhooks | `[]`
 | `$wgDiscordPrependTimestamp` | bool | Prepend a timestamp (in UTC) to all sent messages. The format can be changed by editing the MediaWiki message `discord-timestampformat` | `false`
-| `$wgDiscordUseFileGetContents` | bool | Use `file_get_contents` instead of cURL. Requires `allow_url_fopen` to be set to true in `php.ini`. Not recommended as cURL makes simultaneous calls instead. | `false`
 | `$wgDiscordUseEmojis` | bool | Prepend emojis to different types of messages to help distinguish them | `false`
 | `$wgDiscordEmojis` | string associative array | Map of hook names and their associated emojis to prepend to messages if `$wgDiscordUseEmojis` is enabled | See [extension.json](/extension.json#L30)
 

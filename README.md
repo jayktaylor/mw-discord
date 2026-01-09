@@ -65,7 +65,7 @@ These parameters aren't required for the extension to work.
 ## Hooks used
 - `PageSaveComplete` - New edits to pages and page creations
 - `PageDeleteComplete` - Page deletions
-- `ArticleUndelete` - Page restorations
+- `PageUndeleteComplete` - Page restorations
 - `ArticleRevisionVisibilitySet` - Revision visibility changes
 - `ArticleProtectComplete` - Page protections
 - `PageMoveComplete` - Page moves
@@ -77,7 +77,8 @@ These parameters aren't required for the extension to work.
 - `FileDeleteComplete` - File revision was deleted
 - `FileUndeleteComplete` - File revision was restored
 - `AfterImportPage` - Page was imported
-- `ArticleMergeComplete` - Article histories was merged
+- `ArticleMergeComplete` - Article histories were merged
+- `RenameUserComplete` - Rename was completed
 
 ### [Approved Revs](https://www.mediawiki.org/wiki/Extension:Approved_Revs)
 - `ApprovedRevsRevisionApproved` - Revision was approved
@@ -85,11 +86,8 @@ These parameters aren't required for the extension to work.
 - `ApprovedRevsFileRevisionApproved` - File revision was approved
 - `ApprovedRevsFileRevisionUnapproved` - File revision was unapproved
 
-### [Renameuser](https://www.mediawiki.org/wiki/Extension:Renameuser)
-- `RenameUserComplete` - Rename was completed
-
 ## Namespaces
-As we use Namespace IDs the following resources might be helpful:
+As we use namespace IDs the following resources might be helpful:
 - [Built in namespaces' IDs](https://www.mediawiki.org/wiki/Manual:Namespace#Built-in_namespaces)
 - [Extension default namespaces](https://www.mediawiki.org/wiki/Extension_default_namespaces)
 

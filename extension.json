@@ -8,7 +8,7 @@
 	"descriptionmsg": "discord-desc",
 	"license-name": "MIT",
 	"requires": {
-		"MediaWiki": ">= 1.39.0"
+		"MediaWiki": ">= 1.40.0"
 	},
 	"manifest_version": 1,
 	"config": {

@@ -99,9 +99,9 @@ class DiscordHooks implements
 			return true;
 		}
 
-		$msgKey = 'discord-edit';
+		$msgKey = 'discord-msg-page-edited';
 		if ( $isNew ) {
-			$msgKey = 'discord-create';
+			$msgKey = 'discord-msg-page-created';
 		}
 
 		$msg = wfMessage( $msgKey, DiscordUtils::createUserLinks( $user ),
@@ -138,7 +138,7 @@ class DiscordHooks implements
 			return true;
 		}
 
-		$msg = wfMessage( 'discord-pagedeletecomplete', DiscordUtils::createUserLinks( $user ),
+		$msg = wfMessage( 'discord-msg-page-deleted', DiscordUtils::createUserLinks( $user ),
 			DiscordUtils::createMarkdownLink( $page->getTitle(),
 				$page->getTitle()->getFullURL( '', false, PROTO_CANONICAL ) ),
 			( $reason ? ( '`' . DiscordUtils::sanitiseText( DiscordUtils::truncateText( $reason ) ) . '`' ) : '' ),
@@ -173,8 +173,8 @@ class DiscordHooks implements
 
 		$title = MediaWikiServices::getInstance()->getTitleFactory()->newFromPageIdentity( $page );
 
-		$msg = wfMessage( 'discord-articleundelete', DiscordUtils::createUserLinks( $user ),
-			( $created ? '' : wfMessage( 'discord-undeleterev' )->inContentLanguage()->text() ),
+		$msg = wfMessage( 'discord-msg-page-undeleted', DiscordUtils::createUserLinks( $user ),
+			( $created ? '' : wfMessage( 'discord-msg-page-undeleted-revs' )->inContentLanguage()->text() ),
 			DiscordUtils::createMarkdownLink( $title, $title->getFullURL( '', false, PROTO_CANONICAL ) ),
 			( $reason ? ( '`' . DiscordUtils::sanitiseText(
 				DiscordUtils::truncateText( $reason ) ) . '`' ) : '' ) )->inContentLanguage()->plain();
@@ -202,7 +202,7 @@ class DiscordHooks implements
 			return true;
 		}
 
-		$msg = wfMessage( 'discord-revvisibility', DiscordUtils::createUserLinks( $user ),
+		$msg = wfMessage( 'discord-msg-rev-visibility-changed', DiscordUtils::createUserLinks( $user ),
 			count( $visibilityChangeMap ),
 			DiscordUtils::createMarkdownLink( $title,
 				$title->getFullURL( '', false, PROTO_CANONICAL ) ) )->inContentLanguage()->plain();
@@ -230,7 +230,7 @@ class DiscordHooks implements
 			return true;
 		}
 
-		$msg = wfMessage( 'discord-articleprotect', DiscordUtils::createUserLinks( $user ),
+		$msg = wfMessage( 'discord-msg-page-protect', DiscordUtils::createUserLinks( $user ),
 			DiscordUtils::createMarkdownLink( $wikiPage->getTitle(),
 				$wikiPage->getTitle()->getFullURL( '', false, PROTO_CANONICAL ) ),
 			( $reason ? ( '`' . DiscordUtils::sanitiseText( DiscordUtils::truncateText( $reason ) ) . '`' ) : '' ),
@@ -271,7 +271,7 @@ class DiscordHooks implements
 			return true;
 		}
 
-		$msg = wfMessage( 'discord-titlemove', DiscordUtils::createUserLinks( $user ),
+		$msg = wfMessage( 'discord-msg-page-moved', DiscordUtils::createUserLinks( $user ),
 			DiscordUtils::createMarkdownLink( $old,
 				Title::castFromLinkTarget( $old )->getFullURL( '', false, PROTO_CANONICAL ) ),
 			DiscordUtils::createMarkdownLink( $new,
@@ -294,7 +294,7 @@ class DiscordHooks implements
 			return true;
 		}
 
-		$msg = wfMessage( 'discord-localusercreated',
+		$msg = wfMessage( 'discord-msg-user-registered',
 			DiscordUtils::createUserLinks( $user ) )->inContentLanguage()->plain();
 		DiscordUtils::handleDiscord( $hookName, $msg );
 		return true;
@@ -317,7 +317,7 @@ class DiscordHooks implements
 		$expiryAsUnix = strtotime( $expiry );
 		if ( $expiryAsUnix ) {
 			$expiryMsg = sprintf( '%s',
-				date( wfMessage( 'discord-blocktimeformat' )->inContentLanguage()->text(), $expiryAsUnix ) );
+				date( wfMessage( 'discord-msg-user-block-timeformat' )->inContentLanguage()->text(), $expiryAsUnix ) );
 		} else {
 			$expiryMsg = $expiry;
 		}
@@ -327,7 +327,7 @@ class DiscordHooks implements
 			$target = $block->getTargetName();
 		}
 
-		$msgName = $block->isSitewide() ? 'discord-blockipcomplete' : 'discord-blockipcomplete-partial';
+		$msgName = $block->isSitewide() ? 'discord-msg-user-block' : 'discord-msg-user-block-partial';
 
 		$msg = wfMessage( $msgName, DiscordUtils::createUserLinks( $user ),
 			DiscordUtils::createUserLinks( $target ),
@@ -355,7 +355,7 @@ class DiscordHooks implements
 			$target = $block->getTargetName();
 		}
 
-		$msg = wfMessage( 'discord-unblockusercomplete', DiscordUtils::createUserLinks( $user ),
+		$msg = wfMessage( 'discord-msg-user-unblock', DiscordUtils::createUserLinks( $user ),
 			DiscordUtils::createUserLinks( $target ) )->inContentLanguage()->text();
 		DiscordUtils::handleDiscord( $hookName, $msg );
 		return true;
@@ -383,7 +383,7 @@ class DiscordHooks implements
 			return true;
 		}
 
-		$msg = wfMessage( 'discord-usergroupschanged', DiscordUtils::createUserLinks( $performer ),
+		$msg = wfMessage( 'discord-msg-user-groups-changed', DiscordUtils::createUserLinks( $performer ),
 			DiscordUtils::createUserLinks( $user ),
 			( $reason ? ( '`' . DiscordUtils::sanitiseText( DiscordUtils::truncateText( $reason ) ) . '`' ) : '' ),
 			( ( count( $added ) > 0 ) ? ( '+ ' . implode( ', ', $added ) ) : '' ),
@@ -415,8 +415,8 @@ class DiscordHooks implements
 		$comment = $lf->getDescription();
 		$isNewRevision = count( $lf->getHistory() ) > 0;
 
-		$msg = wfMessage( 'discord-uploadcomplete', DiscordUtils::createUserLinks( $user ),
-			( $isNewRevision ? wfMessage( 'discord-uploadnewver' )->inContentLanguage()->text() : '' ),
+		$msg = wfMessage( 'discord-msg-file-upload', DiscordUtils::createUserLinks( $user ),
+			( $isNewRevision ? wfMessage( 'discord-msg-file-upload-new' )->inContentLanguage()->text() : '' ),
 			DiscordUtils::createMarkdownLink( $lf->getName(),
 				$lf->getTitle()->getFullURL( '', false, PROTO_CANONICAL ) ),
 			( $comment ? ( '`' . DiscordUtils::sanitiseText( DiscordUtils::truncateText( $comment ) ) . '`' ) : '' ),
@@ -454,7 +454,7 @@ class DiscordHooks implements
 			return true;
 		}
 
-		$msg = wfMessage( 'discord-filedeletecomplete', DiscordUtils::createUserLinks( $user ),
+		$msg = wfMessage( 'discord-msg-file-delete', DiscordUtils::createUserLinks( $user ),
 			DiscordUtils::createMarkdownLink( $file->getName(),
 				$file->getTitle()->getFullURL( '', false, PROTO_CANONICAL ) ),
 			( $reason ? ( '`' . DiscordUtils::sanitiseText(
@@ -483,7 +483,7 @@ class DiscordHooks implements
 			return true;
 		}
 
-		$msg = wfMessage( 'discord-fileundeletecomplete', DiscordUtils::createUserLinks( $user ),
+		$msg = wfMessage( 'discord-msg-file-undelete', DiscordUtils::createUserLinks( $user ),
 			DiscordUtils::createMarkdownLink( $title, $title->getFullURL( '', false, PROTO_CANONICAL ) ),
 			( $reason ? ( '`' . DiscordUtils::sanitiseText(
 				DiscordUtils::truncateText( $reason ) ) . '`' ) : '' ) )->inContentLanguage()->plain();
@@ -514,7 +514,7 @@ class DiscordHooks implements
 			return true;
 		}
 
-		$msg = wfMessage( 'discord-afterimportpage', DiscordUtils::createUserLinks( $user ),
+		$msg = wfMessage( 'discord-msg-import', DiscordUtils::createUserLinks( $user ),
 			DiscordUtils::createMarkdownLink( $title, $title->getFullURL( '', false, PROTO_CANONICAL ) ),
 			$revCount, $sRevCount )->inContentLanguage()->plain();
 		DiscordUtils::handleDiscord( $hookName, $msg );
@@ -541,7 +541,7 @@ class DiscordHooks implements
 			return true;
 		}
 
-		$msg = wfMessage( 'discord-articlemergecomplete', DiscordUtils::createUserLinks( $user ),
+		$msg = wfMessage( 'discord-msg-page-merge', DiscordUtils::createUserLinks( $user ),
 			DiscordUtils::createMarkdownLink( $targetTitle, $targetTitle->getFullURL( '', false, PROTO_CANONICAL ) ),
 			DiscordUtils::createMarkdownLink( $destTitle,
 				$destTitle->getFullURL( '', false, PROTO_CANONICAL ) ) )->inContentLanguage()->plain();
@@ -577,7 +577,7 @@ class DiscordHooks implements
 		$revLink = $title->getFullURL( '', false, PROTO_CANONICAL );
 		$revAuthor = DiscordUtils::createUserLinks( $rev->getUser( RevisionRecord::RAW ) );
 
-		$msg = wfMessage( 'discord-approvedrevsrevisionapproved', DiscordUtils::createUserLinks( $user ),
+		$msg = wfMessage( 'discord-msg-ext-approvedrevs-approved', DiscordUtils::createUserLinks( $user ),
 			DiscordUtils::createMarkdownLink( $title, $title->getFullURL( '', false, PROTO_CANONICAL ) ),
 			DiscordUtils::createMarkdownLink( $rev_id, $revLink ),
 			$revAuthor )->inContentLanguage()->plain();
@@ -607,7 +607,7 @@ class DiscordHooks implements
 			return true;
 		}
 
-		$msg = wfMessage( 'discord-approvedrevsrevisionunapproved', DiscordUtils::createUserLinks( $user ),
+		$msg = wfMessage( 'discord-msg-ext-approvedrevs-unapproved', DiscordUtils::createUserLinks( $user ),
 			DiscordUtils::createMarkdownLink( $title,
 				$title->getFullURL( '', false, PROTO_CANONICAL ) ) )->inContentLanguage()->plain();
 		DiscordUtils::handleDiscord( $hookName, $msg );
@@ -644,7 +644,7 @@ class DiscordHooks implements
 		$uploader = MediaWikiServices::getInstance()->getUserFactory()->newFromUserIdentity(
 			$displayedFile->getUploader() );
 
-		$msg = wfMessage( 'discord-approvedrevsfilerevisionapproved', DiscordUtils::createUserLinks( $user ),
+		$msg = wfMessage( 'discord-msg-ext-approvedrevs-approved-file', DiscordUtils::createUserLinks( $user ),
 			DiscordUtils::createMarkdownLink( $title, $title->getFullURL( '', false, PROTO_CANONICAL ) ),
 			DiscordUtils::createMarkdownLink( 'direct', $displayedFileUrl ),
 			DiscordUtils::createUserLinks( $uploader ) )->inContentLanguage()->plain();
@@ -673,7 +673,7 @@ class DiscordHooks implements
 			return true;
 		}
 
-		$msg = wfMessage( 'discord-approvedrevsfilerevisionunapproved', DiscordUtils::createUserLinks( $user ),
+		$msg = wfMessage( 'discord-msg-ext-approvedrevs-unapproved-file', DiscordUtils::createUserLinks( $user ),
 			DiscordUtils::createMarkdownLink( $title,
 				$title->getFullURL( '', false, PROTO_CANONICAL ) ) )->inContentLanguage()->plain();
 		DiscordUtils::handleDiscord( $hookName, $msg );
@@ -697,7 +697,7 @@ class DiscordHooks implements
 
 		$renamedUserAsTitle = MediaWikiServices::getInstance()->getUserFactory()->newFromName( $new )->getUserPage();
 
-		$msg = wfMessage( 'discord-renameusercomplete', DiscordUtils::createUserLinks( $user ),
+		$msg = wfMessage( 'discord-msg-user-rename', DiscordUtils::createUserLinks( $user ),
 			"*$old*",
 			DiscordUtils::createMarkdownLink( $new,
 				$renamedUserAsTitle->getFullURL( '', false, PROTO_CANONICAL ) ) )->inContentLanguage()->plain();

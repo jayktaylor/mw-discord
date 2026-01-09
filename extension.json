@@ -4,7 +4,7 @@
 		"[https://github.com/jayktaylor Jayden Bailey]"
 	],
 	"url": "https://github.com/jayktaylor/mw-discord",
-	"version": "1.0.13",
+	"version": "1.1",
 	"descriptionmsg": "discord-desc",
 	"license-name": "MIT",
 	"requires": {
@@ -30,7 +30,7 @@
 		"DiscordEmojis": {
 			"PageSaveComplete": ":pencil2:",
 			"PageDeleteComplete": ":wastebasket:",
-			"ArticleUndelete": ":wastebasket:",
+			"PageUndeleteComplete": ":wastebasket:",
 			"ArticleRevisionVisibilitySet": ":spy:",
 			"ArticleProtectComplete": ":lock:",
 			"PageMoveComplete": ":truck:",
@@ -50,33 +50,37 @@
 			"RenameUserComplete": ":people_holding_hands:"
 		}
 	},
-	"AutoloadClasses": {
-		"DiscordHooks": "src/DiscordHooks.php",
-		"DiscordUtils": "src/Utils.php"
+	"AutoloadNamespaces": {
+		"MediaWiki\\Extension\\Discord\\": "src/"
 	},
 	"MessagesDirs": {
 		"mw-discord": "i18n"
 	},
+	"HookHandlers": {
+		"main": {
+			"class": "MediaWiki\\Extension\\Discord\\DiscordHooks"
+		}
+	},
 	"Hooks": {
-		"PageSaveComplete": "DiscordHooks::onPageSaveComplete",
-		"PageDeleteComplete": "DiscordHooks::onPageDeleteComplete",
-		"ArticleUndelete": "DiscordHooks::onArticleUndelete",
-		"ArticleRevisionVisibilitySet": "DiscordHooks::onArticleRevisionVisibilitySet",
-		"ArticleProtectComplete": "DiscordHooks::onArticleProtectComplete",
-		"PageMoveComplete": "DiscordHooks::onPageMoveComplete",
-		"LocalUserCreated": "DiscordHooks::onLocalUserCreated",
-		"BlockIpComplete": "DiscordHooks::onBlockIpComplete",
-		"UnblockUserComplete": "DiscordHooks::onUnblockUserComplete",
-		"UserGroupsChanged": "DiscordHooks::onUserGroupsChanged",
-		"UploadComplete": "DiscordHooks::onUploadComplete",
-		"FileDeleteComplete": "DiscordHooks::onFileDeleteComplete",
-		"FileUndeleteComplete": "DiscordHooks::onFileUndeleteComplete",
-		"AfterImportPage": "DiscordHooks::onAfterImportPage",
-		"ArticleMergeComplete": "DiscordHooks::onArticleMergeComplete",
-		"ApprovedRevsRevisionApproved": "DiscordHooks::onApprovedRevsRevisionApproved",
-		"ApprovedRevsRevisionUnapproved": "DiscordHooks::onApprovedRevsRevisionUnapproved",
-		"ApprovedRevsFileRevisionApproved": "DiscordHooks::onApprovedRevsFileRevisionApproved",
-		"ApprovedRevsFileRevisionUnapproved": "DiscordHooks::onApprovedRevsFileRevisionUnapproved",
-		"RenameUserComplete": "DiscordHooks::onRenameUserComplete"
+		"PageSaveComplete": "main",
+		"PageDeleteComplete": "main",
+		"PageUndeleteComplete": "main",
+		"ArticleRevisionVisibilitySet": "main",
+		"ArticleProtectComplete": "main",
+		"PageMoveComplete": "main",
+		"LocalUserCreated": "main",
+		"BlockIpComplete": "main",
+		"UnblockUserComplete": "main",
+		"UserGroupsChanged": "main",
+		"UploadComplete": "main",
+		"FileDeleteComplete": "main",
+		"FileUndeleteComplete": "main",
+		"AfterImportPage": "main",
+		"ArticleMergeComplete": "main",
+		"ApprovedRevsRevisionApproved": "main",
+		"ApprovedRevsRevisionUnapproved": "main",
+		"ApprovedRevsFileRevisionApproved": "main",
+		"ApprovedRevsFileRevisionUnapproved": "main",
+		"RenameUserComplete": "main"
 	}
 }

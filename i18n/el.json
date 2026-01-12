@@ -12,7 +12,7 @@
 	"discord-msg-page-edited": "$1 επεξεργάστηκε $2 $3 $4.",
 	"discord-msg-page-created": "$1 δημιούργησε $2 $3 $4",
 	"discord-msg-page-deleted": "$1 διαγράφηκε $2 $3 ($4 αναθεωρήσεις διαγράφηκαν)",
-	"discord-msg-undeleted-revs": "αναθεωρήσεις για",
+	"discord-msg-page-undeleted-revs": "αναθεωρήσεις για",
 	"discord-msg-page-undeleted": "$1 επανέφερε $2 $3 $4",
 	"discord-msg-rev-visibility-changed": "$1 άλλαξε την ορατότητα των $2 αναθεωρήσεων στο $3",
 	"discord-msg-page-protect": "$1 άλλαξε προστασία του $2 $3 ($4)",

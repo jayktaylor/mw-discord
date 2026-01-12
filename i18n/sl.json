@@ -13,7 +13,7 @@
 	"discord-msg-page-edited": "$1 je uredil_a $2 $3 $4",
 	"discord-msg-page-created": "$1 je ustvaril_a $2 $3 $4",
 	"discord-msg-page-deleted": "$1 je izbrisal_a $2 $3 (izbrisanih $4 redakcij)",
-	"discord-msg-undeleted-revs": "redakcije za",
+	"discord-msg-page-undeleted-revs": "redakcije za",
 	"discord-msg-page-undeleted": "$1 je odizbrisal_a $2 $3 $4",
 	"discord-msg-rev-visibility-changed": "$1 je spremenil_a vidnost $2 redakcij strani $3",
 	"discord-msg-page-protect": "$1 je spremenil_a zaščito $2 $3 ($4)",

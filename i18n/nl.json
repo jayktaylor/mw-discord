@@ -14,7 +14,7 @@
 	"discord-msg-page-edited": "$1 heeft $2 bewerkt $3 $4",
 	"discord-msg-page-created": "$1 heeft $2 aangemaakt $3 $4",
 	"discord-msg-page-deleted": "$1 heeft $2 verwijderd $3 ($4 versies verwijderd)",
-	"discord-msg-undeleted-revs": "versies voor",
+	"discord-msg-page-undeleted-revs": "versies voor",
 	"discord-msg-page-undeleted": "$1 heeft $2 $3 teruggezet $4",
 	"discord-msg-rev-visibility-changed": "$1 heeft de zichtbaarheid van $2 versies op $3 veranderd",
 	"discord-msg-page-protect": "$1 heeft de beveiliging van $2 veranderd $3 ($4)",

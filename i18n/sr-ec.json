@@ -13,7 +13,7 @@
 	"discord-msg-page-edited": "$1 је уредио/ла $2 $3 $4",
 	"discord-msg-page-created": "$1 је направио/ла $2 $3 $4",
 	"discord-msg-page-deleted": "$1 је обрисао/ла $2 $3 ($4 измена обрисано)",
-	"discord-msg-undeleted-revs": "измене за",
+	"discord-msg-page-undeleted-revs": "измене за",
 	"discord-msg-page-undeleted": "$1 је вратио/ла $2 $3 $4",
 	"discord-msg-rev-visibility-changed": "$1 је променио/ла видљивост измене $2 на $3",
 	"discord-msg-page-protect": "$1 је променио/ла подешавања заштите $2 $3 ($4)",

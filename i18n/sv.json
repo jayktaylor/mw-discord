@@ -1,15 +1,19 @@
 {
 	"@metadata": {
 		"authors": [
-			"Sabelöga"
+			"Sabelöga",
+			"Stefan2255"
 		]
 	},
 	"discord-desc": "Skickar meddelanden till en Discord-kanal när vissa händelser sker",
+	"discord-talk": "t",
+	"discord-contribs": "c",
 	"discord-diff": "skillnad",
+	"discord-minor": "(m)",
 	"discord-msg-page-edited": "$1 redigerade $2 $3 $4",
 	"discord-msg-page-created": "$1 skapade $2 $3 $4",
 	"discord-msg-page-deleted": "$1 raderade $2 $3 ( $4 sidvisioner raderade)",
-	"discord-msg-undeleted-revs": "sidversioner för",
+	"discord-msg-page-undeleted-revs": "sidversioner för",
 	"discord-msg-page-undeleted": "$1 återställde $2 $3 $4",
 	"discord-msg-rev-visibility-changed": "$1 ändrade synligheten för $2 sidversioner på $3",
 	"discord-msg-page-protect": "$1 ändrade skrivskydd av $2 $3 ($4)",

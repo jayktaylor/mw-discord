@@ -12,7 +12,7 @@
 	"discord-msg-page-edited": "חשבון $1 ערך את הדף $2 $3 $4",
 	"discord-msg-page-created": "חשבון $1 יצר את הדף $2 $3 $4",
 	"discord-msg-page-deleted": "חשבון $1 מחק את הדף $2 $3 (מספר הגרסאות שנמחקו הוא $4)",
-	"discord-msg-undeleted-revs": "גרסאות של",
+	"discord-msg-page-undeleted-revs": "גרסאות של",
 	"discord-msg-page-undeleted": "חשבון $1 שחזר ממחיקה את הדף $2 $3 $4",
 	"discord-msg-rev-visibility-changed": "חשבון $1 שינה הנראות של $2 גרסאות של הדף $3",
 	"discord-msg-page-protect": "חשבון $1 שינה את ההגנה של הדף $2 סיבה: $3 הגדרות הגנה: ($4)",

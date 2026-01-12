@@ -10,7 +10,7 @@
 	"discord-diff": "różn.",
 	"discord-msg-page-edited": "$1 edytował $2 $3 $4",
 	"discord-msg-page-deleted": "$1 usunął $2 $3 ($4 wersje usunięte)",
-	"discord-msg-undeleted-revs": "wersje",
+	"discord-msg-page-undeleted-revs": "wersje",
 	"discord-msg-page-undeleted": "$1 odtworzył $2 $3 $4",
 	"discord-msg-rev-visibility-changed": "$1 zmienił widoczność $2 wersji $3",
 	"discord-msg-page-protect": "$1 zmienił poziom zabezpoeczenia strony $2 $2 $3 ($4)",

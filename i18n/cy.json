@@ -12,6 +12,6 @@
 	"discord-msg-page-edited": "Golygodd $1 $2 $3 $4",
 	"discord-msg-page-created": "Crëodd $1 $2 $3 $4",
 	"discord-msg-page-deleted": "Dilëodd $1 $2 $3 (dilëwyd $4 o olygiadau)",
-	"discord-msg-undeleted-revs": "golygiadau ar gyfer",
+	"discord-msg-page-undeleted-revs": "golygiadau ar gyfer",
 	"discord-msg-page-undeleted": "Adferodd $1 $2 $3 $4"
 }

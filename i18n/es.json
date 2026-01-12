@@ -12,7 +12,7 @@
 	"discord-msg-page-edited": "$1 editó $2 $3 $4",
 	"discord-msg-page-created": "$1 creó $2 $3 $4",
 	"discord-msg-page-deleted": "$1 eliminó $2 $3 ($4 revisiones eliminadas)",
-	"discord-msg-undeleted-revs": "revisiones de",
+	"discord-msg-page-undeleted-revs": "revisiones de",
 	"discord-msg-page-undeleted": "$1 restauró $2 $3 $4",
 	"discord-msg-rev-visibility-changed": "$1 cambió la visibilidad de $2 revisiones en $3",
 	"discord-msg-page-protect": "$1 cambió la protección de $2 $3 ($4)",

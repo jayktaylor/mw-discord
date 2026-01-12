@@ -14,7 +14,7 @@
 	"discord-msg-page-edited": "$1, $2 $3 $4 sayfasını düzenledi",
 	"discord-msg-page-created": "$1, $2 $3 $4 sayfasını oluşturdu",
 	"discord-msg-page-deleted": "$1, $3 sebebiyle $2 sayfasını sildi ($4 değişiklik silindi)",
-	"discord-msg-undeleted-revs": "şunun için değişiklikler:",
+	"discord-msg-page-undeleted-revs": "şunun için değişiklikler:",
 	"discord-msg-page-undeleted": "$1, $2 $3 $4 sayfasını silemedi",
 	"discord-msg-rev-visibility-changed": "$1, $3 sayfasındaki $2 değişikliğin görünürlüğünü değiştirdi",
 	"discord-msg-page-protect": "$1, $2 sayfasının korunmasını $3 ($4) sebebiyle değiştirdi",

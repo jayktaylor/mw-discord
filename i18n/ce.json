@@ -12,7 +12,7 @@
 	"discord-msg-page-edited": "$1 хийцам бина $2 $3 $4",
 	"discord-msg-page-created": "$1 кхоьллина $2 $3 $4",
 	"discord-msg-page-deleted": "$1 дӀайаьккхина $2 $3 ($4 версеш дӀайаьхна)",
-	"discord-msg-undeleted-revs": "версеш",
+	"discord-msg-page-undeleted-revs": "версеш",
 	"discord-msg-page-undeleted": "$1 меттахӀоттийна $2 $3 $4",
 	"discord-msg-rev-visibility-changed": "$1 хийцина $2 версин гуш хилар $3 тӀе",
 	"discord-msg-page-protect": "$1 хийцина ларйар $2 $3 ($4)",

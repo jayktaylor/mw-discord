@@ -18,7 +18,7 @@
 	"discord-msg-page-edited": "Message sent to Discord for when a page edit is made. Parameters:\n* $1 - discord-userlinks\n* $2 - Page link\n* $3 - discord-revisionlinks\n* $4 - Summary (always surrounded in tildes)",
 	"discord-msg-page-created": "Message sent to Discord for when a page creation is made. Parameters:\n* $1 - discord-userlinks\n* $2 - Page link\n* $3 - discord-revisionlinks\n* $4 - Summary (always surrounded in tildes)",
 	"discord-msg-page-deleted": "Message sent to Discord when a page is deleted. Parameters:\n* $1 - discord-userlinks\n* $2 - Page link\n* $3 - Reason (always surrounded in tildes)\n* $4 - Number of revisions deleted",
-	"discord-msg-undeleted-revs": "Used as the text for $2 in discord-msg-page-undeleted if revisions are being undeleted rather than a page",
+	"discord-msg-page-undeleted-revs": "Used as the text for $2 in discord-articleundelete if revisions are being undeleted rather than a page",
 	"discord-msg-page-undeleted": "Message sent to Discord when pages/revisions are undeleted.\nParameters:\n* $1 - discord-userlinks\n* $2 - discord-msg-undeleted-revs\n* $3 - Page link\n* $4 - Comment (always surrounded in tildes)",
 	"discord-msg-rev-visibility-changed": "Message sent to Discord when the visibility of revisions is changed.\nParameters:\n* $1 - discord-userlinks\n* $2 - Number of revisions\n* $3 - Page link",
 	"discord-msg-page-protect": "Message sent to Discord when an article's protection is changed.\nParameters:\n* $1 - discord-userlinks\n* $2 - Page link\n* $3 - Reason (always surrounded in tildes)\n* $4 - Protection settings",

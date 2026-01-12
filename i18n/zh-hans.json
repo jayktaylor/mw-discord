@@ -13,7 +13,7 @@
 	"discord-msg-page-edited": "$1编辑了$2、$3：$4",
 	"discord-msg-page-created": "$1创建了$2、$3：$4",
 	"discord-msg-page-deleted": "$1删除了$2：$3（已删除版本$4）",
-	"discord-msg-undeleted-revs": "版本为",
+	"discord-msg-page-undeleted-revs": "版本为",
 	"discord-msg-page-undeleted": "$1还原了$2 $3，原因：$4",
 	"discord-msg-rev-visibility-changed": "$1更改了在$3上版本$2的可见性",
 	"discord-msg-page-protect": "$1更改了$2的保护（$4），原因：$3",

@@ -13,7 +13,7 @@
 	"discord-msg-page-edited": "قام $1 بإنشاء $2 $3 $4",
 	"discord-msg-page-created": "قام $1 بإنشاء $2 $3 $4",
 	"discord-msg-page-deleted": "تم حذف $1 $2 $3 (تم حذف $4 من المراجعات)",
-	"discord-msg-undeleted-revs": "المراجعات لـ",
+	"discord-msg-page-undeleted-revs": "المراجعات لـ",
 	"discord-msg-page-undeleted": "$1 قام بإلغاء حذف $2 $3 $4",
 	"discord-msg-rev-visibility-changed": "$1 غيرت رؤية $2 من المراجعات على $3",
 	"discord-msg-page-protect": "$1 تم تغييره لحماية $2 $3 ( $4 )",

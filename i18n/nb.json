@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"EdoAug"
+			"EdoAug",
+			"Jon Harald Søby"
 		]
 	},
 	"discord-desc": "Sender meldinger til en Discord-kanal når visse hendelser forekommer",
@@ -18,7 +19,9 @@
 	"discord-msg-page-protect": "$1 endra beskyttelsen av $2 $3 ($4)",
 	"discord-msg-page-moved": "$1 flyttet $2 til $3 $4 $5",
 	"discord-msg-user-registered": "$1 registrerte",
+	"discord-msg-user-block-timeformat": "j. F Y \"kl.\" H:i",
 	"discord-msg-user-block": "$1 blokkerte $2 $3 ($4)",
+	"discord-msg-user-block-partial": "$1 blokkerte $2 delvis $3 ($4)",
 	"discord-msg-user-unblock": "$1 opphevde blokkeringen til $2",
 	"discord-msg-user-groups-changed": "$1 endret rettighetene til $2 $3 ($4) ($5)",
 	"discord-msg-file-upload-new": "ny versjon av",

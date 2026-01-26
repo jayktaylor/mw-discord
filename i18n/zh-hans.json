@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Anterdc99"
+			"Anterdc99",
+			"Peterxy12"
 		]
 	},
 	"discord-desc": "当某些事件发生时向Discord频道发送消息",
@@ -19,7 +20,9 @@
 	"discord-msg-page-protect": "$1更改了$2的保护（$4），原因：$3",
 	"discord-msg-page-moved": "$1将$2移动到$3，原因：$4，版本链接：$5",
 	"discord-msg-user-registered": "$1已注册",
+	"discord-msg-user-block-timeformat": "d F Y H:i",
 	"discord-msg-user-block": "$1封禁了$2，原因：$3（$4）",
+	"discord-msg-user-block-partial": "$1已部分封禁$2，原因：$3（到期：$4）",
 	"discord-msg-user-unblock": "$1解封了$2",
 	"discord-msg-user-groups-changed": "$1更改了$2的权限（新增：$4）（移除：$5），原因：$3",
 	"discord-msg-file-upload-new": "新版本的",

@@ -3,6 +3,7 @@
 		"authors": [
 			"Brettchenweber",
 			"Fyoouki",
+			"PretzelRocky",
 			"TomatoCake"
 		]
 	},
@@ -21,6 +22,7 @@
 	"discord-msg-page-moved": "$1 verschob $2 zu $3 $4 $5",
 	"discord-msg-user-registered": "$1 hat sich registriert",
 	"discord-msg-user-block": "$1 blockierte $2 $3 ($4)",
+	"discord-msg-user-block-partial": "$1 hat $2 teilweise gesperrt $3 ($4)",
 	"discord-msg-user-unblock": "$1 entsperrte $2",
 	"discord-msg-user-groups-changed": "$1 hat die Benutzerrechte geändert von $2 $3 ($4) ($5)",
 	"discord-msg-file-upload-new": "neue Version von",

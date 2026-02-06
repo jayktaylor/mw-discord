@@ -78,10 +78,10 @@ class DiscordUtils {
 
 	/**
 	 * Creates links for a specific MediaWiki User object
-	 * @param User|UserIdentity $user
+	 * @param User|UserIdentity|string $user
 	 * @return string
 	 */
-	public static function createUserLinks( User|UserIdentity $user ): string {
+	public static function createUserLinks( User|UserIdentity|string $user ): string {
 		global $wgDiscordMaxCharsUsernames;
 
 		if ( $user instanceof UserIdentity ) {

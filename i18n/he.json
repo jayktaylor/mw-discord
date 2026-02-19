@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Amire80"
+			"Amire80",
+			"Neriah"
 		]
 	},
 	"discord-desc": "שליחת הודעות לערוץ דיסקורד כאשר אירועים מסוימים מתרחשים",
@@ -19,6 +20,7 @@
 	"discord-msg-page-moved": "חשבון $1 העביר את הדף $2 לשם $3 $4 $5",
 	"discord-msg-user-registered": "חשבון $1 נרשם",
 	"discord-msg-user-block": "חשבון $1 חסם אם $2 $3 ($4)",
+	"discord-msg-user-block-partial": "$1 נחסם חלקית $2 $3 ($4)",
 	"discord-msg-user-unblock": "חשבון $1 שחרר מחסימה את $2",
 	"discord-msg-user-groups-changed": "חשבון $1 שינה את ההרשאות של $2 $3 ($4) ($5)",
 	"discord-msg-file-upload-new": "גרסה חדשה של",

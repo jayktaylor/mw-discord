@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Elphie",
 			"McDutchie",
 			"SPQRobin",
 			"Vistaus"
@@ -18,7 +19,7 @@
 	"discord-msg-page-undeleted": "$1 heeft $2 teruggezet $3 $4",
 	"discord-msg-rev-visibility-changed": "$1 heeft de zichtbaarheid van $2 versies op $3 veranderd",
 	"discord-msg-page-protect": "$1 heeft de beveiliging van $2 veranderd $3 ($4)",
-	"discord-msg-page-moved": "$1 heeft $2 hernoemd tot $3 $4 $5",
+	"discord-msg-page-moved": "$1 heeft $2 hernoemd naar $3 $4 $5",
 	"discord-msg-user-registered": "$1 heeft zich ingeschreven",
 	"discord-msg-user-block-timeformat": "j F Y H:i",
 	"discord-msg-user-block": "$1 heeft $2 geblokkeerd $3 ($4)",
@@ -35,5 +36,5 @@
 	"discord-msg-ext-approvedrevs-unapproved": "$1 heeft de goedkeuring van de goedgekeurde versie van $2 ingetrokken",
 	"discord-msg-ext-approvedrevs-approved-file": "$1 heeft een nieuwe bestandsversie van $2 ($3) goedgekeurd, auteur: $4",
 	"discord-msg-ext-approvedrevs-unapproved-file": "$1 heeft de goedkeuring van de goedgekeurde bestandsversie van $2 ingetrokken",
-	"discord-msg-user-rename": "$1 heeft de gebruiker $2 hernoemd tot $3"
+	"discord-msg-user-rename": "$1 heeft de gebruiker $2 hernoemd naar $3"
 }

@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"Asma",
+			"Meno25",
 			"Mohammed Qays"
 		]
 	},
@@ -19,7 +20,9 @@
 	"discord-msg-page-protect": "$1 تم تغييره لحماية $2 $3 ( $4 )",
 	"discord-msg-page-moved": "قام $1 بنقل من $2 إلى $3 $4 $5",
 	"discord-msg-user-registered": "تم تسجيل $1",
+	"discord-msg-user-block-timeformat": "d F Y H:i",
 	"discord-msg-user-block": "$1 منع $2 $3 ($4)",
+	"discord-msg-user-block-partial": "$1 محجوب جزئياً $2 $3 ($4)",
 	"discord-msg-user-unblock": "$1 قام بإلغاء منع $2",
 	"discord-msg-user-groups-changed": "$1 غير حقوق $2 $3 ($4) ($5)",
 	"discord-msg-file-upload-new": "إصدار جديد من",

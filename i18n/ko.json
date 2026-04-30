@@ -13,7 +13,7 @@
 	"discord-msg-page-created": "$1님이 $2 문서를 생성함 $3 $4",
 	"discord-msg-page-deleted": "$1님이 $2 문서를 삭제함 $3 ($4개 판 삭제됨)",
 	"discord-msg-page-undeleted-revs": "(의 판)",
-	"discord-msg-page-undeleted": "$1님이 $2 문서$3를 복구함 $4",
+	"discord-msg-page-undeleted": "$1님이 $2 문서를 복구함 $3 $4",
 	"discord-msg-rev-visibility-changed": "$1님이 $3 문서의 $2개 판의 공개 여부를 변경함",
 	"discord-msg-page-protect": "$1님이 $2 문서의 보호를 변경함 $3 ($4)",
 	"discord-msg-page-moved": "$1님이 $2 문서를 $3 문서로 이동함 $4 $5",

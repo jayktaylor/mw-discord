@@ -14,7 +14,7 @@
 	"discord-msg-page-deleted": "$1 ha delite $2 $3 ($4 versiones delite)",
 	"discord-msg-page-undeleted-revs": "versiones pro",
 	"discord-msg-page-undeleted": "$1 ha restaurate $2 $3 $4",
-	"discord-msg-rev-visibility-changed": "$1 ha cambiate le visibilitate de of $2 versiones sur $3",
+	"discord-msg-rev-visibility-changed": "$1 ha cambiate le visibilitate de $2 versiones sur $3",
 	"discord-msg-page-protect": "$1 ha cambiate le protection de $2 $3 ($4)",
 	"discord-msg-page-moved": "$1 ha renominate $2 a $3 $4 $5",
 	"discord-msg-user-registered": "$1 se ha inscribite",

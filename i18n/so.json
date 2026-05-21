@@ -1,0 +1,37 @@
+{
+	"@metadata": {
+		"authors": [
+			"AhmedG612"
+		]
+	},
+	"discord-desc": "Waxay u dirtaa farriimo kanaalka Discord marka ay dhacaan dhacdooyin gaar ah",
+	"discord-talk": "t",
+	"discord-contribs": "c",
+	"discord-diff": "Kala duwanaansho",
+	"discord-minor": "(m)",
+	"discord-msg-page-edited": "$1 ayaa wax ka beddelay $2 $3 $4",
+	"discord-msg-page-created": "$1 ayaa abuuray $2 $3 $4",
+	"discord-msg-page-deleted": "$1 ayaa tirtiray $2 $3 ($4 wax ka beddel ayaa la tirtiray)",
+	"discord-msg-page-undeleted-revs": "dib u eegis loogu talagalay",
+	"discord-msg-page-undeleted": "$1 ayaa dib u soo celiyay $2 $3 $4",
+	"discord-msg-rev-visibility-changed": "$1 ayaa beddelay muuqaalka $2 wax ka beddel ee $3",
+	"discord-msg-page-protect": "$1 ayaa beddelay ilaalinta $2 $3 ($4)",
+	"discord-msg-page-moved": "$1 ayaa u wareejiyay $2 ilaa $3 $4 $5",
+	"discord-msg-user-registered": "$1 ayaa is diiwaangeliyay",
+	"discord-msg-user-block-timeformat": "d F Y H:i",
+	"discord-msg-user-block": "$1 ayaa xannibay $2 $3 ($4)",
+	"discord-msg-user-block-partial": "$1 ayaa qayb ahaan xannibay $2 $3 ($4)",
+	"discord-msg-user-unblock": "$1 ayaa ka qaaday xannibaadda $2",
+	"discord-msg-user-groups-changed": "$1 ayaa beddelay xuquuqaha $2 $3 ($4) ($5)",
+	"discord-msg-file-upload-new": "nooc cusub oo ah",
+	"discord-msg-file-upload": "$1 ayaa soo geliyay $2 $3 $4 ($5, $6x$7, $8)",
+	"discord-msg-file-delete": "$1 ayaa tirtiray nooc ka mid ah faylka $2 $3",
+	"discord-msg-file-undelete": "$1 ayaa dib u soo celiyay qaar ka mid ah noocyadii faylka $2 $3",
+	"discord-msg-import": "$1 ayaa soo geliyay $2 (waxaa la soo geliyay $4/$3 wax ka beddel)",
+	"discord-msg-page-merge": "$1 ayaa isku daray wax ka beddeladii $2 una gudbiyay $3",
+	"discord-msg-ext-approvedrevs-approved": "$1 ayaa oggolaaday nooc cusub oo wax ka beddel ah $2 (wax ka beddelka $3) oo ka yimid isticmaale $4",
+	"discord-msg-ext-approvedrevs-unapproved": "$1 ayaa ka noqday oggolaanshihii noocii la ansixiyay ee $2",
+	"discord-msg-ext-approvedrevs-approved-file": "$1 ayaa oggolaaday nooc cusub oo wax ka beddel faylka $2 ($3) oo ka yimid isticmaale $4",
+	"discord-msg-ext-approvedrevs-unapproved-file": "$1 ayaa ka noqday oggolaanshihii noocii faylka ee la ansixiyay ee $2",
+	"discord-msg-user-rename": "$1 ayaa magaca isticmaale $2 u beddelay $3"
+}

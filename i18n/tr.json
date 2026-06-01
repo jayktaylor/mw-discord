@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"Asma",
+			"HakanIST",
 			"Hedda",
 			"Joseph"
 		]
@@ -21,6 +22,7 @@
 	"discord-msg-page-moved": "$1, $2 sayfasını $4 $5 sebebiyle $3 olacak şekildi taşıdı",
 	"discord-msg-user-registered": "$1 kayıt oldu",
 	"discord-msg-user-block": "$1, $3 ($4) sebebiyle $2 kullanıcısını engelledi",
+	"discord-msg-user-block-partial": "$1, $2 kullanıcısını kısmen engelledi $3 ($4)",
 	"discord-msg-user-unblock": "$1, $2 kullanıcısının engelini kaldırdı",
 	"discord-msg-user-groups-changed": "$1, $3 ($4) ($5) sebebiyle $2 kullanıcısının haklarını değiştirdi",
 	"discord-msg-file-upload-new": "şunun yeni sürümü:",

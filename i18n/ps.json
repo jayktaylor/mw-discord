@@ -1,0 +1,41 @@
+{
+	"@metadata": {
+		"authors": [
+			"شاه زمان پټان"
+		]
+	},
+	"discord-desc": "کله چې ځينې پېښې رامنځته شي؛ د ډيسکارډ چينل ته پيغامونه لېږي",
+	"discord-userlinks": "$1 ($2|$3)",
+	"discord-revisionlinks": "($1) $2 $3",
+	"discord-talk": "خبرې‌اترې",
+	"discord-contribs": "ونډې",
+	"discord-diff": "توپير",
+	"discord-minor": "(و)",
+	"discord-size": "($1)",
+	"discord-msg-page-edited": "$1 $2 $3 $4 سم کړ",
+	"discord-msg-page-created": "$1 $2 $3 $4 جوړ کړ",
+	"discord-msg-page-deleted": "$1 $2 $3 $4 ړنگ کړ ($4 بياليدنې ړنگې شوې)",
+	"discord-msg-page-undeleted-revs": "بياليدنې د",
+	"discord-msg-page-undeleted": "$1 $2 $3 $4 ناړنگ کړ",
+	"discord-msg-rev-visibility-changed": "$1 په $3 کې د $2 بياليدنو ليدلوری بدل کړ",
+	"discord-msg-page-protect": "$1 د $2 $3 ($4) ژغورنه بدله کړه",
+	"discord-msg-page-moved": "$1 $2 $3 $4 $5 ته ولېږداوه",
+	"discord-msg-user-registered": "$1 نوم‌ليکلی",
+	"discord-msg-user-block-timeformat": "Y کال د F مياشتې d مه H بجې i دقيقې",
+	"discord-msg-user-block": "$1 په $2 $3 ($4) باندې بنديز ولگاوه",
+	"discord-msg-user-block-partial": "$1 په $2 $3 ($4) باندې برخيز بنديز ولگاوه",
+	"discord-msg-user-unblock": "$1 له $2 نه بنديز لرې کړ",
+	"discord-msg-user-groups-changed": "$1 د $2 $3 ($4) ($5) رښتون کې بدلون راوست",
+	"discord-msg-file-upload-new": "نوې بلبڼه د",
+	"discord-msg-file-upload": "$1 $2 $3 $4 ($5، $6x$7 ،$8) راپورته کړه",
+	"discord-msg-file-delete": "$1 د $2 $3 دوتنې يوه بلبڼه ړنگه کړه",
+	"discord-msg-file-undelete": "$1 $2 $3 دوتنې ځينې بلبڼه بېرته زېرمه کړې",
+	"discord-msg-import": "$1 $2 راولېږدوله ($4/$3 رالېږدول شوې بياليدنې)",
+	"discord-timestampformat": "**H بجې:i دقيقې e:**",
+	"discord-msg-page-merge": "$1 د $1 بياليدنې په $3 کې واخږلې",
+	"discord-msg-ext-approvedrevs-approved": "$1 د $4 کارن $2 ($3 بياليدنه) نوې بياليدنه ومنله",
+	"discord-msg-ext-approvedrevs-unapproved": "$1 د $2 منل‌شوې بياليدنه ونه‌منله",
+	"discord-msg-ext-approvedrevs-approved-file": "$1 د $4 کارن $2 ($3) نوې دوتنې بياليدنه ومنله",
+	"discord-msg-ext-approvedrevs-unapproved-file": "$1 د $2 منل‌شوې دوتنې بياليدنه ونه‌‌منله",
+	"discord-msg-user-rename": "$1 د $2 کارن نوم $3 ته بدل کړ"
+}

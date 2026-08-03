@@ -32,7 +32,7 @@
 	"discord-msg-file-undelete": "$1 $2 $3 دوتنې ځينې بلبڼه بېرته زېرمه کړې",
 	"discord-msg-import": "$1 $2 راولېږدوله ($4/$3 رالېږدول شوې بياليدنې)",
 	"discord-timestampformat": "**H بجې:i دقيقې e:**",
-	"discord-msg-page-merge": "$1 د $1 بياليدنې په $3 کې واخږلې",
+	"discord-msg-page-merge": "$1 د $2 بياليدنې په $3 کې واخږلې",
 	"discord-msg-ext-approvedrevs-approved": "$1 د $4 کارن $2 ($3 بياليدنه) نوې بياليدنه ومنله",
 	"discord-msg-ext-approvedrevs-unapproved": "$1 د $2 منل‌شوې بياليدنه ونه‌منله",
 	"discord-msg-ext-approvedrevs-approved-file": "$1 د $4 کارن $2 ($3) نوې دوتنې بياليدنه ومنله",

@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Gomoko",
-			"Verdy p"
+			"Verdy p",
+			"Wladek92"
 		]
 	},
 	"discord-desc": "Envoie des messages à un canal Discord quand certains événements surviennent",
@@ -20,6 +21,7 @@
 	"discord-msg-page-moved": "$1 a renommé $2 en $3 $5 : $4",
 	"discord-msg-user-registered": "$1 s’est inscrit(e)",
 	"discord-msg-user-block": "$1 a bloqué $2 ($4) : $3",
+	"discord-msg-user-block-partial": "$1 a bloqué partiellement $2 $3 ($4)",
 	"discord-msg-user-unblock": "$1 a débloqué $2",
 	"discord-msg-user-groups-changed": "$1 a modifié les droits de $2 ($4) ($5) : $3",
 	"discord-msg-file-upload-new": "nouvelle version de",

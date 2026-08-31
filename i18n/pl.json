@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"PanWor",
 			"Railfail536"
 		]
 	},
@@ -8,19 +9,28 @@
 	"discord-talk": "d",
 	"discord-contribs": "w",
 	"discord-diff": "różn.",
-	"discord-msg-page-edited": "$1 edytował $2 $3 $4",
-	"discord-msg-page-deleted": "$1 usunął $2 $3 ($4 wersje usunięte)",
+	"discord-msg-page-edited": "$1 edytował(a) $2 $3 $4",
+	"discord-msg-page-created": "$1 utworzył(a) $2 $3 $4",
+	"discord-msg-page-deleted": "$1 usunął(-ęła) $2 $3 (usuniętych wersji: $4)",
 	"discord-msg-page-undeleted-revs": "wersje",
-	"discord-msg-page-undeleted": "$1 odtworzył $2 $3 $4",
-	"discord-msg-rev-visibility-changed": "$1 zmienił widoczność $2 wersji $3",
-	"discord-msg-page-protect": "$1 zmienił poziom zabezpoeczenia strony $2 $2 $3 ($4)",
-	"discord-msg-page-moved": "$1 przeniósł $2 na $3 $4 $5",
-	"discord-msg-user-registered": "$1 założył konto",
-	"discord-msg-user-block": "$1 zablokował $2 $3 ($4)",
-	"discord-msg-user-unblock": "$1 zdjął blokadę z $2",
-	"discord-msg-user-groups-changed": "$1 zmienił uprawnienia użytkownika $2 $3 ($4) ($5)",
+	"discord-msg-page-undeleted": "$1 odtworzył(a) $2 $3 $4",
+	"discord-msg-rev-visibility-changed": "$1 zmienił(a) widoczność $2 wersji $3",
+	"discord-msg-page-protect": "$1 zmienił(a) poziom zabezpoeczenia strony $2 $2 $3 ($4)",
+	"discord-msg-page-moved": "$1 przeniósł(-osła) $2 na $3 $4 $5",
+	"discord-msg-user-registered": "$1 założył(a) konto",
+	"discord-msg-user-block": "$1 zablokował(a) $2 $3 ($4)",
+	"discord-msg-user-block-partial": "$1 częściowo zablokował(a) $2 $3 ($4)",
+	"discord-msg-user-unblock": "$1 zdjął(-ęła) blokadę $2",
+	"discord-msg-user-groups-changed": "$1 zmienił(a) uprawnienia $2 $3 ($4) ($5)",
 	"discord-msg-file-upload-new": "nową wersję",
-	"discord-msg-file-upload": "$1 przesłał $2 $3 $4 ($5, $6x$7, $8)",
-	"discord-msg-file-delete": "$1 usunął wersję pliku $2 $3",
-	"discord-msg-file-undelete": "$1 odtworzył wersje pliku $2 $3"
+	"discord-msg-file-upload": "$1 przesłał(a) $2 $3 $4 ($5, $6×$7, $8)",
+	"discord-msg-file-delete": "$1 usunął(-ęła) wersję pliku $2 $3",
+	"discord-msg-file-undelete": "$1 odtworzył(a) wersje pliku $2 $3",
+	"discord-msg-import": "$1 zaimportował(a) $2 (import $4 z $3 wersji)",
+	"discord-msg-page-merge": "$1 scalił(a) wersje z $2 do $3",
+	"discord-msg-ext-approvedrevs-approved": "$1 zatwierdził(a) nową wersję strony $2 (wersja $3) użytkownika $4",
+	"discord-msg-ext-approvedrevs-unapproved": "$1 cofnął(-ęła) zatwierdzenie zatwierdzonej wersji strony $2",
+	"discord-msg-ext-approvedrevs-approved-file": "$1 zatwierdził(a) nową wersję pliku $2 ($3) użytkownika $4",
+	"discord-msg-ext-approvedrevs-unapproved-file": "$1 cofnął(-ęła) zatwierdzenie zatwierdzonej wersji pliku $2",
+	"discord-msg-user-rename": "$1 zmienił(a) nazwę użytkownika $2 na $3"
 }

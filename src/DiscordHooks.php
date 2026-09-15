@@ -388,6 +388,11 @@ class DiscordHooks implements
             return true;
         }
 
+		if ( $newUGMs == $oldUGMs ) {
+			// Nothing actually changed, do nothing
+			return true;
+		}
+
         if ( $performer === false ) {
             // Rights were changed by autopromotion, do nothing
             return true;
